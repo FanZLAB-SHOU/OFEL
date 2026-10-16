@@ -22,30 +22,51 @@ document.addEventListener('keydown', event => {
 document.addEventListener('click', event => {
   if (!event.target.closest('.site-header')) setMenu(false);
 });
-window.matchMedia('(min-width: 601px)').addEventListener('change', event => {
+window.matchMedia('(min-width: 701px)').addEventListener('change', event => {
   if (event.matches) setMenu(false);
 });
 
 const filters = document.querySelectorAll('.filter-button');
 const papers = [...document.querySelectorAll('.publication')];
 const count = document.querySelector('.publication-count');
+const expandContainer = document.querySelector('.publication-expand');
+const expandButton = document.querySelector('#publication-toggle');
+const previewCount = 6;
+let selectedTopic = 'all';
+let expanded = false;
+
+function renderPublications() {
+  const matching = papers.filter(paper => selectedTopic === 'all' || paper.dataset.topics.split(' ').includes(selectedTopic));
+  const limited = selectedTopic === 'all' && !expanded;
+  papers.forEach(paper => { paper.hidden = true; });
+  matching.forEach((paper, index) => { paper.hidden = limited && index >= previewCount; });
+  const visible = limited ? Math.min(previewCount, matching.length) : matching.length;
+  count.textContent = visible < matching.length
+    ? `Showing ${visible} of ${matching.length} publications`
+    : `${visible} publication${visible === 1 ? '' : 's'}`;
+  expandContainer.hidden = selectedTopic !== 'all' || matching.length <= previewCount;
+  expandButton.setAttribute('aria-expanded', String(expanded));
+  expandButton.textContent = expanded ? 'Show recent publications ↑' : `Show all ${papers.length} publications ↓`;
+}
+
 filters.forEach(button => {
   button.addEventListener('click', () => {
-    const topic = button.dataset.filter;
-    let visible = 0;
+    selectedTopic = button.dataset.filter;
+    expanded = false;
     filters.forEach(filter => {
       const selected = filter === button;
       filter.classList.toggle('is-active', selected);
       filter.setAttribute('aria-pressed', String(selected));
     });
-    papers.forEach(paper => {
-      const show = topic === 'all' || paper.dataset.topics.split(' ').includes(topic);
-      paper.hidden = !show;
-      if (show) visible += 1;
-    });
-    count.textContent = `${visible} publication${visible === 1 ? '' : 's'}`;
+    renderPublications();
   });
 });
+expandButton.addEventListener('click', () => {
+  expanded = !expanded;
+  renderPublications();
+  if (!expanded) document.querySelector('#publications-title').scrollIntoView();
+});
+renderPublications();
 
 if ('IntersectionObserver' in window) {
   const links = [...navigation.querySelectorAll('a')];

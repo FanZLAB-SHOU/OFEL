@@ -1,0 +1,676 @@
+{
+  "verified_on": "2026-10-16",
+  "author_record": "https://orcid.org/0000-0003-0214-1790",
+  "metadata_note": "Titles, author order, journals and DOIs verified against publisher-deposited Crossref records and publisher pages. Use the final issue year when available. This is a selected list, not a complete bibliography.",
+  "publications": [
+    {
+      "doi": "10.1111/faf.70077",
+      "title": "Diversity and Subjectivity of Model Uncertainty Specification in Global Tuna Stock Assessment",
+      "authors": [
+        {
+          "given": "Runze",
+          "family": "Wang"
+        },
+        {
+          "given": "Sisong",
+          "family": "Dong"
+        },
+        {
+          "given": "André E.",
+          "family": "Punt"
+        },
+        {
+          "given": "Jiangfeng",
+          "family": "Zhu"
+        },
+        {
+          "given": "Fan",
+          "family": "Zhang"
+        }
+      ],
+      "journal": "Fish and Fisheries",
+      "year": 2026,
+      "date": "2026-05",
+      "volume": "27",
+      "issue": "3",
+      "pages": "695-711",
+      "article_number": "",
+      "topics": [
+        "assessment"
+      ],
+      "source": "https://doi.org/10.1111/faf.70077"
+    },
+    {
+      "doi": "10.1038/s43247-026-03509-9",
+      "title": "Strong El Niño events reshapes migration routes and reproductive phenology of jumbo squid (Dosidicus gigas)",
+      "authors": [
+        {
+          "given": "Mingfeng",
+          "family": "Jiang"
+        },
+        {
+          "given": "Sisong",
+          "family": "Dong"
+        },
+        {
+          "given": "Bilin",
+          "family": "Liu"
+        },
+        {
+          "given": "Fan",
+          "family": "Zhang"
+        },
+        {
+          "given": "Xinjun",
+          "family": "Chen"
+        }
+      ],
+      "journal": "Communications Earth & Environment",
+      "year": 2026,
+      "date": "2026-04-15",
+      "volume": "7",
+      "issue": "1",
+      "pages": "",
+      "article_number": "514",
+      "topics": [
+        "ecosystems",
+        "biology"
+      ],
+      "source": "https://doi.org/10.1038/s43247-026-03509-9"
+    },
+    {
+      "doi": "10.1007/s42995-026-00379-0",
+      "title": "New patterns of global tuna fishing vessel dynamics in the post-pandemic era",
+      "authors": [
+        {
+          "given": "Xin",
+          "family": "Cheng"
+        },
+        {
+          "given": "Xinjun",
+          "family": "Chen"
+        },
+        {
+          "given": "Jiangfeng",
+          "family": "Zhu"
+        },
+        {
+          "given": "Fan",
+          "family": "Zhang"
+        }
+      ],
+      "journal": "Marine Life Science & Technology",
+      "year": 2026,
+      "date": "2026-04-07",
+      "volume": "",
+      "issue": "",
+      "pages": "",
+      "article_number": "",
+      "topics": [
+        "vessels"
+      ],
+      "source": "https://doi.org/10.1007/s42995-026-00379-0"
+    },
+    {
+      "doi": "10.1111/faf.70015",
+      "title": "Putting Regional Fisheries Management Organisations' Climate Change House in Order",
+      "authors": [
+        {
+          "given": "Kamal",
+          "family": "Azmi"
+        },
+        {
+          "given": "Graham",
+          "family": "Pilling"
+        },
+        {
+          "given": "Johann",
+          "family": "Bell"
+        },
+        {
+          "given": "Yi‐Jay",
+          "family": "Chang"
+        },
+        {
+          "given": "Adele",
+          "family": "Dutilloy"
+        },
+        {
+          "given": "Timothy H.",
+          "family": "Frawley"
+        },
+        {
+          "given": "Paul",
+          "family": "Hamer"
+        },
+        {
+          "given": "John",
+          "family": "Hampton"
+        },
+        {
+          "given": "Quentin",
+          "family": "Hanich"
+        },
+        {
+          "given": "Tyla",
+          "family": "Hill‐Moana"
+        },
+        {
+          "given": "Jhen",
+          "family": "Hsu"
+        },
+        {
+          "given": "Glenn",
+          "family": "Hurry"
+        },
+        {
+          "given": "Leyla",
+          "family": "Knittweis"
+        },
+        {
+          "given": "Hongyu",
+          "family": "Lin"
+        },
+        {
+          "given": "Dongqi",
+          "family": "Lu"
+        },
+        {
+          "given": "Philipp",
+          "family": "Neubauer"
+        },
+        {
+          "given": "Simon",
+          "family": "Nicol"
+        },
+        {
+          "given": "Robert",
+          "family": "Scott"
+        },
+        {
+          "given": "Inna",
+          "family": "Senina"
+        },
+        {
+          "given": "Yang",
+          "family": "Wang"
+        },
+        {
+          "given": "Ashley J.",
+          "family": "Williams"
+        },
+        {
+          "given": "Fan",
+          "family": "Zhang"
+        }
+      ],
+      "journal": "Fish and Fisheries",
+      "year": 2025,
+      "date": "2025-11",
+      "volume": "26",
+      "issue": "6",
+      "pages": "1040-1047",
+      "article_number": "",
+      "topics": [
+        "ecosystems",
+        "assessment"
+      ],
+      "source": "https://doi.org/10.1111/faf.70015"
+    },
+    {
+      "doi": "10.3354/meps14923",
+      "title": "Length-dependent growth and mortality within each cohort cannot be ignored in stock assessment: a case study of Antarctic krill Euphausia superba",
+      "authors": [
+        {
+          "given": "Sisong",
+          "family": "Dong"
+        },
+        {
+          "given": "Fan",
+          "family": "Zhang"
+        },
+        {
+          "given": "Guoping",
+          "family": "Zhu"
+        }
+      ],
+      "journal": "Marine Ecology Progress Series",
+      "year": 2025,
+      "date": "2025-09-18",
+      "volume": "769",
+      "issue": "",
+      "pages": "1-22",
+      "article_number": "",
+      "topics": [
+        "assessment",
+        "biology"
+      ],
+      "source": "https://doi.org/10.3354/meps14923"
+    },
+    {
+      "doi": "10.1038/s44183-025-00150-5",
+      "title": "Divergent patterns of global tuna fishing fleet dynamics among different continents",
+      "authors": [
+        {
+          "given": "Xin",
+          "family": "Cheng"
+        },
+        {
+          "given": "Bo",
+          "family": "Zhang"
+        },
+        {
+          "given": "Yanan",
+          "family": "Li"
+        },
+        {
+          "given": "Hongyu",
+          "family": "Lin"
+        },
+        {
+          "given": "Xinjun",
+          "family": "Chen"
+        },
+        {
+          "given": "Fan",
+          "family": "Zhang"
+        }
+      ],
+      "journal": "npj Ocean Sustainability",
+      "year": 2025,
+      "date": "2025-08-07",
+      "volume": "4",
+      "issue": "1",
+      "pages": "",
+      "article_number": "46",
+      "topics": [
+        "vessels"
+      ],
+      "source": "https://doi.org/10.1038/s44183-025-00150-5"
+    },
+    {
+      "doi": "10.1038/s41598-025-88158-2",
+      "title": "Attention-enhanced and integrated deep learning approach for fishing vessel classification based on multiple features",
+      "authors": [
+        {
+          "given": "Xin",
+          "family": "Cheng"
+        },
+        {
+          "given": "Jintao",
+          "family": "Wang"
+        },
+        {
+          "given": "Xinjun",
+          "family": "Chen"
+        },
+        {
+          "given": "Fan",
+          "family": "Zhang"
+        }
+      ],
+      "journal": "Scientific Reports",
+      "year": 2025,
+      "date": "2025-03-13",
+      "volume": "15",
+      "issue": "1",
+      "pages": "",
+      "article_number": "8642",
+      "topics": [
+        "vessels"
+      ],
+      "source": "https://doi.org/10.1038/s41598-025-88158-2"
+    },
+    {
+      "doi": "10.1016/j.marenvres.2024.106923",
+      "title": "Temporal variability in mortality and recruitment jointly influence the periodic fluctuations in Antarctic krill populations",
+      "authors": [
+        {
+          "given": "Sisong",
+          "family": "Dong"
+        },
+        {
+          "given": "Fan",
+          "family": "Zhang"
+        },
+        {
+          "given": "Guoping",
+          "family": "Zhu"
+        }
+      ],
+      "journal": "Marine Environmental Research",
+      "year": 2025,
+      "date": "2025-02",
+      "volume": "204",
+      "issue": "",
+      "pages": "106923",
+      "article_number": "106923",
+      "topics": [
+        "assessment",
+        "ecosystems",
+        "biology"
+      ],
+      "source": "https://doi.org/10.1016/j.marenvres.2024.106923"
+    },
+    {
+      "doi": "10.1139/cjfas-2024-0273",
+      "title": "Accounting for movement in spatial surplus production models: a case study of redfish on the eastern Grand Banks of Newfoundland",
+      "authors": [
+        {
+          "given": "Hoang",
+          "family": "Nguyen"
+        },
+        {
+          "given": "Jin",
+          "family": "Gao"
+        },
+        {
+          "given": "Noel G.",
+          "family": "Cadigan"
+        },
+        {
+          "given": "Yanjun",
+          "family": "Wang"
+        },
+        {
+          "given": "Fan",
+          "family": "Zhang"
+        },
+        {
+          "given": "Nan",
+          "family": "Zheng"
+        }
+      ],
+      "journal": "Canadian Journal of Fisheries and Aquatic Sciences",
+      "year": 2025,
+      "date": "2025-01-01",
+      "volume": "82",
+      "issue": "",
+      "pages": "1-16",
+      "article_number": "",
+      "topics": [
+        "assessment"
+      ],
+      "source": "https://doi.org/10.1139/cjfas-2024-0273"
+    },
+    {
+      "doi": "10.1139/cjfas-2024-0295",
+      "title": "The ghosts of overfishing past that haunt present day fisheries management",
+      "authors": [
+        {
+          "given": "Daniel E.",
+          "family": "Duplisea"
+        },
+        {
+          "given": "Tyler D.",
+          "family": "Eddy"
+        },
+        {
+          "given": "Matthew D.",
+          "family": "Robertson"
+        },
+        {
+          "given": "Raquel",
+          "family": "Ruiz-Díaz"
+        },
+        {
+          "given": "C.",
+          "family": "Abraham Solberg"
+        },
+        {
+          "given": "Fan",
+          "family": "Zhang"
+        }
+      ],
+      "journal": "Canadian Journal of Fisheries and Aquatic Sciences",
+      "year": 2025,
+      "date": "2025-01-01",
+      "volume": "82",
+      "issue": "",
+      "pages": "1-14",
+      "article_number": "",
+      "topics": [
+        "ecosystems",
+        "assessment"
+      ],
+      "source": "https://doi.org/10.1139/cjfas-2024-0295"
+    },
+    {
+      "doi": "10.1111/faf.12865",
+      "title": "A Meta‐Analysis of Bycatch Mitigation Methods for Sea Turtles Vulnerable to Swordfish and Tuna Longline Fisheries",
+      "authors": [
+        {
+          "given": "Hao",
+          "family": "Yan"
+        },
+        {
+          "given": "Cheng",
+          "family": "Zhou"
+        },
+        {
+          "given": "Eric",
+          "family": "Gilman"
+        },
+        {
+          "given": "Jie",
+          "family": "Cao"
+        },
+        {
+          "given": "Rong",
+          "family": "Wan"
+        },
+        {
+          "given": "Fan",
+          "family": "Zhang"
+        },
+        {
+          "given": "Jiangfeng",
+          "family": "Zhu"
+        },
+        {
+          "given": "Liuxiong",
+          "family": "Xu"
+        },
+        {
+          "given": "Liming",
+          "family": "Song"
+        },
+        {
+          "given": "Xiaojie",
+          "family": "Dai"
+        },
+        {
+          "given": "Siquan",
+          "family": "Tian"
+        }
+      ],
+      "journal": "Fish and Fisheries",
+      "year": 2025,
+      "date": "2025-01",
+      "volume": "26",
+      "issue": "1",
+      "pages": "45-64",
+      "article_number": "",
+      "topics": [
+        "ecosystems"
+      ],
+      "source": "https://doi.org/10.1111/faf.12865"
+    },
+    {
+      "doi": "10.1111/faf.12820",
+      "title": "Testing models of increasing complexity to develop ecosystem‐informed fisheries advice",
+      "authors": [
+        {
+          "given": "Matthew D.",
+          "family": "Robertson"
+        },
+        {
+          "given": "Noel G.",
+          "family": "Cadigan"
+        },
+        {
+          "given": "Paul M.",
+          "family": "Regular"
+        },
+        {
+          "given": "Mariano",
+          "family": "Koen‐Alonso"
+        },
+        {
+          "given": "Frédéric",
+          "family": "Cyr"
+        },
+        {
+          "given": "Fan",
+          "family": "Zhang"
+        },
+        {
+          "given": "Tyler D.",
+          "family": "Eddy"
+        }
+      ],
+      "journal": "Fish and Fisheries",
+      "year": 2024,
+      "date": "2024-05",
+      "volume": "25",
+      "issue": "3",
+      "pages": "491-507",
+      "article_number": "",
+      "topics": [
+        "ecosystems",
+        "assessment"
+      ],
+      "source": "https://doi.org/10.1111/faf.12820"
+    },
+    {
+      "doi": "10.3390/fishes8100516",
+      "title": "Application of Artificial Intelligence in the Study of Fishing Vessel Behavior",
+      "authors": [
+        {
+          "given": "Xin",
+          "family": "Cheng"
+        },
+        {
+          "given": "Fan",
+          "family": "Zhang"
+        },
+        {
+          "given": "Xinjun",
+          "family": "Chen"
+        },
+        {
+          "given": "Jintao",
+          "family": "Wang"
+        }
+      ],
+      "journal": "Fishes",
+      "year": 2023,
+      "date": "2023-10-18",
+      "volume": "8",
+      "issue": "10",
+      "pages": "516",
+      "article_number": "",
+      "topics": [
+        "vessels"
+      ],
+      "source": "https://doi.org/10.3390/fishes8100516"
+    },
+    {
+      "doi": "10.3390/fishes8030131",
+      "title": "Effects of Aging Uncertainty on the Estimation of Growth Functions of Major Tuna Species",
+      "authors": [
+        {
+          "given": "Dongqi",
+          "family": "Lu"
+        },
+        {
+          "given": "Qinqin",
+          "family": "Lin"
+        },
+        {
+          "given": "Jiangfeng",
+          "family": "Zhu"
+        },
+        {
+          "given": "Fan",
+          "family": "Zhang"
+        }
+      ],
+      "journal": "Fishes",
+      "year": 2023,
+      "date": "2023-02-24",
+      "volume": "8",
+      "issue": "3",
+      "pages": "131",
+      "article_number": "",
+      "topics": [
+        "assessment",
+        "biology"
+      ],
+      "source": "https://doi.org/10.3390/fishes8030131"
+    },
+    {
+      "doi": "10.1111/faf.12673",
+      "title": "An age‐ and length‐structured statistical catch‐at‐length model for hard‐to‐age fisheries stocks",
+      "authors": [
+        {
+          "given": "Fan",
+          "family": "Zhang"
+        },
+        {
+          "given": "Noel G.",
+          "family": "Cadigan"
+        }
+      ],
+      "journal": "Fish and Fisheries",
+      "year": 2022,
+      "date": "2022-09",
+      "volume": "23",
+      "issue": "5",
+      "pages": "1121-1135",
+      "article_number": "",
+      "topics": [
+        "assessment"
+      ],
+      "source": "https://doi.org/10.1111/faf.12673"
+    },
+    {
+      "doi": "10.1093/icesjms/fsaa176",
+      "title": "Accounting for non-stationary stock–recruitment relationships in the development of MSY-based reference points",
+      "authors": [
+        {
+          "given": "Fan",
+          "family": "Zhang"
+        },
+        {
+          "given": "Paul M",
+          "family": "Regular"
+        },
+        {
+          "given": "Laura",
+          "family": "Wheeland"
+        },
+        {
+          "given": "Rick M",
+          "family": "Rideout"
+        },
+        {
+          "given": "M Joanne",
+          "family": "Morgan"
+        }
+      ],
+      "journal": "ICES Journal of Marine Science",
+      "year": 2021,
+      "date": "2021-09-30",
+      "volume": "78",
+      "issue": "6",
+      "pages": "2233-2243",
+      "article_number": "",
+      "topics": [
+        "assessment",
+        "ecosystems"
+      ],
+      "source": "https://doi.org/10.1093/icesjms/fsaa176"
+    }
+  ]
+}

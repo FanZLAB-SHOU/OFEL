@@ -6,12 +6,17 @@
           <button class="collection-button" id="publications-fan-zhang" type="button" data-collection="fan-zhang" aria-pressed="false" aria-controls="publication-list">Fan Zhang publications</button>
         </div>
         <p class="publication-collection-note" id="publication-collection-note">Research from the Oceanic Fisheries Ecosystem Laboratory. Some papers also appear in Fan Zhang’s collection.</p>
+        <div class="publication-discovery" role="search" aria-label="Search publications" hidden>
+          <label class="publication-search-label" for="publication-search">Search by author or title<input id="publication-search" type="search" placeholder="e.g. tuna, Runze Wang, André Punt" autocomplete="off" aria-controls="publication-list"></label>
+          <label for="publication-year">Year<select id="publication-year" aria-controls="publication-list"><option value="all">All years</option></select></label>
+          <button type="button" id="publication-reset">Clear filters</button>
+        </div>
         <div class="publication-toolbar"><div class="publication-filters" role="group" aria-label="Filter publications by topic"><button type="button" class="filter-button is-active" data-filter="all" aria-pressed="true">All topics</button><button type="button" class="filter-button" data-filter="assessment" aria-pressed="false">Stock assessment</button><button type="button" class="filter-button" data-filter="ecosystems" aria-pressed="false">Ecosystems</button><button type="button" class="filter-button" data-filter="vessels" aria-pressed="false">Vessel behavior</button><button type="button" class="filter-button" data-filter="biology" aria-pressed="false">Biology</button></div><span class="publication-count" role="status" aria-live="polite">16 publications</span></div>
         <div class="publication-list" id="publication-list">
 
         </div>
         <p class="publication-empty" hidden>No publications match this selection.</p>
-        <noscript><p class="publication-noscript">Enable JavaScript to switch collections and filter by topic. The list below shows selected publications by Fan Zhang and collaborators.</p></noscript>
+        <noscript><p class="publication-noscript">Enable JavaScript to search, filter and switch collections. You can still read every entry and select its citation.</p></noscript>
         <div class="publication-expand" hidden><button type="button" id="publication-toggle" aria-controls="publication-list" aria-expanded="false">Show all publications <span aria-hidden="true">↓</span></button></div>
         <div class="publications-bottom"><span>Selected publications, listed by year. Lab publications may also appear in Fan Zhang’s collection.</span><div class="publication-links"><a class="text-link" href="https://orcid.org/0000-0003-0214-1790" target="_blank" rel="noopener noreferrer">{{icon:id}}More on ORCID<span class="sr-only"> (opens in a new tab)</span></a><a class="text-link" id="publication-citations" href="assets/selected-publications.bib" download>Download collection citations <span aria-hidden="true">↓</span></a></div></div>
       </div>

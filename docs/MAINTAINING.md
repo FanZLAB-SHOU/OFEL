@@ -68,6 +68,10 @@ Fan Zhang 主页的主体信息在 [`templates/members/fan-zhang.html`](../templ
 
 `scripts/build-publications.py` 生成论文页面和两份 BibTeX 文件。学名在 [`scripts/species.py`](../scripts/species.py) 中维护，在论文、新闻与 BibTeX 中自动使用斜体。
 
+论文页支持按标题或作者搜索，可与年份、主题及论文集合组合筛选；搜索忽略大小写和拉丁字母的重音符号。年份选项只列出当前集合的年份。使用任一筛选时展示全部匹配结果，不再限制为最近六篇；Clear filters 清空搜索、年份和主题，保留当前集合。
+
+每篇论文及成员主页的论文条目提供 Copy citation 与 View citation。可读引用由同一份元数据生成，包含全部作者、年份、题名、期刊、已知的卷期页码或文章编号和 DOI。剪贴板不可用时展开并选中引用文本，便于手动复制；不需要新的引用服务或 API。原有集合 BibTeX 下载保持可用。
+
 ### 新闻
 
 编辑 [`assets/blog.json`](../assets/blog.json)，图片放在 [`assets/news/`](../assets/news/)。

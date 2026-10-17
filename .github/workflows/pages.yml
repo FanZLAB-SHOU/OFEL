@@ -37,6 +37,10 @@ jobs:
           node scripts/test-gateway-cards.cjs
       - name: Check page links and assets
         run: python3 scripts/check-site.py
+      - name: Check publication search and citations
+        run: |
+          python3 scripts/test-publication-citations.py
+          node scripts/test-publication-tools.cjs
       - name: Upload website
         uses: actions/upload-pages-artifact@v3
         with:

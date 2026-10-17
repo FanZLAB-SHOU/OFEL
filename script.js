@@ -99,11 +99,32 @@ function initPublications() {
   const citations = document.querySelector('#publication-citations');
   const expandContainer = document.querySelector('.publication-expand');
   const expandButton = document.querySelector('#publication-toggle');
-  let collection = 'lab', topic = 'all', expanded = false;
+  const search = document.querySelector('#publication-search');
+  const yearSelect = document.querySelector('#publication-year');
+  const reset = document.querySelector('#publication-reset');
+  const normalize = text => text.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
+  const searchText = new Map(papers.map(paper => [paper, normalize(paper.dataset.search)]));
+  let collection = 'lab', topic = 'all', expanded = false, year = 'all';
+  function inCollection(paper) { return collection === 'lab' ? paper.dataset.lab === 'true' : paper.dataset.fanZhang === 'true'; }
+  function syncYears() {
+    const years = [...new Set(papers.filter(inCollection).map(paper => paper.dataset.year))].sort((a, b) => Number(b) - Number(a));
+    if (!years.includes(year)) year = 'all';
+    yearSelect.replaceChildren();
+    ['all', ...years].forEach(value => {
+      const option = document.createElement('option');
+      option.value = value; option.textContent = value === 'all' ? 'All years' : value;
+      yearSelect.append(option);
+    });
+    yearSelect.value = year;
+  }
   function render() {
-    const all = papers.filter(p => collection === 'lab' ? p.dataset.lab === 'true' : p.dataset.fanZhang === 'true');
-    const matching = all.filter(p => topic === 'all' || p.dataset.topic === topic);
-    const limited = topic === 'all' && !expanded;
+    const all = papers.filter(inCollection);
+    const terms = normalize(search.value).split(/\s+/).filter(Boolean);
+    const unfiltered = topic === 'all' && year === 'all' && terms.length === 0;
+    const matching = all.filter(p => (topic === 'all' || p.dataset.topic === topic)
+      && (year === 'all' || p.dataset.year === year)
+      && terms.every(term => searchText.get(p).includes(term)));
+    const limited = unfiltered && !expanded;
     papers.forEach(p => { p.hidden = true; });
     matching.forEach((p, index) => { p.hidden = limited && index >= 6; });
     const visible = limited ? Math.min(6, matching.length) : matching.length;
@@ -112,8 +133,9 @@ function initPublications() {
       ? 'Research from the Oceanic Fisheries Ecosystem Laboratory. Some papers also appear in Fan Zhang’s collection.'
       : 'Selected publications co-authored by Fan Zhang, including lab research and collaborations.';
     empty.hidden = matching.length > 0;
-    empty.textContent = all.length === 0 && collection === 'lab' ? 'The lab publication collection is being curated.' : 'No publications match this topic in the selected collection.';
-    expandContainer.hidden = topic !== 'all' || matching.length <= 6;
+    empty.textContent = all.length === 0 && collection === 'lab' ? 'The lab publication collection is being curated.' : 'No publications match your search and filters in this collection.';
+    expandContainer.hidden = !unfiltered || matching.length <= 6;
+    reset.disabled = !search.value && topic === 'all' && year === 'all';
     expandButton.setAttribute('aria-expanded', String(expanded));
     expandButton.textContent = expanded ? 'Show recent publications ↑' : `Show all ${matching.length} publications ↓`;
     citations.hidden = all.length === 0;
@@ -132,6 +154,7 @@ function initPublications() {
   function select(value, resetTopic = false) {
     collection = value; expanded = false;
     if (resetTopic) topic = 'all';
+    syncYears();
     render();
   }
   filters.forEach(button => button.addEventListener('click', () => { topic = button.dataset.filter; expanded = false; render(); }));
@@ -142,10 +165,40 @@ function initPublications() {
     expanded = !expanded; render();
     if (!expanded) document.querySelector('#publications-title').scrollIntoView();
   });
+  search.addEventListener('input', () => { expanded = false; render(); });
+  yearSelect.addEventListener('change', () => { year = yearSelect.value; expanded = false; render(); });
+  reset.addEventListener('click', () => {
+    search.value = ''; year = 'all'; topic = 'all'; expanded = false;
+    yearSelect.value = 'all'; render(); search.focus();
+  });
+  syncYears();
+  document.querySelector('.publication-discovery').hidden = false;
   render();
   return { select };
 }
 publications = initPublications();
+
+function initCitationCopy() {
+  document.querySelectorAll('.copy-citation').forEach(button => {
+    const tools = button.closest('.publication-citation');
+    const text = tools.querySelector('.citation-text');
+    const manual = tools.querySelector('.citation-manual');
+    const status = tools.querySelector('.citation-status');
+    button.hidden = false;
+    button.addEventListener('click', async () => {
+      button.disabled = true; status.textContent = '';
+      try {
+        if (!navigator.clipboard || !navigator.clipboard.writeText) throw new Error('Clipboard unavailable');
+        await navigator.clipboard.writeText(text.value);
+        status.textContent = 'Citation copied.';
+      } catch {
+        manual.open = true; text.focus(); text.select();
+        status.textContent = 'Citation selected. Use your device’s Copy command.';
+      } finally { button.disabled = false; }
+    });
+  });
+}
+initCitationCopy();
 function applyHash() {
   if (page === 'index' && legacyRoutes[location.hash]) { location.replace(legacyRoutes[location.hash]); return; }
   const hashes = { '#publications-lab': 'lab', '#publications-fan-zhang': 'fan-zhang' };

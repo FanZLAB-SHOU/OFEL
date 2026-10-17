@@ -79,6 +79,7 @@ def article_html(paper, highlight=('Fan', 'Zhang')):
         details = 'Published online'
     doi_url = html.escape(paper['source'], quote=True)
     plain_title = html.escape(paper['title'])
+    search_text = html.escape(paper['title'] + ' ' + ' '.join(f"{a['given']} {a['family']}" for a in paper['authors']), quote=True)
     title = italicize(plain_title)
     journal = html.escape(paper['journal'])
     journal_url = journals.get(paper['journal'])
@@ -94,15 +95,36 @@ def article_html(paper, highlight=('Fan', 'Zhang')):
         f'<span>{html.escape(label)}</span>' for label in badges) + '</p>') if badges else ''
     return (
         f'          <article class="publication" data-topic="{paper["topics"][0]}" '
-        f'data-fan-zhang="{str(is_fan_zhang).lower()}" data-lab="{str(is_lab).lower()}">'
+        f'data-fan-zhang="{str(is_fan_zhang).lower()}" data-lab="{str(is_lab).lower()}" '
+        f'data-year="{paper["year"]}" data-search="{search_text}">'
         f'<span class="publication-year">{paper["year"]}</span><div>'
         f'<p class="journal">{journal} <span>{html.escape(details)}</span></p>'
         f'<h3><a href="{doi_url}" target="_blank" rel="noopener noreferrer">{title}'
         '<span class="sr-only"> (opens in a new tab)</span></a></h3>'
-        f'<p class="authors">{", ".join(authors)}</p>{badges_html}</div>'
+        f'<p class="authors">{", ".join(authors)}</p>{badges_html}'
+        '<div class="publication-citation">'
+        f'<button class="copy-citation" type="button" aria-label="Copy citation for {plain_title}" hidden>Copy citation</button>'
+        '<details class="citation-manual"><summary>View citation</summary>'
+        f'<textarea class="citation-text" readonly rows="5" aria-label="Citation for {plain_title}">{html.escape(plain_citation(paper))}</textarea>'
+        '</details><span class="citation-status" role="status" aria-live="polite"></span></div></div>'
         f'<a class="paper-arrow" href="{doi_url}" target="_blank" rel="noopener noreferrer" '
         f'aria-label="Read {plain_title} in a new tab">{icon("paper")}</a></article>'
     )
+
+
+def plain_citation(paper):
+    """A readable citation built only from the same metadata used by BibTeX."""
+    authors = []
+    for author in paper['authors']:
+        initials = ' '.join(word[0] + '.' for word in re.findall(r'[^\W\d_]+', author['given']))
+        authors.append(f"{author['family']}, {initials}")
+    names = authors[0] if len(authors) == 1 else ', '.join(authors[:-1]) + ', & ' + authors[-1]
+    volume = str(paper.get('volume') or '')
+    if paper.get('issue'):
+        volume += f"({paper['issue']})"
+    location = (paper.get('article_number') or paper.get('pages') or '').replace('-', '–')
+    details = ', '.join(part for part in (paper['journal'], volume, location) if part)
+    return f"{names} ({paper['year']}). {paper['title'].rstrip('.')}. {details}. https://doi.org/{paper['doi']}"
 
 
 def citation(paper):

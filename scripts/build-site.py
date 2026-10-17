@@ -199,11 +199,9 @@ gateways = [
      f'<div class="mock-panel mock-paper gateway-publication-preview"><span class="mock-label">{esc(latest["journal"])} · {latest["year"]}</span>'
      f'<strong>{italicize(esc(short(latest["title"], 80)))}</strong><small>{esc(latest_authors)}</small>'
      f'<small class="gateway-publication-meta">{len(pubs)} publications · BibTeX available</small></div>'),
-    ('contact.html', 'Contact &amp; Join Us', 'Graduate study, research visits, and collaboration with Fan Zhang.', 'assets/research/vessel-ai.webp', '55% 45%', 'mail',
-     '<div class="mock-panel mock-mail"><span class="mock-label">New message</span>'
-     '<div class="mock-field"><em>To</em>f-zhang@shou.edu.cn</div><div class="mock-field"><em>Subject</em>Research enquiry</div>'
-     '<div class="mock-lines"><i></i><i></i></div><span class="mock-send">Send</span></div>'
-     '<div class="mock-pills"><span>Graduate study</span><span>Research visits</span><span>Collaboration</span></div>'),
+    ('contact.html', 'Contact &amp; Join Us', 'Graduate study, research visits, and collaboration with Fan Zhang.', 'assets/news/2025-07-iccat/meeting.jpg', '47% 52%', 'right',
+     '<div class="mock-panel mock-paper" style="align-self: end"><span class="mock-label">Start a conversation</span>'
+     '<strong>Research visits &amp; collaboration</strong><small>f-zhang@shou.edu.cn</small></div>'),
 ]
 gateway_cards = '\n'.join(
     f'          <a class="gateway-card{" gateway-card-journal" if href == "publications.html" and latest_cover else ""}" href="{href}" data-reveal style="--reveal-delay: {n * .1:.1f}s">'

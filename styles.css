@@ -437,6 +437,31 @@ body { font-size: 18px; }
 .text-link .icon, .button .icon { color: var(--teal); }
 .hero .text-link .icon, .hero .button .icon, .contact-address .text-link .icon { color: inherit; }
 .paper-arrow .icon { width: 19px; height: 19px; }
+.publication-discovery { display: grid; grid-template-columns: minmax(220px, 1fr) 180px auto; gap: 16px; align-items: end; margin: 28px 0 22px; padding: 22px; background: #f2f7fb; border: 1px solid var(--line); border-radius: 6px; }
+.publication-discovery[hidden], .copy-citation[hidden] { display: none; }
+.publication-discovery label { display: flex; flex-direction: column; gap: 8px; font-size: 13px; font-weight: 600; line-height: 1.4; color: var(--ink); }
+.publication-discovery input, .publication-discovery select { width: 100%; min-width: 0; min-height: 44px; padding: 10px 12px; border: 1px solid #bccfe0; border-radius: 3px; background: white; font: 400 16px/1.3 Arial, Helvetica, sans-serif; color: var(--ink); }
+.publication-discovery input::placeholder { color: #667c90; }
+.publication-discovery input:focus-visible, .publication-discovery select:focus-visible, .citation-text:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+#publication-reset { min-height: 44px; padding: 10px 16px; border: 1px solid #a5bbce; border-radius: 3px; background: white; color: var(--ink); font-size: 13px; }
+#publication-reset:disabled { opacity: .5; cursor: default; }
+.publication-toolbar { flex-wrap: wrap; }
+.publication-count { display: block; }
+.publication-citation { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin-top: 15px; }
+.copy-citation { min-height: 44px; padding: 8px 12px; border: 1px solid #bdcfe0; border-radius: 3px; color: var(--navy); background: #f3f8fc; font-size: 12px; }
+.copy-citation:hover { background: #e4eff8; border-color: var(--teal); }
+.copy-citation:disabled { opacity: .6; cursor: wait; }
+.citation-manual { min-width: 0; font-size: 12px; color: var(--muted); }
+.citation-manual summary { padding: 8px 0; cursor: pointer; }
+.citation-manual[open] { flex-basis: 100%; }
+.citation-text { display: block; width: 100%; box-sizing: border-box; padding: 14px; border: 1px solid #bdcfe0; border-radius: 3px; background: #f7fafc; color: var(--ink); font: 14px/1.6 Arial, Helvetica, sans-serif; resize: vertical; }
+.citation-status { font-size: 12px; color: var(--teal); }
+@media (max-width: 700px) {
+  .publication-discovery { grid-template-columns: minmax(0, 1fr) auto; padding: 16px; gap: 14px 12px; }
+  .publication-search-label { grid-column: 1 / -1; }
+  .publication-count { display: block; }
+  .citation-text { font-size: 16px; }
+}
 .gateway-arrow .icon, .reel-card-arrow .icon { width: 30px; height: 30px; stroke-width: 1.4; }
 .contact-email .contact-email-icon { display: inline-flex; }
 .contact-email .icon { width: 30px; height: 30px; stroke-width: 1.4; }
@@ -519,12 +544,6 @@ body { font-size: 18px; }
 .mock-news strong { font: 600 11.5px/1.35 Georgia, serif; }
 .mock-news small { font-size: 9.5px; color: #5d7186; }
 .mock-tag { font-size: 9px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #0c6fa8; }
-.mock-field { display: flex; gap: 8px; padding-bottom: 6px; border-bottom: 1px solid #e3ebf2; font-size: 10.5px; white-space: nowrap; overflow: hidden; }
-.mock-field em { width: 46px; flex-shrink: 0; font-style: normal; color: #7a8ea2; }
-.mock-send { align-self: flex-end; margin-top: 4px; padding: 5px 13px; border-radius: 999px; background: #0b3a63; color: white; font-size: 10px; font-weight: 600; }
-.mock-pills { position: absolute; z-index: 2; left: 50%; bottom: 2%; width: 112%; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; translate: -50% 0; }
-.mock-pills span { padding: 6px 10px; border-radius: 999px; background: rgba(255, 255, 255, .94); color: #14273d; font-size: 10px; font-weight: 600; box-shadow: 0 8px 18px rgba(0, 0, 0, .25); }
-.mock-mail { margin-bottom: 38px; }
 .gateway-controls { display: none; }
 @media (max-width: 1100px) {
   .gateway-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }

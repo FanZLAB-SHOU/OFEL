@@ -1,15 +1,28 @@
 {
-  "note": "Journal homepage links shown on publication entries. Add a journal here when a new one appears in publications.json.",
+  "note": "Journal homepage links shown on publication entries. Add a journal here when a new one appears in publications.json or member-publications.json.",
   "journals": {
+    "Acta Oceanologica Sinica": "https://link.springer.com/journal/13131",
+    "Aquaculture and Fisheries": "https://www.sciencedirect.com/journal/aquaculture-and-fisheries",
     "Canadian Journal of Fisheries and Aquatic Sciences": "https://cdnsciencepub.com/journal/cjfas",
     "Communications Earth & Environment": "https://www.nature.com/commsenv/",
+    "Ecological Indicators": "https://www.sciencedirect.com/journal/ecological-indicators",
+    "Ecology and Evolution": "https://onlinelibrary.wiley.com/journal/20457758",
+    "Ecosystem Health and Sustainability": "https://spj.science.org/journal/ehs",
     "Fish and Fisheries": "https://onlinelibrary.wiley.com/journal/14672979",
+    "Fisheries Research": "https://www.sciencedirect.com/journal/fisheries-research",
     "Fishes": "https://www.mdpi.com/journal/fishes",
+    "Frontiers in Marine Science": "https://www.frontiersin.org/journals/marine-science",
+    "Global Ecology and Conservation": "https://www.sciencedirect.com/journal/global-ecology-and-conservation",
     "ICES Journal of Marine Science": "https://academic.oup.com/icesjms",
+    "Journal of Applied Ecology": "https://besjournals.onlinelibrary.wiley.com/journal/13652664",
+    "Journal of Marine Science and Engineering": "https://www.mdpi.com/journal/jmse",
     "Marine Ecology Progress Series": "https://www.int-res.com/journals/meps/",
     "Marine Environmental Research": "https://www.sciencedirect.com/journal/marine-environmental-research",
     "Marine Life Science & Technology": "https://link.springer.com/journal/42995",
-    "Scientific Reports": "https://www.nature.com/srep/",
-    "npj Ocean Sustainability": "https://www.nature.com/npjoceansustain/"
+    "Marine Pollution Bulletin": "https://www.sciencedirect.com/journal/marine-pollution-bulletin",
+    "npj Ocean Sustainability": "https://www.nature.com/npjoceansustain/",
+    "Reviews in Fish Biology and Fisheries": "https://link.springer.com/journal/11160",
+    "Scientific Data": "https://www.nature.com/sdata/",
+    "Scientific Reports": "https://www.nature.com/srep/"
   }
 }

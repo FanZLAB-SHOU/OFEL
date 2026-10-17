@@ -1,0 +1,902 @@
+{
+  "retrieved_on": "2026-10-17",
+  "note": "Fisheries-related papers by lab members, found in OpenAlex by author name with a Shanghai Ocean University affiliation on that paper, then checked by hand to exclude same-name authors and non-fisheries work; citation details from Crossref. Shown on member profile pages only. These are not confirmed lab publications, so they do not appear in the Publications page collections; move a paper to publications.json with a confirmed attribution to list it there.",
+  "publications": [
+    {
+      "doi": "10.1038/s41597-026-08085-3",
+      "title": "Chromosome-Level Genome Assembly and Annotation of the South Pacific Albacore (Thunnus alalunga)",
+      "journal": "Scientific Data",
+      "year": 2026,
+      "date": "2026-08",
+      "volume": "",
+      "issue": "",
+      "pages": "",
+      "article_number": "",
+      "authors": [
+        {
+          "given": "Dongqi",
+          "family": "Lu"
+        },
+        {
+          "given": "Feng",
+          "family": "Wu"
+        },
+        {
+          "given": "Jiangfeng",
+          "family": "Zhu"
+        },
+        {
+          "given": "Fan",
+          "family": "Zhang"
+        }
+      ],
+      "source": "https://doi.org/10.1038/s41597-026-08085-3",
+      "topics": [
+        "biology"
+      ]
+    },
+    {
+      "doi": "10.1016/j.gecco.2025.e04017",
+      "title": "Dynamic modeling of the pelagic ecosystem in the western and central Pacific Ocean based on a multispecies size-spectrum model",
+      "journal": "Global Ecology and Conservation",
+      "year": 2026,
+      "date": "2026-01",
+      "volume": "65",
+      "issue": "",
+      "pages": "",
+      "article_number": "e04017",
+      "authors": [
+        {
+          "given": "Xiaodong",
+          "family": "Li"
+        },
+        {
+          "given": "Qinqin",
+          "family": "Lin"
+        },
+        {
+          "given": "Zhe",
+          "family": "Geng"
+        },
+        {
+          "given": "Jiangfeng",
+          "family": "Zhu"
+        }
+      ],
+      "source": "https://doi.org/10.1016/j.gecco.2025.e04017",
+      "topics": [
+        "ecosystems"
+      ]
+    },
+    {
+      "doi": "10.1111/1365-2664.70572",
+      "title": "Ignoring death after spawning misrepresents the population dynamics of marine semelparous species",
+      "journal": "Journal of Applied Ecology",
+      "year": 2026,
+      "date": "2026-09",
+      "volume": "63",
+      "issue": "9",
+      "pages": "",
+      "article_number": "e70572",
+      "authors": [
+        {
+          "given": "Mingfeng",
+          "family": "Jiang"
+        },
+        {
+          "given": "Sisong",
+          "family": "Dong"
+        },
+        {
+          "given": "Rutong",
+          "family": "Tang"
+        },
+        {
+          "given": "André E.",
+          "family": "Punt"
+        },
+        {
+          "given": "Fan",
+          "family": "Zhang"
+        },
+        {
+          "given": "Xinjun",
+          "family": "Chen"
+        }
+      ],
+      "source": "https://doi.org/10.1111/1365-2664.70572",
+      "topics": [
+        "assessment"
+      ]
+    },
+    {
+      "doi": "10.1002/ece3.74148",
+      "title": "Spatially Heterogeneous Responses of Body Growth to El Niño‐Southern Oscillation Signal During Different Life Stages in Jumbo Squid ( Dosidicus gigas )",
+      "journal": "Ecology and Evolution",
+      "year": 2026,
+      "date": "2026-08",
+      "volume": "16",
+      "issue": "8",
+      "pages": "",
+      "article_number": "e74148",
+      "authors": [
+        {
+          "given": "Mingfeng",
+          "family": "Jiang"
+        },
+        {
+          "given": "Fan",
+          "family": "Zhang"
+        },
+        {
+          "given": "Sisong",
+          "family": "Dong"
+        },
+        {
+          "given": "Jun",
+          "family": "Yu"
+        },
+        {
+          "given": "Ming",
+          "family": "Shao"
+        },
+        {
+          "given": "Xinjun",
+          "family": "Chen"
+        }
+      ],
+      "source": "https://doi.org/10.1002/ece3.74148",
+      "topics": [
+        "biology"
+      ]
+    },
+    {
+      "doi": "10.1038/s44183-026-00234-w",
+      "title": "Spatio-temporal variation of AIS data abnormally for tuna fishing fleets in the Pacific Ocean",
+      "journal": "npj Ocean Sustainability",
+      "year": 2026,
+      "date": "2026-08",
+      "volume": "",
+      "issue": "",
+      "pages": "",
+      "article_number": "",
+      "authors": [
+        {
+          "given": "Xin",
+          "family": "Cheng"
+        },
+        {
+          "given": "Huimin",
+          "family": "Li"
+        },
+        {
+          "given": "Ji",
+          "family": "Feng"
+        },
+        {
+          "given": "Qinqin",
+          "family": "Lin"
+        },
+        {
+          "given": "Xinjun",
+          "family": "Chen"
+        }
+      ],
+      "source": "https://doi.org/10.1038/s44183-026-00234-w",
+      "topics": [
+        "vessels"
+      ]
+    },
+    {
+      "doi": "10.3390/jmse13030474",
+      "title": "Climate Variability and Fish Community Dynamics: Impacts of La Niña Events on the Continental Shelf of the Northern South China Sea",
+      "journal": "Journal of Marine Science and Engineering",
+      "year": 2025,
+      "date": "2025-02",
+      "volume": "13",
+      "issue": "3",
+      "pages": "",
+      "article_number": "474",
+      "authors": [
+        {
+          "given": "Zikai",
+          "family": "Liu"
+        },
+        {
+          "given": "Jiajun",
+          "family": "Li"
+        },
+        {
+          "given": "Junyi",
+          "family": "Zhang"
+        },
+        {
+          "given": "Zuozhi",
+          "family": "Chen"
+        },
+        {
+          "given": "Kui",
+          "family": "Zhang"
+        }
+      ],
+      "source": "https://doi.org/10.3390/jmse13030474",
+      "topics": [
+        "ecosystems"
+      ]
+    },
+    {
+      "doi": "10.1007/s13131-025-2488-y",
+      "title": "Climate change induced environmental variability affects the tuna catch composition: a perspective of catch mean trophic level",
+      "journal": "Acta Oceanologica Sinica",
+      "year": 2025,
+      "date": "2025-07",
+      "volume": "44",
+      "issue": "7",
+      "pages": "76-87",
+      "article_number": "",
+      "authors": [
+        {
+          "given": "Mingfeng",
+          "family": "Jiang"
+        },
+        {
+          "given": "Jintao",
+          "family": "Wang"
+        },
+        {
+          "given": "Xinjun",
+          "family": "Chen"
+        }
+      ],
+      "source": "https://doi.org/10.1007/s13131-025-2488-y",
+      "topics": [
+        "ecosystems"
+      ]
+    },
+    {
+      "doi": "10.1016/j.marenvres.2025.107337",
+      "title": "Evaluating the potential impacts of mesoscale eddies on the distribution and abundance of an environmentally sensitive squid species (Sthenoteuthis oualaniensis) in the Arabian Sea",
+      "journal": "Marine Environmental Research",
+      "year": 2025,
+      "date": "2025-09",
+      "volume": "210",
+      "issue": "",
+      "pages": "",
+      "article_number": "107337",
+      "authors": [
+        {
+          "given": "Yingyue",
+          "family": "Fu"
+        },
+        {
+          "given": "Xiaoci",
+          "family": "Wu"
+        },
+        {
+          "given": "Pengchao",
+          "family": "Jin"
+        },
+        {
+          "given": "Xinjun",
+          "family": "Chen"
+        },
+        {
+          "given": "Qinwang",
+          "family": "Xing"
+        },
+        {
+          "given": "Fei",
+          "family": "Chai"
+        },
+        {
+          "given": "Jie",
+          "family": "Cao"
+        },
+        {
+          "given": "Wei",
+          "family": "Yu"
+        }
+      ],
+      "source": "https://doi.org/10.1016/j.marenvres.2025.107337",
+      "topics": [
+        "ecosystems"
+      ]
+    },
+    {
+      "doi": "10.3389/fmars.2025.1669638",
+      "title": "Identify habitat distribution within the mesoscale eddies for jumbo flying squid off Chilean waters",
+      "journal": "Frontiers in Marine Science",
+      "year": 2025,
+      "date": "2025-10",
+      "volume": "12",
+      "issue": "",
+      "pages": "",
+      "article_number": "1669638",
+      "authors": [
+        {
+          "given": "Xiaoci",
+          "family": "Wu"
+        },
+        {
+          "given": "Pengchao",
+          "family": "Jin"
+        },
+        {
+          "given": "Wei",
+          "family": "Yu"
+        }
+      ],
+      "source": "https://doi.org/10.3389/fmars.2025.1669638",
+      "topics": [
+        "ecosystems"
+      ]
+    },
+    {
+      "doi": "10.1016/j.marpolbul.2025.118241",
+      "title": "Projected impacts of ocean warming on pelagic ecosystems in the Western and Central Pacific Ocean using a multi-species size-spectrum model",
+      "journal": "Marine Pollution Bulletin",
+      "year": 2025,
+      "date": "2025-10",
+      "volume": "219",
+      "issue": "",
+      "pages": "",
+      "article_number": "118241",
+      "authors": [
+        {
+          "given": "Xiaodong",
+          "family": "Li"
+        },
+        {
+          "given": "Zhe",
+          "family": "Geng"
+        },
+        {
+          "given": "Qinqin",
+          "family": "Lin"
+        },
+        {
+          "given": "Richard",
+          "family": "Kindong"
+        },
+        {
+          "given": "Yang",
+          "family": "Wang"
+        },
+        {
+          "given": "Jiangfeng",
+          "family": "Zhu"
+        }
+      ],
+      "source": "https://doi.org/10.1016/j.marpolbul.2025.118241",
+      "topics": [
+        "ecosystems"
+      ]
+    },
+    {
+      "doi": "10.3390/fishes10110538",
+      "title": "The Age and Growth of One Population of Diaphus watasei (Jordan & Starks, 1904) in the South China Sea",
+      "journal": "Fishes",
+      "year": 2025,
+      "date": "2025-10",
+      "volume": "10",
+      "issue": "11",
+      "pages": "",
+      "article_number": "538",
+      "authors": [
+        {
+          "given": "Kui",
+          "family": "Zhang"
+        },
+        {
+          "given": "Han",
+          "family": "Tian"
+        },
+        {
+          "given": "Yan’e",
+          "family": "Jiang"
+        },
+        {
+          "given": "Shannan",
+          "family": "Xu"
+        },
+        {
+          "given": "Jiangfeng",
+          "family": "Zhu"
+        },
+        {
+          "given": "Junyi",
+          "family": "Zhang"
+        },
+        {
+          "given": "Jun",
+          "family": "Zhang"
+        },
+        {
+          "given": "Zuozhi",
+          "family": "Chen"
+        }
+      ],
+      "source": "https://doi.org/10.3390/fishes10110538",
+      "topics": [
+        "biology"
+      ]
+    },
+    {
+      "doi": "10.1007/s11160-025-09929-8",
+      "title": "The potential impacts of climate change on the life history and habitat of jumbo flying squid in the southeast Pacific Ocean: overview and implications for fisheries management",
+      "journal": "Reviews in Fish Biology and Fisheries",
+      "year": 2025,
+      "date": "2025-06",
+      "volume": "35",
+      "issue": "2",
+      "pages": "707-731",
+      "article_number": "",
+      "authors": [
+        {
+          "given": "Wei",
+          "family": "Yu"
+        },
+        {
+          "given": "Xiaolin",
+          "family": "Feng"
+        },
+        {
+          "given": "Jian",
+          "family": "Wen"
+        },
+        {
+          "given": "Xiaoci",
+          "family": "Wu"
+        },
+        {
+          "given": "Xingnan",
+          "family": "Fang"
+        },
+        {
+          "given": "Jianan",
+          "family": "Cui"
+        },
+        {
+          "given": "Zhiping",
+          "family": "Feng"
+        },
+        {
+          "given": "Yilu",
+          "family": "Sheng"
+        },
+        {
+          "given": "Zhengfang",
+          "family": "Zhao"
+        },
+        {
+          "given": "Bilin",
+          "family": "Liu"
+        },
+        {
+          "given": "Pengchao",
+          "family": "Jin"
+        },
+        {
+          "given": "Guanyu",
+          "family": "Hu"
+        },
+        {
+          "given": "Xinjun",
+          "family": "Chen"
+        }
+      ],
+      "source": "https://doi.org/10.1007/s11160-025-09929-8",
+      "topics": [
+        "ecosystems"
+      ]
+    },
+    {
+      "doi": "10.3389/fmars.2025.1575299",
+      "title": "The relationship between mesoscale eddies and the abundance and distribution of jumbo flying squid off Chile",
+      "journal": "Frontiers in Marine Science",
+      "year": 2025,
+      "date": "2025-05",
+      "volume": "12",
+      "issue": "",
+      "pages": "",
+      "article_number": "1575299",
+      "authors": [
+        {
+          "given": "Xiaoci",
+          "family": "Wu"
+        },
+        {
+          "given": "Pengchao",
+          "family": "Jin"
+        },
+        {
+          "given": "Wei",
+          "family": "Yu"
+        }
+      ],
+      "source": "https://doi.org/10.3389/fmars.2025.1575299",
+      "topics": [
+        "ecosystems"
+      ]
+    },
+    {
+      "doi": "10.1038/s41598-025-20480-1",
+      "title": "Unveiling population structure in South Pacific albacore: insights from genetics and growth",
+      "journal": "Scientific Reports",
+      "year": 2025,
+      "date": "2025-10",
+      "volume": "15",
+      "issue": "1",
+      "pages": "",
+      "article_number": "36451",
+      "authors": [
+        {
+          "given": "Dongqi",
+          "family": "Lu"
+        },
+        {
+          "given": "Qinqin",
+          "family": "Lin"
+        },
+        {
+          "given": "Feng",
+          "family": "Wu"
+        },
+        {
+          "given": "Jiangfeng",
+          "family": "Zhu"
+        },
+        {
+          "given": "Fan",
+          "family": "Zhang"
+        }
+      ],
+      "source": "https://doi.org/10.1038/s41598-025-20480-1",
+      "topics": [
+        "biology"
+      ]
+    },
+    {
+      "doi": "10.3390/jmse12040626",
+      "title": "Changing Humboldt Squid Abundance and Distribution at Different Stages of Oceanic Mesoscale Eddies",
+      "journal": "Journal of Marine Science and Engineering",
+      "year": 2024,
+      "date": "2024-04",
+      "volume": "12",
+      "issue": "4",
+      "pages": "",
+      "article_number": "626",
+      "authors": [
+        {
+          "given": "Xiaoci",
+          "family": "Wu"
+        },
+        {
+          "given": "Pengchao",
+          "family": "Jin"
+        },
+        {
+          "given": "Yang",
+          "family": "Zhang"
+        },
+        {
+          "given": "Wei",
+          "family": "Yu"
+        }
+      ],
+      "source": "https://doi.org/10.3390/jmse12040626",
+      "topics": [
+        "ecosystems"
+      ]
+    },
+    {
+      "doi": "10.3390/jmse12030368",
+      "title": "Essential and Non-Essential Elemental Composition and Health Risks in Pacific Sardine in the Northwest Pacific Ocean",
+      "journal": "Journal of Marine Science and Engineering",
+      "year": 2024,
+      "date": "2024-02",
+      "volume": "12",
+      "issue": "3",
+      "pages": "",
+      "article_number": "368",
+      "authors": [
+        {
+          "given": "Tiantian",
+          "family": "Leng"
+        },
+        {
+          "given": "Bilin",
+          "family": "Liu"
+        },
+        {
+          "given": "Jingqian",
+          "family": "Xie"
+        },
+        {
+          "given": "Leilei",
+          "family": "Zou"
+        },
+        {
+          "given": "Dongqi",
+          "family": "Lu"
+        }
+      ],
+      "source": "https://doi.org/10.3390/jmse12030368",
+      "topics": [
+        "biology"
+      ]
+    },
+    {
+      "doi": "10.1016/j.fishres.2023.106914",
+      "title": "Is seasonal closure an effective way to conserve oceanic squids—Taking Chinese autonomic seasonal closure on the high seas as an example",
+      "journal": "Fisheries Research",
+      "year": 2024,
+      "date": "2024-03",
+      "volume": "271",
+      "issue": "",
+      "pages": "",
+      "article_number": "106914",
+      "authors": [
+        {
+          "given": "Mingfeng",
+          "family": "Jiang"
+        },
+        {
+          "given": "Jintao",
+          "family": "Wang"
+        },
+        {
+          "given": "Gang",
+          "family": "Li"
+        },
+        {
+          "given": "Bilin",
+          "family": "Liu"
+        },
+        {
+          "given": "Xinjun",
+          "family": "Chen"
+        }
+      ],
+      "source": "https://doi.org/10.1016/j.fishres.2023.106914",
+      "topics": [
+        "assessment"
+      ]
+    },
+    {
+      "doi": "10.34133/ehs.0177",
+      "title": "Jumbo Flying Squid Distribution within Anticyclonic Eddies under Anomalous Climatic Conditions",
+      "journal": "Ecosystem Health and Sustainability",
+      "year": 2024,
+      "date": "2024-03",
+      "volume": "10",
+      "issue": "",
+      "pages": "",
+      "article_number": "0177",
+      "authors": [
+        {
+          "given": "Pengchao",
+          "family": "Jin"
+        },
+        {
+          "given": "Jiangtao",
+          "family": "Fan"
+        },
+        {
+          "given": "Xiaoci",
+          "family": "Wu"
+        },
+        {
+          "given": "Yanling",
+          "family": "Du"
+        },
+        {
+          "given": "Wei",
+          "family": "Yu"
+        }
+      ],
+      "source": "https://doi.org/10.34133/ehs.0177",
+      "topics": [
+        "ecosystems"
+      ]
+    },
+    {
+      "doi": "10.3390/jmse12061015",
+      "title": "Spatial Distribution and Abundance of a Pelagic Squid during the Evolution of Eddies in the Southeast Pacific Ocean",
+      "journal": "Journal of Marine Science and Engineering",
+      "year": 2024,
+      "date": "2024-06",
+      "volume": "12",
+      "issue": "6",
+      "pages": "",
+      "article_number": "1015",
+      "authors": [
+        {
+          "given": "Xiaoci",
+          "family": "Wu"
+        },
+        {
+          "given": "Pengchao",
+          "family": "Jin"
+        },
+        {
+          "given": "Yang",
+          "family": "Zhang"
+        },
+        {
+          "given": "Wei",
+          "family": "Yu"
+        }
+      ],
+      "source": "https://doi.org/10.3390/jmse12061015",
+      "topics": [
+        "ecosystems"
+      ]
+    },
+    {
+      "doi": "10.3390/fishes9120488",
+      "title": "Spatial and Temporal Distribution of Habitat Pattern of Trichiurus japonicus in the Northern South China Sea Under Future Climate Scenarios",
+      "journal": "Fishes",
+      "year": 2024,
+      "date": "2024-11",
+      "volume": "9",
+      "issue": "12",
+      "pages": "",
+      "article_number": "488",
+      "authors": [
+        {
+          "given": "Junyi",
+          "family": "Zhang"
+        },
+        {
+          "given": "Jiajun",
+          "family": "Li"
+        },
+        {
+          "given": "Kui",
+          "family": "Zhang"
+        },
+        {
+          "given": "Youwei",
+          "family": "Xu"
+        },
+        {
+          "given": "Shannan",
+          "family": "Xu"
+        },
+        {
+          "given": "Zuozhi",
+          "family": "Chen"
+        }
+      ],
+      "source": "https://doi.org/10.3390/fishes9120488",
+      "topics": [
+        "ecosystems"
+      ]
+    },
+    {
+      "doi": "10.1016/j.aaf.2022.03.002",
+      "title": "Study on the catch, bycatch and discard of Chinese pelagic longline fisheries in the Atlantic Ocean",
+      "journal": "Aquaculture and Fisheries",
+      "year": 2024,
+      "date": "2024-03",
+      "volume": "9",
+      "issue": "2",
+      "pages": "280-286",
+      "article_number": "",
+      "authors": [
+        {
+          "given": "Boyi",
+          "family": "Pan"
+        },
+        {
+          "given": "Jiangfeng",
+          "family": "Zhu"
+        },
+        {
+          "given": "Qinqin",
+          "family": "Lin"
+        },
+        {
+          "given": "Zhe",
+          "family": "Geng"
+        },
+        {
+          "given": "Feng",
+          "family": "Wu"
+        },
+        {
+          "given": "Yuying",
+          "family": "Zhang"
+        }
+      ],
+      "source": "https://doi.org/10.1016/j.aaf.2022.03.002",
+      "topics": [
+        "ecosystems"
+      ]
+    },
+    {
+      "doi": "10.1016/j.ecolind.2022.109284",
+      "title": "A comparative analysis of the ecological impacts of Chinese tuna longline fishery on the Eastern Pacific Ocean",
+      "journal": "Ecological Indicators",
+      "year": 2022,
+      "date": "2022-10",
+      "volume": "143",
+      "issue": "",
+      "pages": "",
+      "article_number": "109284",
+      "authors": [
+        {
+          "given": "Qinqin",
+          "family": "Lin"
+        },
+        {
+          "given": "Yong",
+          "family": "Chen"
+        },
+        {
+          "given": "Jiangfeng",
+          "family": "Zhu"
+        }
+      ],
+      "source": "https://doi.org/10.1016/j.ecolind.2022.109284",
+      "topics": [
+        "ecosystems"
+      ]
+    },
+    {
+      "doi": "10.1007/s13131-021-1902-3",
+      "title": "Simulating the impacts of fishing on central and eastern tropical Pacific ecosystem using multispecies size-spectrum model",
+      "journal": "Acta Oceanologica Sinica",
+      "year": 2022,
+      "date": "2022-03",
+      "volume": "41",
+      "issue": "3",
+      "pages": "34-43",
+      "article_number": "",
+      "authors": [
+        {
+          "given": "Qinqin",
+          "family": "Lin"
+        },
+        {
+          "given": "Yuying",
+          "family": "Zhang"
+        },
+        {
+          "given": "Jiangfeng",
+          "family": "Zhu"
+        }
+      ],
+      "source": "https://doi.org/10.1007/s13131-021-1902-3",
+      "topics": [
+        "ecosystems"
+      ]
+    },
+    {
+      "doi": "10.1007/s13131-020-1592-2",
+      "title": "Topology-based analysis of pelagic food web structure in the central and eastern tropical Pacific Ocean based on longline observer data",
+      "journal": "Acta Oceanologica Sinica",
+      "year": 2020,
+      "date": "2020-06",
+      "volume": "39",
+      "issue": "6",
+      "pages": "1-9",
+      "article_number": "",
+      "authors": [
+        {
+          "given": "Qinqin",
+          "family": "Lin"
+        },
+        {
+          "given": "Jiangfeng",
+          "family": "Zhu"
+        }
+      ],
+      "source": "https://doi.org/10.1007/s13131-020-1592-2",
+      "topics": [
+        "ecosystems"
+      ]
+    }
+  ]
+}

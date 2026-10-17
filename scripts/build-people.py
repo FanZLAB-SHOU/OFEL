@@ -33,6 +33,14 @@ publications = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(publications)
 for paper in publications.records:
     publications.validate(paper)
+# Papers found per member that are not confirmed lab publications; shown on profiles only.
+member_records = json.loads((ROOT / 'assets/member-publications.json').read_text())['publications']
+known = {p['doi'].lower() for p in publications.records}
+for paper in member_records:
+    publications.validate(paper)
+    if paper['doi'].lower() in known:
+        raise ValueError(f'{paper["doi"]} is already in publications.json; remove it from member-publications.json')
+all_records = publications.records + member_records
 
 icons = {
     'email': '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 6 8 7 8-7"/></svg>',
@@ -131,7 +139,6 @@ for group in groups:
             f'                  <article class="member-card"><a class="member-photo-link" href="{href}" tabindex="-1" aria-hidden="true">'
             f'{photo(member, "member-photo", 108, 144)}</a><div class="member-details">'
             f'<h3><a href="{href}">{name}</a></h3><p class="member-role">{esc(member["role"])}</p>{email}'
-            f'<a class="member-profile-link" href="{href}" aria-label="View profile of {name}">View profile <span aria-hidden="true">→</span></a>'
             f'<div class="member-links" role="group" aria-label="Contact {name}">'
             f'{contact(member, "email")}{contact(member, "github")}</div></div></article>'
         )
@@ -166,7 +173,7 @@ footer = (TEMPLATES / 'footer.html').read_text()
 for n, person in enumerate(people):
     name = esc(person['name'])
     given, family = person['name'].split()[0], person['name'].split()[-1]
-    papers = sorted((p for p in publications.records if any(publications.is_author(a, given, family) for a in p['authors'])),
+    papers = sorted((p for p in all_records if any(publications.is_author(a, given, family) for a in p['authors'])),
                     key=lambda p: p['year'], reverse=True)
     paper_list = ('<div class="publication-list profile-publication-list">\n'
                   + '\n'.join(publications.article_html(p, highlight=(given, family)) for p in papers)

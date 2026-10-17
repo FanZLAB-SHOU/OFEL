@@ -35,10 +35,12 @@
         {
           "name": "Sisong Dong",
           "role": "Postdoctoral Researcher",
-          "photo": null,
-          "email": null,
-          "github": null,
-          "bio": null
+          "photo": "assets/people/sisong-dong.jpg",
+          "email": "dongsisong@126.com",
+          "github": "https://github.com/dongworks97",
+          "bio": "Sisong Dong is a postdoctoral researcher at the Oceanic Fisheries Ecosystem Laboratory, Shanghai Ocean University. His research focuses on population dynamics and fisheries stock assessment, especially Antarctic krill. He uses quantitative models to study how growth and mortality vary within populations and how recruitment shapes changes in abundance over time. His collaborative work also examines squid population dynamics under environmental change and model uncertainty in tuna stock assessments.",
+          "photo_alt": "Road bicycle beside a tree-lined road",
+          "profile_photo_aspect_ratio": "4 / 3"
         }
       ]
     },

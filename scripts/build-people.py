@@ -103,8 +103,10 @@ def contact(member, kind):
 def photo(member, cls, width, height):
     if not member.get('photo'):
         return placeholder
-    return (f'<img class="{cls}" src="{esc(member["photo"])}" alt="{esc(member["name"])}" '
-            f'width="{width}" height="{height}" loading="lazy">')
+    style = (f' style="aspect-ratio: {esc(member["profile_photo_aspect_ratio"])}"'
+             if cls == 'profile-img' and member.get('profile_photo_aspect_ratio') else '')
+    return (f'<img class="{cls}" src="{esc(member["photo"])}" alt="{esc(member.get("photo_alt", member["name"]))}" '
+            f'width="{width}" height="{height}" loading="lazy"{style}>')
 
 
 def fill(page, marker, sections):

@@ -346,9 +346,42 @@ body { font-size: 18px; }
 .directory-empty { border-top: 1px solid var(--line); padding-block: 32px; color: var(--muted); font-size: 18px; }
 .directory-empty .text-link { margin-top: 24px; }
 .alumni-page { min-height: 60vh; }
-.alumni-list { list-style: none; margin: 0; padding-left: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px 24px; padding-top: 12px; font-size: 18px; color: var(--ink); }
+.alumni-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 16px; }
+.alumni-tile { position: relative; display: block; aspect-ratio: 1; overflow: hidden; border-radius: 3px; border: 1px solid #d6e3ed; background: linear-gradient(155deg, #edf4f9, #e0ebf3); color: white; }
+.alumni-tile .alumni-photo, .alumni-tile .member-photo-placeholder { width: 100%; height: 100%; object-fit: cover; border: 0; border-radius: 0; transition: transform .3s ease; }
+.alumni-tile .member-photo-placeholder svg { width: 45%; height: auto; }
+.alumni-tile:hover .alumni-photo, .alumni-tile:hover .member-photo-placeholder { transform: scale(1.04); }
+.alumni-name { position: absolute; inset: auto 0 0; padding: 36px 12px 12px; background: linear-gradient(transparent, rgba(6, 30, 60, .82)); font-size: 15px; font-weight: 600; text-align: center; }
+.alumni-tile:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
 .alumni-footer { border-top: 1px solid var(--line); padding-top: 28px; }
-@media (max-width: 1100px) { .alumni-list { padding-top: 0; } }
+.member-details h3 a { color: inherit; text-decoration: none; }
+.member-details h3 a:hover, .member-details h3 a:focus-visible { color: var(--teal); text-decoration: underline; text-underline-offset: 4px; }
+.member-photo-link { display: block; }
+.breadcrumb { display: flex; flex-wrap: wrap; gap: 10px; font-size: 14px; color: var(--muted); margin-bottom: 36px; }
+.breadcrumb a { color: var(--teal); }
+.profile-grid { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 64px; align-items: start; }
+.profile-photo .profile-img, .profile-photo .member-photo-placeholder { width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 3px; }
+.profile-photo .member-photo-placeholder svg { width: 45%; height: auto; }
+.profile-content h1 { font-family: Georgia, serif; font-size: 52px; line-height: 1.1; font-weight: 400; letter-spacing: -.04em; margin-top: 14px; }
+.profile-bio { margin-top: 25px; max-width: 640px; font-size: 18px; line-height: 1.9; color: var(--muted); }
+.profile-bio p + p { margin-top: 16px; }
+.profile-empty { color: var(--muted); font-style: italic; }
+.profile-publications { margin-top: 64px; border-top: 1px solid var(--line); padding-top: 32px; }
+.profile-publications h2 { font-size: 13px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; margin-bottom: 8px; }
+.profile-publications .profile-empty { margin-top: 12px; font-size: 17px; }
+.profile-pager { display: flex; justify-content: space-between; gap: 16px; margin-top: 56px; border-top: 1px solid var(--line); padding-top: 28px; }
+.profile-pager a { display: flex; flex-direction: column; gap: 4px; color: var(--ink); text-decoration: none; }
+.profile-pager a span { font-size: 13px; color: var(--teal); letter-spacing: .04em; }
+.profile-pager a strong { font-size: 19px; font-weight: 600; }
+.profile-pager a:hover strong { text-decoration: underline; text-underline-offset: 4px; }
+.profile-next { margin-left: auto; text-align: right; }
+@media (max-width: 700px) {
+  .alumni-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .profile-grid { grid-template-columns: 1fr; gap: 32px; }
+  .profile-photo { max-width: 240px; }
+  .profile-content h1 { font-size: 40px; }
+  .profile-bio { font-size: 17px; }
+}
 .contact h1 { font-size: clamp(42px, 4.4vw, 60px); margin-bottom: 25px; }
 .site-footer { padding-top: 35px; }
 @media (max-width: 900px) {

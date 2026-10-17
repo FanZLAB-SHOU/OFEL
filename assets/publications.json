@@ -38,7 +38,12 @@
       "topics": [
         "assessment"
       ],
-      "source": "https://doi.org/10.1111/faf.70077"
+      "source": "https://doi.org/10.1111/faf.70077",
+      "attribution": {
+        "lab_publication": true,
+        "relationships": [],
+        "confirmed_by": "User confirmed first author Runze Wang is a lab student in this chat, 2026-10-16."
+      }
     },
     {
       "doi": "10.1038/s43247-026-03509-9",
@@ -73,10 +78,14 @@
       "pages": "",
       "article_number": "514",
       "topics": [
-        "ecosystems",
-        "biology"
+        "ecosystems"
       ],
-      "source": "https://doi.org/10.1038/s43247-026-03509-9"
+      "source": "https://doi.org/10.1038/s43247-026-03509-9",
+      "attribution": {
+        "lab_publication": true,
+        "relationships": [],
+        "confirmed_by": "User confirmed first author Mingfeng Jiang is a lab student in this chat, 2026-10-16."
+      }
     },
     {
       "doi": "10.1007/s42995-026-00379-0",
@@ -109,7 +118,12 @@
       "topics": [
         "vessels"
       ],
-      "source": "https://doi.org/10.1007/s42995-026-00379-0"
+      "source": "https://doi.org/10.1007/s42995-026-00379-0",
+      "attribution": {
+        "lab_publication": true,
+        "relationships": [],
+        "confirmed_by": "User confirmed first author Xin Cheng is a lab student in this chat, 2026-10-16."
+      }
     },
     {
       "doi": "10.1111/faf.70015",
@@ -212,10 +226,16 @@
       "pages": "1040-1047",
       "article_number": "",
       "topics": [
-        "ecosystems",
-        "assessment"
+        "ecosystems"
       ],
-      "source": "https://doi.org/10.1111/faf.70015"
+      "source": "https://doi.org/10.1111/faf.70015",
+      "attribution": {
+        "lab_publication": false,
+        "relationships": [
+          "external_collaboration"
+        ],
+        "confirmed_by": "User confirmed other first authors are not lab students in this chat, 2026-10-16; retained as co-authored collaboration, with supervision unspecified."
+      }
     },
     {
       "doi": "10.3354/meps14923",
@@ -242,10 +262,14 @@
       "pages": "1-22",
       "article_number": "",
       "topics": [
-        "assessment",
-        "biology"
+        "assessment"
       ],
-      "source": "https://doi.org/10.3354/meps14923"
+      "source": "https://doi.org/10.3354/meps14923",
+      "attribution": {
+        "lab_publication": true,
+        "relationships": [],
+        "confirmed_by": "User confirmed first author Sisong Dong is a lab student in this chat, 2026-10-16."
+      }
     },
     {
       "doi": "10.1038/s44183-025-00150-5",
@@ -286,7 +310,12 @@
       "topics": [
         "vessels"
       ],
-      "source": "https://doi.org/10.1038/s44183-025-00150-5"
+      "source": "https://doi.org/10.1038/s44183-025-00150-5",
+      "attribution": {
+        "lab_publication": true,
+        "relationships": [],
+        "confirmed_by": "User confirmed first author Xin Cheng is a lab student in this chat, 2026-10-16."
+      }
     },
     {
       "doi": "10.1038/s41598-025-88158-2",
@@ -319,7 +348,12 @@
       "topics": [
         "vessels"
       ],
-      "source": "https://doi.org/10.1038/s41598-025-88158-2"
+      "source": "https://doi.org/10.1038/s41598-025-88158-2",
+      "attribution": {
+        "lab_publication": true,
+        "relationships": [],
+        "confirmed_by": "User confirmed first author Xin Cheng is a lab student in this chat, 2026-10-16."
+      }
     },
     {
       "doi": "10.1016/j.marenvres.2024.106923",
@@ -346,11 +380,14 @@
       "pages": "106923",
       "article_number": "106923",
       "topics": [
-        "assessment",
-        "ecosystems",
         "biology"
       ],
-      "source": "https://doi.org/10.1016/j.marenvres.2024.106923"
+      "source": "https://doi.org/10.1016/j.marenvres.2024.106923",
+      "attribution": {
+        "lab_publication": true,
+        "relationships": [],
+        "confirmed_by": "User confirmed first author Sisong Dong is a lab student in this chat, 2026-10-16."
+      }
     },
     {
       "doi": "10.1139/cjfas-2024-0273",
@@ -391,7 +428,14 @@
       "topics": [
         "assessment"
       ],
-      "source": "https://doi.org/10.1139/cjfas-2024-0273"
+      "source": "https://doi.org/10.1139/cjfas-2024-0273",
+      "attribution": {
+        "lab_publication": false,
+        "relationships": [
+          "external_collaboration"
+        ],
+        "confirmed_by": "User confirmed other first authors are not lab students in this chat, 2026-10-16; retained as co-authored collaboration, with supervision unspecified."
+      }
     },
     {
       "doi": "10.1139/cjfas-2024-0295",
@@ -430,10 +474,16 @@
       "pages": "1-14",
       "article_number": "",
       "topics": [
-        "ecosystems",
-        "assessment"
+        "ecosystems"
       ],
-      "source": "https://doi.org/10.1139/cjfas-2024-0295"
+      "source": "https://doi.org/10.1139/cjfas-2024-0295",
+      "attribution": {
+        "lab_publication": false,
+        "relationships": [
+          "external_collaboration"
+        ],
+        "confirmed_by": "User confirmed other first authors are not lab students in this chat, 2026-10-16; retained as co-authored collaboration, with supervision unspecified."
+      }
     },
     {
       "doi": "10.1111/faf.12865",
@@ -494,7 +544,14 @@
       "topics": [
         "ecosystems"
       ],
-      "source": "https://doi.org/10.1111/faf.12865"
+      "source": "https://doi.org/10.1111/faf.12865",
+      "attribution": {
+        "lab_publication": false,
+        "relationships": [
+          "external_collaboration"
+        ],
+        "confirmed_by": "User confirmed other first authors are not lab students in this chat, 2026-10-16; retained as co-authored collaboration, with supervision unspecified."
+      }
     },
     {
       "doi": "10.1111/faf.12820",
@@ -537,10 +594,16 @@
       "pages": "491-507",
       "article_number": "",
       "topics": [
-        "ecosystems",
-        "assessment"
+        "ecosystems"
       ],
-      "source": "https://doi.org/10.1111/faf.12820"
+      "source": "https://doi.org/10.1111/faf.12820",
+      "attribution": {
+        "lab_publication": false,
+        "relationships": [
+          "external_collaboration"
+        ],
+        "confirmed_by": "User confirmed other first authors are not lab students in this chat, 2026-10-16; retained as co-authored collaboration, with supervision unspecified."
+      }
     },
     {
       "doi": "10.3390/fishes8100516",
@@ -573,7 +636,12 @@
       "topics": [
         "vessels"
       ],
-      "source": "https://doi.org/10.3390/fishes8100516"
+      "source": "https://doi.org/10.3390/fishes8100516",
+      "attribution": {
+        "lab_publication": true,
+        "relationships": [],
+        "confirmed_by": "User confirmed first author Xin Cheng is a lab student in this chat, 2026-10-16."
+      }
     },
     {
       "doi": "10.3390/fishes8030131",
@@ -604,10 +672,14 @@
       "pages": "131",
       "article_number": "",
       "topics": [
-        "assessment",
         "biology"
       ],
-      "source": "https://doi.org/10.3390/fishes8030131"
+      "source": "https://doi.org/10.3390/fishes8030131",
+      "attribution": {
+        "lab_publication": true,
+        "relationships": [],
+        "confirmed_by": "User confirmed first author Dongqi Lu is a lab student in this chat, 2026-10-16."
+      }
     },
     {
       "doi": "10.1111/faf.12673",
@@ -632,7 +704,12 @@
       "topics": [
         "assessment"
       ],
-      "source": "https://doi.org/10.1111/faf.12673"
+      "source": "https://doi.org/10.1111/faf.12673",
+      "attribution": {
+        "lab_publication": null,
+        "relationships": [],
+        "confirmed_by": null
+      }
     },
     {
       "doi": "10.1093/icesjms/fsaa176",
@@ -667,10 +744,28 @@
       "pages": "2233-2243",
       "article_number": "",
       "topics": [
-        "assessment",
-        "ecosystems"
+        "assessment"
       ],
-      "source": "https://doi.org/10.1093/icesjms/fsaa176"
+      "source": "https://doi.org/10.1093/icesjms/fsaa176",
+      "attribution": {
+        "lab_publication": null,
+        "relationships": [],
+        "confirmed_by": null
+      }
     }
-  ]
+  ],
+  "attribution_note": "Lab attribution and research relationships are editorial classifications confirmed by the lab. They must not be inferred from author order, shared university affiliation, or Fan Zhang authorship. null means not yet classified; false means confirmed outside the lab collection. The Fan Zhang collection is derived separately from authorship.",
+  "lab_membership": {
+    "confirmed_by": "User confirmation in this chat, 2026-10-16",
+    "member_record": "people.json",
+    "confirmed_lab_first_authors": [
+      "Dongqi Lu",
+      "Mingfeng Jiang",
+      "Runze Wang",
+      "Sisong Dong",
+      "Xin Cheng"
+    ],
+    "note": "These first authors were confirmed by the user as lab members for the nine-paper lab collection. Current faculty, postdoctoral and student roles and contact details are maintained in people.json. Fan Zhang first-author papers remain in the personal collection pending paper-specific lab attribution; no formal external supervision is inferred."
+  },
+  "topic_policy": "Assign exactly one primary topic to each publication based on its main research question. Secondary methods or themes do not create additional topic memberships. Use assessment for assessment models and reference points, biology for life-history processes and growth, vessels for vessel behavior and AI, and ecosystems for environmental change and ecosystem-informed management."
 }

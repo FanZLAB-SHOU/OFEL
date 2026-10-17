@@ -1,0 +1,54 @@
+{
+  "directions": [
+    {
+      "slug": "population-assessment",
+      "image": "assets/research/population-assessment.webp",
+      "alt": "Yellowfin tuna and a fish population, with a subtle conceptual assessment curve.",
+      "title": "Population dynamics & stock assessment",
+      "description": "Developing quantitative models to understand fish populations, growth, recruitment, and mortality.",
+      "label": "01 / Populations",
+      "tag": "Quantitative methods",
+      "primary": true
+    },
+    {
+      "slug": "vessel-ai",
+      "image": "assets/research/vessel-ai.webp",
+      "alt": "An oceanic fishing vessel with tracking paths and a subtle network of data connections.",
+      "title": "AI & fishing-vessel behavior",
+      "description": "Using artificial intelligence and vessel-tracking data to investigate fishing activity, fleet dynamics, and patterns of fishing effort.",
+      "label": "02 / Fisheries data",
+      "tag": "Fisheries data science",
+      "primary": true
+    },
+    {
+      "slug": "biology-dna",
+      "image": "assets/research/biology-dna.webp",
+      "alt": "A yellowfin tuna linked to an enlarged otolith with growth increments and a DNA double helix.",
+      "title": "Fish biology & DNA research",
+      "description": "Connecting life-history traits, biological observations, and DNA-based evidence to investigate population structure and marine biodiversity.",
+      "label": "03 / Biology & DNA",
+      "tag": "From organisms to populations",
+      "primary": true
+    },
+    {
+      "slug": "climate-ecosystems",
+      "image": "assets/research/climate-ecosystems.webp",
+      "alt": "Tuna and squid within layered ocean currents beneath a pale sun.",
+      "title": "Climate change & marine ecosystems",
+      "description": "Studying how environmental variability shapes the abundance, distribution, and life histories of marine species.",
+      "label": "04 / Ocean change",
+      "tag": null,
+      "primary": false
+    },
+    {
+      "slug": "adaptive-management",
+      "image": "assets/research/adaptive-management.webp",
+      "alt": "A fisheries research vessel and a school of tuna connected by subtle adaptive management arcs.",
+      "title": "Climate-adaptive fisheries management",
+      "description": "Evaluating management approaches that respond to changing populations, ecosystems, and uncertainty.",
+      "label": "05 / Management",
+      "tag": null,
+      "primary": false
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "note": "Names, roles, and Xin Cheng contact information supplied by the user in this chat. Missing profile photos and contact links remain placeholders. Role groups are displayed in the order below.",
+  "title_note": {
+    "chinese": "讲师",
+    "english": "Lecturer",
+    "reference": "https://rsc.hnu.edu.cn/qingjiaxiaojiafujian.pdf"
+  },
+  "groups": [
+    {
+      "id": "faculty",
+      "heading": "Faculty",
+      "members": [
+        {
+          "name": "Qinqin Lin",
+          "role": "Lecturer",
+          "photo": null,
+          "email": null,
+          "github": null
+        }
+      ]
+    },
+    {
+      "id": "postdoctoral-researchers",
+      "heading": "Postdoctoral Researchers",
+      "members": [
+        {
+          "name": "Xin Cheng",
+          "role": "Postdoctoral Researcher",
+          "photo": null,
+          "email": "cx_shhy@163.com",
+          "github": "https://github.com/scintillatingx"
+        },
+        {
+          "name": "Sisong Dong",
+          "role": "Postdoctoral Researcher",
+          "photo": null,
+          "email": null,
+          "github": null
+        }
+      ]
+    },
+    {
+      "id": "phd-students",
+      "heading": "PhD Students",
+      "members": [
+        {
+          "name": "Mingfeng Jiang",
+          "role": "PhD Student",
+          "photo": null,
+          "email": null,
+          "github": null
+        },
+        {
+          "name": "Dongqi Lu",
+          "role": "PhD Student",
+          "photo": null,
+          "email": null,
+          "github": null
+        }
+      ]
+    },
+    {
+      "id": "masters-students",
+      "heading": "Master’s Students",
+      "members": [
+        {
+          "name": "Runze Wang",
+          "role": "Master’s Student",
+          "photo": null,
+          "email": null,
+          "github": null
+        }
+      ]
+    }
+  ]
+}

@@ -65,6 +65,16 @@
       "domain": "ccsbt.org",
       "scope": "Southern bluefin tuna · Across oceans",
       "image": "assets/resources/ccsbt.svg"
+    },
+    {
+      "name": "SPRFMO",
+      "title": "South Pacific Regional Fisheries Management Organisation",
+      "description": "Scientific reports, fishery data, and conservation measures for South Pacific high-seas fisheries, including jumbo flying squid.",
+      "url": "https://www.sprfmo.int/",
+      "domain": "sprfmo.int",
+      "scope": "South Pacific high seas",
+      "image": "assets/resources/sprfmo.png",
+      "dark_logo": true
     }
   ]
 }

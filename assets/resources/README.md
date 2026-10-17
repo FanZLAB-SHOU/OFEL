@@ -11,7 +11,8 @@ These marks identify the external resources linked from the reference-materials 
 | `iattc.png` | https://www.iattc.org/images/Logo/logo_iattc.png |
 | `wcpfc.svg` | First inline SVG in the header logo at https://www.wcpfc.int/ |
 | `ccsbt.svg` | https://www.ccsbt.org/themes/custom/ccsbt_theme/logo.svg |
+| `sprfmo.png` | https://www.sprfmo.int/_resources/themes/SPRFMO/images/SPRFMO-logo.png |
 
-Artwork is unchanged. The FAO SVG's XML encoding declaration was corrected from `utf-16` to `utf-8` to match the original response bytes. The white WCPFC mark is displayed on a dark background for legibility.
+Artwork is unchanged. The FAO SVG's XML encoding declaration was corrected from `utf-16` to `utf-8` to match the original response bytes. The white WCPFC and SPRFMO marks are displayed on dark backgrounds for legibility.
 
 Edit `assets/reference-materials.json` to update the resource cards; rebuild with `python3 scripts/build-site.py`.

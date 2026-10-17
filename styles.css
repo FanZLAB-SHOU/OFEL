@@ -442,3 +442,4 @@ body { font-size: 18px; }
 .contact-email .icon { width: 30px; height: 30px; stroke-width: 1.4; }
 .site-footer a, .reel-footer a { display: inline-flex; align-items: center; gap: 8px; }
 .footer-top > a:last-child .icon { color: var(--teal); }
+.footer-links { display: inline-flex; flex-wrap: wrap; gap: 8px 24px; }

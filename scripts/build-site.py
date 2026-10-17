@@ -63,7 +63,7 @@ def reel_cards(copy):
     return ''.join(
         f'<a class="reel-card" href="research/themes.html#{esc(item["slug"])}"{hidden} '
         f'aria-label="Explore {esc(item["title"])}"><img src="{esc(item["image"])}" alt="{"" if copy else esc(item["alt"])}" '
-        f'width="1536" height="1024" {priority if n == 0 and not copy else lazy}>'
+        f'width="1536" height="1024" sizes="(max-width: 700px) 320px, (max-width: 1292px) 48vw, 620px" {lazy}>'
         f'<div class="reel-card-copy"><span>{esc(item["label"])}</span><h3>{esc(item["title"])}</h3></div></a>'
         for n, item in enumerate(directions)
     )
@@ -94,7 +94,7 @@ def post_url(post):
 
 blog_posts = '\n'.join(
     f'        <article class="blog-post"><a class="blog-post-link" href="{esc(post_url(post))}">'
-    + (f'<img src="{esc(post.get("thumbnail") or post["image"])}" alt="" width="1536" height="1024" loading="lazy" style="object-position: {esc(post.get("thumbnail_position", post.get("image_position", "55% 78%")))}">' if post.get('thumbnail') or post.get('image')
+    + (f'<img src="{esc(post.get("thumbnail") or post["image"])}" alt="" width="1536" height="1024" loading="lazy" sizes="(max-width: 700px) calc(100vw - 40px), 320px" style="object-position: {esc(post.get("thumbnail_position", post.get("image_position", "55% 78%")))}">' if post.get('thumbnail') or post.get('image')
        else '<span class="blog-post-placeholder" aria-hidden="true"><img src="assets/ofel-mark.png" alt="" width="96" height="96"></span>')
     + f'<div><p class="eyebrow"><time datetime="{esc(post["date"])}">{esc(pretty_date(post["date"]))}</time></p>'
     f'<h2>{italicize(esc(post["title"]))}</h2><p>{italicize(esc(post.get("summary", "")))}</p></div></a></article>'

@@ -211,6 +211,71 @@ if (document.body.dataset.page === 'index') {
 }
 initResearchReel();
 
+function initGatewayCards() {
+  const track = document.querySelector('#gateway-track');
+  const controls = document.querySelector('.gateway-controls');
+  if (!track || !controls) return;
+  const cards = [...track.querySelectorAll('.gateway-card')];
+  const dots = controls.querySelector('.gateway-dots');
+  const previous = controls.querySelector('[data-gateway-step="-1"]');
+  const next = controls.querySelector('[data-gateway-step="1"]');
+  const position = controls.querySelector('.gateway-position');
+  const mobile = window.matchMedia('(max-width: 700px)');
+  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let active = 0, frame = null;
+  const labels = cards.map(card => card.querySelector('h3').textContent);
+  const buttons = cards.map((card, index) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'gateway-dot';
+    button.setAttribute('aria-label', `Show ${labels[index]}`);
+    button.setAttribute('aria-controls', 'gateway-track');
+    button.addEventListener('click', () => goTo(index));
+    dots.append(button);
+    return button;
+  });
+  // The final card cannot align all the way left; use its actual reachable offset.
+  function offsets() {
+    const max = Math.max(0, track.scrollWidth - track.clientWidth);
+    return cards.map(card => Math.min(max, card.offsetLeft - cards[0].offsetLeft));
+  }
+  function update() {
+    frame = null;
+    const enabled = mobile.matches && track.scrollWidth > track.clientWidth + 1;
+    controls.hidden = !enabled;
+    if (!enabled) { track.removeAttribute('tabindex'); return; }
+    track.setAttribute('tabindex', '0');
+    const targets = offsets();
+    active = targets.reduce((best, offset, index) =>
+      Math.abs(offset - track.scrollLeft) < Math.abs(targets[best] - track.scrollLeft) ? index : best, 0);
+    buttons.forEach((button, index) => button.setAttribute('aria-current', String(index === active)));
+    previous.disabled = active === 0;
+    next.disabled = active === cards.length - 1;
+    const label = `${labels[active]} · ${active + 1} of ${cards.length}`;
+    if (position.textContent !== label) position.textContent = label;
+  }
+  function goTo(index) {
+    index = Math.max(0, Math.min(cards.length - 1, index));
+    track.scrollTo({left: offsets()[index], behavior: motion.matches ? 'auto' : 'smooth'});
+  }
+  previous.addEventListener('click', () => goTo(active - 1));
+  next.addEventListener('click', () => goTo(active + 1));
+  track.addEventListener('scroll', () => {
+    if (frame === null) frame = requestAnimationFrame(update);
+  }, {passive: true});
+  track.addEventListener('keydown', event => {
+    if (!mobile.matches || event.target !== track) return;
+    const target = {ArrowLeft: active - 1, ArrowRight: active + 1, Home: 0, End: cards.length - 1}[event.key];
+    if (target === undefined) return;
+    event.preventDefault(); goTo(target);
+  });
+  mobile.addEventListener('change', update);
+  if ('ResizeObserver' in window) new ResizeObserver(update).observe(track);
+  else window.addEventListener('resize', update);
+  update();
+}
+initGatewayCards();
+
 function initLabFilm() {
   const player = document.querySelector('.home-film-player');
   const trigger = document.querySelector('[data-play-film]');

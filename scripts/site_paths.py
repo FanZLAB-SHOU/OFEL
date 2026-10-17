@@ -111,10 +111,11 @@ def rebase_links(markup, destination):
 
 
 def write_page(destination, markup):
+    from responsive_images import responsive_images
     destination = output_path(destination)
     path = ROOT / destination
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(rebase_links(markup, destination))
+    path.write_text(rebase_links(responsive_images(markup), destination))
 
 
 def write_legacy_redirects():

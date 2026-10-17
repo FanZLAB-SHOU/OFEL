@@ -1,0 +1,828 @@
+{
+  "assets/news/2025-07-iccat/meeting.jpg": {
+    "sha256": "f22f147ad3fb12bdb518c7e2efd05ec9247464c47e6ebe12704a06bdd0aaa740",
+    "bytes": 1542202,
+    "width": 4496,
+    "height": 3000,
+    "variants": [
+      {
+        "width": 320,
+        "src": "assets/optimized/meeting-f497a37058e4-320.webp",
+        "bytes": 12784
+      },
+      {
+        "width": 640,
+        "src": "assets/optimized/meeting-f497a37058e4-640.webp",
+        "bytes": 31748
+      },
+      {
+        "width": 960,
+        "src": "assets/optimized/meeting-f497a37058e4-960.webp",
+        "bytes": 53978
+      },
+      {
+        "width": 1440,
+        "src": "assets/optimized/meeting-f497a37058e4-1440.webp",
+        "bytes": 91522
+      },
+      {
+        "width": 1920,
+        "src": "assets/optimized/meeting-f497a37058e4-1920.webp",
+        "bytes": 143294
+      }
+    ]
+  },
+  "assets/news/2025-10-spc-tuna-seminar/poster-en.png": {
+    "sha256": "e4ef79131834e30f145554c255737a716d90137bacdec3d003ab1c4991a30108",
+    "bytes": 1706372,
+    "width": 1080,
+    "height": 1528,
+    "variants": [
+      {
+        "width": 320,
+        "src": "assets/optimized/poster-en-3885ffa0d9f5-320.webp",
+        "bytes": 37644
+      },
+      {
+        "width": 640,
+        "src": "assets/optimized/poster-en-3885ffa0d9f5-640.webp",
+        "bytes": 90154
+      },
+      {
+        "width": 960,
+        "src": "assets/optimized/poster-en-3885ffa0d9f5-960.webp",
+        "bytes": 143202
+      },
+      {
+        "width": 1080,
+        "src": "assets/optimized/poster-en-3885ffa0d9f5-1080.webp",
+        "bytes": 150210
+      }
+    ]
+  },
+  "assets/news/2025-10-spc-tuna-seminar/poster-zh.png": {
+    "sha256": "d2641e00c18b5cc33dc1083d95b3b87be7b1cbe6260eecd3535df4825a012b67",
+    "bytes": 1742499,
+    "width": 1080,
+    "height": 1920,
+    "variants": [
+      {
+        "width": 320,
+        "src": "assets/optimized/poster-zh-01bf3b6b6660-320.webp",
+        "bytes": 44702
+      },
+      {
+        "width": 640,
+        "src": "assets/optimized/poster-zh-01bf3b6b6660-640.webp",
+        "bytes": 111098
+      },
+      {
+        "width": 960,
+        "src": "assets/optimized/poster-zh-01bf3b6b6660-960.webp",
+        "bytes": 180726
+      },
+      {
+        "width": 1080,
+        "src": "assets/optimized/poster-zh-01bf3b6b6660-1080.webp",
+        "bytes": 192572
+      }
+    ]
+  },
+  "assets/news/2025-10-spc-tuna-seminar/speakers-cover.png": {
+    "sha256": "f8e62229770e0ec4e7eea55a638a4e247aa70f4a839adc421213c9144695d0a9",
+    "bytes": 1892637,
+    "width": 1086,
+    "height": 1448,
+    "variants": [
+      {
+        "width": 320,
+        "src": "assets/optimized/speakers-cover-1ec4502af255-320.webp",
+        "bytes": 14800
+      },
+      {
+        "width": 640,
+        "src": "assets/optimized/speakers-cover-1ec4502af255-640.webp",
+        "bytes": 39340
+      },
+      {
+        "width": 960,
+        "src": "assets/optimized/speakers-cover-1ec4502af255-960.webp",
+        "bytes": 68482
+      },
+      {
+        "width": 1086,
+        "src": "assets/optimized/speakers-cover-1ec4502af255-1086.webp",
+        "bytes": 81674
+      }
+    ]
+  },
+  "assets/news/2026-04-mse-course/andre-punt-thumbnail.png": {
+    "sha256": "a73fe7224f33deebc424f01d44f3937b47c0d3deb542048209a36a6dda70dfbe",
+    "bytes": 1816161,
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 320,
+        "src": "assets/optimized/andre-punt-thumbnail-52dcd585c3e1-320.webp",
+        "bytes": 4352
+      },
+      {
+        "width": 640,
+        "src": "assets/optimized/andre-punt-thumbnail-52dcd585c3e1-640.webp",
+        "bytes": 13354
+      },
+      {
+        "width": 960,
+        "src": "assets/optimized/andre-punt-thumbnail-52dcd585c3e1-960.webp",
+        "bytes": 27394
+      },
+      {
+        "width": 1440,
+        "src": "assets/optimized/andre-punt-thumbnail-52dcd585c3e1-1440.webp",
+        "bytes": 55034
+      },
+      {
+        "width": 1536,
+        "src": "assets/optimized/andre-punt-thumbnail-52dcd585c3e1-1536.webp",
+        "bytes": 63198
+      }
+    ]
+  },
+  "assets/news/2026-04-mse-course/poster-en.png": {
+    "sha256": "57656b9711599d915609f0e3598bc2ade9dcd97fc857b2a96df604b07bf2ce40",
+    "bytes": 1331960,
+    "width": 1080,
+    "height": 1440,
+    "variants": [
+      {
+        "width": 320,
+        "src": "assets/optimized/poster-en-d3c7b27fce32-320.webp",
+        "bytes": 35746
+      },
+      {
+        "width": 640,
+        "src": "assets/optimized/poster-en-d3c7b27fce32-640.webp",
+        "bytes": 90068
+      },
+      {
+        "width": 960,
+        "src": "assets/optimized/poster-en-d3c7b27fce32-960.webp",
+        "bytes": 149494
+      },
+      {
+        "width": 1080,
+        "src": "assets/optimized/poster-en-d3c7b27fce32-1080.webp",
+        "bytes": 173730
+      }
+    ]
+  },
+  "assets/news/2026-04-mse-course/poster-zh.png": {
+    "sha256": "04f13cbef3c5ef68a83e00e41a4657bfebe2a0831e507be8fe66e3938c4b0432",
+    "bytes": 946892,
+    "width": 1080,
+    "height": 1440,
+    "variants": [
+      {
+        "width": 320,
+        "src": "assets/optimized/poster-zh-500c07edde6f-320.webp",
+        "bytes": 38574
+      },
+      {
+        "width": 640,
+        "src": "assets/optimized/poster-zh-500c07edde6f-640.webp",
+        "bytes": 103706
+      },
+      {
+        "width": 960,
+        "src": "assets/optimized/poster-zh-500c07edde6f-960.webp",
+        "bytes": 179790
+      },
+      {
+        "width": 1080,
+        "src": "assets/optimized/poster-zh-500c07edde6f-1080.webp",
+        "bytes": 210060
+      }
+    ]
+  },
+  "assets/news/2026-04-squid-enso/cover.webp": {
+    "sha256": "e898c0c21680e30d09ea1fd986c5a9b9fa846696417ad24102cb44445b0010d2",
+    "bytes": 324284,
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 320,
+        "src": "assets/optimized/cover-1884f3d81a72-320.webp",
+        "bytes": 16550
+      },
+      {
+        "width": 640,
+        "src": "assets/optimized/cover-1884f3d81a72-640.webp",
+        "bytes": 57622
+      },
+      {
+        "width": 960,
+        "src": "assets/optimized/cover-1884f3d81a72-960.webp",
+        "bytes": 113082
+      },
+      {
+        "width": 1440,
+        "src": "assets/optimized/cover-1884f3d81a72-1440.webp",
+        "bytes": 205082
+      },
+      {
+        "width": 1536,
+        "src": "assets/optimized/cover-1884f3d81a72-1536.webp",
+        "bytes": 300666
+      }
+    ]
+  },
+  "assets/news/2026-04-squid-enso/fig1-technology-roadmap.png": {
+    "sha256": "acf45231333734332c869092914abd597bdcf2b5cd0267c09d2fa2b2c1b2e3df",
+    "bytes": 692943,
+    "width": 1950,
+    "height": 991,
+    "variants": [
+      {
+        "width": 320,
+        "src": "assets/optimized/fig1-technology-roadmap-efd62ee602e0-320.webp",
+        "bytes": 11784
+      },
+      {
+        "width": 640,
+        "src": "assets/optimized/fig1-technology-roadmap-efd62ee602e0-640.webp",
+        "bytes": 41028
+      },
+      {
+        "width": 960,
+        "src": "assets/optimized/fig1-technology-roadmap-efd62ee602e0-960.webp",
+        "bytes": 76714
+      },
+      {
+        "width": 1440,
+        "src": "assets/optimized/fig1-technology-roadmap-efd62ee602e0-1440.webp",
+        "bytes": 124892
+      },
+      {
+        "width": 1920,
+        "src": "assets/optimized/fig1-technology-roadmap-efd62ee602e0-1920.webp",
+        "bytes": 174390
+      }
+    ]
+  },
+  "assets/news/2026-08-ais/cover.webp": {
+    "sha256": "ba0e523b426e74ae65d2f2495381647d939ff172a37cfe5bf80c0a76240e4899",
+    "bytes": 329390,
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 320,
+        "src": "assets/optimized/cover-2a65a8493d3a-320.webp",
+        "bytes": 14992
+      },
+      {
+        "width": 640,
+        "src": "assets/optimized/cover-2a65a8493d3a-640.webp",
+        "bytes": 53580
+      },
+      {
+        "width": 960,
+        "src": "assets/optimized/cover-2a65a8493d3a-960.webp",
+        "bytes": 106050
+      },
+      {
+        "width": 1440,
+        "src": "assets/optimized/cover-2a65a8493d3a-1440.webp",
+        "bytes": 195520
+      },
+      {
+        "width": 1536,
+        "src": "assets/optimized/cover-2a65a8493d3a-1536.webp",
+        "bytes": 310766
+      }
+    ]
+  },
+  "assets/news/2026-08-ais/fig5-anomaly-maps.webp": {
+    "sha256": "a3dbb4e9e55b75673e2fb02a8020591da040e31db6d8ff619d224449c8be84fb",
+    "bytes": 152356,
+    "width": 1203,
+    "height": 648,
+    "variants": [
+      {
+        "width": 320,
+        "src": "assets/optimized/fig5-anomaly-maps-49341c279faa-320.webp",
+        "bytes": 16756
+      },
+      {
+        "width": 640,
+        "src": "assets/optimized/fig5-anomaly-maps-49341c279faa-640.webp",
+        "bytes": 48100
+      },
+      {
+        "width": 960,
+        "src": "assets/optimized/fig5-anomaly-maps-49341c279faa-960.webp",
+        "bytes": 88554
+      },
+      {
+        "width": 1203,
+        "src": "assets/optimized/fig5-anomaly-maps-49341c279faa-1203.webp",
+        "bytes": 140728
+      }
+    ]
+  },
+  "assets/news/2026-09-semelparous/cover.webp": {
+    "sha256": "18ef221c5d0c61f6f890a2501b219bbd37649c6e9f1e5a9551e7fb6bb022da93",
+    "bytes": 246596,
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 320,
+        "src": "assets/optimized/cover-76eb90df3e6b-320.webp",
+        "bytes": 12614
+      },
+      {
+        "width": 640,
+        "src": "assets/optimized/cover-76eb90df3e6b-640.webp",
+        "bytes": 43848
+      },
+      {
+        "width": 960,
+        "src": "assets/optimized/cover-76eb90df3e6b-960.webp",
+        "bytes": 88480
+      },
+      {
+        "width": 1440,
+        "src": "assets/optimized/cover-76eb90df3e6b-1440.webp",
+        "bytes": 156818
+      },
+      {
+        "width": 1536,
+        "src": "assets/optimized/cover-76eb90df3e6b-1536.webp",
+        "bytes": 227292
+      }
+    ]
+  },
+  "assets/news/2026-10-mingfeng-scholarship/cover.png": {
+    "sha256": "c2b078ac1b0ec04394614d34fb5dd5e42e2100d130bb49457c663f66f60c9e80",
+    "bytes": 1516815,
+    "width": 1672,
+    "height": 941,
+    "variants": [
+      {
+        "width": 320,
+        "src": "assets/optimized/cover-1101316b4325-320.webp",
+        "bytes": 6304
+      },
+      {
+        "width": 640,
+        "src": "assets/optimized/cover-1101316b4325-640.webp",
+        "bytes": 13888
+      },
+      {
+        "width": 960,
+        "src": "assets/optimized/cover-1101316b4325-960.webp",
+        "bytes": 22754
+      },
+      {
+        "width": 1440,
+        "src": "assets/optimized/cover-1101316b4325-1440.webp",
+        "bytes": 38086
+      },
+      {
+        "width": 1672,
+        "src": "assets/optimized/cover-1101316b4325-1672.webp",
+        "bytes": 46224
+      }
+    ]
+  },
+  "assets/people/dongqi-lu-sydney.jpg": {
+    "sha256": "412e4bb2c31d163f378287edff2cdd999d7723728c332f554253238dbd5c5a33",
+    "bytes": 271626,
+    "width": 1707,
+    "height": 1280,
+    "variants": [
+      {
+        "width": 320,
+        "src": "assets/optimized/dongqi-lu-sydney-161aff65769c-320.webp",
+        "bytes": 14582
+      },
+      {
+        "width": 640,
+        "src": "assets/optimized/dongqi-lu-sydney-161aff65769c-640.webp",
+        "bytes": 48700
+      },
+      {
+        "width": 960,
+        "src": "assets/optimized/dongqi-lu-sydney-161aff65769c-960.webp",
+        "bytes": 94070
+      },
+      {
+        "width": 1440,
+        "src": "assets/optimized/dongqi-lu-sydney-161aff65769c-1440.webp",
+        "bytes": 178072
+      },
+      {
+        "width": 1707,
+        "src": "assets/optimized/dongqi-lu-sydney-161aff65769c-1707.webp",
+        "bytes": 227680
+      }
+    ]
+  },
+  "assets/people/fan-zhang.jpg": {
+    "sha256": "3314952ed529cf1c72d92dc16e49c1cbad163ae38c72c7ea70a88d2ab7128705",
+    "bytes": 8169168,
+    "width": 5712,
+    "height": 4284,
+    "variants": [
+      {
+        "width": 320,
+        "src": "assets/optimized/fan-zhang-ef62c4273ae4-320.webp",
+        "bytes": 19672
+      },
+      {
+        "width": 640,
+        "src": "assets/optimized/fan-zhang-ef62c4273ae4-640.webp",
+        "bytes": 66734
+      },
+      {
+        "width": 960,
+        "src": "assets/optimized/fan-zhang-ef62c4273ae4-960.webp",
+        "bytes": 135898
+      },
+      {
+        "width": 1440,
+        "src": "assets/optimized/fan-zhang-ef62c4273ae4-1440.webp",
+        "bytes": 284080
+      },
+      {
+        "width": 1920,
+        "src": "assets/optimized/fan-zhang-ef62c4273ae4-1920.webp",
+        "bytes": 467182
+      }
+    ]
+  },
+  "assets/people/hongyu-lin.jpg": {
+    "sha256": "41582eb9d49dd7ed11d633da3fc4b44740f3ba3a500ffb42994ebf139de15f7b",
+    "bytes": 230491,
+    "width": 1080,
+    "height": 1440,
+    "variants": [
+      {
+        "width": 320,
+        "src": "assets/optimized/hongyu-lin-7de8c414c2f6-320.webp",
+        "bytes": 20950
+      },
+      {
+        "width": 640,
+        "src": "assets/optimized/hongyu-lin-7de8c414c2f6-640.webp",
+        "bytes": 88186
+      },
+      {
+        "width": 960,
+        "src": "assets/optimized/hongyu-lin-7de8c414c2f6-960.webp",
+        "bytes": 181670
+      },
+      {
+        "width": 1080,
+        "src": "assets/optimized/hongyu-lin-7de8c414c2f6-1080.webp",
+        "bytes": 225442
+      }
+    ]
+  },
+  "assets/people/runze-wang.jpg": {
+    "sha256": "db27f2920003712fa36e1d1de9c30cc1dc0c88cfe41d7a000d8849b5fc144372",
+    "bytes": 187387,
+    "width": 1080,
+    "height": 1812,
+    "variants": [
+      {
+        "width": 320,
+        "src": "assets/optimized/runze-wang-156fabbbc54e-320.webp",
+        "bytes": 34640
+      },
+      {
+        "width": 640,
+        "src": "assets/optimized/runze-wang-156fabbbc54e-640.webp",
+        "bytes": 84960
+      },
+      {
+        "width": 960,
+        "src": "assets/optimized/runze-wang-156fabbbc54e-960.webp",
+        "bytes": 138666
+      },
+      {
+        "width": 1080,
+        "src": "assets/optimized/runze-wang-156fabbbc54e-1080.webp",
+        "bytes": 164868
+      }
+    ]
+  },
+  "assets/people/sisong-dong.jpg": {
+    "sha256": "4d190d4148604ab6b83ee5523ffb9389dfc302491e1810ed81d321e1323921c5",
+    "bytes": 319576,
+    "width": 1440,
+    "height": 1080,
+    "variants": [
+      {
+        "width": 320,
+        "src": "assets/optimized/sisong-dong-a07edabedbd0-320.webp",
+        "bytes": 24230
+      },
+      {
+        "width": 640,
+        "src": "assets/optimized/sisong-dong-a07edabedbd0-640.webp",
+        "bytes": 80280
+      },
+      {
+        "width": 960,
+        "src": "assets/optimized/sisong-dong-a07edabedbd0-960.webp",
+        "bytes": 151420
+      },
+      {
+        "width": 1440,
+        "src": "assets/optimized/sisong-dong-a07edabedbd0-1440.webp",
+        "bytes": 269658
+      }
+    ]
+  },
+  "assets/people/weiguo-li.jpg": {
+    "sha256": "7d87a8964b474138e968388bf01def13d4de6f32b9855ea44e44f2a8673335de",
+    "bytes": 178196,
+    "width": 1279,
+    "height": 1706,
+    "variants": [
+      {
+        "width": 320,
+        "src": "assets/optimized/weiguo-li-7e0f1fd3bb30-320.webp",
+        "bytes": 19496
+      },
+      {
+        "width": 640,
+        "src": "assets/optimized/weiguo-li-7e0f1fd3bb30-640.webp",
+        "bytes": 49062
+      },
+      {
+        "width": 960,
+        "src": "assets/optimized/weiguo-li-7e0f1fd3bb30-960.webp",
+        "bytes": 81354
+      },
+      {
+        "width": 1279,
+        "src": "assets/optimized/weiguo-li-7e0f1fd3bb30-1279.webp",
+        "bytes": 120310
+      }
+    ]
+  },
+  "assets/people/xin-cheng.jpg": {
+    "sha256": "520ad75038bc292bf92104b04c77fccd5cc9f11ed1b0e6d95a05d2afd8bf862b",
+    "bytes": 399450,
+    "width": 1440,
+    "height": 1026,
+    "variants": [
+      {
+        "width": 320,
+        "src": "assets/optimized/xin-cheng-a8d6801b3112-320.webp",
+        "bytes": 10480
+      },
+      {
+        "width": 640,
+        "src": "assets/optimized/xin-cheng-a8d6801b3112-640.webp",
+        "bytes": 44344
+      },
+      {
+        "width": 960,
+        "src": "assets/optimized/xin-cheng-a8d6801b3112-960.webp",
+        "bytes": 99258
+      },
+      {
+        "width": 1440,
+        "src": "assets/optimized/xin-cheng-a8d6801b3112-1440.webp",
+        "bytes": 214844
+      }
+    ]
+  },
+  "assets/people/zhechuan-xu.jpg": {
+    "sha256": "ba99cb017c9c2dd460f9518555785ef24e67a3d6c7f30ab56d002490689b3c16",
+    "bytes": 498461,
+    "width": 1279,
+    "height": 1706,
+    "variants": [
+      {
+        "width": 320,
+        "src": "assets/optimized/zhechuan-xu-9dbe23a7f5c5-320.webp",
+        "bytes": 8142
+      },
+      {
+        "width": 640,
+        "src": "assets/optimized/zhechuan-xu-9dbe23a7f5c5-640.webp",
+        "bytes": 22054
+      },
+      {
+        "width": 960,
+        "src": "assets/optimized/zhechuan-xu-9dbe23a7f5c5-960.webp",
+        "bytes": 38356
+      },
+      {
+        "width": 1279,
+        "src": "assets/optimized/zhechuan-xu-9dbe23a7f5c5-1279.webp",
+        "bytes": 55212
+      }
+    ]
+  },
+  "assets/research/adaptive-management.webp": {
+    "sha256": "31912b75a8e754f3d87cc2407e159463ec6a5e4ba5129b02c6ae88f244028423",
+    "bytes": 245778,
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 320,
+        "src": "assets/optimized/adaptive-management-bb9c57bd47be-320.webp",
+        "bytes": 11986
+      },
+      {
+        "width": 640,
+        "src": "assets/optimized/adaptive-management-bb9c57bd47be-640.webp",
+        "bytes": 38510
+      },
+      {
+        "width": 960,
+        "src": "assets/optimized/adaptive-management-bb9c57bd47be-960.webp",
+        "bytes": 73442
+      },
+      {
+        "width": 1440,
+        "src": "assets/optimized/adaptive-management-bb9c57bd47be-1440.webp",
+        "bytes": 128286
+      },
+      {
+        "width": 1536,
+        "src": "assets/optimized/adaptive-management-bb9c57bd47be-1536.webp",
+        "bytes": 172646
+      }
+    ]
+  },
+  "assets/research/biology-dna.webp": {
+    "sha256": "11f2280a7c4790c313f39f7e5934216ae4bc4e7f8130da159a96f792b26a1f16",
+    "bytes": 308152,
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 320,
+        "src": "assets/optimized/biology-dna-a188015fb2e3-320.webp",
+        "bytes": 13160
+      },
+      {
+        "width": 640,
+        "src": "assets/optimized/biology-dna-a188015fb2e3-640.webp",
+        "bytes": 42968
+      },
+      {
+        "width": 960,
+        "src": "assets/optimized/biology-dna-a188015fb2e3-960.webp",
+        "bytes": 84624
+      },
+      {
+        "width": 1440,
+        "src": "assets/optimized/biology-dna-a188015fb2e3-1440.webp",
+        "bytes": 151230
+      },
+      {
+        "width": 1536,
+        "src": "assets/optimized/biology-dna-a188015fb2e3-1536.webp",
+        "bytes": 216398
+      }
+    ]
+  },
+  "assets/research/climate-ecosystems.webp": {
+    "sha256": "fcbd872e37f7e15c8538c9bc74797a7011b71b9d8faae893822018eaa33448c9",
+    "bytes": 313800,
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 320,
+        "src": "assets/optimized/climate-ecosystems-fdd7be76bd69-320.webp",
+        "bytes": 12848
+      },
+      {
+        "width": 640,
+        "src": "assets/optimized/climate-ecosystems-fdd7be76bd69-640.webp",
+        "bytes": 42418
+      },
+      {
+        "width": 960,
+        "src": "assets/optimized/climate-ecosystems-fdd7be76bd69-960.webp",
+        "bytes": 81254
+      },
+      {
+        "width": 1440,
+        "src": "assets/optimized/climate-ecosystems-fdd7be76bd69-1440.webp",
+        "bytes": 146822
+      },
+      {
+        "width": 1536,
+        "src": "assets/optimized/climate-ecosystems-fdd7be76bd69-1536.webp",
+        "bytes": 213798
+      }
+    ]
+  },
+  "assets/research/population-assessment.webp": {
+    "sha256": "464ca0da97c122116564d28f0fee121c48665d5b7eb44b421f8e6874d175b24f",
+    "bytes": 270298,
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 320,
+        "src": "assets/optimized/population-assessment-7a20d8fe8685-320.webp",
+        "bytes": 10010
+      },
+      {
+        "width": 640,
+        "src": "assets/optimized/population-assessment-7a20d8fe8685-640.webp",
+        "bytes": 32408
+      },
+      {
+        "width": 960,
+        "src": "assets/optimized/population-assessment-7a20d8fe8685-960.webp",
+        "bytes": 65672
+      },
+      {
+        "width": 1440,
+        "src": "assets/optimized/population-assessment-7a20d8fe8685-1440.webp",
+        "bytes": 119730
+      },
+      {
+        "width": 1536,
+        "src": "assets/optimized/population-assessment-7a20d8fe8685-1536.webp",
+        "bytes": 195764
+      }
+    ]
+  },
+  "assets/research/vessel-ai.webp": {
+    "sha256": "92240551de045b69d9e113a928222e5034c346aa4af674bcf01af0bf448deadd",
+    "bytes": 327010,
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 320,
+        "src": "assets/optimized/vessel-ai-a6f6e726984b-320.webp",
+        "bytes": 13760
+      },
+      {
+        "width": 640,
+        "src": "assets/optimized/vessel-ai-a6f6e726984b-640.webp",
+        "bytes": 47258
+      },
+      {
+        "width": 960,
+        "src": "assets/optimized/vessel-ai-a6f6e726984b-960.webp",
+        "bytes": 92968
+      },
+      {
+        "width": 1440,
+        "src": "assets/optimized/vessel-ai-a6f6e726984b-1440.webp",
+        "bytes": 164114
+      },
+      {
+        "width": 1536,
+        "src": "assets/optimized/vessel-ai-a6f6e726984b-1536.webp",
+        "bytes": 230524
+      }
+    ]
+  },
+  "assets/software/alscl-logo.png": {
+    "sha256": "e119d62824ffd079e835d38698571b7e29eb2a8c57cb810468106d5d03855ca6",
+    "bytes": 1642450,
+    "width": 1254,
+    "height": 1254,
+    "variants": [
+      {
+        "width": 320,
+        "src": "assets/optimized/alscl-logo-afa102563e10-320.webp",
+        "bytes": 29896
+      },
+      {
+        "width": 640,
+        "src": "assets/optimized/alscl-logo-afa102563e10-640.webp",
+        "bytes": 78710
+      },
+      {
+        "width": 960,
+        "src": "assets/optimized/alscl-logo-afa102563e10-960.webp",
+        "bytes": 135106
+      },
+      {
+        "width": 1254,
+        "src": "assets/optimized/alscl-logo-afa102563e10-1254.webp",
+        "bytes": 186094
+      }
+    ]
+  }
+}

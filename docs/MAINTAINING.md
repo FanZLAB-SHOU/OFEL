@@ -24,6 +24,14 @@ python3 -m http.server 8765 --bind 127.0.0.1
 
 首页底部的 Explore 按钮跳转到页脚上方的内嵌播放器并请求播放。源模板在 `templates/index.html`，视频为 `assets/video/ofel-film-1080p.mp4`，封面为 `assets/video/ofel-film-poster.webp`。保持 `controls`、`playsinline` 和 `preload="none"`，不添加自动播放，避免访客打开首页就下载整段视频。替换 MP4 时使用 H.264 / AAC 和 fast-start（`moov` 在文件开头），并重新检查文件大小及播放。
 
+### 网页图片与手机导航
+
+`assets/people/`、`assets/news/`、`assets/research/` 和 `assets/software/` 中的原图保持不变。大于 100 KiB 的静态图片可通过 `node scripts/optimize-images.cjs` 生成 WebP 展示图（运行环境需安装 `sharp`；也可用 `NODE_PATH` 指定已有的包目录）。生成的 `assets/optimized/` 文件与 `manifest.json` 一起提交，再运行常规 Python 构建。GitHub Pages 构建无需安装图片工具。
+
+构建器依据图片用途输出 `srcset` 和 `sizes`，由浏览器选择尺寸；原图更新导致哈希不匹配时回退原图，避免展示旧内容。不要直接修改生成页面中的图片地址，也不要把展示图路径写回新闻或人员 JSON。首页 News 仍按源记录日期选择最新一条。人物和海报均保持原始构图，较窄的卡片继续使用现有 CSS 裁切位置。
+
+手机端首页四张导航卡片支持滑动、左右按钮、四个分页圆点，以及聚焦卡片区域后的方向键和 Home/End 键。桌面端保持网格，控制按钮仅在手机横向溢出时显示；减少动态效果的系统设置会禁用平滑切换。
+
 ### 研究方向
 
 编辑 [`assets/research.json`](../assets/research.json)。`primary` 为 `true` 的三个方向是核心方向，其余两个为延伸研究。五个方向都会出现在首页研究轮播和研究页面中。

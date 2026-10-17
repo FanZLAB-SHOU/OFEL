@@ -525,6 +525,7 @@ body { font-size: 18px; }
 .mock-pills { position: absolute; z-index: 2; left: 50%; bottom: 2%; width: 112%; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; translate: -50% 0; }
 .mock-pills span { padding: 6px 10px; border-radius: 999px; background: rgba(255, 255, 255, .94); color: #14273d; font-size: 10px; font-weight: 600; box-shadow: 0 8px 18px rgba(0, 0, 0, .25); }
 .mock-mail { margin-bottom: 38px; }
+.gateway-controls { display: none; }
 @media (max-width: 1100px) {
   .gateway-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .gateway-card, .gateway-card:nth-child(n), .gateway-card:hover, .gateway-card:nth-child(n):hover { min-height: 540px; }
@@ -534,11 +535,20 @@ body { font-size: 18px; }
   .gateway-heading { margin-bottom: 32px; }
   .gateway-heading h2 { font-size: 34px; }
   .gateway-heading h2 br { display: none; }
-  .gateway-grid { display: flex; gap: 14px; margin-inline: -20px; padding: 0 20px 6px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
-  .gateway-grid::-webkit-scrollbar { display: none; }
+  .gateway-grid { display: flex; gap: 14px; margin-inline: -20px; padding: 0 20px 6px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: #55758c #122230; }
+  .gateway-grid::-webkit-scrollbar { height: 4px; }
+  .gateway-grid::-webkit-scrollbar-thumb { background: #55758c; border-radius: 4px; }
   .gateway-card, .gateway-card:nth-child(n), .gateway-card:hover, .gateway-card:nth-child(n):hover { flex: 0 0 84%; min-height: 520px; scroll-snap-align: start; padding: 22px 20px 20px; }
   .gateway-copy h3 { font-size: 25px; }
   .gateway-copy p { max-width: none; }
+  .gateway-controls:not([hidden]) { display: flex; justify-content: space-between; align-items: center; gap: 4px; margin-top: 20px; }
+  .gateway-step, .gateway-dot { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border-radius: 50%; color: #e7f3ff; background: transparent; border: 1px solid #52748e; }
+  .gateway-step { flex-shrink: 0; font-size: 23px; }
+  .gateway-step:disabled { opacity: .3; cursor: default; }
+  .gateway-dots { display: flex; gap: 0; }
+  .gateway-dot { border: 0; }
+  .gateway-dot::after { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #66829a; }
+  .gateway-dot[aria-current="true"]::after { width: 22px; border-radius: 5px; background: #b2e0ff; }
 }
 @media (prefers-reduced-motion: reduce) {
   .gateway-visual, .gateway-bg { transition: none; }

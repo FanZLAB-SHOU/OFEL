@@ -19,8 +19,14 @@
     <section class="home-gateways section" aria-labelledby="gateways-title">
       <div class="container">
         <div class="gateway-heading" data-reveal><p class="eyebrow">Explore OFEL</p><h2 id="gateways-title">One lab, from the open ocean<br> to fisheries science</h2></div>
-        <div class="gateway-grid">
+        <div class="gateway-grid" id="gateway-track" role="region" aria-label="Explore the laboratory">
 {{gateway_cards}}
+        </div>
+        <div class="gateway-controls" hidden>
+          <button class="gateway-step" type="button" data-gateway-step="-1" aria-controls="gateway-track" aria-label="Previous card"><span aria-hidden="true">←</span></button>
+          <div class="gateway-dots" role="group" aria-label="Choose a section"></div>
+          <button class="gateway-step" type="button" data-gateway-step="1" aria-controls="gateway-track" aria-label="Next card"><span aria-hidden="true">→</span></button>
+          <span class="sr-only gateway-position" role="status" aria-live="polite" aria-atomic="true"></span>
         </div>
       </div>
     </section>

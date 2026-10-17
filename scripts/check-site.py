@@ -34,7 +34,7 @@ class Page(HTMLParser):
         if tag == 'a' and 'gateway-card' in attrs.get('class', '').split() and attrs.get('href') == 'news/':
             self._in_home_news = True
         if self._in_home_news and tag == 'img' and 'gateway-bg' in attrs.get('class', '').split():
-            self.home_news_image = attrs.get('src')
+            self.home_news_image = attrs.get('data-image-original', attrs.get('src'))
         if tag == 'time' and attrs.get('datetime'):
             self.news_dates.append(attrs['datetime'])
         if attrs.get('id'):

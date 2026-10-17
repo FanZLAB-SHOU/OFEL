@@ -31,6 +31,10 @@ jobs:
         run: python3 scripts/build-site.py
       - name: Check clean URL routing
         run: python3 scripts/test-site-paths.py
+      - name: Check responsive images and mobile card controls
+        run: |
+          python3 scripts/test-responsive-images.py
+          node scripts/test-gateway-cards.cjs
       - name: Check page links and assets
         run: python3 scripts/check-site.py
       - name: Upload website

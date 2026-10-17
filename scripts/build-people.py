@@ -32,6 +32,7 @@ import sys  # noqa: E402
 sys.path.insert(0, str(ROOT / 'scripts'))
 from icons import expand, icon  # noqa: E402
 from site_paths import clean_url, output_path, rebase_links, write_page  # noqa: E402
+from responsive_images import responsive_images  # noqa: E402
 
 spec = importlib.util.spec_from_file_location('publications', ROOT / 'scripts/build-publications.py')
 publications = importlib.util.module_from_spec(spec)
@@ -144,7 +145,7 @@ def fill(page, marker, sections):
     end_marker = f'          <!-- {marker}:end -->'
     start = source.index(start_marker) + len(start_marker)
     end = source.index(end_marker, start)
-    page.write_text(source[:start] + '\n' + rebase_links('\n'.join(sections), page.relative_to(ROOT).as_posix()) + '\n' + source[end:])
+    page.write_text(source[:start] + '\n' + rebase_links(responsive_images('\n'.join(sections)), page.relative_to(ROOT).as_posix()) + '\n' + source[end:])
 
 
 # One ordered list of everyone: current members by group, then alumni by graduation year.

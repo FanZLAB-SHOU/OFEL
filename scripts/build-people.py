@@ -31,6 +31,7 @@ for cohort in alumni:
 import sys  # noqa: E402
 sys.path.insert(0, str(ROOT / 'scripts'))
 from icons import expand, icon  # noqa: E402
+from site_paths import rebase_links, write_page  # noqa: E402
 
 spec = importlib.util.spec_from_file_location('publications', ROOT / 'scripts/build-publications.py')
 publications = importlib.util.module_from_spec(spec)
@@ -112,18 +113,18 @@ def fill(page, marker, sections):
     end_marker = f'          <!-- {marker}:end -->'
     start = source.index(start_marker) + len(start_marker)
     end = source.index(end_marker, start)
-    page.write_text(source[:start] + '\n' + '\n'.join(sections) + '\n' + source[end:])
+    page.write_text(source[:start] + '\n' + rebase_links('\n'.join(sections), page.relative_to(ROOT).as_posix()) + '\n' + source[end:])
 
 
 # One ordered list of everyone: current members by group, then alumni by graduation year.
 people = []
 for group in groups:
     for member in group['members']:
-        people.append({**member, 'context': group['heading'], 'back': ('members.html', 'Current Members')})
+        people.append({**member, 'context': group['heading'], 'back': ('members/index.html', 'Current Members')})
 for cohort in alumni:
     label = f'{cohort["year"]} {cohort["degree"]} Graduate'
     for member in cohort['members']:
-        people.append({**member, 'role': label, 'context': 'Alumni', 'back': ('alumni.html', 'Alumni')})
+        people.append({**member, 'role': label, 'context': 'Alumni', 'back': ('members/alumni.html', 'Alumni')})
 for person in people:
     person['slug'] = slugify(person['name'])
 slugs = [p['slug'] for p in people]
@@ -137,7 +138,7 @@ sections = []
 for group in groups:
     cards = []
     for member in group['members']:
-        name, href = esc(member['name']), esc(by_name[member['name']]['slug'] + '.html')
+        name, href = esc(member['name']), esc('members/' + by_name[member['name']]['slug'] + '.html')
         email = f'<p class="member-email">{esc(member["email"])}</p>' if member.get('email') else ''
         cards.append(
             f'                  <article class="member-card"><a class="member-photo-link" href="{href}" tabindex="-1" aria-hidden="true">'
@@ -152,7 +153,7 @@ for group in groups:
         f'              <h2 id="{group_id}-title">{esc(group["heading"])}</h2>\n'
         f'              <div class="member-cards">\n' + '\n'.join(cards) + '\n              </div>\n            </section>'
     )
-fill(ROOT / 'members.html', 'member-groups', sections)
+fill(ROOT / 'members/index.html', 'member-groups', sections)
 
 # Alumni page: square photo tiles with the name over the photo, grouped by graduation year.
 sections = []
@@ -160,7 +161,7 @@ for cohort in alumni:
     tiles = []
     for member in cohort['members']:
         tiles.append(
-            f'                <li><a class="alumni-tile" href="{esc(by_name[member["name"]]["slug"])}.html">'
+            f'                <li><a class="alumni-tile" href="members/{esc(by_name[member["name"]]["slug"])}.html">'
             f'{photo(member, "alumni-photo", 400, 400)}<span class="alumni-name">{esc(member["name"])}</span></a></li>'
         )
     year = cohort['year']
@@ -169,7 +170,7 @@ for cohort in alumni:
         f'              <h2 id="alumni-{year}-title">{year} {esc(cohort["degree"])} Graduates</h2>\n'
         f'              <ul class="alumni-grid">\n' + '\n'.join(tiles) + '\n              </ul>\n            </section>'
     )
-fill(ROOT / 'alumni.html', 'alumni-groups', sections)
+fill(ROOT / 'members/alumni.html', 'alumni-groups', sections)
 
 # Profile pages: name, role, contact, bio, publications, then previous/next person.
 header = expand((TEMPLATES / 'header.html').read_text())
@@ -195,12 +196,12 @@ for n, person in enumerate(people):
     pager = []
     if n > 0:
         prev = people[n - 1]
-        pager.append(f'<a class="profile-prev" rel="prev" href="{esc(prev["slug"])}.html">'
+        pager.append(f'<a class="profile-prev" rel="prev" href="members/{esc(prev["slug"])}.html">'
                      f'<span class="pager-badge" aria-hidden="true">OFEL</span><span class="pager-text">'
                      f'<span class="pager-dir">{icon("left")}Previous</span><span class="pager-name">{esc(prev["name"])}</span></span></a>')
     if n < len(people) - 1:
         nxt = people[n + 1]
-        pager.append(f'<a class="profile-next" rel="next" href="{esc(nxt["slug"])}.html"><span class="pager-text">'
+        pager.append(f'<a class="profile-next" rel="next" href="members/{esc(nxt["slug"])}.html"><span class="pager-text">'
                      f'<span class="pager-dir">Next{icon("right")}</span><span class="pager-name">{esc(nxt["name"])}</span></span>'
                      f'<span class="pager-badge" aria-hidden="true">OFEL</span></a>')
     back_href, back_label = person['back']
@@ -223,9 +224,9 @@ for n, person in enumerate(people):
     title = f'{person["name"]} | OFEL'
     description = f'{person["name"]}, {person["role"]} at the Oceanic Fisheries Ecosystem Laboratory, Shanghai Ocean University.'
     head = (TEMPLATES / 'head.html').read_text().replace('{{asset_version}}', asset_version())
-    for token, value in {'{{title}}': title, '{{description}}': description, '{{canonical}}': BASE + person['slug'] + '.html'}.items():
+    for token, value in {'{{title}}': title, '{{description}}': description, '{{canonical}}': BASE + 'members/' + person['slug'] + '.html'}.items():
         head = head.replace(token, esc(value))
-    (ROOT / f'{person["slug"]}.html').write_text(
+    write_page(f'members/{person["slug"]}.html',
         head + '<body id="top" data-page="profile" data-nav-section="people">\n'
         '  <a class="skip-link" href="#main">Skip to content</a>\n' + header
         + '\n  <main id="main">\n' + content + '  </main>\n\n' + footer + '</body>\n</html>\n'

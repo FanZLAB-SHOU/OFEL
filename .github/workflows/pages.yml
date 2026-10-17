@@ -29,6 +29,8 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Build static pages
         run: python3 scripts/build-site.py
+      - name: Check page links and assets
+        run: python3 scripts/check-site.py
       - name: Upload website
         uses: actions/upload-pages-artifact@v3
         with:

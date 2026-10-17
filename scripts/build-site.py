@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 from icons import expand, icon  # noqa: E402
 from species import italicize  # noqa: E402
+from site_paths import PAGE_PATHS, legacy_routes, write_page  # noqa: E402
 TEMPLATES = ROOT / 'templates'
 BASE = 'https://fanzhang-lab-shou.github.io/OFEL/'
 PAGES = {
@@ -84,7 +85,7 @@ def slug_of(name):
 
 
 def post_url(post):
-    return f'news-{post["slug"]}.html'
+    return f'news/{post["slug"]}.html'
 
 
 blog_posts = '\n'.join(
@@ -111,7 +112,7 @@ def post_page(post):
                 f'<figcaption>{italicize(esc(item["caption"]))}<span>{esc(item["credit"])}</span></figcaption></figure>')
     body = ''.join(block(item) for item in post['body'])
     people_links = ''.join(
-        f'<a href="{"fan-zhang" if name == "Fan Zhang" else slug_of(name)}.html">{esc(name)}</a>' for name in post.get('people', []))
+        f'<a href="members/{"fan-zhang" if name == "Fan Zhang" else slug_of(name)}.html">{esc(name)}</a>' for name in post.get('people', []))
     paper = post.get('paper')
     if paper and paper.get('cover'):
         cover = f'<img class="news-paper-cover" src="{esc(paper["cover"])}" alt="{esc(paper["journal"])} cover" width="240" height="315">'
@@ -136,7 +137,7 @@ def post_page(post):
     return (
         '    <article class="section detail-page news-article" aria-labelledby="news-title">\n'
         '      <div class="container news-container">\n'
-        f'        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="blog.html">News</a><span aria-hidden="true">/</span>'
+        f'        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="news/index.html">News</a><span aria-hidden="true">/</span>'
         f'<span aria-current="page"><time datetime="{esc(post["date"])}">{esc(pretty_date(post["date"]))}</time></span></nav>\n'
         f'        <h1 id="news-title">{italicize(esc(post["title"]))}</h1>\n'
         f'        <p class="news-summary">{italicize(esc(post.get("summary", "")))}</p>\n'
@@ -176,9 +177,9 @@ latest = recent[0]
 latest_authors = ', '.join(f"{a['given'][0]}. {a['family']}" for a in latest['authors'][:3]) + (' et al.' if len(latest['authors']) > 3 else '')
 journal_chips = ''.join(f'<span>{esc(j)}</span>' for j in list(dict.fromkeys(p['journal'] for p in recent))[:3])
 gateways = [
-    ('blog.html', 'News', 'Lab updates, new papers, and life in the laboratory.', 'assets/research/climate-ecosystems.webp', '30% 50%', 'book',
+    ('news/index.html', 'News', 'Lab updates, new papers, and life in the laboratory.', 'assets/research/climate-ecosystems.webp', '30% 50%', 'book',
      f'<div class="mock-stack">{news_items}</div>'),
-    ('members.html', 'People', 'Meet the faculty, postdoctoral researchers, and students behind our work.', 'assets/research/adaptive-management.webp', '45% 60%', 'people',
+    ('members/index.html', 'People', 'Meet the faculty, postdoctoral researchers, and students behind our work.', 'assets/research/adaptive-management.webp', '45% 60%', 'people',
      f'<div class="mock-panel mock-team"><span class="mock-label">Our team</span><div class="mock-avatars">{avatars}</div>'
      f'<div class="mock-lines"><i></i><i></i></div></div>'
      f'<span class="mock-chip mock-chip-a">{len(members)} current members</span>'
@@ -215,12 +216,12 @@ header = expand((TEMPLATES / 'header.html').read_text())
 footer = expand((TEMPLATES / 'footer.html').read_text())
 for name, (title, description, nav) in PAGES.items():
     head = (TEMPLATES / 'head.html').read_text().replace('{{asset_version}}', asset_version())
-    for token, value in {'{{title}}': title, '{{description}}': description, '{{canonical}}': BASE + ('' if name == 'index' else name + '.html')}.items():
+    for token, value in {'{{title}}': title, '{{description}}': description, '{{canonical}}': BASE + ('' if name == 'index' else PAGE_PATHS[name])}.items():
         head = head.replace(token, esc(value))
-    content = expand((TEMPLATES / f'{name}.html').read_text())
+    content = expand((TEMPLATES / PAGE_PATHS[name]).read_text())
     for token, value in tokens.items():
         content = content.replace(token, value)
-    (ROOT / f'{name}.html').write_text(
+    write_page(PAGE_PATHS[name],
         head + f'<body id="top" data-page="{name}" data-nav-section="{nav}">\n'
         '  <a class="skip-link" href="#main">Skip to content</a>\n' + header
         + '\n  <main id="main">\n' + content + '  </main>\n\n' + footer + '</body>\n</html>\n'
@@ -231,7 +232,7 @@ for post in posts:
     for token, value in {'{{title}}': post['title'] + ' | OFEL News', '{{description}}': post.get('summary', post['title']),
                          '{{canonical}}': BASE + post_url(post)}.items():
         head = head.replace(token, esc(value))
-    (ROOT / post_url(post)).write_text(
+    write_page(post_url(post),
         head + '<body id="top" data-page="news-post" data-nav-section="news">\n'
         '  <a class="skip-link" href="#main">Skip to content</a>\n' + header
         + '\n  <main id="main">\n' + post_page(post) + '  </main>\n\n' + footer + '</body>\n</html>\n'
@@ -240,3 +241,6 @@ for post in posts:
 for builder in ('build-people.py', 'build-publications.py'):
     subprocess.run([sys.executable, str(ROOT / 'scripts' / builder)], check=True)
 print(f'Built {len(PAGES)} static pages and {len(posts)} news articles with shared navigation and footer.')
+
+# A single GitHub Pages fallback preserves bookmarked URLs without keeping dozens of root-level stubs.
+write_page('404.html', (TEMPLATES / '404.html').read_text().replace('{{legacy_routes}}', json.dumps(legacy_routes(), ensure_ascii=True)))

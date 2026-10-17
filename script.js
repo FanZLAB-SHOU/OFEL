@@ -1,7 +1,7 @@
 const page = document.body.dataset.page;
 const legacyRoutes = {
-  '#research': 'research.html', '#people': 'fan-zhang.html', '#principal-investigator': 'fan-zhang.html',
-  '#current-members': 'members.html', '#alumni': 'alumni.html', '#publications': 'publications.html',
+  '#research': 'research.html', '#people': 'members/fan-zhang.html', '#principal-investigator': 'members/fan-zhang.html',
+  '#current-members': 'members/index.html', '#alumni': 'members/alumni.html', '#publications': 'publications.html',
   '#publications-lab': 'publications.html#publications-lab', '#publications-fan-zhang': 'publications.html#publications-fan-zhang',
   '#contact': 'contact.html', '#join-us': 'contact.html#join-us'
 };

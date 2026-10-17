@@ -1,5 +1,5 @@
 {
-  "note": "Names, roles, and Xin Cheng contact information supplied by the user in this chat. Missing profile photos and contact links remain placeholders. Role groups are displayed in the order below. Students are listed by year of study, senior first, as supplied by the user. Alumni are grouped by graduation year (newest first) and sorted alphabetically by name. Each person gets a profile page named after them (e.g. hongyu-lin.html); add a photo path such as assets/people/hongyu-lin.jpg and a short bio to fill it in. Publications on profiles are matched automatically from assets/publications.json by author name.",
+  "note": "Names, roles, and Xin Cheng contact information supplied by the user in this chat. Missing profile photos and contact links remain placeholders. Role groups are displayed in the order below. Students are listed by year of study, senior first, as supplied by the user. Alumni are grouped by graduation year (newest first) and sorted alphabetically by name. Each person gets a profile page named after them (e.g. members/hongyu-lin.html); add a photo path such as assets/people/hongyu-lin.jpg and a short bio to fill it in. Publications on profiles are matched automatically from assets/publications.json by author name.",
   "title_note": {
     "chinese": "讲师",
     "english": "Lecturer",

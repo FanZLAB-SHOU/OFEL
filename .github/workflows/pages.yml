@@ -29,6 +29,8 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Build static pages
         run: python3 scripts/build-site.py
+      - name: Check clean URL routing
+        run: python3 scripts/test-site-paths.py
       - name: Check page links and assets
         run: python3 scripts/check-site.py
       - name: Upload website

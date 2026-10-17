@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 from icons import icon  # noqa: E402
 from species import italicize, italicize_bibtex  # noqa: E402
+from site_paths import output_path  # noqa: E402
 records = json.loads((ROOT / 'assets/publications.json').read_text())['publications']
 member_records = json.loads((ROOT / 'assets/member-publications.json').read_text())['publications']
 _people = json.loads((ROOT / 'assets/people.json').read_text())
@@ -130,7 +131,7 @@ def main():
     bib = [citation(p) for p in papers if has_fan_zhang(p)]
     lab_bib = [citation(p) for p in papers if is_lab_paper(p)]
 
-    page = ROOT / 'publications.html'
+    page = ROOT / output_path('publications.html')
     source = page.read_text()
     start_marker = '        <div class="publication-list" id="publication-list">'
     start = source.index(start_marker) + len(start_marker)

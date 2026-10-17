@@ -1,11 +1,19 @@
+// Direct visits to directory index files use the same clean URL as navigation.
+if (location.pathname.endsWith('/index.html')) {
+  history.replaceState(null, '', location.pathname.slice(0, -10) + location.search + location.hash);
+}
 const page = document.body.dataset.page;
 const legacyRoutes = {
-  '#research': 'research/themes.html', '#people': 'members/fan-zhang.html', '#principal-investigator': 'members/fan-zhang.html',
-  '#current-members': 'members/index.html', '#alumni': 'members/alumni.html', '#publications': 'publications.html',
-  '#publications-lab': 'publications.html#publications-lab', '#publications-fan-zhang': 'publications.html#publications-fan-zhang',
-  '#contact': 'contact.html', '#join-us': 'contact.html#join-us'
+  '#research': 'research/themes/', '#people': 'members/fan-zhang/', '#principal-investigator': 'members/fan-zhang/',
+  '#current-members': 'members/', '#alumni': 'members/alumni/', '#publications': 'publications/',
+  '#publications-lab': 'publications/#publications-lab', '#publications-fan-zhang': 'publications/#publications-fan-zhang',
+  '#contact': 'contact/', '#join-us': 'contact/#join-us'
 };
-if (page === 'index' && legacyRoutes[location.hash]) location.replace(legacyRoutes[location.hash]);
+if (page === 'index' && legacyRoutes[location.hash]) {
+  const target = new URL(legacyRoutes[location.hash], location.href);
+  target.search = location.search;
+  location.replace(target.href);
+}
 
 const menuButton = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('#main-nav');

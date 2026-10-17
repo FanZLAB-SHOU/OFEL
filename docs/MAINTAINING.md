@@ -24,7 +24,7 @@ python3 -m http.server 8765 --bind 127.0.0.1
 
 编辑 [`assets/research.json`](../assets/research.json)。`primary` 为 `true` 的三个方向是核心方向，其余两个为延伸研究。五个方向都会出现在首页研究轮播和研究页面中。
 
-顶部 Research 菜单分为 Research Themes 和 Collaborators。研究方向统一放在 `research/themes.html`，模板为 `templates/research/themes.html`；合作人员页面为 `research/collaborators.html`，待提供名单后在对应模板中补充。旧 `research.html` 链接由 GitHub Pages 的 404 回退跳转至 Themes，并保留研究方向的锚点。
+顶部 Research 菜单分为 Research Themes 和 Collaborators。研究方向位于 `/research/themes/`，模板为 `templates/research/themes.html`；合作人员页面为 `/research/collaborators/`，待提供名单后在对应模板中补充。旧 `research.html` 链接由 GitHub Pages 的 404 回退跳转至 Themes，并保留研究方向的锚点。
 
 ### 成员与校友
 
@@ -40,7 +40,7 @@ python3 -m http.server 8765 --bind 127.0.0.1
 - 未提供 GitHub 链接时不显示 GitHub 图标。成员列表中缺失邮箱仍显示不可点击的邮箱占位图标；个人主页只显示已提供的联系方式。
 - `website_label` 设置网站链接名称；`website_icon` 可选 `globe` 或 `researchgate`。独立的 `researchgate` 字段可与 GitHub、学校主页同时使用。
 
-构建后自动生成 `members/<given-name>-<family-name>.html`，包括简介、按作者姓名匹配的论文、前后成员导航。缺失照片保留矩形照片位。
+构建后自动生成 `members/<given-name>-<family-name>/index.html`，访问地址为 `/members/<given-name>-<family-name>/`，包括简介、按作者姓名匹配的论文、前后成员导航。缺失照片保留矩形照片位。
 
 Fan Zhang 主页的主体信息在 [`templates/members/fan-zhang.html`](../templates/members/fan-zhang.html) 中维护。
 
@@ -64,7 +64,7 @@ Fan Zhang 主页的主体信息在 [`templates/members/fan-zhang.html`](../templ
 
 News 列表的图片框为横向 3:2。需要单独构图时可填写 `thumbnail` 和 `thumbnail_position`，仅替换列表缩略图；文章中的 `image` 仍展示原海报，首页也继续按最新日期选择新闻。
 
-构建生成 `news/<slug>.html`，列表始终按日期从新到旧排列。**首页 News 入口始终使用日期最新的新闻封面与标题，不设置手动精选。补录、修改旧新闻或更换旧新闻封面，均不得覆盖日期较新的首页新闻。**
+构建生成 `news/<slug>/index.html`，访问地址为 `/news/<slug>/`，列表始终按日期从新到旧排列。**首页 News 入口始终使用日期最新的新闻封面与标题，不设置手动精选。补录、修改旧新闻或更换旧新闻封面，均不得覆盖日期较新的首页新闻。**
 
 首页 Publications 入口按当前展示论文的 DOI 匹配新闻中 `paper.cover` 的期刊封面，保留期刊标识的展示空间。没有对应封面时使用研究插图作为背景。
 当前固定展示 Runze Wang 等发表于 *Fish and Fisheries* 的论文（`10.1111/faf.70077`）；如需更换精选论文，在 `scripts/build-site.py` 的首页论文选择处修改 DOI。
@@ -83,8 +83,8 @@ OFEL/
 ├── README.md                  实验室展示与仓库入口
 ├── index.html                 首页
 ├── research/                  Research Themes 与 Collaborators
-├── publications.html          论文与筛选
-├── contact.html               联系与加入
+├── publications/index.html    论文与筛选
+├── contact/index.html         联系与加入
 ├── members/                   成员、校友与个人主页
 ├── news/                      新闻列表与文章
 ├── resources/                 参考资料与软件
@@ -99,9 +99,13 @@ OFEL/
 └── .github/workflows/pages.yml 自动构建与部署
 ```
 
+公开网址统一使用目录形式（如 `/news/`、`/members/fan-zhang/`、`/publications/`），不显示 `.html` 或 `index.html`。每个目录实际包含一个 `index.html`。模板文件名保留原样，避免把内容源文件与公开网址混淆。
+
 模板采用相对站点根目录的路径；[`scripts/site_paths.py`](../scripts/site_paths.py) 根据输出目录调整链接、图片、`srcset`、CSS 与 JavaScript 路径。新增成员和新闻自动写入相应文件夹。
 
-旧首页片段链接会跳转到对应页面。`404.html` 兼容历史上位于根目录的成员与新闻地址，在 GitHub Pages 上跳转到新路径并保留查询参数和片段。
+此前公开的 `.html` 文件保留为小型跳转页，直接转到新的目录网址，保留查询参数和 `#` 片段。直接访问目录内的 `index.html` 时，前端会把地址栏规范为目录网址。旧首页片段链接仍跳转到对应页面。`404.html` 兼容更早位于根目录的成员与新闻地址。不要在旧跳转页中编辑内容。
+
+网址相关改动后运行 `python3 scripts/test-site-paths.py`、构建及全站检查。检查脚本会验证目录式导航、canonical 地址、新闻时间顺序与深层页面资源路径。
 
 ## 提交与部署
 

@@ -4,6 +4,7 @@ from html.parser import HTMLParser
 import json
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
+from site_paths import BASE, output_path
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -13,6 +14,9 @@ class Page(HTMLParser):
         super().__init__()
         self.ids = set()
         self.links = []
+        self.page_links = []
+        self.is_redirect = False
+        self.canonical = None
         self.news_dates = []
         self.home_news_image = None
         self.home_news_text = []
@@ -21,7 +25,13 @@ class Page(HTMLParser):
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
-        if tag == 'a' and 'gateway-card' in attrs.get('class', '').split() and attrs.get('href') == 'news/index.html':
+        if tag == 'meta' and attrs.get('http-equiv', '').lower() == 'refresh':
+            self.is_redirect = True
+        if tag == 'link' and attrs.get('rel') == 'canonical':
+            self.canonical = attrs.get('href')
+        if tag == 'a' and attrs.get('href'):
+            self.page_links.append(attrs['href'])
+        if tag == 'a' and 'gateway-card' in attrs.get('class', '').split() and attrs.get('href') == 'news/':
             self._in_home_news = True
         if self._in_home_news and tag == 'img' and 'gateway-bg' in attrs.get('class', '').split():
             self.home_news_image = attrs.get('src')
@@ -44,14 +54,25 @@ class Page(HTMLParser):
 
 def main():
     paths = list(ROOT.glob('*.html'))
-    for folder in ('news', 'members', 'resources', 'research'):
-        paths.extend((ROOT / folder).glob('*.html'))
+    for folder in ('news', 'members', 'resources', 'research', 'publications', 'contact'):
+        paths.extend((ROOT / folder).rglob('*.html'))
     pages = {path.resolve(): Page(path) for path in paths}
     errors = []
     references = 0
+    for path, page in pages.items():
+        if page.is_redirect or path.name == '404.html':
+            continue
+        expected_canonical = BASE + path.relative_to(ROOT).as_posix().removesuffix('index.html')
+        if page.canonical != expected_canonical:
+            errors.append(f'{path.relative_to(ROOT)}: canonical URL must use its clean directory path')
+        for link in page.page_links:
+            parts = urlsplit(link)
+            internal = not (parts.scheme or parts.netloc) or link.startswith(BASE)
+            if internal and parts.path.endswith('.html'):
+                errors.append(f'{path.relative_to(ROOT)}: navigation must use clean URLs: {link}')
     posts = json.loads((ROOT / 'assets/blog.json').read_text())['posts']
     expected_dates = sorted((post['date'] for post in posts), reverse=True)
-    if pages[(ROOT / 'news/index.html').resolve()].news_dates != expected_dates:
+    if pages[(ROOT / output_path('news/index.html')).resolve()].news_dates != expected_dates:
         errors.append('news/index.html: news must appear newest first by date')
     if posts:
         newest = max(posts, key=lambda post: post['date'])

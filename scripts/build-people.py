@@ -31,7 +31,7 @@ for cohort in alumni:
 import sys  # noqa: E402
 sys.path.insert(0, str(ROOT / 'scripts'))
 from icons import expand, icon  # noqa: E402
-from site_paths import rebase_links, write_page  # noqa: E402
+from site_paths import clean_url, output_path, rebase_links, write_page  # noqa: E402
 
 spec = importlib.util.spec_from_file_location('publications', ROOT / 'scripts/build-publications.py')
 publications = importlib.util.module_from_spec(spec)
@@ -188,7 +188,7 @@ for group in groups:
         f'              <h2 id="{group_id}-title">{esc(group["heading"])}</h2>\n'
         f'              <div class="member-cards">\n' + '\n'.join(cards) + '\n              </div>\n            </section>'
     )
-fill(ROOT / 'members/index.html', 'member-groups', sections)
+fill(ROOT / output_path('members/index.html'), 'member-groups', sections)
 
 # Alumni page: square photo tiles with the name over the photo, grouped by graduation year.
 sections = []
@@ -211,7 +211,7 @@ for cohort in alumni:
         f'              <h2 id="{cohort_id}-title">{year} {esc(cohort["degree"])} Graduates</h2>\n'
         f'              <ul class="alumni-grid">\n' + '\n'.join(tiles) + '\n              </ul>\n            </section>'
     )
-fill(ROOT / 'members/alumni.html', 'alumni-groups', sections)
+fill(ROOT / output_path('members/alumni.html'), 'alumni-groups', sections)
 
 # Profile pages: name, role, contact, bio, publications, then previous/next person.
 header = expand((TEMPLATES / 'header.html').read_text())
@@ -277,7 +277,7 @@ for n, person in enumerate(people):
     title = f'{person["name"]} | OFEL'
     description = f'{person["name"]}, {person["role"]} at the Oceanic Fisheries Ecosystem Laboratory, Shanghai Ocean University.'
     head = (TEMPLATES / 'head.html').read_text().replace('{{asset_version}}', asset_version())
-    for token, value in {'{{title}}': title, '{{description}}': description, '{{canonical}}': BASE + 'members/' + person['slug'] + '.html'}.items():
+    for token, value in {'{{title}}': title, '{{description}}': description, '{{canonical}}': BASE + clean_url('members/' + person['slug'] + '.html')}.items():
         head = head.replace(token, esc(value))
     write_page(f'members/{person["slug"]}.html',
         head + '<body id="top" data-page="profile" data-nav-section="people">\n'

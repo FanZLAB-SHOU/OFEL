@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 from icons import expand, icon  # noqa: E402
 from species import italicize  # noqa: E402
-from site_paths import PAGE_PATHS, legacy_routes, write_page  # noqa: E402
+from site_paths import PAGE_PATHS, clean_url, legacy_routes, write_legacy_redirects, write_page  # noqa: E402
 TEMPLATES = ROOT / 'templates'
 BASE = 'https://fanzhang-lab-shou.github.io/OFEL/'
 PAGES = {
@@ -246,7 +246,7 @@ header = expand((TEMPLATES / 'header.html').read_text())
 footer = expand((TEMPLATES / 'footer.html').read_text())
 for name, (title, description, nav) in PAGES.items():
     head = (TEMPLATES / 'head.html').read_text().replace('{{asset_version}}', asset_version())
-    for token, value in {'{{title}}': title, '{{description}}': description, '{{canonical}}': BASE + ('' if name == 'index' else PAGE_PATHS[name])}.items():
+    for token, value in {'{{title}}': title, '{{description}}': description, '{{canonical}}': BASE + clean_url(PAGE_PATHS[name])}.items():
         head = head.replace(token, esc(value))
     content = expand((TEMPLATES / PAGE_PATHS[name]).read_text())
     for token, value in tokens.items():
@@ -260,7 +260,7 @@ for name, (title, description, nav) in PAGES.items():
 for post in posts:
     head = (TEMPLATES / 'head.html').read_text().replace('{{asset_version}}', asset_version())
     for token, value in {'{{title}}': post['title'] + ' | OFEL News', '{{description}}': post.get('summary', post['title']),
-                         '{{canonical}}': BASE + post_url(post)}.items():
+                         '{{canonical}}': BASE + clean_url(post_url(post))}.items():
         head = head.replace(token, esc(value))
     write_page(post_url(post),
         head + '<body id="top" data-page="news-post" data-nav-section="news">\n'
@@ -272,5 +272,6 @@ for builder in ('build-people.py', 'build-publications.py'):
     subprocess.run([sys.executable, str(ROOT / 'scripts' / builder)], check=True)
 print(f'Built {len(PAGES)} static pages and {len(posts)} news articles with shared navigation and footer.')
 
-# A single GitHub Pages fallback preserves bookmarked URLs without keeping dozens of root-level stubs.
+# Current HTML URLs get direct redirects; the 404 fallback handles older flat URLs.
+print(f'Built {write_legacy_redirects()} legacy HTML redirects to clean directory URLs.')
 write_page('404.html', (TEMPLATES / '404.html').read_text().replace('{{legacy_routes}}', json.dumps(legacy_routes(), ensure_ascii=True)))

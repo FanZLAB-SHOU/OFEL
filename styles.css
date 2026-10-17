@@ -737,7 +737,8 @@ body[data-page="index"] .shou-link img { padding: 2px; border-radius: 50%; backg
   .software-feature { padding: 30px; gap: 30px; }
 }
 @media (min-width: 701px) and (max-width: 800px) {
-  .main-nav { gap: 10px; }
+  .header-inner { gap: 12px; }
+  .main-nav { gap: 8px; }
   .main-nav > a, .nav-dropdown-toggle { font-size: 13px; }
   .nav-dropdown-toggle { gap: 5px; }
   .brand strong { font-size: 30px; }

@@ -24,6 +24,8 @@ python3 -m http.server 8765 --bind 127.0.0.1
 
 编辑 [`assets/research.json`](../assets/research.json)。`primary` 为 `true` 的三个方向是核心方向，其余两个为延伸研究。五个方向都会出现在首页研究轮播和研究页面中。
 
+顶部 Research 菜单分为 Research Themes 和 Collaborators。研究方向统一放在 `research/themes.html`，模板为 `templates/research/themes.html`；合作人员页面为 `research/collaborators.html`，待提供名单后在对应模板中补充。旧 `research.html` 链接由 GitHub Pages 的 404 回退跳转至 Themes，并保留研究方向的锚点。
+
 ### 成员与校友
 
 编辑 [`assets/people.json`](../assets/people.json)，照片放在 [`assets/people/`](../assets/people/)。
@@ -73,7 +75,7 @@ Fan Zhang 主页的主体信息在 [`templates/members/fan-zhang.html`](../templ
 OFEL/
 ├── README.md                  实验室展示与仓库入口
 ├── index.html                 首页
-├── research.html              研究方向
+├── research/                  Research Themes 与 Collaborators
 ├── publications.html          论文与筛选
 ├── contact.html               联系与加入
 ├── members/                   成员、校友与个人主页

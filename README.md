@@ -62,7 +62,7 @@ OFEL studies fish population dynamics, fishing activity, and marine life to info
 
 | | 入口 | 内容 |
 | :---: | :--- | :--- |
-| **01** | [Research / 研究](https://fanzhang-lab-shou.github.io/OFEL/research/themes.html) | 三个核心方向与两项延伸研究 |
+| **01** | [Research / 研究](https://fanzhang-lab-shou.github.io/OFEL/research/themes.html) | Research Themes：三个核心方向与两项延伸研究；[Collaborators](https://fanzhang-lab-shou.github.io/OFEL/research/collaborators.html) |
 | **02** | [People / 成员](https://fanzhang-lab-shou.github.io/OFEL/members/index.html) | 教师、博士后和研究生；[校友](https://fanzhang-lab-shou.github.io/OFEL/members/alumni.html) |
 | **03** | [Fan Zhang / 张帆](https://fanzhang-lab-shou.github.io/OFEL/members/fan-zhang.html) | Professor & Doctoral Supervisor |
 | **04** | [Publications / 论文](https://fanzhang-lab-shou.github.io/OFEL/publications.html) | 实验室与 Fan Zhang 论文集合、主题筛选、BibTeX |

@@ -1,5 +1,5 @@
 {
-  "note": "Names, roles, and Xin Cheng contact information supplied by the user in this chat. Missing profile photos and contact links remain placeholders. Role groups are displayed in the order below.",
+  "note": "Names, roles, and Xin Cheng contact information supplied by the user in this chat. Missing profile photos and contact links remain placeholders. Role groups are displayed in the order below. Students are listed by year of study, senior first, as supplied by the user.",
   "title_note": {
     "chinese": "讲师",
     "english": "Lecturer",
@@ -44,15 +44,36 @@
       "heading": "PhD Students",
       "members": [
         {
-          "name": "Mingfeng Jiang",
-          "role": "PhD Student",
+          "name": "Dongqi Lu",
+          "role": "PhD Student, Year 4",
           "photo": null,
           "email": null,
           "github": null
         },
         {
-          "name": "Dongqi Lu",
-          "role": "PhD Student",
+          "name": "Hongyu Lin",
+          "role": "PhD Student, Year 4",
+          "photo": null,
+          "email": null,
+          "github": null
+        },
+        {
+          "name": "Mingfeng Jiang",
+          "role": "PhD Student, Year 3",
+          "photo": null,
+          "email": null,
+          "github": null
+        },
+        {
+          "name": "Xiaoci Wu",
+          "role": "PhD Student, Year 2",
+          "photo": null,
+          "email": null,
+          "github": null
+        },
+        {
+          "name": "Junyi Zhang",
+          "role": "PhD Student, Year 1",
           "photo": null,
           "email": null,
           "github": null
@@ -65,7 +86,77 @@
       "members": [
         {
           "name": "Runze Wang",
-          "role": "Master’s Student",
+          "role": "Master’s Student, Year 3",
+          "photo": null,
+          "email": null,
+          "github": null
+        },
+        {
+          "name": "Jiayi Zhou",
+          "role": "Master’s Student, Year 3",
+          "photo": null,
+          "email": null,
+          "github": null
+        },
+        {
+          "name": "Shuang Ma",
+          "role": "Master’s Student, Year 3",
+          "photo": null,
+          "email": null,
+          "github": null
+        },
+        {
+          "name": "Feng Yao",
+          "role": "Master’s Student, Year 3",
+          "photo": null,
+          "email": null,
+          "github": null
+        },
+        {
+          "name": "Yang Yu",
+          "role": "Master’s Student, Year 2",
+          "photo": null,
+          "email": null,
+          "github": null
+        },
+        {
+          "name": "Xu Yan",
+          "role": "Master’s Student, Year 2",
+          "photo": null,
+          "email": null,
+          "github": null
+        },
+        {
+          "name": "Runxin Tian",
+          "role": "Master’s Student, Year 2",
+          "photo": null,
+          "email": null,
+          "github": null
+        },
+        {
+          "name": "Weiguo Li",
+          "role": "Master’s Student, Year 2",
+          "photo": null,
+          "email": null,
+          "github": null
+        },
+        {
+          "name": "Xianglong Yan",
+          "role": "Master’s Student, Year 1",
+          "photo": null,
+          "email": null,
+          "github": null
+        },
+        {
+          "name": "Shixin Wu",
+          "role": "Master’s Student, Year 1",
+          "photo": null,
+          "email": null,
+          "github": null
+        },
+        {
+          "name": "Zhechuan Xu",
+          "role": "Master’s Student, Year 1",
           "photo": null,
           "email": null,
           "github": null

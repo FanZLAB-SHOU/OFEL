@@ -475,3 +475,64 @@ body { font-size: 18px; }
 /* Homepage fade-in as content scrolls into view (only when JavaScript runs and motion is allowed). */
 .reveal-ready [data-reveal] { opacity: 0; translate: 0 28px; transition: opacity .9s cubic-bezier(.2, .65, .3, 1), translate .9s cubic-bezier(.2, .65, .3, 1); transition-delay: var(--reveal-delay, 0s); }
 .reveal-ready [data-reveal].is-revealed { opacity: 1; translate: none; }
+/* Discover the lab: dark section with tall illustrated cards and floating mockups. */
+.home-gateways { background: #050b14; color: white; padding-block: 104px 116px; }
+.gateway-heading { display: block; margin-bottom: 56px; }
+.gateway-heading .eyebrow { font-size: 12px; color: #8ec5ef; }
+.gateway-heading h2 { font: 500 clamp(36px, 4.4vw, 60px)/1.06 Arial, Helvetica, sans-serif; letter-spacing: -.04em; color: white; margin-top: 16px; }
+.gateway-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+.gateway-card, .gateway-card:nth-child(n), .gateway-card:hover, .gateway-card:nth-child(n):hover { position: relative; display: flex; flex-direction: column; min-height: 580px; padding: 26px 24px 24px; border: 0; border-radius: 6px; overflow: hidden; isolation: isolate; background: #0b1a2b; color: white; }
+.gateway-bg { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; filter: saturate(.95) brightness(.82); transition: transform 1.2s cubic-bezier(.2, .65, .3, 1); }
+.gateway-card::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(3, 10, 20, .72) 0%, rgba(3, 10, 20, .12) 38%, rgba(3, 10, 20, .08) 70%, rgba(3, 10, 20, .45) 100%); }
+.gateway-copy h3 { font: 500 27px/1.15 Arial, Helvetica, sans-serif; letter-spacing: -.025em; margin: 0; }
+.gateway-copy p { font-size: 14px; line-height: 1.55; margin-top: 10px; max-width: 290px; color: rgba(255, 255, 255, .86); }
+.gateway-visual { position: relative; flex: 1; display: grid; place-items: center; margin: 30px 0 46px; transition: transform .7s cubic-bezier(.2, .65, .3, 1); }
+.gateway-card:hover .gateway-visual, .gateway-card:focus-visible .gateway-visual { transform: scale(1.08); }
+.gateway-card:hover .gateway-bg, .gateway-card:focus-visible .gateway-bg { transform: scale(1.04); }
+.gateway-card:focus-visible { outline: 3px solid #8ec5ef; outline-offset: 4px; }
+.gateway-go { position: absolute; right: 20px; bottom: 20px; width: 40px; height: 40px; display: grid; place-items: center; border-radius: 50%; background: rgba(255, 255, 255, .14); color: white; backdrop-filter: blur(6px); transition: background .3s, color .3s; }
+.gateway-go .icon { width: 19px; height: 19px; }
+.gateway-card:hover .gateway-go { background: white; color: #0b1a2b; }
+/* Mockup parts */
+.mock-panel { position: relative; z-index: 1; width: min(100%, 232px); display: flex; flex-direction: column; gap: 8px; padding: 15px; border-radius: 9px; background: #fbfcfd; color: #14273d; font-size: 11px; box-shadow: 0 22px 44px rgba(0, 0, 0, .38); }
+.mock-label { font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #4a6782; }
+.mock-panel strong { font: 600 13px/1.35 Georgia, serif; }
+.mock-panel small { font-size: 10px; color: #5d7186; }
+.mock-lines { display: grid; gap: 5px; margin-top: 2px; }
+.mock-lines i { display: block; height: 5px; border-radius: 3px; background: #e3ebf2; }
+.mock-lines i:nth-child(2) { width: 82%; }
+.mock-lines i:nth-child(3) { width: 58%; }
+.mock-chip { position: absolute; z-index: 2; padding: 7px 12px; border-radius: 999px; background: white; color: #14273d; font-size: 10.5px; font-weight: 600; white-space: nowrap; box-shadow: 0 12px 26px rgba(0, 0, 0, .32); }
+.mock-chip-a { left: -2%; top: 14%; }
+.mock-chip-b { right: -2%; bottom: 12%; }
+.mock-avatars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.mock-avatar { aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; font-size: 10px; font-weight: 700; color: white; background: hsl(calc(196 + var(--i) * 5) 52% calc(28% + var(--i) * 4%)); }
+.mock-stack { position: relative; width: min(100%, 232px); height: 252px; }
+.mock-news { position: absolute; left: 0; right: 0; top: calc(var(--i) * 78px); display: flex; flex-direction: column; gap: 4px; padding: 12px 13px; border-radius: 9px; background: white; color: #14273d; box-shadow: 0 16px 34px rgba(0, 0, 0, .34); translate: calc(var(--i) * 10px - 10px) 0; }
+.mock-news strong { font: 600 11.5px/1.35 Georgia, serif; }
+.mock-news small { font-size: 9.5px; color: #5d7186; }
+.mock-tag { font-size: 9px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #0c6fa8; }
+.mock-field { display: flex; gap: 8px; padding-bottom: 6px; border-bottom: 1px solid #e3ebf2; font-size: 10.5px; white-space: nowrap; overflow: hidden; }
+.mock-field em { width: 46px; flex-shrink: 0; font-style: normal; color: #7a8ea2; }
+.mock-send { align-self: flex-end; margin-top: 4px; padding: 5px 13px; border-radius: 999px; background: #0b3a63; color: white; font-size: 10px; font-weight: 600; }
+.mock-pills { position: absolute; z-index: 2; left: 50%; bottom: 2%; width: 112%; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; translate: -50% 0; }
+.mock-pills span { padding: 6px 10px; border-radius: 999px; background: rgba(255, 255, 255, .94); color: #14273d; font-size: 10px; font-weight: 600; box-shadow: 0 8px 18px rgba(0, 0, 0, .25); }
+.mock-mail { margin-bottom: 38px; }
+@media (max-width: 1100px) {
+  .gateway-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .gateway-card, .gateway-card:nth-child(n), .gateway-card:hover, .gateway-card:nth-child(n):hover { min-height: 540px; }
+}
+@media (max-width: 700px) {
+  .home-gateways { padding-block: 68px 76px; }
+  .gateway-heading { margin-bottom: 32px; }
+  .gateway-heading h2 { font-size: 34px; }
+  .gateway-heading h2 br { display: none; }
+  .gateway-grid { display: flex; gap: 14px; margin-inline: -20px; padding: 0 20px 6px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+  .gateway-grid::-webkit-scrollbar { display: none; }
+  .gateway-card, .gateway-card:nth-child(n), .gateway-card:hover, .gateway-card:nth-child(n):hover { flex: 0 0 84%; min-height: 520px; scroll-snap-align: start; padding: 22px 20px 20px; }
+  .gateway-copy h3 { font-size: 25px; }
+  .gateway-copy p { max-width: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gateway-visual, .gateway-bg { transition: none; }
+}

@@ -166,8 +166,8 @@ function initResearchReel() {
     pause.setAttribute('aria-pressed', String(paused));
     track.classList.toggle('is-paused', paused);
   }
-  // One loop moves the strip by two groups (half its width), so the duration keeps the speed constant at any screen size.
-  function setDuration() { marquee.style.setProperty('--reel-duration', `${(firstGroup.offsetWidth * 2) / speed}s`); }
+  // One loop moves the strip by one group (half its width), so the duration keeps the speed constant at any screen size.
+  function setDuration() { marquee.style.setProperty('--reel-duration', `${firstGroup.offsetWidth / speed}s`); }
   pause.addEventListener('click', () => { paused = !paused; updatePause(); });
   motion.addEventListener('change', event => { section.querySelector('.reel-controls').hidden = event.matches; });
   if ('ResizeObserver' in window) new ResizeObserver(setDuration).observe(firstGroup);

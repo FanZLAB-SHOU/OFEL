@@ -345,6 +345,47 @@
         "label": "Original seminar announcement (English and Chinese)",
         "url": "https://mp.weixin.qq.com/s/m7SY2mmB6LFyVrjMTIpDfw"
       }
+    },
+    {
+      "slug": "2026-04-mse-course",
+      "date": "2026-04-08",
+      "title": "2026 SHOU Fisheries Management Strategy Evaluation Course",
+      "summary": "13–15 April 2026 · 09:30–17:00 · Professor André Punt, University of Washington.",
+      "image": "assets/news/2026-04-mse-course/poster-en.png",
+      "image_alt": "Announcement poster for the 2026 SHOU Fisheries Management Strategy Evaluation course taught by Professor André Punt.",
+      "image_caption": "Course announcement poster.",
+      "image_position": "50% 50%",
+      "image_aspect_ratio": "3 / 4",
+      "body": [
+        {
+          "details": [
+            {
+              "label": "Dates",
+              "value": "13–15 April 2026"
+            },
+            {
+              "label": "Time",
+              "value": "09:30–17:00 (Shanghai time)"
+            },
+            {
+              "label": "Location",
+              "value": "Monday, 13 April: Room 4401; Tuesday–Wednesday, 14–15 April: Room 4404"
+            },
+            {
+              "label": "Instructor",
+              "value": "Professor André Punt, University of Washington"
+            }
+          ]
+        },
+        {
+          "figure": "assets/news/2026-04-mse-course/poster-zh.png",
+          "width": 1080,
+          "height": 1440,
+          "alt": "Chinese-language poster with the course schedule, classrooms, and instructor André Punt.",
+          "caption": "Chinese-language course announcement.",
+          "credit": "Original poster supplied by the laboratory."
+        }
+      ]
     }
   ]
 }

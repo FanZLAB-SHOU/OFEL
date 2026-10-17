@@ -109,6 +109,61 @@
         "url": "https://hyxy.shou.edu.cn/2026/0819/c7379a354829/page.htm"
       },
       "note": "Figure reproduced under the article's CC BY 4.0 licence with credit."
+    },
+    {
+      "slug": "2026-04-el-nino-jumbo-squid",
+      "date": "2026-04-20",
+      "title": "Mingfeng Jiang shows how strong El Niño events reshape jumbo squid migration and spawning",
+      "summary": "Machine learning applied to 28 years of fishery and ocean data shows that strong El Niño events bring jumbo squid spawning forward and shorten their migrations, driven mainly by sea surface temperature.",
+      "image": "assets/research/climate-ecosystems.webp",
+      "image_position": "62% 72%",
+      "people": [
+        "Mingfeng Jiang",
+        "Sisong Dong",
+        "Fan Zhang"
+      ],
+      "body": [
+        "OFEL PhD student Mingfeng Jiang has shown how the El Niño–Southern Oscillation (ENSO) reshapes the spawning migration of jumbo squid (Dosidicus gigas) in the southeast Pacific. Using ensemble machine learning on data from 1997 to 2024, the study is the first systematic analysis of how the species' migration and reproductive timing respond to ENSO events, and it identifies sea surface temperature as the main driver of the changes. The paper is published in Communications Earth & Environment.",
+        {
+          "heading": "A sensitive species in a changing ocean"
+        },
+        "Jumbo squid account for more than a quarter of the world's cephalopod catch. They are the main target of the high-seas squid jigging fishery in the southeast Pacific and a key link in the ocean food web. As short-lived, cold-blooded migrants, they respond strongly to changes in the ocean, yet how their migration and spawning are regulated had not been worked out quantitatively.",
+        {
+          "heading": "How the study worked"
+        },
+        "Mingfeng and colleagues combined biological measurements from the fishery (mantle length, body weight and gonad development) with ocean data on temperature, dissolved oxygen and chlorophyll at different depths. They first separated the squid into small, medium and large groups, then focused on the large group. A stacking ensemble of five machine-learning models predicted where these squid occur through the year, and an interpretation method (SHAP) showed which environmental factors drove the predictions under each ENSO phase.",
+        {
+          "figure": "assets/news/2026-04-squid-enso/fig1-technology-roadmap.png",
+          "width": 1950,
+          "height": 991,
+          "alt": "Technology roadmap: biological data (mantle length, body weight, gonad level and weight) and environmental data (vertical temperature, dissolved oxygen and chlorophyll) feed a subpopulation classification and a stacking ensemble model (random forest, XGBoost, LightGBM, SVM and neural network, combined by glmnet), whose predictions are analysed for ENSO-specific migration distances and environmental mechanisms.",
+          "caption": "Technology roadmap of the study, from biological and environmental data through subpopulation classification and a stacking ensemble model to ENSO-specific migration distances and their environmental drivers.",
+          "credit": "Figure 1 from Jiang et al. (2026), Communications Earth & Environment. Licensed under CC BY-NC-ND 4.0; reproduced without changes."
+        },
+        {
+          "heading": "What changes in an El Niño year"
+        },
+        "Jumbo squid follow a clear annual migration cycle, and ENSO alters it. During strong El Niño periods the spawning peak comes about a month earlier, migration distances shrink to roughly 50–70% of those in La Niña years, and migration routes shift south-eastward toward the coast.",
+        "Two environmental factors stood out. Surface dissolved oxygen is the main factor limiting where the squid aggregate, while sea surface temperature drives the change in migration during El Niño. The large group's preference for cooler water provides the physiological basis for its response to ENSO-related temperature swings.",
+        {
+          "heading": "Why it matters"
+        },
+        "The team suggests that warmer-than-normal surface water in El Niño years, by bringing spawning forward, may lower egg hatching success and cause young squid to mature early, eventually reducing the population's biomass. Because extreme El Niño events are expected to become longer and more frequent as the climate warms, these results help anticipate future changes in a commercially important species and support a shift from static to dynamic management of high-seas cephalopod fisheries.",
+        "Mingfeng Jiang is the first author. Professor Xinjun Chen and Professor Fan Zhang are co-corresponding authors."
+      ],
+      "paper": {
+        "title": "Strong El Niño events reshapes migration routes and reproductive phenology of jumbo squid (Dosidicus gigas)",
+        "journal": "Communications Earth & Environment",
+        "url": "https://www.nature.com/articles/s43247-026-03509-9",
+        "citation": "Jiang, M., Dong, S., Liu, B., Zhang, F. & Chen, X. (2026)",
+        "issue": "Volume 7, Article 514 · Open access · published 15 April 2026",
+        "logo": "assets/news/2026-04-squid-enso/cee-logo.svg"
+      },
+      "source": {
+        "label": "Original news (in Chinese), College of Marine Living Resource Sciences and Management, Shanghai Ocean University",
+        "url": "https://hyxy.shou.edu.cn/2026/0420/c7379a352061/page.htm"
+      },
+      "note": "Figure reproduced unchanged under the article's CC BY-NC-ND 4.0 licence with credit."
     }
   ]
 }

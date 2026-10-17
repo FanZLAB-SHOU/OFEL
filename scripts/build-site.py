@@ -115,7 +115,10 @@ def post_page(post):
     if paper and paper.get('cover'):
         cover = f'<img class="news-paper-cover" src="{esc(paper["cover"])}" alt="{esc(paper["journal"])} cover" width="240" height="315">'
     elif paper and paper.get('logo'):
-        cover = f'<span class="news-paper-logo"><img src="{esc(paper["logo"])}" alt="{esc(paper["journal"])}" width="316" height="32"></span>'
+        import re as _re
+        box = _re.search(r'viewBox="0 0 ([\d.]+) ([\d.]+)"', (ROOT / paper['logo']).read_text())
+        lw, lh = (box.group(1), box.group(2)) if box else ('300', '32')
+        cover = f'<span class="news-paper-logo"><img src="{esc(paper["logo"])}" alt="{esc(paper["journal"])}" width="{lw}" height="{lh}"></span>'
     else:
         cover = icon('paper')
     paper_html = (f'<div class="news-paper"><span class="eyebrow">Read the paper</span>'

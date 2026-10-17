@@ -193,5 +193,13 @@ function initReveal() {
   check();
 }
 initReveal();
+
+// Homepage header floats over the hero; give it a background once the page scrolls.
+if (document.body.dataset.page === 'index') {
+  const header = document.querySelector('.site-header');
+  const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 24);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}
 initResearchReel();
 document.querySelector('#copyright-year').textContent = new Date().getFullYear();

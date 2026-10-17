@@ -588,3 +588,39 @@ body { font-size: 18px; }
   .profile-pager .pager-dir { font-size: 15px; }
   .profile-pager .pager-name { font-size: 14px; }
 }
+/* Profile Previous / Next tile: solid blue with a white serif OFEL, like a university seal. */
+.profile-pager .pager-badge { background: #0b4a86; border-color: #0b4a86; color: white; font: 700 28px/1 Georgia, "Times New Roman", serif; letter-spacing: .01em; }
+.profile-pager a:hover .pager-badge { background: #083a6b; border-color: #083a6b; box-shadow: 0 8px 20px rgba(8, 58, 107, .25); }
+@media (max-width: 700px) { .profile-pager .pager-badge { font-size: 17px; } }
+
+/* Homepage: immersive dark theme. The header floats over the hero wallpaper in white,
+   gains a deep-blue glass background once the page scrolls, and the footer turns dark. */
+body[data-page="index"] { background: #050b14; }
+body[data-page="index"] .site-header { position: fixed; inset: 0 0 auto; background: transparent; border-bottom-color: transparent; backdrop-filter: none; transition: background .35s, border-color .35s, backdrop-filter .35s; }
+body[data-page="index"] .site-header.is-scrolled { background: rgba(4, 16, 32, .84); border-bottom-color: rgba(255, 255, 255, .08); backdrop-filter: blur(14px); }
+body[data-page="index"] .brand, body[data-page="index"] .main-nav > a, body[data-page="index"] .nav-dropdown-toggle { color: white; }
+body[data-page="index"] .brand-dot { color: #7cc3f5; }
+body[data-page="index"] .brand small { color: rgba(225, 240, 252, .85); }
+body[data-page="index"] .main-nav > a:not(.nav-contact)::after { background: #7cc3f5; }
+body[data-page="index"] .nav-dropdown-toggle:hover { color: #9fd0f2; }
+body[data-page="index"] .shou-link { border-right-color: rgba(255, 255, 255, .25); }
+body[data-page="index"] .menu-toggle { border-color: rgba(255, 255, 255, .4); }
+body[data-page="index"] .menu-toggle span { background: white; }
+body[data-page="index"] .home-hero { min-height: 100svh; }
+body[data-page="index"] .home-hero-copy { padding-top: calc(var(--header-height) + 60px); }
+@media (max-width: 700px) {
+  /* The opened mobile menu is a white panel, so its links stay dark. */
+  body[data-page="index"] .main-nav > a, body[data-page="index"] .nav-dropdown-toggle { color: var(--ink); }
+  body[data-page="index"] .site-header:has(.main-nav.is-open) { background: rgba(4, 16, 32, .94); }
+  body[data-page="index"] .home-hero { min-height: 92svh; }
+}
+body[data-page="index"] .site-footer { background: #030912; color: rgba(225, 240, 252, .78); border-top: 1px solid rgba(255, 255, 255, .06); }
+body[data-page="index"] .footer-brand { color: white; }
+body[data-page="index"] .footer-brand > span { color: #7cc3f5; }
+body[data-page="index"] .footer-brand small { border-left-color: rgba(255, 255, 255, .2); }
+body[data-page="index"] .site-footer a { color: rgba(225, 240, 252, .85); }
+body[data-page="index"] .site-footer a:hover { color: white; }
+body[data-page="index"] .footer-top > a:last-child .icon { color: #7cc3f5; }
+body[data-page="index"] .footer-bottom { border-top-color: rgba(255, 255, 255, .1); color: rgba(225, 240, 252, .6); }
+/* The SHOU emblem is navy line work, so on the dark homepage it sits on a white disc. */
+body[data-page="index"] .shou-link img { padding: 2px; border-radius: 50%; background: white; }

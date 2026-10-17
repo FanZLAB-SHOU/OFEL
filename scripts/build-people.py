@@ -108,8 +108,9 @@ def contact(member, kind):
         value = href = checked_github(member)
         description = f'{member["name"]} on GitHub (opens in a new tab)'
         extra = ' target="_blank" rel="noopener noreferrer"'
+    mark = icon(member.get('website_icon', 'globe')) if kind == 'website' else icons[kind]
     return (f'<a class="member-link" href="{esc(href)}"{extra} '
-            f'aria-label="{esc(description)}" title="{esc(value)}">{icons[kind]}</a>')
+            f'aria-label="{esc(description)}" title="{esc(value)}">{mark}</a>')
 
 
 def photo(member, cls, width, height):
@@ -207,7 +208,7 @@ for n, person in enumerate(people):
                      '<span class="sr-only"> (opens in a new tab)</span></a>')
     if person.get('website'):
         links.append(f'<a class="text-link" href="{esc(checked_website(person))}" target="_blank" rel="noopener noreferrer">'
-                     + icon('globe') + esc(person.get('website_label', 'Website'))
+                     + icon(person.get('website_icon', 'globe')) + esc(person.get('website_label', 'Website'))
                      + '<span class="sr-only"> (opens in a new tab)</span></a>')
     links_html = f'<div class="pi-links">{"".join(links)}</div>' if links else ''
     bio = ''.join(f'<p>{esc(par)}</p>' for par in person['bio'].split('\n\n')) if person.get('bio') else \

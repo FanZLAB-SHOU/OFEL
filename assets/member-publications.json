@@ -816,6 +816,40 @@
       ]
     },
     {
+      "doi": "10.1093/icesjms/fsad163",
+      "title": "Evaluating the impacts of environmental and fishery variability on the distribution of bigeye tuna in the Pacific Ocean",
+      "journal": "ICES Journal of Marine Science",
+      "year": 2023,
+      "date": "2023-12",
+      "volume": "80",
+      "issue": "10",
+      "pages": "2642-2656",
+      "article_number": "",
+      "authors": [
+        {
+          "given": "Hongyu",
+          "family": "Lin"
+        },
+        {
+          "given": "J",
+          "family": "Wang"
+        },
+        {
+          "given": "J",
+          "family": "Zhu"
+        },
+        {
+          "given": "X",
+          "family": "Chen"
+        }
+      ],
+      "source": "https://doi.org/10.1093/icesjms/fsad163",
+      "topics": [
+        "ecosystems"
+      ],
+      "note": "Publisher lists authors by initials only; the user confirmed in chat on 2026-10-17 that H Lin is Hongyu Lin. Co-author initials kept as published."
+    },
+    {
       "doi": "10.1016/j.ecolind.2022.109284",
       "title": "A comparative analysis of the ecological impacts of Chinese tuna longline fishery on the Eastern Pacific Ocean",
       "journal": "Ecological Indicators",

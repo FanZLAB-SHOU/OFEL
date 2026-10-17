@@ -550,3 +550,24 @@ body { font-size: 18px; }
   .home-cta h2 br { display: none; }
   .cta-row { flex-direction: column; align-items: flex-start; gap: 22px; margin-top: 32px; }
 }
+/* Full-screen hero: deep-ocean line-art wallpaper with the lab name centred. */
+.home-hero { position: relative; display: grid; place-items: center; min-height: calc(100svh - var(--header-height)); overflow: hidden; background: #04142a; color: white; text-align: center; isolation: isolate; }
+.home-hero-art { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: 45% 50%; }
+.home-hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(ellipse 55% 38% at 50% 46%, rgba(2, 12, 28, .55), transparent 72%), linear-gradient(180deg, transparent 72%, var(--deep) 100%); }
+.home-hero-copy { padding-block: 80px 120px; }
+.home-hero .eyebrow { color: #9fd0f2; font-size: 13px; letter-spacing: .16em; }
+.home-hero h1 { font: 600 clamp(46px, 6.6vw, 100px)/1.03 Arial, Helvetica, sans-serif; letter-spacing: -.035em; margin-top: 22px; text-shadow: 0 2px 34px rgba(0, 0, 0, .5); }
+.home-hero-tagline { margin-top: 26px; font-size: 19px; color: rgba(225, 240, 252, .88); }
+.home-hero-next { position: absolute; left: 50%; bottom: 26px; display: grid; place-items: center; width: 46px; height: 46px; border: 1px solid rgba(255, 255, 255, .35); border-radius: 50%; color: white; translate: -50% 0; animation: hero-bob 2.4s ease-in-out infinite; }
+.home-hero-next .icon { width: 22px; height: 22px; }
+.home-hero-next:hover { background: rgba(255, 255, 255, .12); }
+@keyframes hero-bob { 50% { transform: translateY(6px); } }
+.home-showcase { padding-top: 64px; }
+@media (max-width: 700px) {
+  .home-hero { min-height: calc(88svh - var(--header-height)); }
+  .home-hero-art { object-position: 32% 50%; }
+  .home-hero h1 { font-size: 42px; }
+  .home-hero-tagline { font-size: 16px; }
+  .home-showcase { padding-top: 44px; }
+}
+@media (prefers-reduced-motion: reduce) { .home-hero-next { animation: none; } }

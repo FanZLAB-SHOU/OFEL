@@ -150,10 +150,7 @@ def post_page(post):
     )
 
 
-# Homepage "Discover the lab" cards: illustration background, copy, and a floating mockup built from lab data.
-people = json.loads((ROOT / 'assets/people.json').read_text())
-members = [m for g in people['groups'] for m in g['members']]
-alumni_count = sum(len(c['members']) for c in people.get('alumni', []))
+# Homepage navigation cards combine cover images with short content previews.
 _spec = importlib.util.spec_from_file_location('publications', ROOT / 'scripts/build-publications.py')
 publications = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(publications)
@@ -166,10 +163,6 @@ def short(text, limit):
     return text if len(text) <= limit else text[:limit].rsplit(' ', 1)[0] + '…'
 
 
-def initials(name):
-    return ''.join(part[0] for part in name.split()[:2]).upper()
-
-
 latest_news = posts[0] if posts else None
 news_background = latest_news.get('image') if latest_news else None
 news_visual = (
@@ -177,18 +170,15 @@ news_visual = (
     f'<span class="mock-label">Latest news · {esc(pretty_date(latest_news["date"]))}</span>'
     f'<strong>{esc(latest_news["title"])}</strong></div>'
 ) if latest_news else ''
-avatars = ''.join(f'<span class="mock-avatar" style="--i:{n}">{esc(initials(m["name"]))}</span>' for n, m in enumerate(members[:8]))
 latest = recent[0]
 latest_authors = ', '.join(f"{a['given'][0]}. {a['family']}" for a in latest['authors'][:3]) + (' et al.' if len(latest['authors']) > 3 else '')
 journal_chips = ''.join(f'<span>{esc(j)}</span>' for j in list(dict.fromkeys(p['journal'] for p in recent))[:3])
 gateways = [
     ('news/index.html', 'News', 'Lab updates, new papers, and life in the laboratory.', news_background or 'assets/research/climate-ecosystems.webp', latest_news.get('image_position', '50% 50%') if latest_news else '30% 50%', 'book',
      news_visual),
-    ('members/index.html', 'People', 'Meet the faculty, postdoctoral researchers, and students behind our work.', 'assets/research/adaptive-management.webp', '45% 60%', 'people',
-     f'<div class="mock-panel mock-team"><span class="mock-label">Our team</span><div class="mock-avatars">{avatars}</div>'
-     f'<div class="mock-lines"><i></i><i></i></div></div>'
-     f'<span class="mock-chip mock-chip-a">{len(members)} current members</span>'
-     f'<span class="mock-chip mock-chip-b">{alumni_count} alumni</span>'),
+    ('members/index.html', 'People', 'Meet the faculty, postdoctoral researchers, and students behind our work.', 'assets/news/2025-07-iccat/meeting.jpg', '48% 60%', 'people',
+     '<div class="mock-panel mock-paper" style="align-self: end"><span class="mock-label">Our community</span>'
+     '<strong>Faculty, postdocs &amp; graduate students</strong></div>'),
     ('publications.html', 'Publications', 'Peer-reviewed research on stock assessment, ecosystems, vessels, and fish biology.', 'assets/research/population-assessment.webp', '40% 50%', 'paper',
      f'<div class="mock-panel mock-paper"><span class="mock-label">{esc(latest["journal"])} · {latest["year"]}</span>'
      f'<strong>{italicize(esc(short(latest["title"], 80)))}</strong><small>{esc(latest_authors)}</small>'

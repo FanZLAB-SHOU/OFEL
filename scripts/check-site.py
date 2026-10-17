@@ -39,7 +39,7 @@ class Page(HTMLParser):
             self.news_dates.append(attrs['datetime'])
         if attrs.get('id'):
             self.ids.add(attrs['id'])
-        self.links.extend(attrs[key] for key in ('href', 'src') if attrs.get(key))
+        self.links.extend(attrs[key] for key in ('href', 'src', 'poster') if attrs.get(key))
         if attrs.get('srcset'):
             self.links.extend(entry.strip().split()[0] for entry in attrs['srcset'].split(','))
 

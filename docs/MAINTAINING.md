@@ -20,6 +20,10 @@ python3 -m http.server 8765 --bind 127.0.0.1
 
 ## 内容在哪里
 
+### 首页宣传片
+
+首页底部的 Explore 按钮跳转到页脚上方的内嵌播放器并请求播放。源模板在 `templates/index.html`，视频为 `assets/video/ofel-film-1080p.mp4`，封面为 `assets/video/ofel-film-poster.webp`。保持 `controls`、`playsinline` 和 `preload="none"`，不添加自动播放，避免访客打开首页就下载整段视频。替换 MP4 时使用 H.264 / AAC 和 fast-start（`moov` 在文件开头），并重新检查文件大小及播放。
+
 ### 研究方向
 
 编辑 [`assets/research.json`](../assets/research.json)。`primary` 为 `true` 的三个方向是核心方向，其余两个为延伸研究。五个方向都会出现在首页研究轮播和研究页面中。

@@ -210,4 +210,21 @@ if (document.body.dataset.page === 'index') {
   onScroll();
 }
 initResearchReel();
+
+function initLabFilm() {
+  const player = document.querySelector('.home-film-player');
+  const trigger = document.querySelector('[data-play-film]');
+  if (!player || !trigger) return;
+  // Keep the native anchor scroll and controls; request media only after a click.
+  trigger.addEventListener('click', event => {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
+    const playback = player.play();
+    // If the browser declines playback, its native play control remains available.
+    if (playback) playback.catch(() => {});
+  });
+  player.addEventListener('error', () => {
+    document.querySelector('.home-film-error').hidden = false;
+  }, true);
+}
+initLabFilm();
 document.querySelector('#copyright-year').textContent = new Date().getFullYear();

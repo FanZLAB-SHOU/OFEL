@@ -71,10 +71,12 @@
         {
           "name": "Hongyu Lin",
           "role": "PhD Student, Year 4",
-          "photo": null,
-          "email": null,
-          "github": null,
-          "bio": null
+          "photo": "assets/people/hongyu-lin.jpg",
+          "photo_alt": "A cat resting on a sofa, chosen by Hongyu Lin for his profile",
+          "email": "linbojun99@gmail.com",
+          "github": "https://github.com/Linbojun99",
+          "researchgate": "https://www.researchgate.net/profile/Hongyu-Lin-13",
+          "bio": "Hongyu Lin is a PhD student at Shanghai Ocean University working on fisheries stock assessment and spatiotemporal modelling. His research examines tuna population dynamics under climate variability and change, with particular attention to the El Niño–Southern Oscillation (ENSO). He also works on catch-per-unit-effort (CPUE) standardisation and management strategy evaluation.\n\nHis work spans the Pacific and Atlantic oceans, including waters managed by multiple regional fisheries management organisations. He received China Scholarship Council (CSC) funding for a one-year joint doctoral research placement at the University of Washington in Seattle, USA."
         },
         {
           "name": "Mingfeng Jiang",

@@ -705,3 +705,50 @@ body[data-page="index"] .shou-link img { padding: 2px; border-radius: 50%; backg
 .news-paper strong em { display: inline; margin: 0; font-size: inherit; color: inherit; font-style: italic; }
 .blog-post-placeholder { display: grid; place-items: center; aspect-ratio: 3 / 2; border-radius: 4px; background: radial-gradient(ellipse at 50% 30%, #12406e, #061e3c 75%); }
 .blog-post-link .blog-post-placeholder img { width: 64px; height: 64px; aspect-ratio: 1; opacity: .85; }
+
+/* Resources: category navigation and software from the laboratory. */
+.resources { background: #f0f6fc; min-height: 65vh; }
+.resource-tabs { display: flex; flex-wrap: wrap; gap: 12px 30px; border-bottom: 1px solid var(--line); margin: 0 0 42px; }
+.resource-tabs a { padding: 0 0 14px; color: var(--muted); font-size: 16px; font-weight: 600; border-bottom: 2px solid transparent; }
+.resource-tabs a[aria-current="page"], .resource-tabs a:hover { color: var(--teal); border-bottom-color: var(--teal); }
+.resource-empty { color: var(--muted); font-size: 17px; padding-block: 8px 64px; }
+.software-feature { display: grid; grid-template-columns: minmax(180px, .65fr) minmax(0, 1.55fr); gap: 50px; align-items: start; background: white; border: 1px solid var(--line); border-radius: 8px; padding: 40px; }
+.software-logo { display: block; padding: 20px 0; }
+.software-logo img { width: 100%; height: auto; max-width: 290px; margin-inline: auto; }
+.software-copy .eyebrow { color: var(--teal); font-size: 12px; }
+.software-copy h2 { font-size: 52px; margin: 10px 0; }
+.software-copy > p { font-size: 17px; line-height: 1.8; color: var(--muted); margin-top: 16px; }
+.software-copy > .software-subtitle { color: var(--ink); font-size: 21px; line-height: 1.5; margin-top: 0; }
+.software-links { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 26px; margin-top: 26px; }
+.software-links .button { background: var(--deep); color: white; font-size: 14px; border-radius: 3px; }
+.software-links .button:hover { background: var(--teal); }
+.software-links .text-link { font-size: 14px; }
+.software-copy > .software-citation { font-size: 13px; padding-top: 22px; margin-top: 26px; border-top: 1px solid var(--line); }
+.software-citation a { color: var(--teal); display: inline-flex; align-items: center; gap: 6px; }
+.software-citation .icon { width: 14px; height: 14px; }
+@media (min-width: 701px) and (max-width: 1100px) {
+  .header-inner { gap: 16px; }
+  .header-brands { gap: 10px; }
+  .shou-link { padding-right: 10px; }
+  .brand { gap: 8px; }
+  .brand small { display: none; }
+  .main-nav { gap: 16px; }
+  .main-nav > a, .nav-dropdown-toggle { font-size: 14px; }
+  .software-feature { padding: 30px; gap: 30px; }
+}
+@media (min-width: 701px) and (max-width: 800px) {
+  .main-nav { gap: 10px; }
+  .main-nav > a, .nav-dropdown-toggle { font-size: 13px; }
+  .nav-dropdown-toggle { gap: 5px; }
+  .brand strong { font-size: 30px; }
+}
+@media (max-width: 700px) {
+  .resource-tabs { gap: 12px 24px; margin-bottom: 28px; }
+  .resource-tabs a { font-size: 15px; }
+  .software-feature { grid-template-columns: 1fr; gap: 16px; padding: 24px; }
+  .software-logo { padding: 0; }
+  .software-logo img { max-width: 190px; }
+  .software-copy h2 { font-size: 42px; }
+  .software-copy > .software-subtitle { font-size: 19px; }
+  .software-copy > p { font-size: 16px; }
+}

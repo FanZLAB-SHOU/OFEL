@@ -63,6 +63,10 @@ Fan Zhang 主页的主体信息在 [`templates/members/fan-zhang.html`](../templ
 首页 Publications 入口按当前展示论文的 DOI 匹配新闻中 `paper.cover` 的期刊封面，保留期刊标识的展示空间。没有对应封面时使用研究插图作为背景。
 当前固定展示 Runze Wang 等发表于 *Fish and Fisheries* 的论文（`10.1111/faf.70077`）；如需更换精选论文，在 `scripts/build-site.py` 的首页论文选择处修改 DOI。
 
+### Resources
+
+顶部 Resources 菜单包含 Reference Materials 和 Software，源模板在 `templates/resources/`，生成页面在 `resources/`。Reference Materials 暂留空；Software 展示 ALSCL 简介、在线文档与仓库链接。ALSCL logo 取自其官方仓库，存放在 `assets/software/alscl-logo.png`。
+
 ## 目录结构
 
 ```text
@@ -74,6 +78,7 @@ OFEL/
 ├── contact.html               联系与加入
 ├── members/                   成员、校友与个人主页
 ├── news/                      新闻列表与文章
+├── resources/                 参考资料与软件
 ├── assets/                    JSON 数据、照片、插图、BibTeX
 │   ├── people/                成员照片
 │   └── news/                  新闻封面、图表与期刊封面

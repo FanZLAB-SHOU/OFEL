@@ -68,6 +68,7 @@ OFEL studies fish population dynamics, fishing activity, and marine life to info
 | **04** | [Publications / 论文](https://fanzhang-lab-shou.github.io/OFEL/publications.html) | 实验室与 Fan Zhang 论文集合、主题筛选、BibTeX |
 | **05** | [News / 动态](https://fanzhang-lab-shou.github.io/OFEL/news/index.html) | 研究进展、成员消息与学术活动 |
 | **06** | [Contact & Join Us / 联系与加入](https://fanzhang-lab-shou.github.io/OFEL/contact.html) | 合作、访问与研究生培养 |
+| **07** | [Resources / 资源](https://fanzhang-lab-shou.github.io/OFEL/resources/software.html) | ALSCL 软件、在线文档与参考资料入口 |
 
 ## Website · 网站预览
 

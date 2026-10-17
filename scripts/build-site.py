@@ -25,7 +25,7 @@ PAGES = {
     'publications': ('Publications | OFEL', 'Selected lab publications and publications co-authored by Fan Zhang, with research-topic filters and citation downloads.', 'publications'),
     'blog': ('News | OFEL', 'News, research updates and life in the Oceanic Fisheries Ecosystem Laboratory.', 'news'),
     'contact': ('Contact & Join Us | OFEL', 'Contact the Oceanic Fisheries Ecosystem Laboratory at Shanghai Ocean University about research, visits and collaboration.', 'info'),
-    'reference-materials': ('Reference Materials | OFEL', 'Reference materials from the Oceanic Fisheries Ecosystem Laboratory.', 'resources'),
+    'reference-materials': ('Reference Materials | OFEL', 'FishBase, FAO, and the five tuna regional fisheries management organizations: official resources for fish biology, fisheries data, and management.', 'resources'),
     'software': ('Software | OFEL', 'ALSCL: R and TMB tools for fisheries stock assessment using survey length data.', 'resources'),
 }
 
@@ -204,7 +204,28 @@ gateway_cards = '\n'.join(
     for n, (href, title, desc, img, pos, ic, visual) in enumerate(gateways)
 )
 
+def reference_card(item, professional=False):
+    kind = ' reference-card-featured' if professional else ''
+    logo_kind = ' reference-logo-dark' if item.get('dark_logo') else ''
+    heading = 'h3' if professional else 'h4'
+    return (
+        f'<a class="reference-card{kind}" href="{esc(item["url"])}" target="_blank" rel="noopener noreferrer">'
+        f'<div class="reference-logo{logo_kind}"><img src="{esc(item["image"])}" alt="" loading="lazy"></div>'
+        '<div class="reference-card-content">'
+        f'<span class="reference-scope">{esc(item["scope"])}</span>'
+        f'<{heading}>{esc(item["name"])}</{heading}>'
+        f'<p class="reference-full-name">{esc(item["title"])}</p>'
+        f'<p class="reference-description">{esc(item["description"])}</p>'
+        f'<div class="reference-card-footer"><span>{esc(item["domain"])}</span>'
+        f'<span class="reference-card-arrow" aria-hidden="true">{icon("right")}</span></div>'
+        '<span class="sr-only"> (opens in a new tab)</span></div></a>'
+    )
+
+
+reference_materials = json.loads((ROOT / 'assets/reference-materials.json').read_text())
 tokens = {
+    '{{professional_links}}': '\n'.join(reference_card(item, True) for item in reference_materials['professional_links']),
+    '{{international_organizations}}': '\n'.join(reference_card(item) for item in reference_materials['international_organizations']),
     '{{gateway_cards}}': gateway_cards,
     '{{blog_posts}}': blog_posts,
     '{{research_carousel}}': carousel,

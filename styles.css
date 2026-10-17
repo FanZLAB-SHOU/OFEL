@@ -712,6 +712,71 @@ body[data-page="index"] .shou-link img { padding: 2px; border-radius: 50%; backg
 .resource-tabs a { padding: 0 0 14px; color: var(--muted); font-size: 16px; font-weight: 600; border-bottom: 2px solid transparent; }
 .resource-tabs a[aria-current="page"], .resource-tabs a:hover { color: var(--teal); border-bottom-color: var(--teal); }
 .resource-empty { color: var(--muted); font-size: 17px; padding-block: 8px 64px; }
+/* Reference library: official marks, short descriptions, and whole-card links. */
+.reference-page { background: linear-gradient(180deg, #f0f6fc 0, #f7fafd 480px, #f0f6fc 100%); }
+.reference-page .page-heading { max-width: 900px; }
+.reference-section + .reference-section { margin-top: 62px; }
+.reference-section-heading { display: flex; align-items: flex-start; gap: 20px; margin-bottom: 26px; }
+.reference-index { color: var(--teal); border-top: 2px solid var(--teal); padding-top: 7px; min-width: 38px; font-size: 13px; font-weight: 700; letter-spacing: .08em; line-height: 1.5; }
+.reference-section-heading h2 { font-size: 36px; line-height: 1.2; }
+.reference-section-heading p { font-size: 16px; color: var(--muted); margin-top: 8px; line-height: 1.6; }
+.reference-subheading { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px 20px; padding-bottom: 17px; margin-bottom: 24px; border-bottom: 1px solid var(--line); }
+.reference-subheading h3 { font-size: 19px; font-weight: 600; }
+.reference-subheading > span { font-size: 14px; color: var(--muted); }
+.reference-card-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.reference-card { display: flex; flex-direction: column; min-width: 0; background: white; border: 1px solid #d6e3ef; border-radius: 14px; overflow: hidden; box-shadow: 0 5px 20px rgba(8, 44, 85, .035); transition: transform .2s, box-shadow .2s, border-color .2s; }
+.reference-card:hover { transform: translateY(-4px); border-color: #8cb5d8; box-shadow: 0 14px 30px rgba(8, 44, 85, .10); }
+.reference-card:focus-visible { outline: 3px solid var(--gold); outline-offset: 5px; border-color: var(--navy); }
+.reference-logo { display: flex; align-items: center; justify-content: center; height: 140px; flex-shrink: 0; padding: 24px 30px; background: #f8fbff; border-bottom: 1px solid #e4edf5; }
+.reference-logo img { width: auto; height: auto; max-width: 100%; max-height: 88px; object-fit: contain; }
+.reference-logo-dark { background: #0b4066; }
+.reference-logo-dark img { max-height: 92px; }
+.reference-card-content { display: flex; flex: 1; flex-direction: column; padding: 24px 26px 20px; }
+.reference-scope { color: var(--teal); font-size: 11px; font-weight: 700; letter-spacing: .065em; line-height: 1.6; text-transform: uppercase; }
+.reference-card h4 { margin-top: 13px; font-size: 29px; letter-spacing: -.035em; line-height: 1.15; color: var(--navy); }
+.reference-full-name { font-size: 16px; line-height: 1.55; margin-top: 11px; min-height: 75px; }
+.reference-description { font-size: 15px; line-height: 1.75; color: var(--muted); margin-top: 13px; padding-bottom: 24px; }
+.reference-card-footer { display: flex; align-items: center; justify-content: space-between; gap: 14px; border-top: 1px solid #e4edf5; padding-top: 17px; margin-top: auto; }
+.reference-card-footer > span:first-child { font-size: 13px; font-weight: 600; color: var(--muted); }
+.reference-card-arrow { display: grid; place-items: center; width: 32px; height: 32px; border: 1px solid #d1e1ee; border-radius: 50%; color: var(--teal); flex-shrink: 0; transition: background .2s, color .2s; }
+.reference-card-arrow .icon { width: 17px; height: 17px; transform: rotate(-45deg); }
+.reference-card:hover .reference-card-arrow { background: var(--navy); color: white; border-color: var(--navy); }
+.reference-card-featured { display: grid; grid-template-columns: minmax(240px, .8fr) minmax(0, 1.7fr); }
+.reference-card-featured .reference-logo { height: auto; min-height: 260px; padding: 40px; background: white; border-bottom: 0; border-right: 1px solid #e4edf5; }
+.reference-card-featured .reference-logo img { width: 100%; max-width: 310px; max-height: none; }
+.reference-card-featured .reference-card-content { padding: 30px 36px 24px; }
+.reference-card-featured h3 { font-size: 36px; font-weight: 600; letter-spacing: -.04em; line-height: 1.15; margin-top: 10px; }
+.reference-card-featured .reference-full-name { min-height: 0; font-size: 19px; margin-top: 8px; }
+.reference-card-featured .reference-description { max-width: 650px; margin-top: 12px; }
+@media (min-width: 701px) and (max-width: 1050px) {
+  .reference-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+  .reference-card-featured { grid-template-columns: minmax(210px, .8fr) minmax(0, 1.3fr); }
+  .reference-card-featured .reference-logo { padding: 26px; }
+  .reference-card-featured .reference-card-content { padding: 28px; }
+}
+@media (max-width: 700px) {
+  .reference-section + .reference-section { margin-top: 44px; }
+  .reference-section-heading { gap: 14px; margin-bottom: 22px; }
+  .reference-index { min-width: 27px; font-size: 12px; }
+  .reference-section-heading h2 { font-size: 29px; }
+  .reference-section-heading p { font-size: 15px; }
+  .reference-subheading { gap: 4px; flex-direction: column; margin-bottom: 20px; }
+  .reference-subheading > span { font-size: 13px; }
+  .reference-card-grid { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .reference-card-content { padding: 23px 24px 20px; }
+  .reference-logo { height: 128px; }
+  .reference-full-name { min-height: 0; }
+  .reference-card-featured { grid-template-columns: minmax(0, 1fr); }
+  .reference-card-featured .reference-logo { min-height: 0; height: 132px; padding: 30px; border-right: 0; border-bottom: 1px solid #e4edf5; }
+  .reference-card-featured .reference-logo img { max-width: 250px; }
+  .reference-card-featured .reference-card-content { padding: 24px; }
+  .reference-card-featured h3 { font-size: 31px; }
+  .reference-card-featured .reference-full-name { font-size: 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reference-card, .reference-card-arrow { transition: none; }
+  .reference-card:hover { transform: none; }
+}
 .software-feature { display: grid; grid-template-columns: minmax(180px, .65fr) minmax(0, 1.55fr); gap: 50px; align-items: start; background: white; border: 1px solid var(--line); border-radius: 8px; padding: 40px; }
 .software-logo { display: block; padding: 20px 0; }
 .software-logo img { width: 100%; height: auto; max-width: 290px; margin-inline: auto; }

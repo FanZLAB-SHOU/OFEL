@@ -1,0 +1,70 @@
+{
+  "professional_links": [
+    {
+      "name": "FishBase",
+      "title": "A global reference for fish biology",
+      "description": "Look up fish species, life-history traits, ecology, distribution, and the literature behind each record.",
+      "url": "https://www.fishbase.se/search.php",
+      "domain": "fishbase.se",
+      "scope": "Species & life histories",
+      "image": "assets/resources/fishbase.png"
+    }
+  ],
+  "international_organizations": [
+    {
+      "name": "FAO",
+      "title": "Food and Agriculture Organization of the United Nations",
+      "description": "Global fisheries and aquaculture statistics, publications, and guidance for sustainable fisheries.",
+      "url": "https://www.fao.org/fishery/en",
+      "domain": "fao.org",
+      "scope": "Global · Fisheries & aquaculture",
+      "image": "assets/resources/fao.svg"
+    },
+    {
+      "name": "ICCAT",
+      "title": "International Commission for the Conservation of Atlantic Tunas",
+      "description": "Stock assessments, scientific reports, and conservation measures for Atlantic tuna fisheries.",
+      "url": "https://www.iccat.int/en/",
+      "domain": "iccat.int",
+      "scope": "Atlantic Ocean & adjacent seas",
+      "image": "assets/resources/iccat.png"
+    },
+    {
+      "name": "IOTC",
+      "title": "Indian Ocean Tuna Commission",
+      "description": "Data, scientific advice, and management measures for tuna and tuna-like species in the Indian Ocean.",
+      "url": "https://iotc.org/",
+      "domain": "iotc.org",
+      "scope": "Indian Ocean",
+      "image": "assets/resources/iotc.png"
+    },
+    {
+      "name": "IATTC",
+      "title": "Inter-American Tropical Tuna Commission",
+      "description": "Research, fishery data, and conservation measures for tuna fisheries in the eastern Pacific.",
+      "url": "https://www.iattc.org/",
+      "domain": "iattc.org",
+      "scope": "Eastern Pacific Ocean",
+      "image": "assets/resources/iattc.png"
+    },
+    {
+      "name": "WCPFC",
+      "title": "Western and Central Pacific Fisheries Commission",
+      "description": "Scientific assessments and management measures for tuna and other highly migratory fish stocks.",
+      "url": "https://www.wcpfc.int/",
+      "domain": "wcpfc.int",
+      "scope": "Western & central Pacific Ocean",
+      "image": "assets/resources/wcpfc.svg",
+      "dark_logo": true
+    },
+    {
+      "name": "CCSBT",
+      "title": "Commission for the Conservation of Southern Bluefin Tuna",
+      "description": "Stock assessments, catch data, and management procedures for southern bluefin tuna.",
+      "url": "https://www.ccsbt.org/en",
+      "domain": "ccsbt.org",
+      "scope": "Southern bluefin tuna · Across oceans",
+      "image": "assets/resources/ccsbt.svg"
+    }
+  ]
+}

@@ -69,7 +69,10 @@ Fan Zhang 主页的主体信息在 [`templates/members/fan-zhang.html`](../templ
 
 ### Resources
 
-顶部 Resources 菜单包含 Reference Materials 和 Software，源模板在 `templates/resources/`，生成页面在 `resources/`。Reference Materials 暂留空；Software 展示 ALSCL 简介、在线文档与仓库链接。ALSCL logo 取自其官方仓库，存放在 `assets/software/alscl-logo.png`。
+顶部 Resources 菜单包含 Reference Materials 和 Software，源模板在 `templates/resources/`，生成页面在 `resources/`。
+
+- Reference Materials 的卡片信息在 `assets/reference-materials.json`：`professional_links` 放专业资料入口，`international_organizations` 放国际组织。每项包含机构名称、全名、简介、官方链接、显示域名、覆盖范围和本地 Logo 路径。白色 Logo 可设置 `dark_logo: true` 使用深色底板。Logo 存放在 `assets/resources/`，来源记录见该目录的 `README.md`。
+- Software 展示 ALSCL 简介、在线文档与仓库链接。ALSCL logo 取自其官方仓库，存放在 `assets/software/alscl-logo.png`。
 
 ## 目录结构
 

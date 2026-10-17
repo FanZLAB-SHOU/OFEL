@@ -98,13 +98,28 @@ blog_posts = '\n'.join(
 def post_page(post):
     """Article page for one news post."""
     NT = '<span class="sr-only"> (opens in a new tab)</span>'
-    body = ''.join(f'<p>{esc(par)}</p>' for par in post['body'])
+    def block(item):
+        if isinstance(item, str):
+            return f'<p>{esc(item)}</p>'
+        if 'heading' in item:
+            return f'<h2>{esc(item["heading"])}</h2>'
+        return (f'<figure class="news-inline-figure"><a href="{esc(item["figure"])}" target="_blank" rel="noopener noreferrer">'
+                f'<img src="{esc(item["figure"])}" alt="{esc(item["alt"])}" width="{item["width"]}" height="{item["height"]}" loading="lazy">'
+                f'<span class="sr-only"> (open full image in a new tab)</span></a>'
+                f'<figcaption>{esc(item["caption"])}<span>{esc(item["credit"])}</span></figcaption></figure>')
+    body = ''.join(block(item) for item in post['body'])
     people_links = ''.join(
         f'<a href="{"fan-zhang" if name == "Fan Zhang" else slug_of(name)}.html">{esc(name)}</a>' for name in post.get('people', []))
     paper = post.get('paper')
+    cover = (f'<img class="news-paper-cover" src="{esc(paper["cover"])}" alt="{esc(paper["journal"])} cover" width="240" height="315">'
+             if paper and paper.get('cover') else icon('paper'))
     paper_html = (f'<div class="news-paper"><span class="eyebrow">Read the paper</span>'
-                  f'<a href="{esc(paper["url"])}" target="_blank" rel="noopener noreferrer">{icon("paper")}'
-                  f'<span><strong>{esc(paper["title"])}</strong><em>{esc(paper["journal"])}</em></span>{NT}</a></div>') if paper else ''
+                  f'<a href="{esc(paper["url"])}" target="_blank" rel="noopener noreferrer">{cover}'
+                  f'<span><strong>{esc(paper["title"])}</strong>'
+                  + (f'<small>{esc(paper["citation"])}</small>' if paper.get('citation') else '')
+                  + f'<em>{esc(paper["journal"])}</em>'
+                  + (f'<small>{esc(paper["issue"])}</small>' if paper.get('issue') else '')
+                  + f'<span class="news-paper-go">Read on the journal website</span></span>{NT}</a></div>') if paper else ''
     source = post.get('source')
     source_html = (f'<p class="news-source">Source: <a href="{esc(source["url"])}" target="_blank" rel="noopener noreferrer">'
                    f'{esc(source["label"])}{NT}</a><br><span>{esc(source["url"])}</span></p>') if source else ''

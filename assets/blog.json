@@ -5,25 +5,56 @@
       "slug": "2026-09-semelparous-assessment",
       "date": "2026-09-21",
       "title": "Mingfeng Jiang shows that ignoring death after spawning distorts squid stock assessments",
-      "summary": "A new length–age structured model treats post-spawning death as part of squid population dynamics, and shows what goes wrong when assessments leave it out.",
+      "summary": "A new model, ACLS, treats post-spawning death as part of squid population dynamics, and shows that ignoring it inflates estimates of spawning stock biomass.",
       "image": "assets/research/climate-ecosystems.webp",
-      "people": ["Mingfeng Jiang", "Sisong Dong", "Fan Zhang"],
+      "people": [
+        "Mingfeng Jiang",
+        "Sisong Dong",
+        "Fan Zhang"
+      ],
       "body": [
         "OFEL PhD student Mingfeng Jiang has developed a stock assessment model for squid and other semelparous species, animals that spawn once and die soon afterwards. The model builds death after spawning directly into the population dynamics, giving a more faithful picture of how these populations change over time. The study is published in the Journal of Applied Ecology.",
-        "Most stock assessment models were designed for fish that spawn many times over their lives. Squid follow a different life history: an individual reproduces once and then dies. When models built for repeat-spawning fish are applied to squid, they can misrepresent population dynamics and give a misleading view of stock status.",
-        "To address this, the team added post-spawning mortality as an explicit process in a length–age structured assessment model, so that the model follows the life history of semelparous species. They then measured how much assessment results change when this process is ignored.",
-        "The work extends integrated length–age assessment methods to semelparous species and strengthens the toolkit for studying cephalopod population dynamics. More accurate assessments give a firmer scientific basis for conserving cephalopod stocks and managing squid fisheries sustainably around the world.",
+        "Semelparous species matter for both ecosystems and fisheries: cephalopods and Pacific salmon together make up about 5% of global marine capture production. Yet most stock assessment models were designed for fish that spawn many times over their lives. When those models are applied to squid, they can misrepresent population dynamics and give a misleading view of stock status.",
+        {
+          "heading": "A model built around one spawning"
+        },
+        "The new model, ACLS (an age-structured statistical catch-at-length model for semelparity), removes mature animals from the population once they have spawned, so spent individuals are no longer counted in later time steps. Conventional models carry them forward as if they could spawn again.",
+        {
+          "figure": "assets/news/2026-09-semelparous/fig1-study-design.png",
+          "width": 500,
+          "height": 180,
+          "alt": "Technical roadmap: operating models for squid and Pacific salmon feed into two assessment models (ACLS and ACL), followed by misspecification tests and a jumbo squid case study comparing ACLS with ACL, SS3, SPiCT and CMSY.",
+          "caption": "Technical roadmap of the study. Simulated squid and Pacific salmon populations were assessed with ACLS and with a conventional model (ACL), followed by tests of mis-specified inputs and a case study on jumbo squid.",
+          "credit": "Figure 1 from Jiang et al. (2026), Journal of Applied Ecology. © 2026 The Authors."
+        },
+        {
+          "heading": "Testing it on squid and salmon"
+        },
+        "Mingfeng and colleagues tested ACLS in simulations covering two contrasting semelparous life histories, short-lived squid and longer-lived Pacific salmon, under different fishing pressures, environmental variability and stock–recruitment relationships. ACLS consistently outperformed the conventional model, estimating population dynamics more accurately and with less bias. Sensitivity tests showed where care is needed: wrong assumptions about natural mortality before spawning, or about the timing of maturity, can reduce its performance.",
+        "The simulations also showed what goes wrong when post-spawning death is ignored. The conventional model overestimates biomass in the older age groups, above all the cohort that has already spawned, and this inflates estimates of spawning stock biomass.",
+        {
+          "heading": "Jumbo squid case study"
+        },
+        "Applied to jumbo squid (Dosidicus gigas), ACLS fitted the catch, abundance-index and length-composition data well and showed no evident retrospective bias. Its estimates of key management quantities differed markedly from those of four widely used alternatives: Stock Synthesis 3, the conventional ACL model, SPiCT and Catch-MSY.",
+        {
+          "heading": "Why it matters"
+        },
+        "The study's message is that population models can only support management credibly if they represent the life history of the species they describe. By accounting for death after spawning, ACLS gives a biologically grounded way to estimate stock status and management reference points for squid and other semelparous species, and a firmer basis for managing cephalopod fisheries sustainably.",
         "Mingfeng Jiang and postdoctoral researcher Sisong Dong are co-first authors. Professor Fan Zhang and Professor Xinjun Chen are co-corresponding authors. The study was carried out with Professor André E. Punt's team at the University of Washington."
       ],
       "paper": {
         "title": "Ignoring death after spawning misrepresents the population dynamics of marine semelparous species",
         "journal": "Journal of Applied Ecology",
-        "url": "https://besjournals.onlinelibrary.wiley.com/doi/10.1111/1365-2664.70572"
+        "url": "https://besjournals.onlinelibrary.wiley.com/doi/10.1111/1365-2664.70572",
+        "citation": "Jiang, M., Dong, S., Tang, R., Punt, A. E., Zhang, F. & Chen, X. (2026)",
+        "issue": "Volume 63, Issue 9 · September 2026",
+        "cover": "assets/news/2026-09-semelparous/jae-cover-v63-9.jpg"
       },
       "source": {
         "label": "Original news (in Chinese), College of Marine Living Resource Sciences and Management, Shanghai Ocean University",
         "url": "https://hyxy.shou.edu.cn/2026/0921/c7379a355597/page.htm"
-      }
+      },
+      "note": "The figure is reproduced from the published article with credit; the authors hold copyright (© 2026 The Authors)."
     }
   ]
 }

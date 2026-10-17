@@ -69,12 +69,59 @@ carousel = ('          <div class="reel-marquee">\n'
             + ''.join(f'            <div class="reel-group reel-copy" aria-hidden="true" inert>{reel_cards(True)}</div>\n'
                       for _ in range(1))
             + '          </div>')
-posts = json.loads((ROOT / 'assets/blog.json').read_text())['posts']
+posts = sorted(json.loads((ROOT / 'assets/blog.json').read_text())['posts'], key=lambda p: p['date'], reverse=True)
+
+
+def pretty_date(iso):
+    import datetime
+    return datetime.date.fromisoformat(iso).strftime('%-d %B %Y')
+
+
+def slug_of(name):
+    import re
+    return re.sub(r'[^a-z0-9]+', '-', name.lower()).strip('-')
+
+
+def post_url(post):
+    return f'news-{post["slug"]}.html'
+
+
 blog_posts = '\n'.join(
-    f'<article class="blog-post"><p class="eyebrow">{esc(post.get("date", "Lab news"))}</p>'
-    f'<h2><a href="{esc(post["url"])}">{esc(post["title"])}</a></h2><p>{esc(post.get("summary", ""))}</p></article>'
+    f'        <article class="blog-post"><a class="blog-post-link" href="{esc(post_url(post))}">'
+    + (f'<img src="{esc(post["image"])}" alt="" width="1536" height="1024" loading="lazy">' if post.get('image') else '')
+    + f'<div><p class="eyebrow"><time datetime="{esc(post["date"])}">{esc(pretty_date(post["date"]))}</time></p>'
+    f'<h2>{esc(post["title"])}</h2><p>{esc(post.get("summary", ""))}</p></div></a></article>'
     for post in posts
 ) if posts else '<div class="directory-empty"><p>Lab updates will appear here.</p><a class="text-link" href="research.html">' + icon('fish') + 'Explore our research</a></div>'
+
+
+def post_page(post):
+    """Article page for one news post."""
+    NT = '<span class="sr-only"> (opens in a new tab)</span>'
+    body = ''.join(f'<p>{esc(par)}</p>' for par in post['body'])
+    people_links = ''.join(
+        f'<a href="{"fan-zhang" if name == "Fan Zhang" else slug_of(name)}.html">{esc(name)}</a>' for name in post.get('people', []))
+    paper = post.get('paper')
+    paper_html = (f'<div class="news-paper"><span class="eyebrow">Read the paper</span>'
+                  f'<a href="{esc(paper["url"])}" target="_blank" rel="noopener noreferrer">{icon("paper")}'
+                  f'<span><strong>{esc(paper["title"])}</strong><em>{esc(paper["journal"])}</em></span>{NT}</a></div>') if paper else ''
+    source = post.get('source')
+    source_html = (f'<p class="news-source">Source: <a href="{esc(source["url"])}" target="_blank" rel="noopener noreferrer">'
+                   f'{esc(source["label"])}{NT}</a><br><span>{esc(source["url"])}</span></p>') if source else ''
+    image = (f'<figure class="news-figure"><img src="{esc(post["image"])}" alt="" width="1536" height="1024"></figure>' if post.get('image') else '')
+    return (
+        '    <article class="section detail-page news-article" aria-labelledby="news-title">\n'
+        '      <div class="container news-container">\n'
+        f'        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="blog.html">News</a><span aria-hidden="true">/</span>'
+        f'<span aria-current="page"><time datetime="{esc(post["date"])}">{esc(pretty_date(post["date"]))}</time></span></nav>\n'
+        f'        <h1 id="news-title">{esc(post["title"])}</h1>\n'
+        f'        <p class="news-summary">{esc(post.get("summary", ""))}</p>\n'
+        + (f'        <p class="news-people">Lab members: {people_links}</p>\n' if people_links else '')
+        + f'        {image}\n        <div class="news-body">{body}</div>\n        {paper_html}\n        {source_html}\n'
+        '      </div>\n    </article>\n'
+    )
+
+
 # Homepage "Discover the lab" cards: illustration background, copy, and a floating mockup built from lab data.
 people = json.loads((ROOT / 'assets/people.json').read_text())
 members = [m for g in people['groups'] for m in g['members']]
@@ -155,6 +202,17 @@ for name, (title, description, nav) in PAGES.items():
         + '\n  <main id="main">\n' + content + '  </main>\n\n' + footer + '</body>\n</html>\n'
     )
 
+for post in posts:
+    head = (TEMPLATES / 'head.html').read_text().replace('{{asset_version}}', asset_version())
+    for token, value in {'{{title}}': post['title'] + ' | OFEL News', '{{description}}': post.get('summary', post['title']),
+                         '{{canonical}}': BASE + post_url(post)}.items():
+        head = head.replace(token, esc(value))
+    (ROOT / post_url(post)).write_text(
+        head + '<body id="top" data-page="news-post" data-nav-section="news">\n'
+        '  <a class="skip-link" href="#main">Skip to content</a>\n' + header
+        + '\n  <main id="main">\n' + post_page(post) + '  </main>\n\n' + footer + '</body>\n</html>\n'
+    )
+
 for builder in ('build-people.py', 'build-publications.py'):
     subprocess.run([sys.executable, str(ROOT / 'scripts' / builder)], check=True)
-print(f'Built {len(PAGES)} static pages with shared navigation and footer.')
+print(f'Built {len(PAGES)} static pages and {len(posts)} news articles with shared navigation and footer.')

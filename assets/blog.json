@@ -1,3 +1,29 @@
 {
-  "posts": []
+  "note": "Lab news. Each post gets its own page (news-<slug>.html) and is listed on the News page, newest first. Body paragraphs are plain text. 'people' names link to profile pages.",
+  "posts": [
+    {
+      "slug": "2026-09-semelparous-assessment",
+      "date": "2026-09-21",
+      "title": "Mingfeng Jiang shows that ignoring death after spawning distorts squid stock assessments",
+      "summary": "A new length–age structured model treats post-spawning death as part of squid population dynamics, and shows what goes wrong when assessments leave it out.",
+      "image": "assets/research/climate-ecosystems.webp",
+      "people": ["Mingfeng Jiang", "Sisong Dong", "Fan Zhang"],
+      "body": [
+        "OFEL PhD student Mingfeng Jiang has developed a stock assessment model for squid and other semelparous species, animals that spawn once and die soon afterwards. The model builds death after spawning directly into the population dynamics, giving a more faithful picture of how these populations change over time. The study is published in the Journal of Applied Ecology.",
+        "Most stock assessment models were designed for fish that spawn many times over their lives. Squid follow a different life history: an individual reproduces once and then dies. When models built for repeat-spawning fish are applied to squid, they can misrepresent population dynamics and give a misleading view of stock status.",
+        "To address this, the team added post-spawning mortality as an explicit process in a length–age structured assessment model, so that the model follows the life history of semelparous species. They then measured how much assessment results change when this process is ignored.",
+        "The work extends integrated length–age assessment methods to semelparous species and strengthens the toolkit for studying cephalopod population dynamics. More accurate assessments give a firmer scientific basis for conserving cephalopod stocks and managing squid fisheries sustainably around the world.",
+        "Mingfeng Jiang and postdoctoral researcher Sisong Dong are co-first authors. Professor Fan Zhang and Professor Xinjun Chen are co-corresponding authors. The study was carried out with Professor André E. Punt's team at the University of Washington."
+      ],
+      "paper": {
+        "title": "Ignoring death after spawning misrepresents the population dynamics of marine semelparous species",
+        "journal": "Journal of Applied Ecology",
+        "url": "https://besjournals.onlinelibrary.wiley.com/doi/10.1111/1365-2664.70572"
+      },
+      "source": {
+        "label": "Original news (in Chinese), College of Marine Living Resource Sciences and Management, Shanghai Ocean University",
+        "url": "https://hyxy.shou.edu.cn/2026/0921/c7379a355597/page.htm"
+      }
+    }
+  ]
 }

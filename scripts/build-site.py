@@ -89,7 +89,8 @@ def post_url(post):
 
 blog_posts = '\n'.join(
     f'        <article class="blog-post"><a class="blog-post-link" href="{esc(post_url(post))}">'
-    + (f'<img src="{esc(post["image"])}" alt="" width="1536" height="1024" loading="lazy" style="object-position: {esc(post.get("image_position", "55% 78%"))}">' if post.get('image') else '')
+    + (f'<img src="{esc(post["image"])}" alt="" width="1536" height="1024" loading="lazy" style="object-position: {esc(post.get("image_position", "55% 78%"))}">' if post.get('image')
+       else '<span class="blog-post-placeholder" aria-hidden="true"><img src="assets/ofel-mark.png" alt="" width="96" height="96"></span>')
     + f'<div><p class="eyebrow"><time datetime="{esc(post["date"])}">{esc(pretty_date(post["date"]))}</time></p>'
     f'<h2>{italicize(esc(post["title"]))}</h2><p>{italicize(esc(post.get("summary", "")))}</p></div></a></article>'
     for post in posts

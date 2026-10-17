@@ -164,6 +164,74 @@
         "url": "https://hyxy.shou.edu.cn/2026/0420/c7379a352061/page.htm"
       },
       "note": "Figure reproduced unchanged under the article's CC BY-NC-ND 4.0 licence with credit."
+    },
+    {
+      "slug": "2026-04-tuna-assessment-uncertainty",
+      "date": "2026-04-03",
+      "title": "Runze Wang reveals how differently tuna assessments around the world handle model uncertainty",
+      "summary": "A review of 133 stock assessments from five tuna management organisations shows that choices about model uncertainty follow the organisation more than the species, and proposes best practices to make them more consistent.",
+      "people": [
+        "Runze Wang",
+        "Sisong Dong",
+        "Fan Zhang"
+      ],
+      "body": [
+        "OFEL master's student Runze Wang has produced the first systematic analysis of how model uncertainty is specified in tuna stock assessments worldwide. The study shows that these choices vary widely, that they depend more on the management organisation than on the biology of the species, and that subjective judgement plays a substantial role. It is published in Fish and Fisheries.",
+        {
+          "heading": "Why uncertainty specification matters"
+        },
+        "Tuna are among the world's most important marine fishery resources, and their sustainable use depends on sound stock assessments. Model uncertainty is a major source of scientific uncertainty in those assessments. It is usually explored through sensitivity analyses and model ensembles, but which factors are included, and at what levels, differs both within and among the tuna Regional Fisheries Management Organisations (tRFMOs).",
+        {
+          "heading": "133 assessments, 20 years, five organisations"
+        },
+        "Runze and colleagues reviewed the uncertainty specifications in 133 stock assessments carried out over the past 20 years by five tRFMOs, covering seven major commercial tuna species. They compared which uncertainty factors each assessment included, how similar assessments were to one another, and what explained changes between successive assessments of the same stock.",
+        {
+          "heading": "What they found"
+        },
+        "Although a wide range of uncertainty specifications has been used, only a few factors are considered in most assessments. Patterns line up more closely with the management organisation than with the species: assessments within one organisation tend to look alike even for different tunas, suggesting that institutional practice shapes these choices more than biology does.",
+        "The emphasis has also shifted over time. Uncertainty related to data, such as data weighting, has received less attention, while biological processes such as growth have received more. Between successive assessments of the same stock, changes in modelling approach, along with changes in fleet structure and stock definitions, were the main reasons the uncertainty specification changed.",
+        {
+          "heading": "Towards more consistent assessments"
+        },
+        "The authors recommend cross-organisation coordination and expert review to make assessment methods more consistent and transparent, together with a standardised checklist of uncertainties so that every potential source is considered and individual analysts' preferences carry less weight. They also set out best-practice guidance that walks assessment teams step by step through selecting and specifying uncertainty.",
+        "Runze Wang and postdoctoral researcher Sisong Dong are co-first authors, and Professor Fan Zhang is the corresponding author. Co-authors include André E. Punt of the University of Washington and Jiangfeng Zhu of Shanghai Ocean University."
+      ],
+      "paper": {
+        "title": "Diversity and Subjectivity of Model Uncertainty Specification in Global Tuna Stock Assessment",
+        "journal": "Fish and Fisheries",
+        "url": "https://doi.org/10.1111/faf.70077",
+        "citation": "Wang, R., Dong, S., Punt, A. E., Zhu, J. & Zhang, F. (2026)",
+        "issue": "Volume 27, Issue 3 · May 2026",
+        "cover": "assets/news/2026-04-tuna-uncertainty/faf-cover-v27-3.jpg"
+      },
+      "source": {
+        "label": "Original news (in Chinese), College of Marine Living Resource Sciences and Management, Shanghai Ocean University",
+        "url": "https://hyxy.shou.edu.cn/2026/0403/c7379a351620/page.htm"
+      }
+    },
+    {
+      "slug": "2025-07-iccat-wgsam-chair",
+      "date": "2025-07-18",
+      "title": "Fan Zhang appointed Chair of ICCAT's Working Group on Stock Assessment Methods",
+      "summary": "OFEL's principal investigator is the first scientist from China to chair an ICCAT working group since the country joined the Commission in 1996.",
+      "people": [
+        "Fan Zhang"
+      ],
+      "body": [
+        "The International Commission for the Conservation of Atlantic Tunas (ICCAT) has appointed Professor Fan Zhang, principal investigator of OFEL, as Chair of its Working Group on Stock Assessment Methods (WGSAM). The group sits under ICCAT's Standing Committee on Research and Statistics (SCRS). Fan Zhang is the first scientist from China to chair an ICCAT working group since China joined the Commission in 1996.",
+        {
+          "heading": "About ICCAT and WGSAM"
+        },
+        "ICCAT is the intergovernmental organisation responsible for the conservation and management of tunas and tuna-like species in the Atlantic Ocean and adjacent seas, with its Secretariat in Madrid. The SCRS is its scientific advisory body, and it and its working groups meet several times each year to discuss stock assessments, management measures and science-based decision-making. WGSAM leads the Commission's work on stock assessment methods, coordinating approaches internationally and advancing new techniques.",
+        {
+          "heading": "A role that matches the lab's research"
+        },
+        "Fan Zhang is China's chief scientist for ICCAT and has long worked on stock assessment models and management strategies. The appointment connects closely with OFEL's research on assessment methods, from how uncertainty is specified in tuna assessments to new models for species with unusual life histories, and with the lab's wider involvement in regional fisheries management organisations."
+      ],
+      "source": {
+        "label": "Original news (in Chinese), College of Marine Living Resource Sciences and Management, Shanghai Ocean University",
+        "url": "https://hyxy.shou.edu.cn/2025/0718/c7379a345323/page.htm"
+      }
     }
   ]
 }

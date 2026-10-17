@@ -62,6 +62,8 @@ Fan Zhang 主页的主体信息在 [`templates/members/fan-zhang.html`](../templ
 
 每条新闻包含 `slug`、`date`、`title`、`summary` 和 `body`，可选 `image`、`image_alt`、`image_caption`、`image_position`、`image_aspect_ratio`、`people`、`paper` 与 `source`。使用真实发布日期；活动公告按活动日期归档。`people` 姓名与成员记录一致时，会链接到其主页。`body` 支持普通段落、`heading`、`figure`，以及 `details`（由 `label` / `value` 条目组成的活动信息表）。
 
+News 列表的图片框为横向 3:2。需要单独构图时可填写 `thumbnail` 和 `thumbnail_position`，仅替换列表缩略图；文章中的 `image` 仍展示原海报，首页也继续按最新日期选择新闻。
+
 构建生成 `news/<slug>.html`，列表始终按日期从新到旧排列。**首页 News 入口始终使用日期最新的新闻封面与标题，不设置手动精选。补录、修改旧新闻或更换旧新闻封面，均不得覆盖日期较新的首页新闻。**
 
 首页 Publications 入口按当前展示论文的 DOI 匹配新闻中 `paper.cover` 的期刊封面，保留期刊标识的展示空间。没有对应封面时使用研究插图作为背景。

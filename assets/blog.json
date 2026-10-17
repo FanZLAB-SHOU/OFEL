@@ -385,7 +385,9 @@
           "caption": "Chinese-language course announcement.",
           "credit": "Original poster supplied by the laboratory."
         }
-      ]
+      ],
+      "thumbnail": "assets/news/2026-04-mse-course/andre-punt-thumbnail.png",
+      "thumbnail_position": "50% 50%"
     }
   ]
 }

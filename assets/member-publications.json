@@ -831,15 +831,15 @@
           "family": "Lin"
         },
         {
-          "given": "J",
+          "given": "Jintao",
           "family": "Wang"
         },
         {
-          "given": "J",
+          "given": "Jiangfeng",
           "family": "Zhu"
         },
         {
-          "given": "X",
+          "given": "Xinjun",
           "family": "Chen"
         }
       ],
@@ -847,7 +847,7 @@
       "topics": [
         "ecosystems"
       ],
-      "note": "Publisher lists authors by initials only; the user confirmed in chat on 2026-10-17 that H Lin is Hongyu Lin. Co-author initials kept as published."
+      "note": "Publisher lists authors by initials only; the user confirmed full names in chat on 2026-10-17."
     },
     {
       "doi": "10.1016/j.ecolind.2022.109284",

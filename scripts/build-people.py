@@ -170,7 +170,7 @@ for group in groups:
     cards = []
     for member in group['members']:
         name, href = esc(member['name']), esc('members/' + by_name[member['name']]['slug'] + '.html')
-        web_kinds = [kind for kind in ('github', 'website', 'researchgate') if member.get(kind)] or ['github']
+        web_kinds = [kind for kind in ('github', 'website', 'researchgate') if member.get(kind)]
         contact_links = contact(member, 'email') + ''.join(contact(member, kind) for kind in web_kinds)
         email = f'<p class="member-email">{esc(member["email"])}</p>' if member.get('email') else ''
         cards.append(

@@ -192,10 +192,11 @@
         {
           "name": "Zhechuan Xu",
           "role": "Master’s Student, Year 1",
-          "photo": null,
-          "email": null,
+          "photo": "assets/people/zhechuan-xu.jpg",
+          "email": "18314934149@163.com",
           "github": null,
-          "bio": null
+          "bio": "Zhechuan Xu is a master’s student in the Oceanic Fisheries Ecosystem Laboratory at Shanghai Ocean University.",
+          "photo_alt": "Zhechuan Xu"
         }
       ]
     }

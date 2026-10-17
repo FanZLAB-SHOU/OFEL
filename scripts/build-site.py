@@ -11,6 +11,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 from icons import expand, icon  # noqa: E402
+from species import italicize  # noqa: E402
 TEMPLATES = ROOT / 'templates'
 BASE = 'https://fanzhang-lab-shou.github.io/OFEL/'
 PAGES = {
@@ -90,7 +91,7 @@ blog_posts = '\n'.join(
     f'        <article class="blog-post"><a class="blog-post-link" href="{esc(post_url(post))}">'
     + (f'<img src="{esc(post["image"])}" alt="" width="1536" height="1024" loading="lazy">' if post.get('image') else '')
     + f'<div><p class="eyebrow"><time datetime="{esc(post["date"])}">{esc(pretty_date(post["date"]))}</time></p>'
-    f'<h2>{esc(post["title"])}</h2><p>{esc(post.get("summary", ""))}</p></div></a></article>'
+    f'<h2>{italicize(esc(post["title"]))}</h2><p>{italicize(esc(post.get("summary", "")))}</p></div></a></article>'
     for post in posts
 ) if posts else '<div class="directory-empty"><p>Lab updates will appear here.</p><a class="text-link" href="research.html">' + icon('fish') + 'Explore our research</a></div>'
 
@@ -100,13 +101,13 @@ def post_page(post):
     NT = '<span class="sr-only"> (opens in a new tab)</span>'
     def block(item):
         if isinstance(item, str):
-            return f'<p>{esc(item)}</p>'
+            return f'<p>{italicize(esc(item))}</p>'
         if 'heading' in item:
             return f'<h2>{esc(item["heading"])}</h2>'
         return (f'<figure class="news-inline-figure"><a href="{esc(item["figure"])}" target="_blank" rel="noopener noreferrer">'
                 f'<img src="{esc(item["figure"])}" alt="{esc(item["alt"])}" width="{item["width"]}" height="{item["height"]}" loading="lazy">'
                 f'<span class="sr-only"> (open full image in a new tab)</span></a>'
-                f'<figcaption>{esc(item["caption"])}<span>{esc(item["credit"])}</span></figcaption></figure>')
+                f'<figcaption>{italicize(esc(item["caption"]))}<span>{esc(item["credit"])}</span></figcaption></figure>')
     body = ''.join(block(item) for item in post['body'])
     people_links = ''.join(
         f'<a href="{"fan-zhang" if name == "Fan Zhang" else slug_of(name)}.html">{esc(name)}</a>' for name in post.get('people', []))
@@ -115,7 +116,7 @@ def post_page(post):
              if paper and paper.get('cover') else icon('paper'))
     paper_html = (f'<div class="news-paper"><span class="eyebrow">Read the paper</span>'
                   f'<a href="{esc(paper["url"])}" target="_blank" rel="noopener noreferrer">{cover}'
-                  f'<span><strong>{esc(paper["title"])}</strong>'
+                  f'<span><strong>{italicize(esc(paper["title"]))}</strong>'
                   + (f'<small>{esc(paper["citation"])}</small>' if paper.get('citation') else '')
                   + f'<em>{esc(paper["journal"])}</em>'
                   + (f'<small>{esc(paper["issue"])}</small>' if paper.get('issue') else '')
@@ -129,8 +130,8 @@ def post_page(post):
         '      <div class="container news-container">\n'
         f'        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="blog.html">News</a><span aria-hidden="true">/</span>'
         f'<span aria-current="page"><time datetime="{esc(post["date"])}">{esc(pretty_date(post["date"]))}</time></span></nav>\n'
-        f'        <h1 id="news-title">{esc(post["title"])}</h1>\n'
-        f'        <p class="news-summary">{esc(post.get("summary", ""))}</p>\n'
+        f'        <h1 id="news-title">{italicize(esc(post["title"]))}</h1>\n'
+        f'        <p class="news-summary">{italicize(esc(post.get("summary", "")))}</p>\n'
         + (f'        <p class="news-people">Lab members: {people_links}</p>\n' if people_links else '')
         + f'        {image}\n        <div class="news-body">{body}</div>\n        {paper_html}\n        {source_html}\n'
         '      </div>\n    </article>\n'
@@ -159,7 +160,7 @@ def initials(name):
 
 news_items = ''.join(
     f'<div class="mock-news" style="--i:{n}"><span class="mock-tag">New paper · {p["year"]}</span>'
-    f'<strong>{esc(short(p["title"], 64))}</strong><small>{esc(p["journal"])}</small></div>'
+    f'<strong>{italicize(esc(short(p["title"], 64)))}</strong><small>{esc(p["journal"])}</small></div>'
     for n, p in enumerate(recent[:3])
 )
 avatars = ''.join(f'<span class="mock-avatar" style="--i:{n}">{esc(initials(m["name"]))}</span>' for n, m in enumerate(members[:8]))
@@ -176,7 +177,7 @@ gateways = [
      f'<span class="mock-chip mock-chip-b">{alumni_count} alumni</span>'),
     ('publications.html', 'Publications', 'Peer-reviewed research on stock assessment, ecosystems, vessels, and fish biology.', 'assets/research/population-assessment.webp', '40% 50%', 'paper',
      f'<div class="mock-panel mock-paper"><span class="mock-label">{esc(latest["journal"])} · {latest["year"]}</span>'
-     f'<strong>{esc(short(latest["title"], 80))}</strong><small>{esc(latest_authors)}</small>'
+     f'<strong>{italicize(esc(short(latest["title"], 80)))}</strong><small>{esc(latest_authors)}</small>'
      f'<div class="mock-lines"><i></i><i></i><i></i></div></div>'
      f'<span class="mock-chip mock-chip-a">{len(pubs)} publications</span>'
      f'<span class="mock-chip mock-chip-b">BibTeX</span>'),

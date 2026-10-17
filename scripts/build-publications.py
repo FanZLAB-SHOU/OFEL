@@ -9,6 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 from icons import icon  # noqa: E402
+from species import italicize, italicize_bibtex  # noqa: E402
 records = json.loads((ROOT / 'assets/publications.json').read_text())['publications']
 member_records = json.loads((ROOT / 'assets/member-publications.json').read_text())['publications']
 _people = json.loads((ROOT / 'assets/people.json').read_text())
@@ -76,7 +77,8 @@ def article_html(paper, highlight=('Fan', 'Zhang')):
     if not details:
         details = 'Published online'
     doi_url = html.escape(paper['source'], quote=True)
-    title = html.escape(paper['title'])
+    plain_title = html.escape(paper['title'])
+    title = italicize(plain_title)
     journal = html.escape(paper['journal'])
     journal_url = journals.get(paper['journal'])
     if journal_url:
@@ -98,7 +100,7 @@ def article_html(paper, highlight=('Fan', 'Zhang')):
         '<span class="sr-only"> (opens in a new tab)</span></a></h3>'
         f'<p class="authors">{", ".join(authors)}</p>{badges_html}</div>'
         f'<a class="paper-arrow" href="{doi_url}" target="_blank" rel="noopener noreferrer" '
-        f'aria-label="Read {title} in a new tab">{icon("paper")}</a></article>'
+        f'aria-label="Read {plain_title} in a new tab">{icon("paper")}</a></article>'
     )
 
 
@@ -107,7 +109,7 @@ def citation(paper):
     key += str(paper['year']) + re.sub('[^a-zA-Z0-9]', '', paper['doi'].split('/')[-1])
     fields = {
         'author': ' and '.join(f"{a['family']}, {a['given']}" for a in paper['authors']),
-        'title': '{' + paper['title'] + '}',
+        'title': '{' + italicize_bibtex(paper['title']) + '}',
         'journal': paper['journal'],
         'year': str(paper['year']),
         'volume': paper['volume'],

@@ -174,10 +174,12 @@
         {
           "name": "Weiguo Li",
           "role": "Master’s Student, Year 2",
-          "photo": null,
-          "email": null,
+          "photo": "assets/people/weiguo-li.jpg",
+          "photo_alt": "Hands on a plasma globe, chosen by Weiguo Li for his profile",
+          "email": "2358813349@qq.com",
           "github": null,
-          "bio": null
+          "bio": "I’m a master’s student trying to make sense of fish population dynamics, fisheries stock assessment, and why SPiCT is refusing to run yet again. Most days, I bounce between papers, data, code, and prior distributions. I’m committed to getting models to converge, and equally committed to figuring out why they converged the way they did.\n\nI study fish in the sea and tinker with models on my computer. Research is a long and winding road, but as long as the code still runs, there’s still hope.",
+          "bio_zh": "李卫国｜硕士研究生\n\n一个试图搞懂鱼类种群动态、渔业资源评估，以及 SPiCT 为什么又跑不出来的研究生。日常在文献、数据、代码和先验分布之间反复横跳，致力于让模型收敛，也致力于弄明白它为什么这样收敛。\n\n研究海里的鱼，折腾电脑里的模型。科研之路道阻且长，但只要代码还能运行，生活就还有希望。"
         },
         {
           "name": "Xianglong Yan",

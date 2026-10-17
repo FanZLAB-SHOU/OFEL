@@ -756,3 +756,8 @@ body[data-page="index"] .shou-link img { padding: 2px; border-radius: 50%; backg
 
 .pi-publications-link { margin-top: 22px; color: var(--teal); font-size: 15px; gap: 9px; }
 .profile-brand-icon { width: 24px; height: 24px; object-fit: contain; flex-shrink: 0; }
+
+.profile-bio-original { margin-top: 26px; padding-top: 18px; border-top: 1px solid var(--line); }
+.profile-bio-original summary { width: fit-content; color: var(--teal); cursor: pointer; font-size: 14px; font-weight: 600; }
+.profile-bio-original summary:focus-visible { outline: 3px solid var(--gold); outline-offset: 5px; }
+.profile-bio-original[open] summary { margin-bottom: 14px; }

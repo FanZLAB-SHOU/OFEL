@@ -242,6 +242,10 @@ for n, person in enumerate(people):
     links_html = f'<div class="pi-links">{"".join(links)}</div>' if links else ''
     bio = ''.join(f'<p>{esc(par)}</p>' for par in person['bio'].split('\n\n')) if person.get('bio') else \
         '<p class="profile-empty">Profile coming soon.</p>'
+    if person.get('bio_zh'):
+        original = ''.join(f'<p>{esc(par)}</p>' for par in person['bio_zh'].split('\n\n'))
+        bio += ('<details class="profile-bio-original"><summary>中文原文 / Original Chinese</summary>'
+                f'<div lang="zh-CN">{original}</div></details>')
     pager = []
     if n > 0:
         prev = people[n - 1]

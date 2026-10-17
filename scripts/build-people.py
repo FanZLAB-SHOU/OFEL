@@ -116,8 +116,12 @@ def contact(member, kind):
 def photo(member, cls, width, height):
     if not member.get('photo'):
         return placeholder
-    style = (f' style="aspect-ratio: {esc(member["profile_photo_aspect_ratio"])}"'
-             if cls == 'profile-img' and member.get('profile_photo_aspect_ratio') else '')
+    styles = []
+    if cls == 'profile-img' and member.get('profile_photo_aspect_ratio'):
+        styles.append(f'aspect-ratio: {esc(member["profile_photo_aspect_ratio"])}')
+    if member.get('photo_position'):
+        styles.append(f'object-position: {esc(member["photo_position"])}')
+    style = f' style="{"; ".join(styles)}"' if styles else ''
     return (f'<img class="{cls}" src="{esc(member["photo"])}" alt="{esc(member.get("photo_alt", member["name"]))}" '
             f'width="{width}" height="{height}" loading="lazy"{style}>')
 

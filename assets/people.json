@@ -31,10 +31,13 @@
         {
           "name": "Xin Cheng",
           "role": "Postdoctoral Researcher",
-          "photo": null,
+          "photo": "assets/people/xin-cheng.jpg",
           "email": "cx_shhy@163.com",
           "github": "https://github.com/scintillatingx",
-          "bio": null
+          "bio": "Xin Cheng is a postdoctoral researcher at the Oceanic Fisheries Ecosystem Laboratory, Shanghai Ocean University. Her research uses artificial intelligence and vessel-tracking data to study fishing-vessel behaviour and tuna fleet dynamics. She develops deep learning methods for vessel classification and examines how fishing activity varies across regions and over time. Her recent work also assesses the quality of Automatic Identification System (AIS) data to support fisheries monitoring and management.",
+          "photo_alt": "Xin Cheng by the waterfront",
+          "profile_photo_aspect_ratio": "1440 / 1026",
+          "photo_position": "70% 50%"
         },
         {
           "name": "Sisong Dong",
@@ -95,7 +98,7 @@
           "photo": null,
           "email": null,
           "github": null,
-          "bio": null
+          "bio": "Junyi Zhang is a PhD student at Shanghai Ocean University working in fisheries ecology and fisheries oceanography. His research examines how climate change affects habitat suitability and the spatial and temporal distribution of fishery resources. He also studies fish community responses to environmental change and interactions among species, alongside food-web structure and trophic relationships in marine ecosystems.\n\nOver the past three years, he has published two first-authored papers in SCI-indexed journals and two first-authored papers in journals indexed by the Chinese Science Citation Database (CSCD)."
         }
       ]
     },

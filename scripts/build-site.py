@@ -176,7 +176,7 @@ journal_chips = ''.join(f'<span>{esc(j)}</span>' for j in list(dict.fromkeys(p['
 gateways = [
     ('news/index.html', 'News', 'Lab updates, new papers, and life in the laboratory.', news_background or 'assets/research/climate-ecosystems.webp', latest_news.get('image_position', '50% 50%') if latest_news else '30% 50%', 'book',
      news_visual),
-    ('members/index.html', 'People', 'Meet the faculty, postdoctoral researchers, and students behind our work.', 'assets/news/2025-07-iccat/meeting.jpg', '48% 60%', 'people',
+    ('members/index.html', 'People', 'Meet the faculty, postdoctoral researchers, and students behind our work.', 'assets/people/fan-zhang.jpg', '70% 50%', 'people',
      '<div class="mock-panel mock-paper" style="align-self: end"><span class="mock-label">Our community</span>'
      '<strong>Faculty, postdocs &amp; graduate students</strong></div>'),
     ('publications.html', 'Publications', 'Peer-reviewed research on stock assessment, ecosystems, vessels, and fish biology.', 'assets/research/population-assessment.webp', '40% 50%', 'paper',

@@ -443,3 +443,13 @@ body { font-size: 18px; }
 .site-footer a, .reel-footer a { display: inline-flex; align-items: center; gap: 8px; }
 .footer-top > a:last-child .icon { color: var(--teal); }
 .footer-links { display: inline-flex; flex-wrap: wrap; gap: 8px 24px; }
+.header-brands { display: flex; align-items: center; gap: 16px; min-width: 0; }
+.shou-link { display: flex; flex-shrink: 0; padding-right: 16px; border-right: 1px solid var(--line); }
+.shou-link img { width: 44px; height: 44px; transition: opacity .2s; }
+.shou-link:hover img { opacity: .8; }
+@media (max-width: 700px) {
+  .header-brands { gap: 10px; }
+  .shou-link { padding-right: 10px; }
+  .shou-link img { width: 34px; height: 34px; }
+  .brand small { max-width: 150px; line-height: 1.3; }
+}

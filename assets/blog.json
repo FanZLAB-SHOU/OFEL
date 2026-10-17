@@ -235,8 +235,9 @@
         "label": "Original news (in Chinese), College of Marine Living Resource Sciences and Management, Shanghai Ocean University",
         "url": "https://hyxy.shou.edu.cn/2025/0718/c7379a345323/page.htm"
       },
-      "image": "assets/news/2025-07-iccat/cover.webp",
-      "image_position": "40% 38%"
+      "image": "assets/news/2025-07-iccat/meeting.jpg",
+      "image_position": "50% 50%",
+      "image_aspect_ratio": "4496 / 3000"
     }
   ]
 }

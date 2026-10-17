@@ -133,7 +133,10 @@ def post_page(post):
     source = post.get('source')
     source_html = (f'<p class="news-source">Source: <a href="{esc(source["url"])}" target="_blank" rel="noopener noreferrer">'
                    f'{esc(source["label"])}{NT}</a><br><span>{esc(source["url"])}</span></p>') if source else ''
-    image = (f'<figure class="news-figure"><img src="{esc(post["image"])}" alt="" width="1536" height="1024" style="object-position: {esc(post.get("image_position", "55% 78%"))}"></figure>' if post.get('image') else '')
+    image_style = f'object-position: {esc(post.get("image_position", "55% 78%"))}'
+    if post.get('image_aspect_ratio'):
+        image_style += f'; aspect-ratio: {esc(post["image_aspect_ratio"])}'
+    image = (f'<figure class="news-figure"><img src="{esc(post["image"])}" alt="" width="1536" height="1024" style="{image_style}"></figure>' if post.get('image') else '')
     return (
         '    <article class="section detail-page news-article" aria-labelledby="news-title">\n'
         '      <div class="container news-container">\n'

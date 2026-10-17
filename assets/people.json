@@ -211,6 +211,16 @@
   "alumni": [
     {
       "year": 2026,
+      "degree": "PhD",
+      "members": [
+        {
+          "name": "Xin Cheng",
+          "profile_ref": "Xin Cheng"
+        }
+      ]
+    },
+    {
+      "year": 2026,
       "degree": "Master’s",
       "members": [
         {

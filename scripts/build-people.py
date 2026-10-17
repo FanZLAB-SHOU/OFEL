@@ -155,6 +155,8 @@ for group in groups:
 for cohort in alumni:
     label = f'{cohort["year"]} {cohort["degree"]} Graduate'
     for member in cohort['members']:
+        if member.get('profile_ref'):
+            continue  # Graduates still in the lab keep their existing current-member profile.
         people.append({**member, 'role': label, 'context': 'Alumni', 'back': ('members/alumni.html', 'Alumni')})
 for person in people:
     person['slug'] = slugify(person['name'])
@@ -193,14 +195,20 @@ sections = []
 for cohort in alumni:
     tiles = []
     for member in cohort['members']:
+        reference = member.get('profile_ref', member['name'])
+        if reference not in by_name:
+            raise ValueError(f'Unknown alumni profile reference: {reference}')
+        linked_person = by_name[reference]
+        display = {**linked_person, **member}
         tiles.append(
-            f'                <li><a class="alumni-tile" href="members/{esc(by_name[member["name"]]["slug"])}.html">'
-            f'{photo(member, "alumni-photo", 400, 400)}<span class="alumni-name">{esc(member["name"])}</span></a></li>'
+            f'                <li><a class="alumni-tile" href="members/{esc(linked_person["slug"])}.html">'
+            f'{photo(display, "alumni-photo", 400, 400)}<span class="alumni-name">{esc(member["name"])}</span></a></li>'
         )
     year = cohort['year']
+    cohort_id = f'alumni-{year}-{slugify(cohort["degree"])}'
     sections.append(
-        f'            <section class="member-group" aria-labelledby="alumni-{year}-title">\n'
-        f'              <h2 id="alumni-{year}-title">{year} {esc(cohort["degree"])} Graduates</h2>\n'
+        f'            <section class="member-group" aria-labelledby="{cohort_id}-title">\n'
+        f'              <h2 id="{cohort_id}-title">{year} {esc(cohort["degree"])} Graduates</h2>\n'
         f'              <ul class="alumni-grid">\n' + '\n'.join(tiles) + '\n              </ul>\n            </section>'
     )
 fill(ROOT / 'members/alumni.html', 'alumni-groups', sections)
@@ -274,4 +282,5 @@ for n, person in enumerate(people):
     )
 
 current = sum(len(g['members']) for g in groups)
-print(f'Built {current} member cards, {len(people) - current} alumni tiles and {len(people)} profile pages.')
+alumni_tiles = sum(len(cohort['members']) for cohort in alumni)
+print(f'Built {current} member cards, {alumni_tiles} alumni tiles and {len(people)} profile pages.')

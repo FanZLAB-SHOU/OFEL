@@ -40,7 +40,6 @@
       ],
       "source": "https://doi.org/10.1111/faf.70077",
       "attribution": {
-        "lab_publication": true,
         "relationships": [],
         "confirmed_by": "User confirmed first author Runze Wang is a lab student in this chat, 2026-10-16."
       }
@@ -82,7 +81,6 @@
       ],
       "source": "https://doi.org/10.1038/s43247-026-03509-9",
       "attribution": {
-        "lab_publication": true,
         "relationships": [],
         "confirmed_by": "User confirmed first author Mingfeng Jiang is a lab student in this chat, 2026-10-16."
       }
@@ -120,7 +118,6 @@
       ],
       "source": "https://doi.org/10.1007/s42995-026-00379-0",
       "attribution": {
-        "lab_publication": true,
         "relationships": [],
         "confirmed_by": "User confirmed first author Xin Cheng is a lab student in this chat, 2026-10-16."
       }
@@ -230,7 +227,6 @@
       ],
       "source": "https://doi.org/10.1111/faf.70015",
       "attribution": {
-        "lab_publication": false,
         "relationships": [
           "external_collaboration"
         ],
@@ -266,7 +262,6 @@
       ],
       "source": "https://doi.org/10.3354/meps14923",
       "attribution": {
-        "lab_publication": true,
         "relationships": [],
         "confirmed_by": "User confirmed first author Sisong Dong is a lab student in this chat, 2026-10-16."
       }
@@ -312,7 +307,6 @@
       ],
       "source": "https://doi.org/10.1038/s44183-025-00150-5",
       "attribution": {
-        "lab_publication": true,
         "relationships": [],
         "confirmed_by": "User confirmed first author Xin Cheng is a lab student in this chat, 2026-10-16."
       }
@@ -350,7 +344,6 @@
       ],
       "source": "https://doi.org/10.1038/s41598-025-88158-2",
       "attribution": {
-        "lab_publication": true,
         "relationships": [],
         "confirmed_by": "User confirmed first author Xin Cheng is a lab student in this chat, 2026-10-16."
       }
@@ -384,7 +377,6 @@
       ],
       "source": "https://doi.org/10.1016/j.marenvres.2024.106923",
       "attribution": {
-        "lab_publication": true,
         "relationships": [],
         "confirmed_by": "User confirmed first author Sisong Dong is a lab student in this chat, 2026-10-16."
       }
@@ -430,7 +422,6 @@
       ],
       "source": "https://doi.org/10.1139/cjfas-2024-0273",
       "attribution": {
-        "lab_publication": false,
         "relationships": [
           "external_collaboration"
         ],
@@ -478,7 +469,6 @@
       ],
       "source": "https://doi.org/10.1139/cjfas-2024-0295",
       "attribution": {
-        "lab_publication": false,
         "relationships": [
           "external_collaboration"
         ],
@@ -546,7 +536,6 @@
       ],
       "source": "https://doi.org/10.1111/faf.12865",
       "attribution": {
-        "lab_publication": false,
         "relationships": [
           "external_collaboration"
         ],
@@ -598,7 +587,6 @@
       ],
       "source": "https://doi.org/10.1111/faf.12820",
       "attribution": {
-        "lab_publication": false,
         "relationships": [
           "external_collaboration"
         ],
@@ -638,7 +626,6 @@
       ],
       "source": "https://doi.org/10.3390/fishes8100516",
       "attribution": {
-        "lab_publication": true,
         "relationships": [],
         "confirmed_by": "User confirmed first author Xin Cheng is a lab student in this chat, 2026-10-16."
       }
@@ -676,7 +663,6 @@
       ],
       "source": "https://doi.org/10.3390/fishes8030131",
       "attribution": {
-        "lab_publication": true,
         "relationships": [],
         "confirmed_by": "User confirmed first author Dongqi Lu is a lab student in this chat, 2026-10-16."
       }
@@ -706,7 +692,6 @@
       ],
       "source": "https://doi.org/10.1111/faf.12673",
       "attribution": {
-        "lab_publication": null,
         "relationships": [],
         "confirmed_by": null
       }
@@ -748,13 +733,12 @@
       ],
       "source": "https://doi.org/10.1093/icesjms/fsaa176",
       "attribution": {
-        "lab_publication": null,
         "relationships": [],
         "confirmed_by": null
       }
     }
   ],
-  "attribution_note": "Lab attribution and research relationships are editorial classifications confirmed by the lab. They must not be inferred from author order, shared university affiliation, or Fan Zhang authorship. null means not yet classified; false means confirmed outside the lab collection. The Fan Zhang collection is derived separately from authorship.",
+  "attribution_note": "Lab research is derived, not flagged: a paper counts when Fan Zhang is an author (any position) and the first author is a current lab member or alumnus listed in people.json. Relationship labels (attribution.relationships) still need a confirmation source.",
   "lab_membership": {
     "confirmed_by": "User confirmation in this chat, 2026-10-16",
     "member_record": "people.json",

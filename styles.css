@@ -571,3 +571,20 @@ body { font-size: 18px; }
   .home-showcase { padding-top: 44px; }
 }
 @media (prefers-reduced-motion: reduce) { .home-hero-next { animation: none; } }
+/* Profile Previous / Next: OFEL tile plus direction and name, after the Punt Lab pattern. */
+.profile-pager a, .profile-pager a:hover { flex-direction: row; align-items: center; gap: 18px; color: #0b5c9e; }
+.profile-pager .pager-badge { display: grid; place-items: center; flex-shrink: 0; width: 104px; height: 76px; border: 1px solid #d3e2ee; border-radius: 4px; background: white; color: #0b5c9e; font: 800 27px/1 Arial, Helvetica, sans-serif; letter-spacing: -.03em; transition: border-color .2s, box-shadow .2s; }
+.pager-text { display: flex; flex-direction: column; gap: 4px; }
+.profile-pager .pager-dir { display: inline-flex; align-items: center; gap: 4px; font-size: 18px; font-weight: 700; letter-spacing: 0; color: #0b5c9e; }
+.pager-dir .icon { width: 20px; height: 20px; stroke-width: 2.4; }
+.profile-pager .pager-name { font-size: 17px; letter-spacing: 0; color: #0b5c9e; }
+.profile-next .pager-text { align-items: flex-end; }
+.profile-pager a:hover .pager-badge { border-color: #0b5c9e; box-shadow: 0 6px 18px rgba(11, 92, 158, .14); }
+.profile-pager a:hover .pager-name { text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 700px) {
+  .profile-pager { gap: 12px; }
+  .profile-pager a, .profile-pager a:hover { gap: 10px; }
+  .profile-pager .pager-badge { width: 64px; height: 48px; font-size: 17px; }
+  .profile-pager .pager-dir { font-size: 15px; }
+  .profile-pager .pager-name { font-size: 14px; }
+}

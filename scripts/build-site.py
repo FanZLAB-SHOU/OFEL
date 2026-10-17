@@ -1,6 +1,7 @@
 """Build the static multipage lab website; no runtime framework is required."""
 
 import hashlib
+import importlib.util
 import html
 import json
 import subprocess
@@ -78,9 +79,11 @@ blog_posts = '\n'.join(
 people = json.loads((ROOT / 'assets/people.json').read_text())
 members = [m for g in people['groups'] for m in g['members']]
 alumni_count = sum(len(c['members']) for c in people.get('alumni', []))
-pubs = json.loads((ROOT / 'assets/publications.json').read_text())['publications']
-lab_pubs = sorted((p for p in pubs if p.get('attribution', {}).get('lab_publication') is True),
-                  key=lambda p: (p['year'], p.get('date', '')), reverse=True)
+_spec = importlib.util.spec_from_file_location('publications', ROOT / 'scripts/build-publications.py')
+publications = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(publications)
+pubs = publications.page_records()
+lab_pubs = [p for p in pubs if publications.is_lab_paper(p)]
 recent = lab_pubs or sorted(pubs, key=lambda p: (p['year'], p.get('date', '')), reverse=True)
 
 

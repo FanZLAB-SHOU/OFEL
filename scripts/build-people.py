@@ -38,7 +38,7 @@ spec.loader.exec_module(publications)
 for paper in publications.records:
     publications.validate(paper)
 # Papers found per member that are not confirmed lab publications; shown on profiles only.
-member_records = json.loads((ROOT / 'assets/member-publications.json').read_text())['publications']
+member_records = publications.member_records
 known = {p['doi'].lower() for p in publications.records}
 for paper in member_records:
     publications.validate(paper)
@@ -195,12 +195,14 @@ for n, person in enumerate(people):
     pager = []
     if n > 0:
         prev = people[n - 1]
-        pager.append(f'<a class="profile-prev" rel="prev" href="{esc(prev["slug"])}.html"><span>← Previous</span>'
-                     f'<strong>{esc(prev["name"])}</strong></a>')
+        pager.append(f'<a class="profile-prev" rel="prev" href="{esc(prev["slug"])}.html">'
+                     f'<span class="pager-badge" aria-hidden="true">OFEL</span><span class="pager-text">'
+                     f'<span class="pager-dir">{icon("left")}Previous</span><span class="pager-name">{esc(prev["name"])}</span></span></a>')
     if n < len(people) - 1:
         nxt = people[n + 1]
-        pager.append(f'<a class="profile-next" rel="next" href="{esc(nxt["slug"])}.html"><span>Next →</span>'
-                     f'<strong>{esc(nxt["name"])}</strong></a>')
+        pager.append(f'<a class="profile-next" rel="next" href="{esc(nxt["slug"])}.html"><span class="pager-text">'
+                     f'<span class="pager-dir">Next{icon("right")}</span><span class="pager-name">{esc(nxt["name"])}</span></span>'
+                     f'<span class="pager-badge" aria-hidden="true">OFEL</span></a>')
     back_href, back_label = person['back']
     content = (
         f'    <section class="people section detail-page profile-page" aria-labelledby="profile-title">\n'

@@ -38,7 +38,7 @@
           "photo": "assets/people/sisong-dong.jpg",
           "email": "dongsisong@126.com",
           "github": "https://github.com/dongworks97",
-          "bio": "Sisong Dong is a postdoctoral researcher at the Oceanic Fisheries Ecosystem Laboratory, Shanghai Ocean University. His research focuses on population dynamics and fisheries stock assessment, especially Antarctic krill. He uses quantitative models to study how growth and mortality vary within populations and how recruitment shapes changes in abundance over time. His collaborative work also examines squid population dynamics under environmental change and model uncertainty in tuna stock assessments.",
+          "bio": "Sisong Dong is a postdoctoral researcher at the Oceanic Fisheries Ecosystem Laboratory, Shanghai Ocean University. His research focuses on stock assessment for tuna and coastal marine species, using quantitative population models to inform fisheries management.",
           "photo_alt": "Road bicycle beside a tree-lined road",
           "profile_photo_aspect_ratio": "4 / 3"
         }
@@ -67,10 +67,11 @@
         {
           "name": "Mingfeng Jiang",
           "role": "PhD Student, Year 3",
-          "photo": null,
-          "email": null,
-          "github": null,
-          "bio": null
+          "photo": "assets/people/mingfeng-jiang.jpg",
+          "email": "jmf822221@163.com",
+          "github": "https://github.com/jiang822",
+          "bio": "Mingfeng Jiang is a PhD student in Fisheries Resources at Shanghai Ocean University, supervised by Professor Fan Zhang. After studying civil engineering as an undergraduate, he moved into marine fisheries science for his master’s and doctoral studies.\n\nHis research focuses on cephalopod population dynamics and stock assessment, particularly jumbo squid in the southeast Pacific. He develops models that account for death after spawning and examines how ENSO shapes squid migration and reproduction. He also evaluates seasonal fishing closures as a means of conserving oceanic squid. He received a 2026 National Scholarship.",
+          "photo_alt": "Mingfeng Jiang beside a lake in winter"
         },
         {
           "name": "Xiaoci Wu",

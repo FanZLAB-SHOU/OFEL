@@ -2,6 +2,49 @@
   "note": "Lab news. Each post gets its own page (news/<slug>.html) and is listed on the News page, newest first. Body paragraphs are plain text. 'people' names link to profile pages.",
   "posts": [
     {
+      "slug": "2026-10-mingfeng-national-scholarship",
+      "date": "2026-10-15",
+      "title": "Mingfeng Jiang receives a 2026 National Scholarship for research on squid fisheries",
+      "summary": "After moving from civil engineering into marine fisheries science, OFEL PhD student Mingfeng Jiang has earned a National Scholarship for his work on cephalopod population dynamics and stock assessment.",
+      "image": "assets/news/2026-10-mingfeng-scholarship/cover.jpg",
+      "image_position": "55% 35%",
+      "image_aspect_ratio": "4 / 3",
+      "people": [
+        "Mingfeng Jiang",
+        "Fan Zhang"
+      ],
+      "body": [
+        "Mingfeng Jiang, a PhD student in Fisheries Resources at Shanghai Ocean University and a member of OFEL, has received a 2026 National Scholarship. His research examines how squid populations respond to fishing and environmental change, and how stock assessment models can better reflect their biology.",
+        {
+          "heading": "From civil engineering to marine science"
+        },
+        "Mingfeng studied civil engineering as an undergraduate before moving into marine fisheries science for his master’s and doctoral studies. That change of direction led him to research that supports the conservation and sustainable use of marine living resources, with a particular interest in the challenges facing distant-water fisheries.",
+        "Working under the supervision of Professor Fan Zhang in the College of Marine Living Resource Sciences and Management, he now focuses on cephalopod population dynamics and assessment methods, especially for jumbo squid (Dosidicus gigas) in the southeast Pacific.",
+        {
+          "heading": "Building assessments around squid biology"
+        },
+        "Stock assessments provide the scientific basis for fisheries management, but they must account for the combined effects of fishing, environmental variability and a species’ life history. Cephalopods pose particular challenges: they have short life cycles and respond quickly to changes in ocean conditions, while some species die after spawning. Models developed for longer-lived fish can miss these processes.",
+        "In a 2026 first-authored paper in the Journal of Applied Ecology, Mingfeng examined the biases that arise when assessment models ignore death after spawning in semelparous marine species. The study argues that reliable assessments need to represent the biological processes that actually govern a population.",
+        "His other work in 2026 explores how the El Niño–Southern Oscillation affects jumbo squid. A paper in Communications Earth & Environment examines how strong El Niño events alter migration routes and reproductive timing in the southeast Pacific. A related study in Ecology and Evolution investigates how growth responses to ENSO differ across locations and life stages.",
+        {
+          "heading": "Connecting research with management"
+        },
+        "Mingfeng also studies whether management measures achieve their intended conservation goals. In 2022, he published a first-authored preliminary evaluation of seasonal squid-fishery closures in equatorial high-seas waters of the central and eastern Pacific. A 2024 paper in Fisheries Research used China’s voluntary seasonal closures on the high seas to assess how effectively such measures conserve oceanic squid.",
+        "His research extends to tuna fisheries. In Acta Oceanologica Sinica, he examined links between environmental variability and tuna catch composition using the mean trophic level of the catch. He has also developed indicators to inform fishing-access decisions for the western and central Pacific skipjack purse-seine fishery.",
+        "At the time of the scholarship profile, he had published five first-authored papers in journals indexed by the Science Citation Index and four in journals indexed by the Chinese Science Citation Database (CSCD).",
+        {
+          "heading": "Sharing the work internationally"
+        },
+        "During 2025 and 2026, Mingfeng gave six oral presentations at international meetings. These included the first and second international symposia on squid conservation and management; a squid workshop of the South Pacific Regional Fisheries Management Organisation’s Scientific Committee; the second Busan dialogue on unregulated fisheries; and an International Commission for the Conservation of Atlantic Tunas bigeye tuna stock assessment meeting.",
+        "He plans to continue studying cephalopod population dynamics and the effects of environmental change, while developing assessment methods that can support fisheries conservation and sustainable use.",
+        "This article is adapted from a student profile published on 15 October 2026 by the Graduate Student Union of the College of Marine Living Resource Sciences and Management, Shanghai Ocean University. Original text and photographs: Mingfeng Jiang."
+      ],
+      "source": {
+        "label": "Original scholarship profile (in Chinese), Graduate Student Union, College of Marine Living Resource Sciences and Management, Shanghai Ocean University",
+        "url": "https://mp.weixin.qq.com/s/O1kKHYdJEjQPs7OXUEkvSg"
+      }
+    },
+    {
       "slug": "2026-09-semelparous-assessment",
       "date": "2026-09-21",
       "title": "Mingfeng Jiang shows that ignoring death after spawning distorts squid stock assessments",

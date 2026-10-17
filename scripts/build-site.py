@@ -170,18 +170,20 @@ def initials(name):
     return ''.join(part[0] for part in name.split()[:2]).upper()
 
 
-news_items = ''.join(
-    f'<div class="mock-news" style="--i:{n}"><span class="mock-tag">New paper · {p["year"]}</span>'
-    f'<strong>{italicize(esc(short(p["title"], 64)))}</strong><small>{esc(p["journal"])}</small></div>'
-    for n, p in enumerate(recent[:3])
-)
+latest_news = posts[0] if posts else None
+news_background = latest_news.get('image') if latest_news else None
+news_visual = (
+    f'<div class="mock-panel mock-paper" style="align-self: end">'
+    f'<span class="mock-label">Latest news · {esc(pretty_date(latest_news["date"]))}</span>'
+    f'<strong>{esc(latest_news["title"])}</strong></div>'
+) if latest_news else ''
 avatars = ''.join(f'<span class="mock-avatar" style="--i:{n}">{esc(initials(m["name"]))}</span>' for n, m in enumerate(members[:8]))
 latest = recent[0]
 latest_authors = ', '.join(f"{a['given'][0]}. {a['family']}" for a in latest['authors'][:3]) + (' et al.' if len(latest['authors']) > 3 else '')
 journal_chips = ''.join(f'<span>{esc(j)}</span>' for j in list(dict.fromkeys(p['journal'] for p in recent))[:3])
 gateways = [
-    ('news/index.html', 'News', 'Lab updates, new papers, and life in the laboratory.', 'assets/research/climate-ecosystems.webp', '30% 50%', 'book',
-     f'<div class="mock-stack">{news_items}</div>'),
+    ('news/index.html', 'News', 'Lab updates, new papers, and life in the laboratory.', news_background or 'assets/research/climate-ecosystems.webp', latest_news.get('image_position', '50% 50%') if latest_news else '30% 50%', 'book',
+     news_visual),
     ('members/index.html', 'People', 'Meet the faculty, postdoctoral researchers, and students behind our work.', 'assets/research/adaptive-management.webp', '45% 60%', 'people',
      f'<div class="mock-panel mock-team"><span class="mock-label">Our team</span><div class="mock-avatars">{avatars}</div>'
      f'<div class="mock-lines"><i></i><i></i></div></div>'

@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://fanzhang-lab-shou.github.io/OFEL/">
-    <img src="docs/assets/ofel-banner.svg" alt="OFEL — Oceanic Fisheries Ecosystem Laboratory. Understanding ocean change. Informing fisheries." width="100%">
+    <img src="docs/assets/ofel-banner.png" alt="OFEL — Oceanic Fisheries Ecosystem Laboratory. An ocean fleet, tuna populations and DNA represent fisheries data, stock assessment and fish biology." width="100%">
   </a>
 </p>
 

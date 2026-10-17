@@ -33,6 +33,7 @@ sys.path.insert(0, str(ROOT / 'scripts'))
 from icons import expand, icon  # noqa: E402
 from site_paths import clean_url, output_path, rebase_links, write_page  # noqa: E402
 from responsive_images import responsive_images  # noqa: E402
+from page_metadata import render_head  # noqa: E402
 
 spec = importlib.util.spec_from_file_location('publications', ROOT / 'scripts/build-publications.py')
 publications = importlib.util.module_from_spec(spec)
@@ -277,9 +278,8 @@ for n, person in enumerate(people):
     )
     title = f'{person["name"]} | OFEL'
     description = f'{person["name"]}, {person["role"]} at the Oceanic Fisheries Ecosystem Laboratory, Shanghai Ocean University.'
-    head = (TEMPLATES / 'head.html').read_text().replace('{{asset_version}}', asset_version())
-    for token, value in {'{{title}}': title, '{{description}}': description, '{{canonical}}': BASE + clean_url('members/' + person['slug'] + '.html')}.items():
-        head = head.replace(token, esc(value))
+    head = render_head(title, description, BASE + clean_url('members/' + person['slug'] + '.html'), asset_version(),
+                       image=person.get('photo'), image_alt=person.get('photo_alt') or (person['name'] + ' profile photo' if person.get('photo') else None), kind='profile')
     write_page(f'members/{person["slug"]}.html',
         head + '<body id="top" data-page="profile" data-nav-section="people">\n'
         '  <a class="skip-link" href="#main">Skip to content</a>\n' + header

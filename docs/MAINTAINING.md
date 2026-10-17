@@ -20,6 +20,14 @@ python3 -m http.server 8765 --bind 127.0.0.1
 
 ## 内容在哪里
 
+### 站点地图与链接分享预览
+
+每次构建自动生成 `/OFEL/sitemap.xml`，列出 45 个现有正式页面的 HTTPS 规范目录地址，新增成员和新闻后自动扩充；旧 HTML 跳转页、404、查询参数和锚点不进入地图。未确认的更新时间不写入 `lastmod`。页面 head 也包含地图地址，可将完整站点地图 URL 提交到搜索引擎站长工具。`robots.txt` 需要由域名根目录的站点统一维护。
+
+`scripts/page_metadata.py` 统一生成 Open Graph 和 Twitter 标题、摘要、图片及图片说明。新闻使用各自的 `image`；成员主页使用 `photo`，无照片时使用实验室横幅；Fan Zhang 的个人页使用 `assets/people/fan-zhang.jpg`；首页保留 `assets/social-card.png`。新闻以 `article` 标记，成员以 `profile` 标记。预览信息直接写入 HTML，抓取时无需执行 JavaScript。
+
+新增或更换照片与封面后，可运行 `node scripts/prepare-share-images.cjs`（需要 `sharp`，可用 `NODE_PATH` 指定包目录）生成保留完整构图的较小 JPEG，并提交 `assets/share/`。文件名包含源图片哈希；源图片变化而预览图尚未生成时，构建器暂时使用新原图，避免继续展示旧照片。生成后按常规重新构建，再运行 `python3 scripts/check-sharing.py`。各分享平台独立控制抓取、裁切和缓存。
+
 ### 首页宣传片
 
 首页底部的 Explore 按钮跳转到页脚上方的内嵌播放器并请求播放。源模板在 `templates/index.html`，视频为 `assets/video/ofel-film-1080p.mp4`，封面为 `assets/video/ofel-film-poster.webp`。保持 `controls`、`playsinline` 和 `preload="none"`，不添加自动播放，避免访客打开首页就下载整段视频。替换 MP4 时使用 H.264 / AAC 和 fast-start（`moov` 在文件开头），并重新检查文件大小及播放。

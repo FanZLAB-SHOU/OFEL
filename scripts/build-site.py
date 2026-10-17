@@ -13,6 +13,7 @@ sys.path.insert(0, str(ROOT / 'scripts'))
 from icons import expand, icon  # noqa: E402
 from species import italicize  # noqa: E402
 from site_paths import PAGE_PATHS, clean_url, legacy_routes, write_legacy_redirects, write_page  # noqa: E402
+from page_metadata import render_head, write_sitemap  # noqa: E402
 TEMPLATES = ROOT / 'templates'
 BASE = 'https://fanzhang-lab-shou.github.io/OFEL/'
 PAGES = {
@@ -243,9 +244,9 @@ tokens = {
 header = expand((TEMPLATES / 'header.html').read_text())
 footer = expand((TEMPLATES / 'footer.html').read_text())
 for name, (title, description, nav) in PAGES.items():
-    head = (TEMPLATES / 'head.html').read_text().replace('{{asset_version}}', asset_version())
-    for token, value in {'{{title}}': title, '{{description}}': description, '{{canonical}}': BASE + clean_url(PAGE_PATHS[name])}.items():
-        head = head.replace(token, esc(value))
+    head = render_head(title, description, BASE + clean_url(PAGE_PATHS[name]), asset_version(),
+                       **({'image':'assets/people/fan-zhang.jpg','image_alt':'Fan Zhang at an outdoor venue','kind':'profile'}
+                          if name=='fan-zhang' else {}))
     content = expand((TEMPLATES / PAGE_PATHS[name]).read_text())
     for token, value in tokens.items():
         content = content.replace(token, value)
@@ -256,10 +257,9 @@ for name, (title, description, nav) in PAGES.items():
     )
 
 for post in posts:
-    head = (TEMPLATES / 'head.html').read_text().replace('{{asset_version}}', asset_version())
-    for token, value in {'{{title}}': post['title'] + ' | OFEL News', '{{description}}': post.get('summary', post['title']),
-                         '{{canonical}}': BASE + clean_url(post_url(post))}.items():
-        head = head.replace(token, esc(value))
+    head = render_head(post['title'] + ' | OFEL News', post.get('summary', post['title']),
+                       BASE + clean_url(post_url(post)), asset_version(), image=post.get('image'),
+                       image_alt=post.get('image_alt') or ('Cover image for ' + post['title']), kind='article')
     write_page(post_url(post),
         head + '<body id="top" data-page="news-post" data-nav-section="news">\n'
         '  <a class="skip-link" href="#main">Skip to content</a>\n' + header
@@ -273,3 +273,5 @@ print(f'Built {len(PAGES)} static pages and {len(posts)} news articles with shar
 # Current HTML URLs get direct redirects; the 404 fallback handles older flat URLs.
 print(f'Built {write_legacy_redirects()} legacy HTML redirects to clean directory URLs.')
 write_page('404.html', (TEMPLATES / '404.html').read_text().replace('{{legacy_routes}}', json.dumps(legacy_routes(), ensure_ascii=True)))
+write_sitemap()
+print('Built sitemap.xml with canonical directory URLs.')

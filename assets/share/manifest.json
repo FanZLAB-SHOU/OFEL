@@ -1,0 +1,170 @@
+{
+  "assets/news/2025-07-iccat/meeting.jpg": {
+    "sha256": "f22f147ad3fb12bdb518c7e2efd05ec9247464c47e6ebe12704a06bdd0aaa740",
+    "src": "assets/share/meeting-8b01cfda475e.jpg",
+    "width": 1200,
+    "height": 801,
+    "type": "image/jpeg",
+    "bytes": 128033
+  },
+  "assets/news/2025-10-spc-tuna-seminar/speakers-cover.png": {
+    "sha256": "f8e62229770e0ec4e7eea55a638a4e247aa70f4a839adc421213c9144695d0a9",
+    "src": "assets/share/speakers-cover-38b578b80326.jpg",
+    "width": 900,
+    "height": 1200,
+    "type": "image/jpeg",
+    "bytes": 105193
+  },
+  "assets/news/2026-04-mse-course/poster-en.png": {
+    "sha256": "57656b9711599d915609f0e3598bc2ade9dcd97fc857b2a96df604b07bf2ce40",
+    "src": "assets/share/poster-en-baa0821143d6.jpg",
+    "width": 900,
+    "height": 1200,
+    "type": "image/jpeg",
+    "bytes": 167675
+  },
+  "assets/news/2026-04-squid-enso/cover.webp": {
+    "sha256": "e898c0c21680e30d09ea1fd986c5a9b9fa846696417ad24102cb44445b0010d2",
+    "src": "assets/share/cover-12c80b7b7b2e.jpg",
+    "width": 1200,
+    "height": 800,
+    "type": "image/jpeg",
+    "bytes": 198802
+  },
+  "assets/news/2026-04-tuna-uncertainty/cover.webp": {
+    "sha256": "fe66a4372b60eaf36f38f09c76704dd5b91d9678aacb9f78de11fde0e5c5ac71",
+    "src": "assets/share/cover-512f11a06bad.jpg",
+    "width": 1080,
+    "height": 720,
+    "type": "image/jpeg",
+    "bytes": 119020
+  },
+  "assets/news/2026-08-ais/cover.webp": {
+    "sha256": "ba0e523b426e74ae65d2f2495381647d939ff172a37cfe5bf80c0a76240e4899",
+    "src": "assets/share/cover-6aa5cfcca525.jpg",
+    "width": 1200,
+    "height": 800,
+    "type": "image/jpeg",
+    "bytes": 192207
+  },
+  "assets/news/2026-09-semelparous/cover.webp": {
+    "sha256": "18ef221c5d0c61f6f890a2501b219bbd37649c6e9f1e5a9551e7fb6bb022da93",
+    "src": "assets/share/cover-5ccc99fba97a.jpg",
+    "width": 1200,
+    "height": 800,
+    "type": "image/jpeg",
+    "bytes": 162744
+  },
+  "assets/news/2026-10-mingfeng-scholarship/cover.png": {
+    "sha256": "c2b078ac1b0ec04394614d34fb5dd5e42e2100d130bb49457c663f66f60c9e80",
+    "src": "assets/share/cover-cd9fa90c74d0.jpg",
+    "width": 1200,
+    "height": 675,
+    "type": "image/jpeg",
+    "bytes": 61046
+  },
+  "assets/people/dongqi-lu-sydney.jpg": {
+    "sha256": "412e4bb2c31d163f378287edff2cdd999d7723728c332f554253238dbd5c5a33",
+    "src": "assets/share/dongqi-lu-sydney-a54e6b97e98a.jpg",
+    "width": 1200,
+    "height": 900,
+    "type": "image/jpeg",
+    "bytes": 180568
+  },
+  "assets/people/fan-zhang.jpg": {
+    "sha256": "3314952ed529cf1c72d92dc16e49c1cbad163ae38c72c7ea70a88d2ab7128705",
+    "src": "assets/share/fan-zhang-2c5a04f7eb04.jpg",
+    "width": 1200,
+    "height": 900,
+    "type": "image/jpeg",
+    "bytes": 249065
+  },
+  "assets/people/hongyu-lin.jpg": {
+    "sha256": "41582eb9d49dd7ed11d633da3fc4b44740f3ba3a500ffb42994ebf139de15f7b",
+    "src": "assets/share/hongyu-lin-e19a6aede68e.jpg",
+    "width": 900,
+    "height": 1200,
+    "type": "image/jpeg",
+    "bytes": 179576
+  },
+  "assets/people/mingfeng-jiang.jpg": {
+    "sha256": "6975e9dc386b376d04ec7ad96b8b34e9e4ca053836fdf5835fd52ea041821d72",
+    "src": "assets/share/mingfeng-jiang-aeea7f3f3198.jpg",
+    "width": 1200,
+    "height": 900,
+    "type": "image/jpeg",
+    "bytes": 81644
+  },
+  "assets/people/qinqin-lin.jpg": {
+    "sha256": "73dcbbfa0e535739582261de5309884e74ed730d1b1758a1287dabc696d2d25e",
+    "src": "assets/share/qinqin-lin-4b1ac4979e8b.jpg",
+    "width": 279,
+    "height": 372,
+    "type": "image/jpeg",
+    "bytes": 21591
+  },
+  "assets/people/runze-wang.jpg": {
+    "sha256": "db27f2920003712fa36e1d1de9c30cc1dc0c88cfe41d7a000d8849b5fc144372",
+    "src": "assets/share/runze-wang-3c79d078a2fb.jpg",
+    "width": 715,
+    "height": 1200,
+    "type": "image/jpeg",
+    "bytes": 146435
+  },
+  "assets/people/shuang-ma.jpg": {
+    "sha256": "a74f48ad60beb8b16baebb34d7e6d1001baff6eab1d6f9eb56f29420fcd8a364",
+    "src": "assets/share/shuang-ma-5e5422d9bcdc.jpg",
+    "width": 964,
+    "height": 1044,
+    "type": "image/jpeg",
+    "bytes": 74703
+  },
+  "assets/people/sisong-dong.jpg": {
+    "sha256": "4d190d4148604ab6b83ee5523ffb9389dfc302491e1810ed81d321e1323921c5",
+    "src": "assets/share/sisong-dong-714ebb092b4f.jpg",
+    "width": 1200,
+    "height": 900,
+    "type": "image/jpeg",
+    "bytes": 245101
+  },
+  "assets/people/weiguo-li.jpg": {
+    "sha256": "7d87a8964b474138e968388bf01def13d4de6f32b9855ea44e44f2a8673335de",
+    "src": "assets/share/weiguo-li-d0a44e3bcb82.jpg",
+    "width": 900,
+    "height": 1200,
+    "type": "image/jpeg",
+    "bytes": 128506
+  },
+  "assets/people/xianglong-yan.png": {
+    "sha256": "373106e5f23d3b4a2bb1d9038382f720dd039c56302a3d251805757dbaff391e",
+    "src": "assets/share/xianglong-yan-819383754bfc.jpg",
+    "width": 203,
+    "height": 270,
+    "type": "image/jpeg",
+    "bytes": 6439
+  },
+  "assets/people/xin-cheng.jpg": {
+    "sha256": "520ad75038bc292bf92104b04c77fccd5cc9f11ed1b0e6d95a05d2afd8bf862b",
+    "src": "assets/share/xin-cheng-56db46fc8cf2.jpg",
+    "width": 1200,
+    "height": 855,
+    "type": "image/jpeg",
+    "bytes": 173667
+  },
+  "assets/people/zhechuan-xu.jpg": {
+    "sha256": "ba99cb017c9c2dd460f9518555785ef24e67a3d6c7f30ab56d002490689b3c16",
+    "src": "assets/share/zhechuan-xu-9c9119d3cb0d.jpg",
+    "width": 900,
+    "height": 1200,
+    "type": "image/jpeg",
+    "bytes": 68327
+  },
+  "assets/social-card.png": {
+    "sha256": "4ab974d72c4acc88e391cac810d1c4bcaaa7139c79c6021c64a7283cfb40feff",
+    "src": "assets/social-card.png",
+    "width": 1200,
+    "height": 630,
+    "type": "image/png",
+    "bytes": 53274
+  }
+}

@@ -1,25 +1,25 @@
     <div class="home-showcase">
       <section class="home-intro container" id="home" aria-labelledby="home-title">
-        <p class="eyebrow">Oceanic Fisheries Ecosystem Laboratory</p>
-        <h1 id="home-title">Understanding ocean change.<br><em>Informing fisheries.</em></h1>
-        <p class="home-description">Fish populations, fisheries data, and marine life.<br> Research at Shanghai Ocean University.</p>
-        <a class="button home-button" href="research.html">{{icon:fish}}Explore our research</a>
+        <p class="eyebrow" data-reveal>Oceanic Fisheries Ecosystem Laboratory</p>
+        <h1 id="home-title" data-reveal style="--reveal-delay: .12s">Understanding ocean change.<br><em>Informing fisheries.</em></h1>
+        <p class="home-description" data-reveal style="--reveal-delay: .24s">Fish populations, fisheries data, and marine life.<br> Research at Shanghai Ocean University.</p>
+        <a class="button home-button" href="research.html" data-reveal style="--reveal-delay: .36s">{{icon:fish}}Explore our research</a>
       </section>
       <section class="home-research" id="research-preview" aria-labelledby="research-preview-title">
-        <div class="container reel-heading"><h2 id="research-preview-title">Our research</h2><div class="reel-controls" hidden><span class="reel-count" aria-hidden="true">01 / 03</span><button class="reel-control" type="button" data-reel="previous" aria-label="Previous research area">←</button><button class="reel-control" type="button" data-reel="next" aria-label="Next research area">→</button><button class="reel-pause" type="button" data-reel="pause" aria-pressed="false">Pause</button></div></div>
-        <div class="research-track" tabindex="0" role="region" aria-label="Research directions" aria-roledescription="carousel">
+        <div class="container reel-heading" data-reveal><h2 id="research-preview-title">Our research</h2><div class="reel-controls" hidden><button class="reel-pause" type="button" data-reel="pause" aria-pressed="false">Pause</button></div></div>
+        <div class="research-track" role="region" aria-label="Research directions" data-reveal>
 {{research_carousel}}
         </div>
-        <div class="container reel-footer"><span>Three core areas. One connected ocean.</span><a href="research.html">{{icon:fish}}All research directions</a></div>
+        <div class="container reel-footer" data-reveal><span>Three core areas. One connected ocean.</span><a href="research.html">{{icon:fish}}All research directions</a></div>
       </section>
     </div>
     <section class="home-gateways section" aria-labelledby="gateways-title">
       <div class="container">
-        <div class="gateway-heading"><p class="eyebrow">Explore OFEL</p><h2 id="gateways-title">Discover the lab.</h2></div>
+        <div class="gateway-heading" data-reveal><p class="eyebrow">Explore OFEL</p><h2 id="gateways-title">Discover the lab.</h2></div>
         <div class="gateway-grid">
-          <a class="gateway-card" href="members.html"><span class="gateway-kicker">The people</span><span class="gateway-arrow">{{icon:people}}</span><h3>People</h3><p>Meet our faculty, researchers, and students.</p></a>
-          <a class="gateway-card" href="publications.html"><span class="gateway-kicker">The science</span><span class="gateway-arrow">{{icon:book}}</span><h3>Publications</h3><p>Explore our papers, models, and methods.</p></a>
-          <a class="gateway-card" href="contact.html"><span class="gateway-kicker">Connect with us</span><span class="gateway-arrow">{{icon:mail}}</span><h3>Contact &amp;<br> Join Us</h3><p>Start a conversation about research.</p></a>
+          <a class="gateway-card" href="members.html" data-reveal><span class="gateway-kicker">The people</span><span class="gateway-arrow">{{icon:people}}</span><h3>People</h3><p>Meet our faculty, researchers, and students.</p></a>
+          <a class="gateway-card" href="publications.html" data-reveal style="--reveal-delay: .12s"><span class="gateway-kicker">The science</span><span class="gateway-arrow">{{icon:book}}</span><h3>Publications</h3><p>Explore our papers, models, and methods.</p></a>
+          <a class="gateway-card" href="contact.html" data-reveal style="--reveal-delay: .24s"><span class="gateway-kicker">Connect with us</span><span class="gateway-arrow">{{icon:mail}}</span><h3>Contact &amp;<br> Join Us</h3><p>Start a conversation about research.</p></a>
         </div>
       </div>
     </section>

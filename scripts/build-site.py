@@ -51,14 +51,23 @@ directions = json.loads((ROOT / 'assets/research.json').read_text())['directions
 core = [item for item in directions if item['primary']]
 priority = 'fetchpriority="high"'
 lazy = 'loading="lazy"'
-carousel = '\n'.join(
-    f'          <a class="reel-card" href="research.html#{esc(item["slug"])}" '
-    f'aria-label="Explore {esc(item["title"])}"><img src="{esc(item["image"])}" alt="{esc(item["alt"])}" '
-    f'width="1536" height="1024" {priority if n == 0 else lazy}>'
-    f'<div class="reel-card-copy"><span>{esc(item["label"])}</span><h3>{esc(item["title"])}</h3>'
-    '<span class="reel-card-arrow">' + icon('fish') + '</span></div></a>'
-    for n, item in enumerate(core)
-)
+def reel_cards(copy):
+    # Copies exist only to keep the loop seamless; they are hidden from keyboard and screen readers.
+    hidden = ' tabindex="-1"' if copy else ''
+    return ''.join(
+        f'<a class="reel-card" href="research.html#{esc(item["slug"])}"{hidden} '
+        f'aria-label="Explore {esc(item["title"])}"><img src="{esc(item["image"])}" alt="{"" if copy else esc(item["alt"])}" '
+        f'width="1536" height="1024" {priority if n == 0 and not copy else lazy}>'
+        f'<div class="reel-card-copy"><span>{esc(item["label"])}</span><h3>{esc(item["title"])}</h3></div></a>'
+        for n, item in enumerate(core)
+    )
+
+
+carousel = ('          <div class="reel-marquee">\n'
+            f'            <div class="reel-group">{reel_cards(False)}</div>\n'
+            + ''.join(f'            <div class="reel-group reel-copy" aria-hidden="true" inert>{reel_cards(True)}</div>\n'
+                      for _ in range(3))
+            + '          </div>')
 posts = json.loads((ROOT / 'assets/blog.json').read_text())['posts']
 blog_posts = '\n'.join(
     f'<article class="blog-post"><p class="eyebrow">{esc(post.get("date", "Lab news"))}</p>'

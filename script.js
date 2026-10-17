@@ -154,41 +154,44 @@ function initResearchReel() {
   const track = document.querySelector('.research-track');
   if (!track) return;
   const section = track.closest('.home-research');
-  const slides = [...track.querySelectorAll('.reel-card')];
-  const counter = section.querySelector('.reel-count');
+  const marquee = track.querySelector('.reel-marquee');
+  const firstGroup = track.querySelector('.reel-group');
   const pause = section.querySelector('[data-reel="pause"]');
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  let index = 0, paused = motion.matches, hovered = false, focused = false, visible = false, manualUntil = 0;
-  section.querySelector('.reel-controls').hidden = false;
-  function updatePause() { pause.textContent = paused ? 'Play' : 'Pause'; pause.setAttribute('aria-pressed', String(paused)); }
-  function go(next) {
-    index = (next + slides.length) % slides.length;
-    track.scrollTo({ left: slides[index].offsetLeft - (track.clientWidth - slides[index].offsetWidth) / 2, behavior: motion.matches ? 'auto' : 'smooth' });
+  const speed = 45; // pixels per second
+  let paused = false;
+  section.querySelector('.reel-controls').hidden = motion.matches;
+  function updatePause() {
+    pause.textContent = paused ? 'Play' : 'Pause';
+    pause.setAttribute('aria-pressed', String(paused));
+    track.classList.toggle('is-paused', paused);
   }
-  section.querySelector('[data-reel="previous"]').addEventListener('click', () => { manualUntil = Date.now() + 9000; go(index - 1); });
-  section.querySelector('[data-reel="next"]').addEventListener('click', () => { manualUntil = Date.now() + 9000; go(index + 1); });
+  // One loop moves the strip by two groups (half its width), so the duration keeps the speed constant at any screen size.
+  function setDuration() { marquee.style.setProperty('--reel-duration', `${(firstGroup.offsetWidth * 2) / speed}s`); }
   pause.addEventListener('click', () => { paused = !paused; updatePause(); });
-  section.addEventListener('mouseenter', () => { hovered = true; });
-  section.addEventListener('mouseleave', () => { hovered = false; });
-  section.addEventListener('focusin', () => { focused = true; });
-  section.addEventListener('focusout', event => { focused = section.contains(event.relatedTarget); });
-  ['pointerdown', 'wheel'].forEach(type => track.addEventListener(type, () => { manualUntil = Date.now() + 9000; }, { passive: true }));
-  track.addEventListener('keydown', event => {
-    if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
-    event.preventDefault(); manualUntil = Date.now() + 9000; go(index + (event.key === 'ArrowRight' ? 1 : -1));
-  });
-  track.addEventListener('scroll', () => {
-    const center = track.scrollLeft + track.clientWidth / 2;
-    if (track.scrollLeft <= 2) index = 0;
-    else if (track.scrollLeft >= track.scrollWidth - track.clientWidth - 2) index = slides.length - 1;
-    else index = slides.reduce((best, slide, i) => Math.abs(slide.offsetLeft + slide.offsetWidth / 2 - center) < Math.abs(slides[best].offsetLeft + slides[best].offsetWidth / 2 - center) ? i : best, 0);
-    counter.textContent = `${String(index + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
-  }, { passive: true });
-  motion.addEventListener('change', event => { if (event.matches) { paused = true; updatePause(); } });
-  if ('IntersectionObserver' in window) new IntersectionObserver(entries => { visible = entries[0].isIntersecting; }).observe(track);
-  else visible = true;
-  window.setInterval(() => { if (!paused && !hovered && !focused && visible && !document.hidden && Date.now() > manualUntil) go(index + 1); }, 7000);
+  motion.addEventListener('change', event => { section.querySelector('.reel-controls').hidden = event.matches; });
+  if ('ResizeObserver' in window) new ResizeObserver(setDuration).observe(firstGroup);
+  setDuration();
   updatePause();
 }
+
+function initReveal() {
+  let items = [...document.querySelectorAll('[data-reveal]')];
+  if (!items.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.documentElement.classList.add('reveal-ready');
+  // Position checks on load and scroll; no dependence on animation frames, so content never stays hidden.
+  function check() {
+    const limit = window.innerHeight * 0.92;
+    items = items.filter(item => {
+      if (item.getBoundingClientRect().top > limit) return true;
+      item.classList.add('is-revealed');
+      return false;
+    });
+    if (!items.length) ['scroll', 'resize'].forEach(type => window.removeEventListener(type, check));
+  }
+  ['scroll', 'resize'].forEach(type => window.addEventListener(type, check, { passive: true }));
+  check();
+}
+initReveal();
 initResearchReel();
 document.querySelector('#copyright-year').textContent = new Date().getFullYear();

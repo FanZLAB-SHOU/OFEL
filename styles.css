@@ -493,9 +493,11 @@ body { font-size: 18px; }
 .gateway-go { position: absolute; right: 20px; bottom: 20px; width: 40px; height: 40px; display: grid; place-items: center; border-radius: 50%; background: rgba(255, 255, 255, .14); color: white; backdrop-filter: blur(6px); transition: background .3s, color .3s; }
 .gateway-go .icon { width: 19px; height: 19px; }
 .gateway-card:hover .gateway-go { background: white; color: #0b1a2b; }
-/* Give the journal masthead its own space beneath the navigation copy. */
-.gateway-card-journal .gateway-bg { top: 174px; height: calc(100% - 174px); object-fit: contain; background: #0b1a2b; filter: saturate(.95) brightness(.96); }
-.gateway-card-journal::after { background: linear-gradient(180deg, #0b1a2b 0, #0b1a2b 156px, rgba(11, 26, 43, 0) 190px, rgba(3, 10, 20, .08) 65%, rgba(3, 10, 20, .55) 100%); }
+/* Start with the complete journal masthead, then place navigation over the artwork. */
+.gateway-card.gateway-card-journal { background: #0b344b; }
+.gateway-card-journal .gateway-bg { height: auto; aspect-ratio: 240 / 315; filter: saturate(.95) brightness(.96); }
+.gateway-card-journal::after { background: linear-gradient(180deg, rgba(3, 21, 35, 0) 0%, rgba(3, 21, 35, .06) 20%, rgba(3, 21, 35, .72) 48%, #0b344b 85%); }
+.gateway-card-journal .gateway-copy::before { content: ""; display: block; aspect-ratio: 2 / 1; }
 .gateway-publication-preview { align-self: end; }
 .gateway-publication-meta { margin-top: 4px; padding-top: 9px; border-top: 1px solid #dfe8ef; }
 /* Mockup parts */

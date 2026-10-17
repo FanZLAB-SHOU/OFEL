@@ -13,10 +13,14 @@
         {
           "name": "Qinqin Lin",
           "role": "Lecturer",
-          "photo": null,
-          "email": null,
+          "photo": "assets/people/qinqin-lin.jpg",
+          "email": "qqlin@shou.edu.cn",
           "github": null,
-          "bio": null
+          "bio": "Qinqin Lin is a lecturer in the Department of Marine Fisheries Science and Technology at Shanghai Ocean University. Her research examines pelagic fish population dynamics and how fishing and climate change affect marine ecosystems. She develops ecosystem models to support ecosystem-based fisheries management, with a focus on tropical Pacific food webs and tuna fisheries.\n\nShe earned her PhD at Shanghai Ocean University in 2022 and completed postdoctoral research there from 2022 to 2024. She was a visiting scholar at the University of Maine in 2021–2022. Her work also supports China’s participation in the Inter-American Tropical Tuna Commission (IATTC).",
+          "photo_alt": "Qinqin Lin at a fisheries meeting",
+          "website": "https://hyxy.shou.edu.cn/2025/0225/c7722a338029/page.htm",
+          "website_label": "University profile",
+          "photo_source": "https://hyxy.shou.edu.cn/_upload/article/images/2a/e4/53c73ceb4a9db72ef0d3481ae23d/9eda1326-cf73-40eb-94f2-65a1a79c5714.jpg"
         }
       ]
     },

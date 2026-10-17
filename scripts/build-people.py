@@ -48,6 +48,7 @@ for paper in member_records:
 all_records = publications.records + member_records
 
 icons = {
+    'website': icon('globe'),
     'email': '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 6 8 7 8-7"/></svg>',
     'github': '<svg viewBox="0 0 24 24" aria-hidden="true" class="github-icon"><path d="M12 .8A11.2 11.2 0 0 0 8.46 22.63c.56.1.77-.24.77-.54v-2.08c-3.13.68-3.79-1.33-3.79-1.33-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.68.08-.68 1.13.08 1.73 1.16 1.73 1.16 1 1.72 2.64 1.22 3.28.93.1-.73.4-1.22.71-1.5-2.5-.28-5.13-1.25-5.13-5.57 0-1.23.44-2.24 1.16-3.03-.12-.28-.5-1.43.11-2.98 0 0 .94-.3 3.08 1.15A10.76 10.76 0 0 1 12 6.13c.95 0 1.9.13 2.79.38 2.14-1.45 3.08-1.15 3.08-1.15.61 1.55.23 2.7.11 2.98.72.79 1.16 1.8 1.16 3.03 0 4.33-2.64 5.29-5.15 5.57.4.35.76 1.03.76 2.08v3.07c0 .3.2.65.77.54A11.2 11.2 0 0 0 12 .8Z"/></svg>',
 }
@@ -83,15 +84,26 @@ def checked_github(member):
     return member['github']
 
 
+def checked_website(member):
+    parsed = urlparse(member['website'])
+    if parsed.scheme != 'https' or not parsed.netloc:
+        raise ValueError(f'Invalid website URL for {member["name"]}')
+    return member['website']
+
+
 def contact(member, kind):
     name = esc(member['name'])
-    label = 'Email' if kind == 'email' else 'GitHub'
+    label = {'email': 'Email', 'github': 'GitHub', 'website': 'Website'}[kind]
     if not member.get(kind):
         return (f'<span class="member-link is-placeholder" role="img" '
                 f'aria-label="{label} not yet listed for {name}" title="{label} not yet listed">{icons[kind]}</span>')
     if kind == 'email':
         value = checked_email(member)
         href, description, extra = 'mailto:' + value, f'Email {member["name"]}: {value}', ''
+    elif kind == 'website':
+        value = href = checked_website(member)
+        description = f'{member["name"]}: {member.get("website_label", "Website")} (opens in a new tab)'
+        extra = ' target="_blank" rel="noopener noreferrer"'
     else:
         value = href = checked_github(member)
         description = f'{member["name"]} on GitHub (opens in a new tab)'
@@ -141,13 +153,14 @@ for group in groups:
     cards = []
     for member in group['members']:
         name, href = esc(member['name']), esc('members/' + by_name[member['name']]['slug'] + '.html')
+        web_kind = 'website' if member.get('website') else 'github'
         email = f'<p class="member-email">{esc(member["email"])}</p>' if member.get('email') else ''
         cards.append(
             f'                  <article class="member-card"><a class="member-photo-link" href="{href}" tabindex="-1" aria-hidden="true">'
             f'{photo(member, "member-photo", 108, 144)}</a><div class="member-details">'
             f'<h3><a href="{href}">{name}</a></h3><p class="member-role">{esc(member["role"])}</p>{email}'
             f'<div class="member-links" role="group" aria-label="Contact {name}">'
-            f'{contact(member, "email")}{contact(member, "github")}</div></div></article>'
+            f'{contact(member, "email")}{contact(member, web_kind)}</div></div></article>'
         )
     group_id = esc(group['id'])
     sections.append(
@@ -192,6 +205,10 @@ for n, person in enumerate(people):
     if person.get('github'):
         links.append(f'<a class="text-link" href="{esc(checked_github(person))}" target="_blank" rel="noopener noreferrer">' + icon('github') + 'GitHub'
                      '<span class="sr-only"> (opens in a new tab)</span></a>')
+    if person.get('website'):
+        links.append(f'<a class="text-link" href="{esc(checked_website(person))}" target="_blank" rel="noopener noreferrer">'
+                     + icon('globe') + esc(person.get('website_label', 'Website'))
+                     + '<span class="sr-only"> (opens in a new tab)</span></a>')
     links_html = f'<div class="pi-links">{"".join(links)}</div>' if links else ''
     bio = ''.join(f'<p>{esc(par)}</p>' for par in person['bio'].split('\n\n')) if person.get('bio') else \
         '<p class="profile-empty">Profile coming soon.</p>'

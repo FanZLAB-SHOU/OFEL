@@ -6,7 +6,7 @@
       "date": "2026-09-21",
       "title": "Mingfeng Jiang shows that ignoring death after spawning distorts squid stock assessments",
       "summary": "A new model, ACLS, treats post-spawning death as part of squid population dynamics, and shows that ignoring it inflates estimates of spawning stock biomass.",
-      "image": "assets/research/climate-ecosystems.webp",
+      "image": "assets/news/2026-09-semelparous/cover.webp",
       "people": [
         "Mingfeng Jiang",
         "Sisong Dong",
@@ -54,14 +54,15 @@
         "label": "Original news (in Chinese), College of Marine Living Resource Sciences and Management, Shanghai Ocean University",
         "url": "https://hyxy.shou.edu.cn/2026/0921/c7379a355597/page.htm"
       },
-      "note": "The figure is reproduced from the published article with credit; the authors hold copyright (© 2026 The Authors)."
+      "note": "The figure is reproduced from the published article with credit; the authors hold copyright (© 2026 The Authors).",
+      "image_position": "50% 45%"
     },
     {
       "slug": "2026-08-ais-data-quality",
       "date": "2026-08-19",
       "title": "Xin Cheng maps where and when Pacific tuna vessels drop off AIS tracking",
       "summary": "Seven years of AIS records from 1,016 Pacific tuna vessels show that tracking gaps are shrinking, and pinpoint where vessels still go silent.",
-      "image": "assets/research/vessel-ai.webp",
+      "image": "assets/news/2026-08-ais/cover.webp",
       "image_position": "50% 45%",
       "people": [
         "Xin Cheng",
@@ -115,8 +116,8 @@
       "date": "2026-04-20",
       "title": "Mingfeng Jiang shows how strong El Niño events reshape jumbo squid migration and spawning",
       "summary": "Machine learning applied to 28 years of fishery and ocean data shows that strong El Niño events bring jumbo squid spawning forward and shorten their migrations, driven mainly by sea surface temperature.",
-      "image": "assets/research/climate-ecosystems.webp",
-      "image_position": "62% 72%",
+      "image": "assets/news/2026-04-squid-enso/cover.webp",
+      "image_position": "40% 55%",
       "people": [
         "Mingfeng Jiang",
         "Sisong Dong",
@@ -207,7 +208,9 @@
       "source": {
         "label": "Original news (in Chinese), College of Marine Living Resource Sciences and Management, Shanghai Ocean University",
         "url": "https://hyxy.shou.edu.cn/2026/0403/c7379a351620/page.htm"
-      }
+      },
+      "image": "assets/news/2026-04-tuna-uncertainty/cover.webp",
+      "image_position": "45% 30%"
     },
     {
       "slug": "2025-07-iccat-wgsam-chair",

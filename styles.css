@@ -536,3 +536,17 @@ body { font-size: 18px; }
 @media (prefers-reduced-motion: reduce) {
   .gateway-visual, .gateway-bg { transition: none; }
 }
+/* Closing statement on the homepage, leading to the PI page. */
+.home-gateways { padding-bottom: 72px; }
+.home-cta { background: #050b14; color: white; padding: 48px 0 128px; }
+.home-cta h2 { font: 500 clamp(46px, 7.6vw, 108px)/1.02 Arial, Helvetica, sans-serif; letter-spacing: -.045em; }
+.cta-row { display: flex; align-items: center; gap: 40px; margin-top: 46px; }
+.cta-button { display: inline-flex; align-items: center; padding: 22px 36px; border-radius: 4px; background: white; color: #050b14; font-size: 13px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; transition: background .25s; }
+.cta-button:hover, .cta-button:focus-visible { background: #cfe6f8; }
+.cta-row p { font-size: 15px; line-height: 1.5; color: rgba(255, 255, 255, .86); }
+@media (max-width: 700px) {
+  .home-cta { padding: 24px 0 84px; }
+  .home-cta h2 { font-size: 44px; }
+  .home-cta h2 br { display: none; }
+  .cta-row { flex-direction: column; align-items: flex-start; gap: 22px; margin-top: 32px; }
+}

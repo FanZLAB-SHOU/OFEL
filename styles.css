@@ -636,3 +636,7 @@ body[data-page="index"] .shou-link img { padding: 2px; border-radius: 50%; backg
 .contact-map-links a { display: inline-flex; align-items: center; padding: 8px 14px; border: 1px solid rgba(255, 255, 255, .28); border-radius: 999px; color: #dcecfa; font-size: 13px; font-weight: 600; transition: background .2s, color .2s; }
 .contact-map-links a:hover { background: white; color: var(--deep); }
 .contact-grid { align-items: start; }
+/* Fan Zhang page: affiliation line and role links */
+.pi-affiliation { display: block; margin-top: 4px; font-size: 15px; color: var(--muted); }
+.education-row p a { color: inherit; }
+.education-row p a:hover { color: var(--teal); text-decoration: underline; text-underline-offset: 3px; }

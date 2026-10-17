@@ -1,5 +1,6 @@
 """Build the static multipage lab website; no runtime framework is required."""
 
+import hashlib
 import html
 import json
 import subprocess
@@ -23,6 +24,12 @@ PAGES = {
 
 def esc(value):
     return html.escape(value, quote=True)
+
+
+def asset_version():
+    """Short content hash of the stylesheet and script, appended to their URLs to bust browser caches."""
+    digest = hashlib.sha256((ROOT / 'styles.css').read_bytes() + (ROOT / 'script.js').read_bytes())
+    return digest.hexdigest()[:10]
 
 
 def direction_card(item):
@@ -65,7 +72,7 @@ tokens = {
 header = (TEMPLATES / 'header.html').read_text()
 footer = (TEMPLATES / 'footer.html').read_text()
 for name, (title, description, nav) in PAGES.items():
-    head = (TEMPLATES / 'head.html').read_text()
+    head = (TEMPLATES / 'head.html').read_text().replace('{{asset_version}}', asset_version())
     for token, value in {'{{title}}': title, '{{description}}': description, '{{canonical}}': BASE + ('' if name == 'index' else name + '.html')}.items():
         head = head.replace(token, esc(value))
     content = (TEMPLATES / f'{name}.html').read_text()

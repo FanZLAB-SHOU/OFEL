@@ -1,5 +1,6 @@
 """Build member cards, alumni tiles and one profile page per person from assets/people.json."""
 
+import hashlib
 import html
 import importlib.util
 import json
@@ -30,6 +31,8 @@ for cohort in alumni:
 spec = importlib.util.spec_from_file_location('publications', ROOT / 'scripts/build-publications.py')
 publications = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(publications)
+for paper in publications.records:
+    publications.validate(paper)
 
 icons = {
     'email': '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 6 8 7 8-7"/></svg>',
@@ -41,6 +44,12 @@ placeholder = ('<div class="member-photo-placeholder" aria-hidden="true"><svg vi
 
 def esc(value):
     return html.escape(value, quote=True)
+
+
+def asset_version():
+    """Short content hash of the stylesheet and script, appended to their URLs to bust browser caches."""
+    digest = hashlib.sha256((ROOT / 'styles.css').read_bytes() + (ROOT / 'script.js').read_bytes())
+    return digest.hexdigest()[:10]
 
 
 def slugify(name):
@@ -122,6 +131,7 @@ for group in groups:
             f'                  <article class="member-card"><a class="member-photo-link" href="{href}" tabindex="-1" aria-hidden="true">'
             f'{photo(member, "member-photo", 108, 144)}</a><div class="member-details">'
             f'<h3><a href="{href}">{name}</a></h3><p class="member-role">{esc(member["role"])}</p>{email}'
+            f'<a class="member-profile-link" href="{href}" aria-label="View profile of {name}">View profile <span aria-hidden="true">→</span></a>'
             f'<div class="member-links" role="group" aria-label="Contact {name}">'
             f'{contact(member, "email")}{contact(member, "github")}</div></div></article>'
         )
@@ -199,7 +209,7 @@ for n, person in enumerate(people):
     )
     title = f'{person["name"]} | OFEL'
     description = f'{person["name"]}, {person["role"]} at the Oceanic Fisheries Ecosystem Laboratory, Shanghai Ocean University.'
-    head = (TEMPLATES / 'head.html').read_text()
+    head = (TEMPLATES / 'head.html').read_text().replace('{{asset_version}}', asset_version())
     for token, value in {'{{title}}': title, '{{description}}': description, '{{canonical}}': BASE + person['slug'] + '.html'}.items():
         head = head.replace(token, esc(value))
     (ROOT / f'{person["slug"]}.html').write_text(

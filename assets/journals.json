@@ -1,0 +1,15 @@
+{
+  "note": "Journal homepage links shown on publication entries. Add a journal here when a new one appears in publications.json.",
+  "journals": {
+    "Canadian Journal of Fisheries and Aquatic Sciences": "https://cdnsciencepub.com/journal/cjfas",
+    "Communications Earth & Environment": "https://www.nature.com/commsenv/",
+    "Fish and Fisheries": "https://onlinelibrary.wiley.com/journal/14672979",
+    "Fishes": "https://www.mdpi.com/journal/fishes",
+    "ICES Journal of Marine Science": "https://academic.oup.com/icesjms",
+    "Marine Ecology Progress Series": "https://www.int-res.com/journals/meps/",
+    "Marine Environmental Research": "https://www.sciencedirect.com/journal/marine-environmental-research",
+    "Marine Life Science & Technology": "https://link.springer.com/journal/42995",
+    "Scientific Reports": "https://www.nature.com/srep/",
+    "npj Ocean Sustainability": "https://www.nature.com/npjoceansustain/"
+  }
+}

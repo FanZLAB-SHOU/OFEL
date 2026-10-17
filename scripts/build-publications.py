@@ -7,6 +7,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 records = json.loads((ROOT / 'assets/publications.json').read_text())['publications']
+journals = json.loads((ROOT / 'assets/journals.json').read_text())['journals']
 relationship_labels = {
     'external_collaboration': 'External collaboration',
     'external_supervision': 'Supervised research · external student',
@@ -26,6 +27,8 @@ def validate(paper):
         raise ValueError(f'Invalid research relationship for {paper["doi"]}')
     if (attribution.get('lab_publication') is not None or relationships) and not attribution.get('confirmed_by'):
         raise ValueError(f'Attribution needs a confirmation source for {paper["doi"]}')
+    if paper['journal'] not in journals:
+        raise ValueError(f'Add a homepage for "{paper["journal"]}" to assets/journals.json')
 
 
 def is_author(author, given, family):
@@ -52,6 +55,11 @@ def article_html(paper, highlight=('Fan', 'Zhang')):
         details = 'Published online'
     doi_url = html.escape(paper['source'], quote=True)
     title = html.escape(paper['title'])
+    journal = html.escape(paper['journal'])
+    journal_url = journals.get(paper['journal'])
+    if journal_url:
+        journal = (f'<a class="journal-link" href="{html.escape(journal_url, quote=True)}" target="_blank" '
+                   f'rel="noopener noreferrer">{journal}<span class="sr-only"> journal homepage (opens in a new tab)</span></a>')
     attribution = paper.get('attribution', {})
     is_lab = attribution.get('lab_publication') is True
     is_fan_zhang = any(is_author(a, 'Fan', 'Zhang') for a in paper['authors'])
@@ -63,7 +71,7 @@ def article_html(paper, highlight=('Fan', 'Zhang')):
         f'          <article class="publication" data-topic="{paper["topics"][0]}" '
         f'data-fan-zhang="{str(is_fan_zhang).lower()}" data-lab="{str(is_lab).lower()}">'
         f'<span class="publication-year">{paper["year"]}</span><div>'
-        f'<p class="journal">{html.escape(paper["journal"])} <span>{html.escape(details)}</span></p>'
+        f'<p class="journal">{journal} <span>{html.escape(details)}</span></p>'
         f'<h3><a href="{doi_url}" target="_blank" rel="noopener noreferrer">{title}'
         '<span class="sr-only"> (opens in a new tab)</span></a></h3>'
         f'<p class="authors">{", ".join(authors)}</p>{badges_html}</div>'

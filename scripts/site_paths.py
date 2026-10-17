@@ -14,7 +14,8 @@ from urllib.parse import urlsplit, urlunsplit
 ROOT = Path(__file__).resolve().parents[1]
 PAGE_PATHS = {
     'index': 'index.html',
-    'research': 'research.html',
+    'research': 'research/themes.html',
+    'collaborators': 'research/collaborators.html',
     'fan-zhang': 'members/fan-zhang.html',
     'members': 'members/index.html',
     'alumni': 'members/alumni.html',

@@ -59,11 +59,13 @@
         {
           "name": "Dongqi Lu",
           "role": "PhD Student, Year 4",
-          "photo": "assets/people/dongqi-lu.jpg",
+          "photo": "assets/people/dongqi-lu-sydney.jpg",
+          "profile_photo_aspect_ratio": "1078 / 1079",
+          "photo_position": "75% 50%",
           "email": "ludongqi119@gmail.com",
           "github": null,
           "bio": "Dongqi Lu is a PhD student in Aquaculture at Shanghai Ocean University. His research focuses on spatial variation in the growth of South Pacific albacore tuna and the factors that drive these differences. He combines age and growth analysis with genetic and genomic evidence to study population structure and improve the biological information used in tuna stock assessments.\n\nHis work draws on port sampling, biological observations from tuna longline surveys, and fishery logbook and observer data. He also contributes to observer training and technical reporting for regional fisheries management organisations.",
-          "photo_alt": "Dongqi Lu",
+          "photo_alt": "Dongqi Lu beside the Sydney Opera House",
           "website": "https://www.researchgate.net/profile/Dongqi-Lu-3",
           "website_label": "ResearchGate",
           "website_icon": "researchgate"

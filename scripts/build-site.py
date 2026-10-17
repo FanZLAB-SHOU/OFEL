@@ -17,7 +17,8 @@ TEMPLATES = ROOT / 'templates'
 BASE = 'https://fanzhang-lab-shou.github.io/OFEL/'
 PAGES = {
     'index': ('OFEL | Oceanic Fisheries Ecosystem Laboratory', 'Research on fish populations, fisheries data and marine life at Shanghai Ocean University.', 'home'),
-    'research': ('Research | OFEL', 'Population dynamics and stock assessment, AI and fishing-vessel behavior, and fish biology and DNA research.', 'research'),
+    'research': ('Research Themes | OFEL', 'Population dynamics and stock assessment, AI and fishing-vessel behavior, and fish biology and DNA research.', 'research'),
+    'collaborators': ('Collaborators | OFEL', 'Research collaborators of the Oceanic Fisheries Ecosystem Laboratory.', 'research'),
     'fan-zhang': ('Fan Zhang | OFEL', 'Fan Zhang, Professor and Doctoral Supervisor at the College of Marine Living Resource Sciences and Management, Shanghai Ocean University; Chief Scientist for China at ICCAT; principal investigator of OFEL.', 'people'),
     'members': ('Current Members | OFEL', 'Meet the faculty, postdoctoral researchers, PhD students and master’s students of OFEL.', 'people'),
     'alumni': ('Alumni | OFEL', 'The Oceanic Fisheries Ecosystem Laboratory alumni community.', 'people'),
@@ -60,7 +61,7 @@ def reel_cards(copy):
     # Copies exist only to keep the loop seamless; they are hidden from keyboard and screen readers.
     hidden = ' tabindex="-1"' if copy else ''
     return ''.join(
-        f'<a class="reel-card" href="research.html#{esc(item["slug"])}"{hidden} '
+        f'<a class="reel-card" href="research/themes.html#{esc(item["slug"])}"{hidden} '
         f'aria-label="Explore {esc(item["title"])}"><img src="{esc(item["image"])}" alt="{"" if copy else esc(item["alt"])}" '
         f'width="1536" height="1024" {priority if n == 0 and not copy else lazy}>'
         f'<div class="reel-card-copy"><span>{esc(item["label"])}</span><h3>{esc(item["title"])}</h3></div></a>'
@@ -97,7 +98,7 @@ blog_posts = '\n'.join(
     + f'<div><p class="eyebrow"><time datetime="{esc(post["date"])}">{esc(pretty_date(post["date"]))}</time></p>'
     f'<h2>{italicize(esc(post["title"]))}</h2><p>{italicize(esc(post.get("summary", "")))}</p></div></a></article>'
     for post in posts
-) if posts else '<div class="directory-empty"><p>Lab updates will appear here.</p><a class="text-link" href="research.html">' + icon('fish') + 'Explore our research</a></div>'
+) if posts else '<div class="directory-empty"><p>Lab updates will appear here.</p><a class="text-link" href="research/themes.html">' + icon('fish') + 'Explore our research</a></div>'
 
 
 def post_page(post):

@@ -13,7 +13,7 @@
 
 <p align="center">
   <a href="https://fanzhang-lab-shou.github.io/OFEL/"><img src="docs/assets/visit-website.svg" alt="Visit the website" height="42"></a>
-  <a href="https://fanzhang-lab-shou.github.io/OFEL/research.html"><img src="docs/assets/research.svg" alt="Explore research" height="42"></a>
+  <a href="https://fanzhang-lab-shou.github.io/OFEL/research/themes.html"><img src="docs/assets/research.svg" alt="Explore research" height="42"></a>
   <a href="https://fanzhang-lab-shou.github.io/OFEL/contact.html"><img src="docs/assets/contact.svg" alt="Contact the lab" height="42"></a>
 </p>
 
@@ -33,21 +33,21 @@ OFEL studies fish population dynamics, fishing activity, and marine life to info
 <table>
   <tr>
     <td width="33%" valign="top">
-      <a href="https://fanzhang-lab-shou.github.io/OFEL/research.html#population-assessment"><img src="assets/research/population-assessment.webp" alt="Tuna populations and a conceptual stock assessment curve" width="100%"></a>
+      <a href="https://fanzhang-lab-shou.github.io/OFEL/research/themes.html#population-assessment"><img src="assets/research/population-assessment.webp" alt="Tuna populations and a conceptual stock assessment curve" width="100%"></a>
       <br><sub>01 / POPULATIONS</sub>
       <h3>Population dynamics &amp; stock assessment</h3>
       <p>种群动力学与资源评估</p>
       <p>Quantitative models of growth, recruitment, mortality, and population change.</p>
     </td>
     <td width="33%" valign="top">
-      <a href="https://fanzhang-lab-shou.github.io/OFEL/research.html#vessel-ai"><img src="assets/research/vessel-ai.webp" alt="Fishing vessel tracks and data connections" width="100%"></a>
+      <a href="https://fanzhang-lab-shou.github.io/OFEL/research/themes.html#vessel-ai"><img src="assets/research/vessel-ai.webp" alt="Fishing vessel tracks and data connections" width="100%"></a>
       <br><sub>02 / FISHERIES DATA</sub>
       <h3>AI &amp; fishing-vessel behavior</h3>
       <p>人工智能与渔船行为</p>
       <p>Vessel-tracking data and AI to study fishing activity, effort, and fleet dynamics.</p>
     </td>
     <td width="33%" valign="top">
-      <a href="https://fanzhang-lab-shou.github.io/OFEL/research.html#biology-dna"><img src="assets/research/biology-dna.webp" alt="Tuna biology, otolith growth increments, and DNA" width="100%"></a>
+      <a href="https://fanzhang-lab-shou.github.io/OFEL/research/themes.html#biology-dna"><img src="assets/research/biology-dna.webp" alt="Tuna biology, otolith growth increments, and DNA" width="100%"></a>
       <br><sub>03 / BIOLOGY &amp; DNA</sub>
       <h3>Fish biology &amp; DNA research</h3>
       <p>鱼类生物学与 DNA 研究</p>
@@ -56,13 +56,13 @@ OFEL studies fish population dynamics, fishing activity, and marine life to info
   </tr>
 </table>
 
-**延伸研究**　[Climate change & marine ecosystems](https://fanzhang-lab-shou.github.io/OFEL/research.html#climate-ecosystems) · [Climate-adaptive fisheries management](https://fanzhang-lab-shou.github.io/OFEL/research.html#adaptive-management)
+**延伸研究**　[Climate change & marine ecosystems](https://fanzhang-lab-shou.github.io/OFEL/research/themes.html#climate-ecosystems) · [Climate-adaptive fisheries management](https://fanzhang-lab-shou.github.io/OFEL/research/themes.html#adaptive-management)
 
 ## Explore · 走进实验室
 
 | | 入口 | 内容 |
 | :---: | :--- | :--- |
-| **01** | [Research / 研究](https://fanzhang-lab-shou.github.io/OFEL/research.html) | 三个核心方向与两项延伸研究 |
+| **01** | [Research / 研究](https://fanzhang-lab-shou.github.io/OFEL/research/themes.html) | 三个核心方向与两项延伸研究 |
 | **02** | [People / 成员](https://fanzhang-lab-shou.github.io/OFEL/members/index.html) | 教师、博士后和研究生；[校友](https://fanzhang-lab-shou.github.io/OFEL/members/alumni.html) |
 | **03** | [Fan Zhang / 张帆](https://fanzhang-lab-shou.github.io/OFEL/members/fan-zhang.html) | Professor & Doctoral Supervisor |
 | **04** | [Publications / 论文](https://fanzhang-lab-shou.github.io/OFEL/publications.html) | 实验室与 Fan Zhang 论文集合、主题筛选、BibTeX |

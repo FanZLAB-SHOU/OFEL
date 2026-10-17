@@ -12,7 +12,13 @@
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Open navigation"><span></span><span></span></button>
       <nav class="main-nav" id="main-nav" aria-label="Main navigation">
         <a href="news/index.html" data-nav-section="news">News</a>
-        <a href="research.html" data-nav-section="research">Research</a>
+        <div class="nav-group" data-nav-section="research">
+          <button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-controls="research-menu">Research <svg viewBox="0 0 12 8" width="12" height="8" aria-hidden="true"><path d="m1 1 5 5 5-5"/></svg></button>
+          <ul class="nav-submenu" id="research-menu" hidden>
+            <li><a href="research/themes.html">Research Themes</a></li>
+            <li><a href="research/collaborators.html">Collaborators</a></li>
+          </ul>
+        </div>
         <div class="nav-group" data-nav-section="people">
           <button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-controls="people-menu">People <svg viewBox="0 0 12 8" width="12" height="8" aria-hidden="true"><path d="m1 1 5 5 5-5"/></svg></button>
           <ul class="nav-submenu" id="people-menu" hidden>

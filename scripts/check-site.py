@@ -25,7 +25,7 @@ class Page(HTMLParser):
 
 def main():
     paths = list(ROOT.glob('*.html'))
-    for folder in ('news', 'members', 'resources'):
+    for folder in ('news', 'members', 'resources', 'research'):
         paths.extend((ROOT / folder).glob('*.html'))
     pages = {path.resolve(): Page(path) for path in paths}
     errors = []

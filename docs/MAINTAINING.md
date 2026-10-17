@@ -60,6 +60,8 @@ Fan Zhang 主页的主体信息在 [`templates/members/fan-zhang.html`](../templ
 
 构建生成 `news/<slug>.html`，列表按日期从新到旧排列。首页 News 入口自动使用最新新闻的封面和标题。
 
+首页 Publications 入口按当前展示论文的 DOI 匹配新闻中 `paper.cover` 的期刊封面，保留期刊标识的展示空间。没有对应封面时使用研究插图作为背景。
+
 ## 目录结构
 
 ```text

@@ -172,19 +172,19 @@ news_visual = (
 ) if latest_news else ''
 latest = recent[0]
 latest_authors = ', '.join(f"{a['given'][0]}. {a['family']}" for a in latest['authors'][:3]) + (' et al.' if len(latest['authors']) > 3 else '')
-journal_chips = ''.join(f'<span>{esc(j)}</span>' for j in list(dict.fromkeys(p['journal'] for p in recent))[:3])
+latest_cover = next((post['paper']['cover'] for post in posts
+                     if post.get('paper', {}).get('cover')
+                     and latest['doi'].lower() in post['paper'].get('url', '').lower()), None)
 gateways = [
     ('news/index.html', 'News', 'Lab updates, new papers, and life in the laboratory.', news_background or 'assets/research/climate-ecosystems.webp', latest_news.get('image_position', '50% 50%') if latest_news else '30% 50%', 'book',
      news_visual),
     ('members/index.html', 'People', 'Meet the faculty, postdoctoral researchers, and students behind our work.', 'assets/people/fan-zhang.jpg', '70% 50%', 'people',
      '<div class="mock-panel mock-paper" style="align-self: end"><span class="mock-label">Our community</span>'
      '<strong>Faculty, postdocs &amp; graduate students</strong></div>'),
-    ('publications.html', 'Publications', 'Peer-reviewed research on stock assessment, ecosystems, vessels, and fish biology.', 'assets/research/population-assessment.webp', '40% 50%', 'paper',
-     f'<div class="mock-panel mock-paper"><span class="mock-label">{esc(latest["journal"])} · {latest["year"]}</span>'
+    ('publications.html', 'Publications', 'Peer-reviewed research on stock assessment, ecosystems, vessels, and fish biology.', latest_cover or 'assets/research/population-assessment.webp', '50% 0%' if latest_cover else '40% 50%', 'paper',
+     f'<div class="mock-panel mock-paper gateway-publication-preview"><span class="mock-label">{esc(latest["journal"])} · {latest["year"]}</span>'
      f'<strong>{italicize(esc(short(latest["title"], 80)))}</strong><small>{esc(latest_authors)}</small>'
-     f'<div class="mock-lines"><i></i><i></i><i></i></div></div>'
-     f'<span class="mock-chip mock-chip-a">{len(pubs)} publications</span>'
-     f'<span class="mock-chip mock-chip-b">BibTeX</span>'),
+     f'<small class="gateway-publication-meta">{len(pubs)} publications · BibTeX available</small></div>'),
     ('contact.html', 'Contact &amp; Join Us', 'Graduate study, research visits, and collaboration with Fan Zhang.', 'assets/research/vessel-ai.webp', '55% 45%', 'mail',
      '<div class="mock-panel mock-mail"><span class="mock-label">New message</span>'
      '<div class="mock-field"><em>To</em>f-zhang@shou.edu.cn</div><div class="mock-field"><em>Subject</em>Research enquiry</div>'
@@ -192,7 +192,7 @@ gateways = [
      '<div class="mock-pills"><span>Graduate study</span><span>Research visits</span><span>Collaboration</span></div>'),
 ]
 gateway_cards = '\n'.join(
-    f'          <a class="gateway-card" href="{href}" data-reveal style="--reveal-delay: {n * .1:.1f}s">'
+    f'          <a class="gateway-card{" gateway-card-journal" if href == "publications.html" and latest_cover else ""}" href="{href}" data-reveal style="--reveal-delay: {n * .1:.1f}s">'
     f'<img class="gateway-bg" src="{img}" alt="" width="1536" height="1024" loading="lazy" style="object-position: {pos}">'
     f'<div class="gateway-copy"><h3>{title}</h3><p>{desc}</p></div>'
     f'<div class="gateway-visual" aria-hidden="true">{visual}</div>'

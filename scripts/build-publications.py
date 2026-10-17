@@ -3,9 +3,12 @@
 import html
 import json
 import re
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'scripts'))
+from icons import icon  # noqa: E402
 records = json.loads((ROOT / 'assets/publications.json').read_text())['publications']
 journals = json.loads((ROOT / 'assets/journals.json').read_text())['journals']
 relationship_labels = {
@@ -76,7 +79,7 @@ def article_html(paper, highlight=('Fan', 'Zhang')):
         '<span class="sr-only"> (opens in a new tab)</span></a></h3>'
         f'<p class="authors">{", ".join(authors)}</p>{badges_html}</div>'
         f'<a class="paper-arrow" href="{doi_url}" target="_blank" rel="noopener noreferrer" '
-        f'aria-label="Read {title} in a new tab">↗</a></article>'
+        f'aria-label="Read {title} in a new tab">{icon("paper")}</a></article>'
     )
 
 

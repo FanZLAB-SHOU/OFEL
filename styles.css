@@ -430,3 +430,15 @@ body { font-size: 18px; }
 .blog-post h2 { font-size: 32px; margin-top: 12px; }
 .blog-post > p:last-child { font-size: 17px; color: var(--muted); margin-top: 14px; }
 .research-item[id] { scroll-margin-top: 24px; }
+/* Line icons that replace the old arrow glyphs. */
+.icon { display: inline-block; width: 1.05em; height: 1.05em; flex-shrink: 0; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; vertical-align: -.18em; }
+.icon-fill { fill: currentColor; stroke: none; }
+.text-link { gap: 8px; }
+.text-link .icon, .button .icon { color: var(--teal); }
+.hero .text-link .icon, .hero .button .icon, .contact-address .text-link .icon { color: inherit; }
+.paper-arrow .icon { width: 19px; height: 19px; }
+.gateway-arrow .icon, .reel-card-arrow .icon { width: 30px; height: 30px; stroke-width: 1.4; }
+.contact-email .contact-email-icon { display: inline-flex; }
+.contact-email .icon { width: 30px; height: 30px; stroke-width: 1.4; }
+.site-footer a, .reel-footer a { display: inline-flex; align-items: center; gap: 8px; }
+.footer-top > a:last-child .icon { color: var(--teal); }

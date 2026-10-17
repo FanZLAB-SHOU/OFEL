@@ -8,6 +8,8 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'scripts'))
+from icons import expand, icon  # noqa: E402
 TEMPLATES = ROOT / 'templates'
 BASE = 'https://fanzhang-lab-shou.github.io/OFEL/'
 PAGES = {
@@ -54,7 +56,7 @@ carousel = '\n'.join(
     f'aria-label="Explore {esc(item["title"])}"><img src="{esc(item["image"])}" alt="{esc(item["alt"])}" '
     f'width="1536" height="1024" {priority if n == 0 else lazy}>'
     f'<div class="reel-card-copy"><span>{esc(item["label"])}</span><h3>{esc(item["title"])}</h3>'
-    '<span class="reel-card-arrow" aria-hidden="true">↗</span></div></a>'
+    '<span class="reel-card-arrow">' + icon('fish') + '</span></div></a>'
     for n, item in enumerate(core)
 )
 posts = json.loads((ROOT / 'assets/blog.json').read_text())['posts']
@@ -62,20 +64,20 @@ blog_posts = '\n'.join(
     f'<article class="blog-post"><p class="eyebrow">{esc(post.get("date", "Lab news"))}</p>'
     f'<h2><a href="{esc(post["url"])}">{esc(post["title"])}</a></h2><p>{esc(post.get("summary", ""))}</p></article>'
     for post in posts
-) if posts else '<div class="directory-empty"><p>Lab updates will appear here.</p><a class="text-link" href="research.html">Explore our research <span aria-hidden="true">↗</span></a></div>'
+) if posts else '<div class="directory-empty"><p>Lab updates will appear here.</p><a class="text-link" href="research.html">' + icon('fish') + 'Explore our research</a></div>'
 tokens = {
     '{{blog_posts}}': blog_posts,
     '{{research_carousel}}': carousel,
     '{{research_primary}}': '\n'.join(direction_card(item) for item in core),
     '{{research_secondary}}': '\n'.join(direction_card(item) for item in directions if not item['primary']),
 }
-header = (TEMPLATES / 'header.html').read_text()
-footer = (TEMPLATES / 'footer.html').read_text()
+header = expand((TEMPLATES / 'header.html').read_text())
+footer = expand((TEMPLATES / 'footer.html').read_text())
 for name, (title, description, nav) in PAGES.items():
     head = (TEMPLATES / 'head.html').read_text().replace('{{asset_version}}', asset_version())
     for token, value in {'{{title}}': title, '{{description}}': description, '{{canonical}}': BASE + ('' if name == 'index' else name + '.html')}.items():
         head = head.replace(token, esc(value))
-    content = (TEMPLATES / f'{name}.html').read_text()
+    content = expand((TEMPLATES / f'{name}.html').read_text())
     for token, value in tokens.items():
         content = content.replace(token, value)
     (ROOT / f'{name}.html').write_text(

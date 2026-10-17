@@ -28,6 +28,10 @@ for group in groups:
 for cohort in alumni:
     cohort['members'].sort(key=seniority)
 
+import sys  # noqa: E402
+sys.path.insert(0, str(ROOT / 'scripts'))
+from icons import expand, icon  # noqa: E402
+
 spec = importlib.util.spec_from_file_location('publications', ROOT / 'scripts/build-publications.py')
 publications = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(publications)
@@ -168,8 +172,8 @@ for cohort in alumni:
 fill(ROOT / 'alumni.html', 'alumni-groups', sections)
 
 # Profile pages: name, role, contact, bio, publications, then previous/next person.
-header = (TEMPLATES / 'header.html').read_text()
-footer = (TEMPLATES / 'footer.html').read_text()
+header = expand((TEMPLATES / 'header.html').read_text())
+footer = expand((TEMPLATES / 'footer.html').read_text())
 for n, person in enumerate(people):
     name = esc(person['name'])
     given, family = person['name'].split()[0], person['name'].split()[-1]
@@ -181,10 +185,10 @@ for n, person in enumerate(people):
     links = []
     if person.get('email'):
         value = checked_email(person)
-        links.append(f'<a class="text-link" href="mailto:{esc(value)}">{esc(value)} <span aria-hidden="true">↗</span></a>')
+        links.append(f'<a class="text-link" href="mailto:{esc(value)}">{icon("mail")}{esc(value)}</a>')
     if person.get('github'):
-        links.append(f'<a class="text-link" href="{esc(checked_github(person))}" target="_blank" rel="noopener noreferrer">GitHub '
-                     '<span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>')
+        links.append(f'<a class="text-link" href="{esc(checked_github(person))}" target="_blank" rel="noopener noreferrer">' + icon('github') + 'GitHub'
+                     '<span class="sr-only"> (opens in a new tab)</span></a>')
     links_html = f'<div class="pi-links">{"".join(links)}</div>' if links else ''
     bio = ''.join(f'<p>{esc(par)}</p>' for par in person['bio'].split('\n\n')) if person.get('bio') else \
         '<p class="profile-empty">Profile coming soon.</p>'

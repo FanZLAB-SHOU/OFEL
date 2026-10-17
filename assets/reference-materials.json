@@ -8,6 +8,15 @@
       "domain": "fishbase.se",
       "scope": "Species & life histories",
       "image": "assets/resources/fishbase.png"
+    },
+    {
+      "name": "Global Fishing Watch",
+      "title": "Fishing activity & vessel tracking",
+      "description": "Explore fishing activity, vessel movements, and open data through interactive maps and analysis tools.",
+      "url": "https://globalfishingwatch.org/platform/map",
+      "domain": "globalfishingwatch.org",
+      "scope": "Fishing activity & open data",
+      "image": "assets/resources/global-fishing-watch.png"
     }
   ],
   "international_organizations": [
@@ -75,6 +84,15 @@
       "scope": "South Pacific high seas",
       "image": "assets/resources/sprfmo.png",
       "dark_logo": true
+    },
+    {
+      "name": "SPC",
+      "title": "Pacific Community",
+      "description": "Fisheries data, tuna stock assessments, and scientific support for oceanic and coastal fisheries across the Pacific Islands region.",
+      "url": "https://www.spc.int/",
+      "domain": "spc.int",
+      "scope": "Pacific Islands region",
+      "image": "assets/resources/spc.svg"
     }
   ]
 }

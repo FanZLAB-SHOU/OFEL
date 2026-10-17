@@ -25,7 +25,7 @@ PAGES = {
     'publications': ('Publications | OFEL', 'Selected lab publications and publications co-authored by Fan Zhang, with research-topic filters and citation downloads.', 'publications'),
     'blog': ('News | OFEL', 'News, research updates and life in the Oceanic Fisheries Ecosystem Laboratory.', 'news'),
     'contact': ('Contact & Join Us | OFEL', 'Contact the Oceanic Fisheries Ecosystem Laboratory at Shanghai Ocean University about research, visits and collaboration.', 'info'),
-    'reference-materials': ('Reference Materials | OFEL', 'FishBase, FAO, tuna regional fisheries management organizations, and SPRFMO: official resources for fish biology, fisheries data, and management.', 'resources'),
+    'reference-materials': ('Reference Materials | OFEL', 'FishBase, Global Fishing Watch, FAO, and regional fisheries management organizations: resources for fish biology, vessel tracking, and fisheries management.', 'resources'),
     'software': ('Software | OFEL', 'ALSCL: R and TMB tools for fisheries stock assessment using survey length data.', 'resources'),
 }
 

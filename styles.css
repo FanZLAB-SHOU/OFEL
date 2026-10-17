@@ -741,16 +741,15 @@ body[data-page="index"] .shou-link img { padding: 2px; border-radius: 50%; backg
 .reference-card-arrow { display: grid; place-items: center; width: 32px; height: 32px; border: 1px solid #d1e1ee; border-radius: 50%; color: var(--teal); flex-shrink: 0; transition: background .2s, color .2s; }
 .reference-card-arrow .icon { width: 17px; height: 17px; transform: rotate(-45deg); }
 .reference-card:hover .reference-card-arrow { background: var(--navy); color: white; border-color: var(--navy); }
-.reference-card-featured { display: grid; grid-template-columns: minmax(240px, .8fr) minmax(0, 1.7fr); }
-.reference-card-featured .reference-logo { height: auto; min-height: 260px; padding: 40px; background: white; border-bottom: 0; border-right: 1px solid #e4edf5; }
-.reference-card-featured .reference-logo img { width: 100%; max-width: 310px; max-height: none; }
-.reference-card-featured .reference-card-content { padding: 30px 36px 24px; }
-.reference-card-featured h3 { font-size: 36px; font-weight: 600; letter-spacing: -.04em; line-height: 1.15; margin-top: 10px; }
+.reference-professional-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.reference-card-featured .reference-logo { height: 150px; padding: 32px; background: white; }
+.reference-card-featured .reference-logo img { width: 100%; max-width: 310px; max-height: 86px; }
+.reference-card-featured .reference-card-content { padding: 28px; }
+.reference-card-featured h3 { font-size: 32px; font-weight: 600; letter-spacing: -.04em; line-height: 1.2; margin-top: 10px; }
 .reference-card-featured .reference-full-name { min-height: 0; font-size: 19px; margin-top: 8px; }
 .reference-card-featured .reference-description { max-width: 650px; margin-top: 12px; }
 @media (min-width: 701px) and (max-width: 1050px) {
   .reference-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
-  .reference-card-featured { grid-template-columns: minmax(210px, .8fr) minmax(0, 1.3fr); }
   .reference-card-featured .reference-logo { padding: 26px; }
   .reference-card-featured .reference-card-content { padding: 28px; }
 }
@@ -766,8 +765,8 @@ body[data-page="index"] .shou-link img { padding: 2px; border-radius: 50%; backg
   .reference-card-content { padding: 23px 24px 20px; }
   .reference-logo { height: 128px; }
   .reference-full-name { min-height: 0; }
-  .reference-card-featured { grid-template-columns: minmax(0, 1fr); }
-  .reference-card-featured .reference-logo { min-height: 0; height: 132px; padding: 30px; border-right: 0; border-bottom: 1px solid #e4edf5; }
+  .reference-professional-grid { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .reference-card-featured .reference-logo { height: 132px; padding: 30px; }
   .reference-card-featured .reference-logo img { max-width: 250px; }
   .reference-card-featured .reference-card-content { padding: 24px; }
   .reference-card-featured h3 { font-size: 31px; }

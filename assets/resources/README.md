@@ -5,6 +5,7 @@ These marks identify the external resources linked from the reference-materials 
 | Local file | Official source |
 | --- | --- |
 | `fishbase.png` | https://www.fishbase.se/images/png/Fishbase-logo-CMYK.png |
+| `global-fishing-watch.png` | https://globalfishingwatch.org/wp-content/uploads/GFW-primary-logo-1-1.png |
 | `fao.svg` | https://www.fao.org/images/corporatelibraries/fao-logo/fao-logo-en.svg?sfvrsn=f64522b4_36 |
 | `iccat.png` | https://www.iccat.int/img/logoICCAT.png |
 | `iotc.png` | https://iotc.org/sites/all/themes/iotc/images/iotc-logo.png |
@@ -12,6 +13,7 @@ These marks identify the external resources linked from the reference-materials 
 | `wcpfc.svg` | First inline SVG in the header logo at https://www.wcpfc.int/ |
 | `ccsbt.svg` | https://www.ccsbt.org/themes/custom/ccsbt_theme/logo.svg |
 | `sprfmo.png` | https://www.sprfmo.int/_resources/themes/SPRFMO/images/SPRFMO-logo.png |
+| `spc.svg` | https://www.spc.int/sites/default/files/documents/SPC-CPS-logo_27_stars-2023.svg |
 
 Artwork is unchanged. The FAO SVG's XML encoding declaration was corrected from `utf-16` to `utf-8` to match the original response bytes. The white WCPFC and SPRFMO marks are displayed on dark backgrounds for legibility.
 

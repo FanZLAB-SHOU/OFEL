@@ -662,6 +662,16 @@ body[data-page="index"] .shou-link img { padding: 2px; border-radius: 50%; backg
 .news-people a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .news-figure { margin: 34px 0 0; }
 .news-figure img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 4px; }
+.news-figure figcaption { margin-top: 10px; font-size: 13px; line-height: 1.6; color: var(--muted); }
+.news-event-details { margin: 22px 0 30px; padding: 8px 26px; border: 1px solid var(--line); border-radius: 8px; background: var(--cream); }
+.news-event-details > div { display: grid; grid-template-columns: 100px minmax(0, 1fr); gap: 20px; padding: 16px 0; }
+.news-event-details > div + div { border-top: 1px solid var(--line); }
+.news-event-details dt { color: var(--teal); font-size: 14px; font-weight: 700; }
+.news-event-details dd { margin: 0; font-size: 16px; line-height: 1.7; }
+@media (max-width: 700px) {
+  .news-event-details { padding-inline: 20px; }
+  .news-event-details > div { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+}
 .news-body { margin-top: 34px; }
 .news-body p { font-size: 18px; line-height: 1.85; color: var(--ink); }
 .news-body p + p { margin-top: 20px; }

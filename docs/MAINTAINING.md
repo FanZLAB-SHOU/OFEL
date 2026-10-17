@@ -60,9 +60,9 @@ Fan Zhang 主页的主体信息在 [`templates/members/fan-zhang.html`](../templ
 
 编辑 [`assets/blog.json`](../assets/blog.json)，图片放在 [`assets/news/`](../assets/news/)。
 
-每条新闻包含 `slug`、`date`、`title`、`summary` 和 `body`，可选 `image`、`image_position`、`image_aspect_ratio`、`people`、`paper` 与 `source`。使用真实发布日期；`people` 姓名与成员记录一致时，会链接到其主页。
+每条新闻包含 `slug`、`date`、`title`、`summary` 和 `body`，可选 `image`、`image_alt`、`image_caption`、`image_position`、`image_aspect_ratio`、`people`、`paper` 与 `source`。使用真实发布日期；活动公告按活动日期归档。`people` 姓名与成员记录一致时，会链接到其主页。`body` 支持普通段落、`heading`、`figure`，以及 `details`（由 `label` / `value` 条目组成的活动信息表）。
 
-构建生成 `news/<slug>.html`，列表按日期从新到旧排列。首页 News 入口自动使用最新新闻的封面和标题。
+构建生成 `news/<slug>.html`，列表始终按日期从新到旧排列。**首页 News 入口始终使用日期最新的新闻封面与标题，不设置手动精选。补录、修改旧新闻或更换旧新闻封面，均不得覆盖日期较新的首页新闻。**
 
 首页 Publications 入口按当前展示论文的 DOI 匹配新闻中 `paper.cover` 的期刊封面，保留期刊标识的展示空间。没有对应封面时使用研究插图作为背景。
 当前固定展示 Runze Wang 等发表于 *Fish and Fisheries* 的论文（`10.1111/faf.70077`）；如需更换精选论文，在 `scripts/build-site.py` 的首页论文选择处修改 DOI。

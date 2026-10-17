@@ -1,6 +1,7 @@
 """Check built HTML links, fragments, images and shared assets without a server."""
 
 from html.parser import HTMLParser
+import json
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
@@ -12,15 +13,33 @@ class Page(HTMLParser):
         super().__init__()
         self.ids = set()
         self.links = []
+        self.news_dates = []
+        self.home_news_image = None
+        self.home_news_text = []
+        self._in_home_news = False
         self.feed(path.read_text())
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
+        if tag == 'a' and 'gateway-card' in attrs.get('class', '').split() and attrs.get('href') == 'news/index.html':
+            self._in_home_news = True
+        if self._in_home_news and tag == 'img' and 'gateway-bg' in attrs.get('class', '').split():
+            self.home_news_image = attrs.get('src')
+        if tag == 'time' and attrs.get('datetime'):
+            self.news_dates.append(attrs['datetime'])
         if attrs.get('id'):
             self.ids.add(attrs['id'])
         self.links.extend(attrs[key] for key in ('href', 'src') if attrs.get(key))
         if attrs.get('srcset'):
             self.links.extend(entry.strip().split()[0] for entry in attrs['srcset'].split(','))
+
+    def handle_data(self, text):
+        if self._in_home_news:
+            self.home_news_text.append(text)
+
+    def handle_endtag(self, tag):
+        if tag == 'a':
+            self._in_home_news = False
 
 
 def main():
@@ -30,6 +49,16 @@ def main():
     pages = {path.resolve(): Page(path) for path in paths}
     errors = []
     references = 0
+    posts = json.loads((ROOT / 'assets/blog.json').read_text())['posts']
+    expected_dates = sorted((post['date'] for post in posts), reverse=True)
+    if pages[(ROOT / 'news/index.html').resolve()].news_dates != expected_dates:
+        errors.append('news/index.html: news must appear newest first by date')
+    if posts:
+        newest = max(posts, key=lambda post: post['date'])
+        home = pages[(ROOT / 'index.html').resolve()]
+        home_text = ' '.join(''.join(home.home_news_text).split())
+        if home.home_news_image != newest.get('image') or ' '.join(newest['title'].split()) not in home_text:
+            errors.append('index.html: homepage News must show the newest dated news, including its title and cover')
     for path, page in pages.items():
         for link in page.links:
             parts = urlsplit(link)

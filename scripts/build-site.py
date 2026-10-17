@@ -74,7 +74,8 @@ carousel = ('          <div class="reel-marquee">\n'
             + ''.join(f'            <div class="reel-group reel-copy" aria-hidden="true" inert>{reel_cards(True)}</div>\n'
                       for _ in range(1))
             + '          </div>')
-posts = sorted(json.loads((ROOT / 'assets/blog.json').read_text())['posts'], key=lambda p: p['date'], reverse=True)
+blog = json.loads((ROOT / 'assets/blog.json').read_text())
+posts = sorted(blog['posts'], key=lambda p: p['date'], reverse=True)
 
 
 def pretty_date(iso):
@@ -109,6 +110,10 @@ def post_page(post):
             return f'<p>{italicize(esc(item))}</p>'
         if 'heading' in item:
             return f'<h2>{esc(item["heading"])}</h2>'
+        if 'details' in item:
+            return '<dl class="news-event-details">' + ''.join(
+                f'<div><dt>{esc(row["label"])}</dt><dd>{esc(row["value"])}</dd></div>'
+                for row in item['details']) + '</dl>'
         return (f'<figure class="news-inline-figure"><a href="{esc(item["figure"])}" target="_blank" rel="noopener noreferrer">'
                 f'<img src="{esc(item["figure"])}" alt="{esc(item["alt"])}" width="{item["width"]}" height="{item["height"]}" loading="lazy">'
                 f'<span class="sr-only"> (open full image in a new tab)</span></a>'
@@ -139,7 +144,9 @@ def post_page(post):
     image_style = f'object-position: {esc(post.get("image_position", "55% 78%"))}'
     if post.get('image_aspect_ratio'):
         image_style += f'; aspect-ratio: {esc(post["image_aspect_ratio"])}'
-    image = (f'<figure class="news-figure"><img src="{esc(post["image"])}" alt="" width="1536" height="1024" style="{image_style}"></figure>' if post.get('image') else '')
+    image = (f'<figure class="news-figure"><img src="{esc(post["image"])}" alt="{esc(post.get("image_alt", ""))}" width="1536" height="1024" style="{image_style}">'
+             + (f'<figcaption>{esc(post["image_caption"])}</figcaption>' if post.get('image_caption') else '')
+             + '</figure>') if post.get('image') else ''
     return (
         '    <article class="section detail-page news-article" aria-labelledby="news-title">\n'
         '      <div class="container news-container">\n'
@@ -148,8 +155,10 @@ def post_page(post):
         f'        <h1 id="news-title">{italicize(esc(post["title"]))}</h1>\n'
         f'        <p class="news-summary">{italicize(esc(post.get("summary", "")))}</p>\n'
         + (f'        <p class="news-people">Lab members: {people_links}</p>\n' if people_links else '')
-        + f'        {image}\n        <div class="news-body">{body}</div>\n        {paper_html}\n        {source_html}\n'
-        '      </div>\n    </article>\n'
+        + f'        {image}\n        <div class="news-body">{body}</div>\n'
+        + (f'        {paper_html}\n' if paper_html else '')
+        + (f'        {source_html}\n' if source_html else '')
+        + '      </div>\n    </article>\n'
     )
 
 
@@ -166,6 +175,7 @@ def short(text, limit):
     return text if len(text) <= limit else text[:limit].rsplit(' ', 1)[0] + '…'
 
 
+# Homepage News always follows publication/event dates; backfilled posts never override newer news.
 latest_news = posts[0] if posts else None
 news_background = latest_news.get('image') if latest_news else None
 news_visual = (

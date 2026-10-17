@@ -281,6 +281,70 @@
       "image": "assets/news/2025-07-iccat/meeting.jpg",
       "image_position": "50% 50%",
       "image_aspect_ratio": "4496 / 3000"
+    },
+    {
+      "slug": "2025-10-spc-tuna-seminar",
+      "date": "2025-10-11",
+      "title": "From the Pacific to Shanghai: using science to support sustainable tuna fisheries",
+      "summary": "A joint SPC–Shanghai Ocean University seminar featuring Graham Pilling, Robert Scott, Joe Scutt Phillips, and Nan Yao.",
+      "image": "assets/news/2025-10-spc-tuna-seminar/speakers-cover.png",
+      "image_alt": "Montage of the four seminar speakers adapted from the original announcement poster.",
+      "image_caption": "Speaker montage adapted from the original seminar poster.",
+      "image_position": "50% 30%",
+      "image_aspect_ratio": "3 / 2",
+      "body": [
+        "The Pacific Community (SPC) and Shanghai Ocean University announced a joint seminar, “From the Pacific to Shanghai: Using Science to Support Sustainable Tuna Fisheries.” The programme addressed how scientific approaches can support sustainable tuna fisheries in the Pacific region and worldwide.",
+        {
+          "heading": "Seminar details"
+        },
+        {
+          "details": [
+            {
+              "label": "Date",
+              "value": "Saturday, 11 October 2025"
+            },
+            {
+              "label": "Time",
+              "value": "10:00–11:30 (Shanghai time)"
+            },
+            {
+              "label": "Venue",
+              "value": "Room 319, College of Marine Living Resource Sciences and Management, Shanghai Ocean University"
+            },
+            {
+              "label": "Co-hosts",
+              "value": "Pacific Community (SPC) and Shanghai Ocean University"
+            }
+          ]
+        },
+        {
+          "heading": "Speakers"
+        },
+        "Graham Pilling, Robert Scott, Joe Scutt Phillips, and Nan Yao were the invited speakers from SPC. The seminar was open to faculty and students.",
+        {
+          "heading": "Seminar posters"
+        },
+        {
+          "figure": "assets/news/2025-10-spc-tuna-seminar/poster-en.png",
+          "width": 1080,
+          "height": 1528,
+          "alt": "English-language announcement poster showing the seminar title, time, venue, and the four SPC speakers.",
+          "caption": "English-language seminar announcement.",
+          "credit": "Original poster supplied by the laboratory."
+        },
+        {
+          "figure": "assets/news/2025-10-spc-tuna-seminar/poster-zh.png",
+          "width": 1080,
+          "height": 1920,
+          "alt": "Chinese-language announcement for the SPC–Shanghai Ocean University seminar on 11 October 2025.",
+          "caption": "Chinese-language seminar announcement.",
+          "credit": "Original poster supplied by the laboratory."
+        }
+      ],
+      "source": {
+        "label": "Original seminar announcement (English and Chinese)",
+        "url": "https://mp.weixin.qq.com/s/m7SY2mmB6LFyVrjMTIpDfw"
+      }
     }
   ]
 }

@@ -55,6 +55,60 @@
         "url": "https://hyxy.shou.edu.cn/2026/0921/c7379a355597/page.htm"
       },
       "note": "The figure is reproduced from the published article with credit; the authors hold copyright (© 2026 The Authors)."
+    },
+    {
+      "slug": "2026-08-ais-data-quality",
+      "date": "2026-08-19",
+      "title": "Xin Cheng maps where and when Pacific tuna vessels drop off AIS tracking",
+      "summary": "Seven years of AIS records from 1,016 Pacific tuna vessels show that tracking gaps are shrinking, and pinpoint where vessels still go silent.",
+      "image": "assets/research/vessel-ai.webp",
+      "image_position": "50% 45%",
+      "people": [
+        "Xin Cheng",
+        "Qinqin Lin"
+      ],
+      "body": [
+        "OFEL postdoctoral researcher Xin Cheng has led the first systematic assessment of vessel-tracking data quality for Pacific tuna longline and purse seine fleets. Analysing seven years of Automatic Identification System (AIS) records, the study shows that gaps in the data have fallen steadily, and that the places where vessels drop off the record have stayed the same while shrinking. It is published in npj Ocean Sustainability.",
+        {
+          "heading": "Why data gaps matter"
+        },
+        "Tuna are among the most valuable fish in the Pacific, and managing them depends on accurate fishing data and estimates of fishing effort. AIS has become a core source for studying vessel behaviour and mapping fishing grounds. Its signals can drop out, though: through equipment faults, signal congestion or patchy coverage, or because a crew switches the transponder off, sometimes to hide illegal fishing. These gaps had never been assessed systematically for Pacific tuna fleets, which limited how far AIS could be trusted in management decisions.",
+        {
+          "heading": "130 million positions, three thresholds"
+        },
+        "Xin Cheng and colleagues assembled about 130 million high-resolution AIS positions from 1,016 tuna longline and purse seine vessels fishing in the Pacific between 2017 and 2023. They defined an anomaly as a reporting gap, an interval between consecutive signals longer than a set threshold, and tested three thresholds: 60, 90 and 120 minutes. The approach turns data gaps from noise into something that can be counted and mapped.",
+        {
+          "heading": "What the data show"
+        },
+        "AIS gaps declined steadily from year to year, with no clear pattern by month or by hour of the day. Coverage now spans almost the entire Pacific fishing area. Gap hotspots stayed in the same places every year but grew smaller, and they are concentrated mainly in waters around Pacific island countries.",
+        "Purse seiners lose their signal more often than longliners, and their gaps are more tightly clustered, chiefly near Pacific island countries between about 5°N and 10°S and 140°E and 170°E. Longline hotspots are more scattered, including off northeastern Australia and in open waters of the south-central Pacific.",
+        {
+          "figure": "assets/news/2026-08-ais/fig5-anomaly-maps.webp",
+          "width": 1203,
+          "height": 648,
+          "alt": "Grid of Pacific Ocean maps for each year from 2017 to 2023, showing AIS gap rates for longline vessels on the left and purse seine vessels on the right at 60, 90 and 120 minute thresholds; dark patches near Pacific island countries fade over the years.",
+          "caption": "Where AIS gaps occur. Gap rates for longline vessels (left, a–c) and purse seine vessels (right, d–f) in each year from 2017 to 2023, using thresholds of 60, 90 and 120 minutes. Darker blue means a higher share of gaps; hotspots persist but fade over time.",
+          "credit": "Figure 5 from Cheng et al. (2026), npj Ocean Sustainability. Licensed under CC BY 4.0."
+        },
+        {
+          "heading": "Why it matters"
+        },
+        "The results confirm that AIS data are usable, and improving, as a foundation for fisheries research, and they show where monitoring effort is most needed. The authors suggest that regional fisheries management organisations work with coastal states to target the persistent hotspots around Pacific island countries, and that AIS gaps be tracked routinely as a basis for differentiated, data-driven oversight of fishing fleets.",
+        "Xin Cheng is the first author. Lecturer Qinqin Lin and Professor Xinjun Chen are co-corresponding authors."
+      ],
+      "paper": {
+        "title": "Spatio-temporal variation of AIS data abnormally for tuna fishing fleets in the Pacific Ocean",
+        "journal": "npj Ocean Sustainability",
+        "url": "https://doi.org/10.1038/s44183-026-00234-w",
+        "citation": "Cheng, X., Li, H., Feng, J., Lin, Q. & Chen, X. (2026)",
+        "issue": "Open access · published online 6 August 2026",
+        "logo": "assets/news/2026-08-ais/npj-ocean-sustainability-logo.svg"
+      },
+      "source": {
+        "label": "Original news (in Chinese), College of Marine Living Resource Sciences and Management, Shanghai Ocean University",
+        "url": "https://hyxy.shou.edu.cn/2026/0819/c7379a354829/page.htm"
+      },
+      "note": "Figure reproduced under the article's CC BY 4.0 licence with credit."
     }
   ]
 }

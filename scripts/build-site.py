@@ -89,7 +89,7 @@ def post_url(post):
 
 blog_posts = '\n'.join(
     f'        <article class="blog-post"><a class="blog-post-link" href="{esc(post_url(post))}">'
-    + (f'<img src="{esc(post["image"])}" alt="" width="1536" height="1024" loading="lazy">' if post.get('image') else '')
+    + (f'<img src="{esc(post["image"])}" alt="" width="1536" height="1024" loading="lazy" style="object-position: {esc(post.get("image_position", "55% 78%"))}">' if post.get('image') else '')
     + f'<div><p class="eyebrow"><time datetime="{esc(post["date"])}">{esc(pretty_date(post["date"]))}</time></p>'
     f'<h2>{italicize(esc(post["title"]))}</h2><p>{italicize(esc(post.get("summary", "")))}</p></div></a></article>'
     for post in posts
@@ -112,8 +112,12 @@ def post_page(post):
     people_links = ''.join(
         f'<a href="{"fan-zhang" if name == "Fan Zhang" else slug_of(name)}.html">{esc(name)}</a>' for name in post.get('people', []))
     paper = post.get('paper')
-    cover = (f'<img class="news-paper-cover" src="{esc(paper["cover"])}" alt="{esc(paper["journal"])} cover" width="240" height="315">'
-             if paper and paper.get('cover') else icon('paper'))
+    if paper and paper.get('cover'):
+        cover = f'<img class="news-paper-cover" src="{esc(paper["cover"])}" alt="{esc(paper["journal"])} cover" width="240" height="315">'
+    elif paper and paper.get('logo'):
+        cover = f'<span class="news-paper-logo"><img src="{esc(paper["logo"])}" alt="{esc(paper["journal"])}" width="316" height="32"></span>'
+    else:
+        cover = icon('paper')
     paper_html = (f'<div class="news-paper"><span class="eyebrow">Read the paper</span>'
                   f'<a href="{esc(paper["url"])}" target="_blank" rel="noopener noreferrer">{cover}'
                   f'<span><strong>{italicize(esc(paper["title"]))}</strong>'
@@ -124,7 +128,7 @@ def post_page(post):
     source = post.get('source')
     source_html = (f'<p class="news-source">Source: <a href="{esc(source["url"])}" target="_blank" rel="noopener noreferrer">'
                    f'{esc(source["label"])}{NT}</a><br><span>{esc(source["url"])}</span></p>') if source else ''
-    image = (f'<figure class="news-figure"><img src="{esc(post["image"])}" alt="" width="1536" height="1024"></figure>' if post.get('image') else '')
+    image = (f'<figure class="news-figure"><img src="{esc(post["image"])}" alt="" width="1536" height="1024" style="object-position: {esc(post.get("image_position", "55% 78%"))}"></figure>' if post.get('image') else '')
     return (
         '    <article class="section detail-page news-article" aria-labelledby="news-title">\n'
         '      <div class="container news-container">\n'

@@ -170,7 +170,8 @@ news_visual = (
     f'<span class="mock-label">Latest news · {esc(pretty_date(latest_news["date"]))}</span>'
     f'<strong>{esc(latest_news["title"])}</strong></div>'
 ) if latest_news else ''
-latest = recent[0]
+# Editorially selected homepage feature: Runze Wang's Fish and Fisheries paper.
+latest = next(p for p in pubs if p['doi'].lower() == '10.1111/faf.70077')
 latest_authors = ', '.join(f"{a['given'][0]}. {a['family']}" for a in latest['authors'][:3]) + (' et al.' if len(latest['authors']) > 3 else '')
 latest_cover = next((post['paper']['cover'] for post in posts
                      if post.get('paper', {}).get('cover')

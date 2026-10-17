@@ -170,10 +170,11 @@
         {
           "name": "Xianglong Yan",
           "role": "Master’s Student, Year 1",
-          "photo": null,
-          "email": null,
+          "photo": "assets/people/xianglong-yan.png",
+          "email": "18205687884@163.com",
           "github": null,
-          "bio": null
+          "bio": "Xianglong Yan is a master’s student at Shanghai Ocean University, which he joined in September 2026 after completing his undergraduate studies at Dalian Ocean University. His research interests centre on fish feeding ecology and coastal ecosystems.\n\nHis undergraduate thesis used carbon and nitrogen stable isotopes to investigate the feeding ecology of black rockfish in the Zhuanghe offshore wind farm area. His training also includes Ecopath ecosystem modelling and fish growth analysis, alongside practical work on fish behaviour and artificial reef design.",
+          "photo_alt": "Xianglong Yan"
         },
         {
           "name": "Shixin Wu",

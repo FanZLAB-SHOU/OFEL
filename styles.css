@@ -216,6 +216,13 @@ body { font-size: 18px; }
   .research-item.research-item-secondary { grid-template-columns: minmax(0, 1fr); }
   .research-item-secondary .research-art { max-height: 220px; }
 }
+/* Share the header row height when the supporting cards sit side by side. */
+@supports (grid-template-rows: subgrid) {
+  @media (min-width: 901px) {
+    .research-secondary-grid { row-gap: 22px; }
+    .research-item.research-item-secondary { grid-row: span 2; grid-template-rows: subgrid; row-gap: inherit; }
+  }
+}
 
 /* Authorship collections are independent of research topics. */
 .publication-collections { display: flex; flex-wrap: wrap; gap: 0 28px; border-bottom: 1px solid var(--line); }

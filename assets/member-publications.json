@@ -1999,6 +1999,39 @@
         "biology"
       ],
       "language": "zh-CN"
+    },
+    {
+      "doi": "10.3969/j.issn.1673-9159.2026.03.018",
+      "title": "单次繁殖渔业生物资源评估研究进展",
+      "journal": "广东海洋大学学报",
+      "year": 2026,
+      "date": "",
+      "volume": "46",
+      "issue": "3",
+      "pages": "175-182",
+      "article_number": "",
+      "authors": [
+        {
+          "given": "Rutong",
+          "family": "Tang",
+          "name_zh": "唐茹彤"
+        },
+        {
+          "given": "Mingfeng",
+          "family": "Jiang",
+          "name_zh": "蒋明峰"
+        },
+        {
+          "given": "Fan",
+          "family": "Zhang",
+          "name_zh": "张帆"
+        }
+      ],
+      "source": "https://www.aquaticjournal.com/article/doi/10.3969/j.issn.1673-9159.2026.03.018",
+      "topics": [
+        "assessment"
+      ],
+      "language": "zh-CN"
     }
   ]
 }

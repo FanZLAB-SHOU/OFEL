@@ -262,6 +262,16 @@
       "identity_basis": "User supplied exact title and DOI. Current publisher article metadata confirms DOI, authors Huang Yudong, Lin Qinqin, Lu Dongqi and Zhang Fan, citation_online_date 2026-08-10 (citation_date 2026-08-01), blank volume/issue/pages. Original journal archive independently confirms title, author order, Shanghai Ocean University affiliation and 2026-05-22 acceptance. Current publisher DOI page was accessible over its public HTTP www URL; HTTPS certificate expired, so the verified HTTPS journal archive is the website article link. No final issue inferred.",
       "lab_research": true,
       "status": "published_online"
+    },
+    {
+      "key": "10.3969/j.issn.1673-9159.2026.03.018",
+      "title": "单次繁殖渔业生物资源评估研究进展",
+      "evidence": [
+        "http://www.aquaticjournal.com/article/doi/10.3969/j.issn.1673-9159.2026.03.018"
+      ],
+      "identity_basis": "User supplied complete Chinese and English publisher citation. Independently fetched original aquaticjournal.com article metadata over its public HTTP URL: title, DOI, author order, year 2026, volume 46, issue 3, pages 175-182 match exactly. Site citation_online_date is 2026-10-08; no exact final-issue publication day inferred. Author spelling confirmed as 唐茹彤. CNKI journal advanced-search index did not return this record.",
+      "lab_research": true,
+      "confirmation": "Original article metadata independently retrieved and matched to the user-supplied bilingual citation."
     }
   ],
   "members": [
@@ -354,7 +364,8 @@
         "10.11964/jfc.20220913699",
         "10.12024/jsou.20220303783",
         "10.16441/j.cnki.hdxb.20220320",
-        "10.13984/j.cnki.cn37-1141.2026.04.031"
+        "10.13984/j.cnki.cn37-1141.2026.04.031",
+        "10.3969/j.issn.1673-9159.2026.03.018"
       ],
       "status": "verified_records_added"
     },
@@ -535,8 +546,10 @@
         "\"唐茹彤\" 水产 渔业 论文",
         "\"唐茹彤\" \"上海海洋大学\" 期刊"
       ],
-      "verified_keys": [],
-      "status": "no_identity_verified_chinese_record_in_this_pass"
+      "verified_keys": [
+        "10.3969/j.issn.1673-9159.2026.03.018"
+      ],
+      "status": "verified_records_added"
     },
     {
       "name": "Yuhang Cheng",
@@ -594,12 +607,6 @@
       "doi": "10.15928/j.1674-3075.202404170138",
       "source": "https://scan.cbpt.cnki.net/portal/journal/portal/client/paper/963aafd85fb261c14922e0f83717433d",
       "reason": "Publisher lists Huzhou University. No verified link to this OFEL member; same name alone is insufficient."
-    },
-    {
-      "name_zh": "唐茹彤",
-      "journal": "广东海洋大学学报",
-      "reason": "User supplied exact title and journal. Official journal title/author search, all three online-first listing pages and public indexed searches have not returned an identity-verified record. Link or DOI requested; not inserted with guessed coauthors, date or issue.",
-      "title": "单次繁殖渔业生物资源评估研究进展"
     }
   ],
   "excluded_examples": [
@@ -694,7 +701,7 @@
         "唐茹彤",
         "林泓羽"
       ],
-      "note": "Located Lin Hongyu original paper; Tang Rutong not yet verified from the available author index or online-first pages."
+      "note": "Located Lin Hongyu original paper. Tang Rutong was absent from the current publisher search and all three online-first pages; user subsequently supplied full bilingual publisher citation and DOI from aquaticjournal.com, confirming final 46(3):175-182."
     },
     {
       "journal": "水产学报",

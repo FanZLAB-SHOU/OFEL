@@ -1,5 +1,5 @@
 {
-  "note": "Names, roles, and Xin Cheng contact information supplied by the user in this chat. Missing profile photos and contact links remain placeholders. Role groups are displayed in the order below. Students are listed by year of study, senior first, as supplied by the user. Alumni are grouped by graduation year (newest first) and sorted alphabetically by name. Each person gets a profile page named after them (e.g. members/hongyu-lin.html); add a photo path such as assets/people/hongyu-lin.jpg and a short bio to fill it in. Publications on profiles are matched automatically from assets/publications.json by author name.",
+  "note": "Names, roles, and Xin Cheng contact information supplied by the user in this chat. Missing profile photos and contact links remain placeholders. Role groups are displayed in the order below. Students are listed by year of study, senior first, as supplied by the user. Alumni are grouped by graduation year (newest first) and sorted alphabetically by name. Each person gets a profile page named after them (e.g. members/hongyu-lin.html); add a photo path such as assets/people/hongyu-lin.jpg and a short bio to fill it in. Publications on profiles are matched automatically from assets/publications.json by author name. Chinese names (name_zh) confirmed by the user on 2026-10-17; retain English names for profile URLs and publication matching.",
   "title_note": {
     "chinese": "讲师",
     "english": "Lecturer",
@@ -12,6 +12,7 @@
       "members": [
         {
           "name": "Qinqin Lin",
+          "name_zh": "林琴琴",
           "role": "Lecturer",
           "photo": "assets/people/qinqin-lin.jpg",
           "email": "qqlin@shou.edu.cn",
@@ -47,6 +48,7 @@
       "members": [
         {
           "name": "Xin Cheng",
+          "name_zh": "程心",
           "role": "Postdoctoral Researcher",
           "photo": "assets/people/xin-cheng.jpg",
           "email": "cx_shhy@163.com",
@@ -68,6 +70,7 @@
         },
         {
           "name": "Sisong Dong",
+          "name_zh": "董思宋",
           "role": "Postdoctoral Researcher",
           "photo": "assets/people/sisong-dong.jpg",
           "email": "dongsisong@126.com",
@@ -92,6 +95,7 @@
       "members": [
         {
           "name": "Dongqi Lu",
+          "name_zh": "陆冬琦",
           "role": "PhD Student, Year 4",
           "photo": "assets/people/dongqi-lu-sydney.jpg",
           "profile_photo_aspect_ratio": "1707 / 1280",
@@ -153,6 +157,7 @@
         },
         {
           "name": "Hongyu Lin",
+          "name_zh": "林泓羽",
           "role": "PhD Student, Year 4",
           "photo": "assets/people/hongyu-lin.jpg",
           "photo_alt": "A cat resting on a sofa, chosen by Hongyu Lin for his profile",
@@ -171,6 +176,7 @@
         },
         {
           "name": "Mingfeng Jiang",
+          "name_zh": "蒋明峰",
           "role": "PhD Student, Year 3",
           "photo": "assets/people/mingfeng-jiang.jpg",
           "email": "jmf822221@163.com",
@@ -191,6 +197,7 @@
         },
         {
           "name": "Xiaoci Wu",
+          "name_zh": "武孝慈",
           "role": "PhD Student, Year 2",
           "photo": null,
           "email": null,
@@ -199,6 +206,7 @@
         },
         {
           "name": "Junyi Zhang",
+          "name_zh": "张峻溢",
           "role": "PhD Student, Year 1",
           "photo": null,
           "email": null,
@@ -213,6 +221,7 @@
       "members": [
         {
           "name": "Runze Wang",
+          "name_zh": "王润泽",
           "role": "Master’s Student, Year 3",
           "photo": "assets/people/runze-wang.jpg",
           "photo_alt": "Runze Wang",
@@ -233,6 +242,7 @@
         },
         {
           "name": "Jiayi Zhou",
+          "name_zh": "周佳怡",
           "role": "Master’s Student, Year 3",
           "photo": null,
           "email": null,
@@ -241,6 +251,7 @@
         },
         {
           "name": "Shuang Ma",
+          "name_zh": "马爽",
           "role": "Master’s Student, Year 3",
           "photo": "assets/people/shuang-ma.jpg",
           "photo_alt": "A game character holding a plush creature, chosen by Shuang Ma for this profile",
@@ -260,6 +271,7 @@
         },
         {
           "name": "Feng Yao",
+          "name_zh": "姚峰",
           "role": "Master’s Student, Year 3",
           "photo": null,
           "email": null,
@@ -268,6 +280,7 @@
         },
         {
           "name": "Yang Yu",
+          "name_zh": "于洋",
           "role": "Master’s Student, Year 2",
           "photo": null,
           "email": null,
@@ -276,6 +289,7 @@
         },
         {
           "name": "Xu Yan",
+          "name_zh": "闫旭",
           "role": "Master’s Student, Year 2",
           "photo": null,
           "email": null,
@@ -284,6 +298,7 @@
         },
         {
           "name": "Runxin Tian",
+          "name_zh": "田润欣",
           "role": "Master’s Student, Year 2",
           "photo": null,
           "email": null,
@@ -292,6 +307,7 @@
         },
         {
           "name": "Weiguo Li",
+          "name_zh": "李卫国",
           "role": "Master’s Student, Year 2",
           "photo": "assets/people/weiguo-li.jpg",
           "photo_alt": "Hands on a plasma globe, chosen by Weiguo Li for his profile",
@@ -310,6 +326,7 @@
         },
         {
           "name": "Xianglong Yan",
+          "name_zh": "闫祥龙",
           "role": "Master’s Student, Year 1",
           "photo": "assets/people/xianglong-yan.png",
           "email": "18205687884@163.com",
@@ -329,6 +346,7 @@
         },
         {
           "name": "Shixin Wu",
+          "name_zh": "吴诗欣",
           "role": "Master’s Student, Year 1",
           "photo": null,
           "email": null,
@@ -337,6 +355,7 @@
         },
         {
           "name": "Zhechuan Xu",
+          "name_zh": "许哲川",
           "role": "Master’s Student, Year 1",
           "photo": "assets/people/zhechuan-xu.jpg",
           "email": "18314934149@163.com",
@@ -361,6 +380,7 @@
       "members": [
         {
           "name": "Xin Cheng",
+          "name_zh": "程心",
           "profile_ref": "Xin Cheng"
         }
       ]
@@ -371,6 +391,7 @@
       "members": [
         {
           "name": "Yudong Huang",
+          "name_zh": "黄宇东",
           "photo": null,
           "email": null,
           "github": null,
@@ -378,6 +399,7 @@
         },
         {
           "name": "Zhuojin Jiang",
+          "name_zh": "江卓瑾",
           "photo": "assets/people/zhuojin-jiang.jpg",
           "email": "jiangzhuojin0721@163.com",
           "github": null,
@@ -406,6 +428,7 @@
         },
         {
           "name": "Haotian Sun",
+          "name_zh": "孙昊天",
           "photo": null,
           "email": null,
           "github": null,
@@ -413,6 +436,7 @@
         },
         {
           "name": "Rutong Tang",
+          "name_zh": "唐如彤",
           "photo": null,
           "email": null,
           "github": null,
@@ -426,6 +450,7 @@
       "members": [
         {
           "name": "Yuhang Cheng",
+          "name_zh": "承昱航",
           "photo": null,
           "email": null,
           "github": null,
@@ -433,6 +458,7 @@
         },
         {
           "name": "Ziyi Geng",
+          "name_zh": "耿紫宜",
           "photo": null,
           "email": null,
           "github": null,
@@ -440,6 +466,7 @@
         },
         {
           "name": "Faruyi Wan",
+          "name_zh": "万发如意",
           "photo": null,
           "email": null,
           "github": null,

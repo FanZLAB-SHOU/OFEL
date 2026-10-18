@@ -63,6 +63,11 @@ def esc(value):
     return html.escape(value, quote=True)
 
 
+def chinese_name(person):
+    return (f'<span class="person-name-zh" lang="zh-CN">{esc(person["name_zh"])}</span>'
+            if person.get('name_zh') else '')
+
+
 def asset_version():
     """Short content hash of the stylesheet and script, appended to their URLs to bust browser caches."""
     digest = hashlib.sha256((ROOT / 'styles.css').read_bytes() + (ROOT / 'script.js').read_bytes())
@@ -203,7 +208,7 @@ for group in groups:
                       sizes='(max-width: 760px) 44vw, (max-width: 1100px) 30vw, (max-width: 1400px) 23vw, 300px')
         sections.append(
             f'            <article class="directory-person" data-reveal><a class="directory-person-link" href="{href}">'
-            f'<div class="directory-person-label"><h2{anchor}>{name}</h2><p>{esc(member["role"])}</p></div>'
+            f'<div class="directory-person-label"><h2{anchor}>{name}</h2>{chinese_name(member)}<p>{esc(member["role"])}</p></div>'
             f'<div class="directory-photo" aria-hidden="true">{image}</div></a></article>'
         )
 fill(ROOT / output_path('members/index.html'), 'member-groups', sections)
@@ -235,7 +240,7 @@ for cohort in alumni:
         graduation = f'{cohort["year"]} {cohort["degree"]} Graduate'
         tiles.append(
             f'                <li class="directory-person" data-reveal><a class="directory-person-link" href="members/{esc(linked_person["slug"])}.html">'
-            f'<div class="directory-person-label"><h3>{esc(member["name"])}</h3><p>{esc(graduation)}</p></div>'
+            f'<div class="directory-person-label"><h3>{esc(member["name"])}</h3>{chinese_name(display)}<p>{esc(graduation)}</p></div>'
             f'<div class="directory-photo" aria-hidden="true">{image}</div></a></li>'
         )
     year = cohort['year']
@@ -390,6 +395,7 @@ for n, person in enumerate(people):
             '<div class="member-intro-copy">'
             '<p class="member-intro-greeting">Hi, I’m</p>'
             f'<h1 id="profile-title"><span>{esc(given)}</span><span>{esc(family)}</span></h1>'
+            f'{chinese_name(person)}'
             f'<p class="member-intro-role">{esc(person["role"])}</p>{summary}{hero_links}</div>'
             '<div class="member-intro-research"><p>Research interests</p>'
             f'<div>{topics}</div></div></div>'
@@ -409,7 +415,7 @@ for n, person in enumerate(people):
         f'        <div class="profile-grid">\n'
         f'          <div class="{detail_photo_class}" data-reveal>{photo(detail_person, "profile-img", 600, 800)}</div>\n'
         f'          <div class="profile-content" data-reveal style="--reveal-delay: .08s"><p class="eyebrow teal">{esc(person["context"])}</p>'
-        f'{heading}<p class="pi-role">{esc(person["role"])}</p>{links_html}'
+        f'{heading}{chinese_name(person)}<p class="pi-role">{esc(person["role"])}</p>{links_html}'
         f'<div class="profile-bio">{bio}</div></div>\n'
         f'        </div>\n'
         f'{gallery_html}'

@@ -81,8 +81,10 @@ python3 -m http.server 8765 --bind 127.0.0.1
 - 可选的 `bio_zh` 保存中文原文，个人主页中以可展开的中英对照区域呈现。
 - `profile_photo_aspect_ratio` 可设置个人主页照片比例，`photo_position` 调整取景位置。`profile_photo` 可为下方资料区单独指定高清修复图，默认仍使用 `photo`；目前 Qinqin Lin、Zhechuan Xu 和 Xianglong Yan 使用 `assets/people/portraits/` 中保留原背景的高清修复、轻度自然美颜版本；下方资料照使用完整照片，顶部仍使用独立透明抠图；Qinqin Lin 使用修复会议现场的独立环境背景，另两页使用柔和色彩背景。处理提示词保存在该目录的 `generation-notes.json`。
 - `email`、`github`、`website`、`researchgate` 维护联系方式。未提供的值留为 `null` 或省略，不填猜测的地址。
-- 未提供 GitHub 链接时不显示 GitHub 图标。成员列表中缺失邮箱仍显示不可点击的邮箱占位图标；个人主页只显示已提供的联系方式。
+- 成员目录仅显示姓名、身份／年级和照片，不显示邮箱、外部个人页或联系图标；这些联系方式只在个人主页展示已提供的项目。
 - `website_label` 设置网站链接名称；`website_icon` 可选 `globe` 或 `researchgate`。独立的 `researchgate` 字段可与 GitHub、学校主页同时使用。
+
+成员目录采用深海蓝底的错落照片网格，顶部导航与页脚同色；标题占用网格左上方的大块留白。卡片显示姓名、身份／年级和照片，整张卡片链接个人页。优先使用 `profile_photo` 高清资料照，缺少照片时使用既有占位图。保持原组别顺序及年级从高到低的排序，组别旧锚点保留在该组第一位成员的姓名上。桌面端为五列，中屏四列，手机两列；悬停和键盘聚焦时卡片轻微放大，减少动态效果设置下保留焦点提示并取消缩放。样式使用 `.directory-` 前缀，深色导航及页脚通过 `body[data-page="members"]` 限定，避免影响其他页面。
 
 构建后自动生成 `members/<given-name>-<family-name>/index.html`，访问地址为 `/members/<given-name>-<family-name>/`，包括简介、按作者姓名匹配的论文、前后成员导航。缺失照片保留矩形照片位。
 

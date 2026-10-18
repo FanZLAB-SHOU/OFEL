@@ -127,7 +127,7 @@ def contact(member, kind):
             f'aria-label="{esc(description)}" title="{esc(value)}">{mark}</a>')
 
 
-def photo(member, cls, width, height, priority=False):
+def photo(member, cls, width, height, priority=False, sizes=None):
     if not member.get('photo'):
         return placeholder
     styles = []
@@ -136,10 +136,11 @@ def photo(member, cls, width, height, priority=False):
     if member.get('photo_position'):
         styles.append(f'object-position: {esc(member["photo_position"])}')
     style = f' style="{"; ".join(styles)}"' if styles else ''
-    loading = ('fetchpriority="high" sizes="(max-width: 760px) calc(100vw - 40px), '
-               '(max-width: 1280px) 46vw, 620px"') if priority else 'loading="lazy"'
+    loading = 'fetchpriority="high"' if priority else 'loading="lazy"'
+    sizes = sizes or ('(max-width: 760px) calc(100vw - 40px), (max-width: 1280px) 46vw, 620px' if priority else None)
+    size_attr = f' sizes="{esc(sizes)}"' if sizes else ''
     return (f'<img class="{cls}" src="{esc(member["photo"])}" alt="{esc(member.get("photo_alt", member["name"]))}" '
-            f'width="{width}" height="{height}" {loading}{style}>')
+            f'width="{width}" height="{height}" {loading}{size_attr}{style}>')
 
 
 def fill(page, marker, sections):
@@ -170,28 +171,22 @@ if clash:
     raise ValueError(f'Profile page names clash with existing pages or each other: {sorted(clash)}')
 by_name = {p['name']: p for p in people}
 
-# Members page: cards whose photo and name open the profile page.
+# Editorial directory: name, role/year and photograph share one profile link.
+# Keep the existing group and seniority order, without publishing contact details here.
 sections = []
 for group in groups:
-    cards = []
-    for member in group['members']:
+    for n, member in enumerate(group['members']):
         name, href = esc(member['name']), esc('members/' + by_name[member['name']]['slug'] + '.html')
-        web_kinds = [kind for kind in ('github', 'website', 'researchgate') if member.get(kind)]
-        contact_links = contact(member, 'email') + ''.join(contact(member, kind) for kind in web_kinds)
-        email = f'<p class="member-email">{esc(member["email"])}</p>' if member.get('email') else ''
-        cards.append(
-            f'                  <article class="member-card"><a class="member-photo-link" href="{href}" tabindex="-1" aria-hidden="true">'
-            f'{photo(member, "member-photo", 108, 144)}</a><div class="member-details">'
-            f'<h3><a href="{href}">{name}</a></h3><p class="member-role">{esc(member["role"])}</p>{email}'
-            f'<div class="member-links" role="group" aria-label="Contact {name}">'
-            f'{contact_links}</div></div></article>'
+        # Preserve old group anchors on the first member heading.
+        anchor = f' id="{esc(group["id"])}-title"' if n == 0 else ''
+        portrait = {**member, 'photo': member.get('profile_photo') or member.get('photo'), 'photo_alt': ''}
+        image = photo(portrait, 'directory-person-img', 460, 614,
+                      sizes='(max-width: 900px) 44vw, (max-width: 1200px) 22vw, 230px')
+        sections.append(
+            f'            <article class="directory-person" data-reveal><a class="directory-person-link" href="{href}">'
+            f'<div class="directory-person-label"><h2{anchor}>{name}</h2><p>{esc(member["role"])}</p></div>'
+            f'<div class="directory-photo" aria-hidden="true">{image}</div></a></article>'
         )
-    group_id = esc(group['id'])
-    sections.append(
-        f'            <section class="member-group" aria-labelledby="{group_id}-title">\n'
-        f'              <h2 id="{group_id}-title">{esc(group["heading"])}</h2>\n'
-        f'              <div class="member-cards">\n' + '\n'.join(cards) + '\n              </div>\n            </section>'
-    )
 fill(ROOT / output_path('members/index.html'), 'member-groups', sections)
 
 # Alumni page: square photo tiles with the name over the photo, grouped by graduation year.

@@ -306,6 +306,85 @@ body[data-member-hero] .shou-link img { padding: 2px; border-radius: 50%; backgr
 }
 .directory-empty, .publication-empty, .news-empty { border: 1px solid var(--ui-border); padding: 28px; background: white; border-radius: var(--ui-radius-md); }
 
+/* Editorial members directory: ocean-blue canvas, staggered portraits, no contact clutter. */
+body[data-page="members"] { background: #06182b; color: #e7f2fc; }
+body[data-page="members"] .site-header { background: rgba(6, 24, 43, .94); border-bottom-color: #b3d9fa1c; }
+body[data-page="members"] :is(.brand, .main-nav > a, .nav-dropdown-toggle) { color: #edf6ff; }
+body[data-page="members"] .brand small { color: #adc6dd; }
+body[data-page="members"] .brand-dot { color: #8ec5ef; }
+body[data-page="members"] .shou-link { border-right-color: #b3d9fa33; }
+body[data-page="members"] .shou-link img { padding: 2px; border-radius: 50%; background: #fff; }
+body[data-page="members"] .nav-submenu a { color: var(--ink); }
+body[data-page="members"] .menu-toggle { border-color: #93b4d177; }
+body[data-page="members"] .menu-toggle span { background: #e7f2fc; }
+body[data-page="members"] .member-directory { padding-block: 70px 120px; background: radial-gradient(ellipse at 85% 0, #1437578c, transparent 55%), #06182b; }
+.directory-board { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: start; gap: 60px 32px; }
+.directory-intro { grid-column: span 3; padding-top: 8px; padding-right: 30px; }
+.directory-intro .eyebrow { color: #89b4d8; font-size: 11px; letter-spacing: .14em; }
+.directory-intro h1 { margin-top: 28px; font-size: clamp(48px, 5.6vw, 82px); line-height: .99; font-weight: 780; letter-spacing: -.055em; color: #edf6ff; }
+.directory-intro h1 span { color: #88c8ff; }
+.directory-intro > p:last-child { margin-top: 24px; color: #b2cadf; font-size: 15px; line-height: 1.7; }
+.directory-person { min-width: 0; position: relative; scroll-margin-top: 120px; }
+.directory-person:nth-of-type(5n + 1) { margin-top: 58px; }
+.directory-person:nth-of-type(5n + 2) { margin-top: 116px; }
+.directory-person:nth-of-type(5n + 4) { margin-top: 42px; }
+.directory-person-link { display: block; min-width: 0; border-radius: 16px; transform-origin: center 40%; transition: transform .35s cubic-bezier(.2, .65, .3, 1); }
+.directory-person-label { min-height: 76px; padding-bottom: 16px; }
+.directory-person-label h2 { font-size: clamp(18px, 1.6vw, 23px); line-height: 1.12; font-weight: 700; letter-spacing: -.035em; color: #edf6ff; overflow-wrap: anywhere; transition: color .25s; }
+.directory-person-label p { margin-top: 7px; color: #a9c9e2; font-size: 12px; line-height: 1.45; }
+.directory-photo { overflow: hidden; aspect-ratio: 3 / 4; border-radius: 16px; background: #17334e; border: 1px solid #b4dcff26; box-shadow: 0 16px 36px #020c1826; transition: box-shadow .35s, border-color .25s; }
+.directory-photo > .directory-person-img, .directory-photo > .member-photo-placeholder { display: block; width: 100%; height: 100%; object-fit: cover; border: 0; border-radius: 0; }
+.directory-photo > .member-photo-placeholder { display: grid; background: linear-gradient(145deg, #234968, #10283f); }
+.directory-photo .member-photo-placeholder svg { fill: #658aa7; stroke: #7399b6; }
+.directory-person-link:focus-visible { outline: 2px solid #9fd6ff; outline-offset: 9px; transform: translateY(-5px) scale(1.045); }
+.directory-person-link:focus-visible h2 { color: #8fceff; }
+.directory-person-link:active { transform: scale(1.02); }
+@media (hover: hover) {
+  .directory-person:has(.directory-person-link:hover) { z-index: 2; }
+  .directory-person-link:hover { transform: translateY(-5px) scale(1.045); }
+  .directory-person-link:hover h2 { color: #8fceff; }
+  .directory-person-link:hover .directory-photo { border-color: #85bfe4a6; box-shadow: 0 22px 45px #020b1866; }
+}
+body[data-page="members"] .site-footer { background: #051321; color: #e2f0fc; }
+body[data-page="members"] .footer-brand small { color: #a5bfd5; border-color: #7099b544; }
+body[data-page="members"] .footer-brand > span { color: #8ec5ef; }
+body[data-page="members"] .footer-bottom { color: #a5bfd5; border-color: #7099b52e; }
+body[data-page="members"] .footer-top > a:last-child { color: #e1f0fc; background: #14314a; border-color: #436984; }
+@media (max-width: 1200px) {
+  .directory-board { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 48px 26px; }
+  .directory-intro { grid-column: span 2; padding-right: 10px; }
+  .directory-intro h1 { font-size: 58px; }
+  .directory-person:nth-of-type(n) { margin-top: 0; }
+  .directory-person:nth-of-type(4n + 2) { margin-top: 84px; }
+  .directory-person:nth-of-type(4n + 4) { margin-top: 42px; }
+}
+@media (max-width: 900px) {
+  .directory-board { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 42px 24px; }
+  .directory-intro { grid-column: 1 / -1; padding: 0 0 12px; }
+  .directory-intro h1 { font-size: clamp(48px, 8vw, 70px); }
+  .directory-person:nth-of-type(n) { margin-top: 0; }
+  .directory-person:nth-of-type(even) { margin-top: 56px; }
+  .directory-person-label h2 { font-size: 24px; }
+}
+@media (max-width: 700px) {
+  body[data-page="members"] .main-nav { background: #0c253c; border-color: #31516b; }
+  body[data-page="members"] .main-nav > a { color: #e7f2fc; }
+  body[data-page="members"] .member-directory { padding-block: 42px 76px; }
+  .directory-board { gap: 32px 18px; }
+  .directory-intro h1 { font-size: clamp(43px, 9.6vw, 62px); }
+  .directory-intro .eyebrow { font-size: 10px; }
+  .directory-intro > p:last-child { font-size: 14px; }
+  .directory-person:nth-of-type(even) { margin-top: 40px; }
+  .directory-person-label { min-height: 74px; }
+  .directory-person-label h2 { font-size: clamp(17px, 4.6vw, 23px); }
+  .directory-person-label p { font-size: 11px; }
+  .directory-photo { border-radius: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .directory-person-link, .directory-person-link:hover, .directory-person-link:focus-visible, .directory-person-link:active { transform: none; transition: none; }
+  .directory-person-label h2, .directory-photo { transition: none; }
+}
+
 /* Research keeps its hierarchy and shared header rows, inside softer white panels. */
 .research-item, .research-item.research-item-secondary { padding: 18px; border: 1px solid var(--ui-border); border-radius: var(--ui-radius-lg); background: white; box-shadow: var(--ui-shadow); }
 .research-art { border-radius: 17px; }

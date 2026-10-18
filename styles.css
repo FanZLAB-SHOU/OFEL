@@ -50,7 +50,7 @@ body { font-size: 18px; }
 .research-supporting { margin-top: 48px; padding-top: 23px; border-top: 1px solid var(--line); }
 .research-supporting-heading { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 22px; }
 .research-secondary-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
-.research-item.research-item-secondary { display: grid; grid-template-columns: 156px minmax(0, 1fr); align-items: start; gap: 22px; }
+.research-item.research-item-secondary { display: grid; grid-template-columns: 156px minmax(0, 1fr); align-items: start; align-content: start; gap: 22px; }
 .research-item-secondary .research-copy { padding-top: 0; }
 .research-item-secondary .research-number { font-size: 9px; margin-bottom: 6px; }
 .research-item-secondary h2 { font-size: 19px; line-height: 1.35; min-height: 0; }
@@ -68,8 +68,9 @@ body { font-size: 18px; }
 .research-software { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; padding: 10px 12px; border-radius: 4px; background: #e7f1f8; color: var(--navy); font-size: 12px; font-weight: 600; }
 .research-software:hover { background: #d6e8f6; }
 .research-software .icon { width: 17px; height: 17px; flex-shrink: 0; }
-.research-item-secondary .research-evidence { margin-top: 18px; padding-top: 15px; }
-.research-item-secondary .research-paper strong { font-size: 14px; }
+.research-item-secondary > .research-evidence { grid-column: 1 / -1; margin-top: 0; padding-top: 18px; }
+.research-item-secondary .research-copy { min-width: 0; }
+.research-item-secondary .research-paper strong { font-size: 15px; }
 .pi-grid { grid-template-columns: 1fr 1.35fr; gap: 80px; }
 .pi-content { min-width: 0; }
 .pi-bio { font-size: 18px; max-width: 590px; }
@@ -210,6 +211,10 @@ body { font-size: 18px; }
   .research-grid .research-item h2 { min-height: 0; font-size: 24px; }
   .research-secondary-grid { grid-template-columns: 1fr; }
   .research-item.research-item-secondary { grid-template-columns: 156px minmax(0, 1fr); }
+}
+@media (max-width: 480px) {
+  .research-item.research-item-secondary { grid-template-columns: minmax(0, 1fr); }
+  .research-item-secondary .research-art { max-height: 220px; }
 }
 
 /* Authorship collections are independent of research topics. */

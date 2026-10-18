@@ -66,7 +66,8 @@ def direction_card(item):
         f'<div class="research-art"><img src="{esc(item["image"])}" alt="{esc(item["alt"])}" '
         'width="1536" height="1024" loading="lazy"></div>'
         f'<div class="research-copy"><span class="research-number">{esc(item["label"])}</span>'
-        f'<h2>{esc(item["title"])}</h2><p>{esc(item["description"])}</p>{tag}{evidence}</div></article>'
+        f'<h2>{esc(item["title"])}</h2><p>{esc(item["description"])}</p>{tag}'
+        + (f'</div>{evidence}</article>' if secondary else f'{evidence}</div></article>')
     )
 
 

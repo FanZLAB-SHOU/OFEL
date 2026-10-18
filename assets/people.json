@@ -388,20 +388,14 @@
           "photo_position": "100% 50%",
           "directory_photo_position": "100% 50%",
           "hero": {
-            "cutout": "assets/people/heroes/zhuojin-jiang-cutout-v2.webp",
-            "background_image": "assets/people/heroes/zhuojin-jiang-sunset-background.webp",
-            "background_dimensions": [
-              1536,
-              1024
+            "layout": "photo",
+            "photo_dimensions": [
+              3984,
+              2656
             ],
             "summary": "My research focuses on tuna biology.",
             "research": [
               "Tuna biology"
-            ],
-            "layout": "scenic",
-            "cutout_dimensions": [
-              1230,
-              1279
             ]
           }
         },

@@ -338,23 +338,27 @@ for n, person in enumerate(people):
                      + (badge + text if side == 'prev' else text + badge) + '</a>')
     breadcrumb = (f'<nav class="breadcrumb" aria-label="Breadcrumb"><a href="{back_href}">{back_label}</a>'
                   f'<span aria-hidden="true">/</span><span aria-current="page">{name}</span></nav>')
-    # Current members and alumni share the same large introduction when photo layers exist.
+    # Current members and alumni share the same introduction rules, including complete photos.
     # Keep the full existing profile below it, including bilingual bios and papers.
-    has_intro = bool(person.get('photo') and person.get('hero', {}).get('cutout'))
+    hero = person.get('hero', {})
+    original_scene = hero.get('layout') == 'photo'
+    has_intro = bool(person.get('photo') and (hero.get('cutout') or original_scene))
     intro = ''
     if has_intro:
         hero = person['hero']
-        scenic = hero.get('layout') == 'scenic'
-        if not (ROOT / hero['cutout']).is_file():
+        if not original_scene and not (ROOT / hero['cutout']).is_file():
             raise ValueError(f'Missing foreground portrait for {person["name"]}')
         first_paragraph = hero.get('summary') or (person.get('bio') or '').split('\n\n')[0]
         summary = f'<p class="member-intro-summary">{esc(first_paragraph)}</p>' if first_paragraph else ''
         topics = ''.join(f'<span>{esc(topic)}</span>' for topic in hero.get('research', []))
         topics = topics or '<span class="member-intro-topic-pending">To be updated</span>'
-        hero_person = {**person, 'photo': hero['cutout']}
         hero_links = f'<div class="pi-links">{"".join(links)}</div>' if links else ''
         tint = hero.get('background_color')
-        if tint:
+        if original_scene:
+            scene_width, scene_height = hero['photo_dimensions']
+            backdrop = photo(person, 'member-intro-scene-image', scene_width, scene_height,
+                             priority=True, sizes='max(100vw, 150svh)')
+        elif tint:
             if not re.fullmatch(r'#[0-9a-fA-F]{6}', tint):
                 raise ValueError(f'Invalid portrait background color for {person["name"]}')
             backdrop = ('<div class="member-intro-wash member-intro-color" aria-hidden="true" '
@@ -364,17 +368,18 @@ for n, person in enumerate(people):
             if not (ROOT / backdrop_source).is_file():
                 raise ValueError(f'Missing introduction background for {person["name"]}')
             backdrop_width, backdrop_height = hero.get('background_dimensions', [640, 800])
-            backdrop_sizes = 'max(100vw, 150svh)' if scenic else '640px'
-            backdrop_priority = 'high' if scenic else 'low'
             backdrop = (f'<img class="member-intro-wash" src="{esc(backdrop_source)}" alt="" aria-hidden="true" '
-                        f'width="{backdrop_width}" height="{backdrop_height}" sizes="{backdrop_sizes}" fetchpriority="{backdrop_priority}">')
-        cutout_width, cutout_height = hero.get('cutout_dimensions', [1080, 1500])
-        intro_class = 'member-intro member-intro-scenic' if scenic else 'member-intro'
+                        f'width="{backdrop_width}" height="{backdrop_height}" sizes="640px" fetchpriority="low">')
+        portrait = ''
+        if not original_scene:
+            hero_person = {**person, 'photo': hero['cutout']}
+            portrait = ('<div class="member-intro-watermark" aria-hidden="true">OFEL</div>'
+                        f'<div class="member-intro-portrait">{photo(hero_person, "member-intro-photo", 1080, 1500, priority=True)}</div>')
+        intro_class = 'member-intro member-intro-photo-scene' if original_scene else 'member-intro'
         intro = (
             f'    <section class="{intro_class}" aria-labelledby="profile-title" data-member-intro>'
             f'{backdrop}'
-            '<div class="member-intro-watermark" aria-hidden="true">OFEL</div>'
-            f'<div class="member-intro-portrait">{photo(hero_person, "member-intro-photo", cutout_width, cutout_height, priority=True)}</div>'
+            f'{portrait}'
             '<div class="container member-intro-layout">'
             '<div class="member-intro-copy">'
             '<p class="member-intro-greeting">Hi, I’m</p>'

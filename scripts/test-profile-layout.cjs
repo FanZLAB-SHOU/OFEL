@@ -44,19 +44,20 @@ for (const person of people.groups.concat(people.alumni || []).flatMap(group => 
   if (person.profile_ref) continue;
   const slug = person.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   const html = fs.readFileSync(path.join(__dirname, `../members/${slug}/index.html`), 'utf8');
-  const hasIntro = Boolean(person.photo && person.hero && person.hero.cutout);
+  const hasIntro = Boolean(person.photo && person.hero && (person.hero.cutout || person.hero.layout === 'photo'));
   assert.equal(html.includes('data-member-intro'), hasIntro, `${person.name} must use the same photo-introduction rule for members and alumni`);
   assert.equal((html.match(/<h1[ >]/g) || []).length, 1, `${person.name} needs one main heading`);
   if (hasIntro) {
     assert(html.includes('data-member-hero'));
     assert(html.indexOf('data-member-intro') < html.indexOf('class="profile-grid"'));
     assert(html.includes('href="#member-details"') && html.includes('id="member-details"'));
-    if (person.hero.layout === 'scenic') {
-      assert(html.includes('class="member-intro member-intro-scenic"'), 'Scenic introductions must opt out of the dark studio treatment');
-      const backdrop = html.match(/<img class="member-intro-wash"[^>]*>/)[0];
-      assert(backdrop.includes(path.basename(person.hero.background_image)) && backdrop.includes('fetchpriority="high"'), 'Keep the scenic background visible and load it with the portrait');
-      const portrait = html.match(/<img class="member-intro-photo"[^>]*>/)[0];
-      assert(portrait.includes(`width="${person.hero.cutout_dimensions[0]}"`) && portrait.includes(`height="${person.hero.cutout_dimensions[1]}"`), 'Use the real cutout aspect ratio');
+    if (person.hero.layout === 'photo') {
+      const intro = html.slice(html.indexOf('data-member-intro'), html.indexOf('class="profile-grid"'));
+      assert(html.includes('class="member-intro member-intro-photo-scene"'));
+      assert(!intro.includes('member-intro-portrait') && !intro.includes('cutout') && !intro.includes('member-intro-wash'), 'Complete-photo introductions must not render extracted subjects or replacement backgrounds');
+      const scene = intro.match(/<img class="member-intro-scene-image"[^>]*>/)[0];
+      assert(scene.includes(person.photo) && scene.includes('fetchpriority="high"'), 'Load the original photo for the introduction');
+      assert(scene.includes(`${person.hero.photo_dimensions[0]}w`), 'Offer the full-resolution original on high-density displays');
     }
   }
 }

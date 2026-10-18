@@ -32,7 +32,7 @@ def responsive_images(markup):
             return tag
         variants = info['variants']
         classes = attrs.get('class', '').split()
-        if {'home-research-image', 'directory-person-img', 'constellation-img'}.intersection(classes):
+        if {'home-research-image', 'directory-person-img', 'constellation-img', 'member-intro-scene-image'}.intersection(classes):
             # Cropped artwork and portraits use the original at full size,
             # avoiding another lossy WebP encoding on high-density screens.
             variants = [v for v in variants if v['width'] < info['width']] + [

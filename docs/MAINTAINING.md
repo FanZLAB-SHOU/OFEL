@@ -110,7 +110,7 @@ Fan Zhang 主页的主体信息在 [`templates/members/fan-zhang.html`](../templ
 
 每条新闻还须填写一个 `category`，取值来自 `blog.json` 顶层的 `categories`。当前为研究成果（research）、学术交流（exchange）、课程活动（courses）、荣誉与任职（honors）。只有已有新闻的类别才显示筛选按钮。News 内页支持分类筛选及 `?category=research` 等直达链接，列表和文章均显示类别；分类不会进入首页，筛选前后新闻始终保持日期倒序。新增新闻时无需调整首页精选逻辑。
 
-News 列表使用整图卡片：封面铺满卡片，底部为半透明磨砂渐变，日期、标题和两行摘要以白字叠在上面，分类以玻璃质感标签显示在左上角。最新一条为横跨两列的 16:9 大卡片，其余为两列 4:3 卡片；手机端为单列 4:5。样式在 `assets/styles/site-ui.css` 中以 `body[data-page="blog"]` 限定，只影响 News 列表页。系统开启“降低透明度”时改用不透明渐变。需要单独构图时可填写 `thumbnail` 和 `thumbnail_position`，仅替换列表缩略图；文章中的 `image` 仍展示原海报，首页也继续按最新日期选择新闻。
+News 列表的图片框为横向 3:2。需要单独构图时可填写 `thumbnail` 和 `thumbnail_position`，仅替换列表缩略图；文章中的 `image` 仍展示原海报，首页也继续按最新日期选择新闻。
 
 构建生成 `news/<slug>/index.html`，访问地址为 `/news/<slug>/`，列表始终按日期从新到旧排列。**首页 News 入口始终使用日期最新的新闻封面与标题，不设置手动精选。补录、修改旧新闻或更换旧新闻封面，均不得覆盖日期较新的首页新闻。**
 

@@ -32,9 +32,9 @@ def responsive_images(markup):
             return tag
         variants = info['variants']
         classes = attrs.get('class', '').split()
-        if 'home-research-image' in classes:
-            # Large cover crops on retina screens use the original at full size,
-            # avoiding another lossy WebP encoding of the research artwork.
+        if {'home-research-image', 'directory-person-img', 'constellation-img'}.intersection(classes):
+            # Cropped artwork and portraits use the original at full size,
+            # avoiding another lossy WebP encoding on high-density screens.
             variants = [v for v in variants if v['width'] < info['width']] + [
                 {'width': info['width'], 'src': source}]
         fallback = next((v for v in variants if v['width'] >= 960), variants[-1])

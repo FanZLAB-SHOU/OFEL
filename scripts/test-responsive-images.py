@@ -40,6 +40,13 @@ class ResponsiveImages(unittest.TestCase):
         ordinary = responsive_images(f'<img src="{self.source}">')
         self.assertIn('example-1600.webp 1600w', ordinary)
 
+    def test_directory_portraits_offer_uncompressed_original_at_full_size(self):
+        for cls in ['directory-person-img', 'constellation-img']:
+            result = responsive_images(f'<img class="{cls}" src="{self.source}" sizes="750px">')
+            self.assertIn(f'{self.source} 1600w', result)
+            self.assertIn('sizes="750px"', result)
+            self.assertNotIn('example-1600.webp 1600w', result)
+
     def test_changed_sources_fall_back_to_original(self):
         source = f'<img src="{self.source}" alt="Updated portrait">'
         with patch('responsive_images.current', return_value=False):

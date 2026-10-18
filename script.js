@@ -292,6 +292,46 @@ function initMemberIntro() {
 }
 initMemberIntro();
 
+function initTeamSpace() {
+  const hero = document.querySelector('[data-team-space]');
+  if (!hero) return;
+  const cards = [...hero.querySelectorAll('.team-space-card')];
+  if (!cards.length) return;
+  const button = hero.querySelector('[data-team-motion]');
+  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let visible = true, paused = false;
+  cards.forEach(card => {
+    for (let point = 1; point <= 3; point++) {
+      card.style.setProperty(`--float-x${point}`, `${(Math.random() * 32 - 16).toFixed(1)}px`);
+      card.style.setProperty(`--float-y${point}`, `${(Math.random() * 24 - 12).toFixed(1)}px`);
+      card.style.setProperty(`--float-r${point}`, `${(Math.random() * 5 - 2.5).toFixed(2)}deg`);
+    }
+    card.style.setProperty('--float-duration', `${(18 + Math.random() * 12).toFixed(1)}s`);
+    card.style.setProperty('--float-delay', `${(-Math.random() * 30).toFixed(1)}s`);
+  });
+  hero.classList.add('has-floating-motion');
+  function update() {
+    hero.classList.toggle('is-moving', visible && !document.hidden && !motion.matches && !paused);
+    if (button) {
+      button.hidden = motion.matches;
+      button.setAttribute('aria-pressed', String(paused));
+      button.setAttribute('aria-label', paused ? 'Resume floating photos' : 'Pause floating photos');
+      button.textContent = paused ? 'Motion off' : 'Motion on';
+    }
+  }
+  if (button) button.addEventListener('click', () => { paused = !paused; update(); });
+  motion.addEventListener('change', update);
+  document.addEventListener('visibilitychange', update);
+  if ('IntersectionObserver' in window) {
+    new window.IntersectionObserver(entries => {
+      visible = entries[0].isIntersecting;
+      update();
+    }).observe(hero);
+  }
+  update();
+}
+initTeamSpace();
+
 // Homepage header floats over the hero; give it a background once the page scrolls.
 if (document.body.dataset.page === 'index') {
   const header = document.querySelector('.site-header');

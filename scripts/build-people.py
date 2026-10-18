@@ -32,7 +32,7 @@ import sys  # noqa: E402
 sys.path.insert(0, str(ROOT / 'scripts'))
 from icons import expand, icon  # noqa: E402
 from site_paths import clean_url, output_path, rebase_links, write_page  # noqa: E402
-from responsive_images import responsive_images  # noqa: E402
+from responsive_images import responsive_images, manifest as image_manifest  # noqa: E402
 from page_metadata import render_head  # noqa: E402
 
 spec = importlib.util.spec_from_file_location('publications', ROOT / 'scripts/build-publications.py')
@@ -133,10 +133,11 @@ def photo(member, cls, width, height, priority=False, sizes=None):
     styles = []
     if cls == 'profile-img' and member.get('profile_photo_aspect_ratio'):
         styles.append(f'aspect-ratio: {esc(member["profile_photo_aspect_ratio"])}')
-    position = member.get('directory_photo_position', '50% 50%') if cls == 'directory-person-img' else member.get('photo_position')
+    directory_portrait = cls in {'directory-person-img', 'constellation-img'}
+    position = member.get('directory_photo_position', '50% 50%') if directory_portrait else member.get('photo_position')
     if position:
         styles.append(f'object-position: {esc(position)}')
-    if cls == 'directory-person-img' and member.get('directory_photo_scale'):
+    if directory_portrait and member.get('directory_photo_scale'):
         scale = float(member['directory_photo_scale'])
         if not 1 <= scale <= 2:
             raise ValueError(f'Invalid directory photo scale for {member["name"]}')
@@ -144,6 +145,18 @@ def photo(member, cls, width, height, priority=False, sizes=None):
     style = f' style="{"; ".join(styles)}"' if styles else ''
     loading = 'fetchpriority="high"' if priority else 'loading="lazy"'
     sizes = sizes or ('(max-width: 760px) calc(100vw - 40px), (max-width: 1280px) 46vw, 620px' if priority else None)
+    if directory_portrait:
+        info = image_manifest().get(member['photo'])
+        if info:
+            # Cover cropping and extra zoom enlarge landscape sources well beyond
+            # the narrow tile width; give the browser the effective source width.
+            ratio = .8 if cls == 'constellation-img' else .75
+            factor = max(1, info['width'] / info['height'] / ratio) * float(member.get('directory_photo_scale', 1))
+            if cls == 'constellation-img':
+                sizes = f'(max-width: 700px) {32 * factor:.2f}vw, {round(220 * factor)}px'
+            else:
+                sizes = (f'(max-width: 760px) {44 * factor:.2f}vw, (max-width: 1100px) {30 * factor:.2f}vw, '
+                         f'(max-width: 1400px) {23 * factor:.2f}vw, {round(300 * factor)}px')
     size_attr = f' sizes="{esc(sizes)}"' if sizes else ''
     return (f'<img class="{cls}" src="{esc(member["photo"])}" alt="{esc(member.get("photo_alt", member["name"]))}" '
             f'width="{width}" height="{height}" {loading}{size_attr}{style}>')
@@ -194,6 +207,17 @@ for group in groups:
             f'<div class="directory-photo" aria-hidden="true">{image}</div></a></article>'
         )
 fill(ROOT / output_path('members/index.html'), 'member-groups', sections)
+
+# A separate first screen uses supplied photographs only; the full directory stays below.
+floating = []
+for member in [m for group in groups for m in group['members'] if m.get('profile_photo') or m.get('photo')][:11]:
+    portrait = {**member, 'photo': member.get('profile_photo') or member['photo'], 'photo_alt': ''}
+    image = photo(portrait, 'constellation-img', 460, 614, sizes='(max-width: 700px) 32vw, 220px')
+    floating.append(
+        f'          <li class="team-space-card"><a class="team-space-person" href="members/{esc(by_name[member["name"]]["slug"])}.html" aria-label="Meet {esc(member["name"])}">'
+        f'<span class="team-space-photo" aria-hidden="true">{image}</span><span class="team-space-name" aria-hidden="true">{esc(member["name"])}</span></a></li>'
+    )
+fill(ROOT / output_path('members/index.html'), 'floating-members', floating)
 
 # Alumni shares the aligned portrait tiles, with graduation-year and degree groups.
 sections = []

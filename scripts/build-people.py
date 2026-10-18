@@ -189,7 +189,7 @@ for group in groups:
         )
 fill(ROOT / output_path('members/index.html'), 'member-groups', sections)
 
-# Alumni page: square photo tiles with the name over the photo, grouped by graduation year.
+# Alumni shares the aligned portrait tiles, with graduation-year and degree groups.
 sections = []
 for cohort in alumni:
     tiles = []
@@ -199,16 +199,21 @@ for cohort in alumni:
             raise ValueError(f'Unknown alumni profile reference: {reference}')
         linked_person = by_name[reference]
         display = {**linked_person, **member}
+        portrait = {**display, 'photo': display.get('profile_photo') or display.get('photo'), 'photo_alt': ''}
+        image = photo(portrait, 'directory-person-img', 460, 614,
+                      sizes='(max-width: 760px) 44vw, (max-width: 1100px) 30vw, (max-width: 1400px) 23vw, 300px')
+        graduation = f'{cohort["year"]} {cohort["degree"]} Graduate'
         tiles.append(
-            f'                <li><a class="alumni-tile" href="members/{esc(linked_person["slug"])}.html">'
-            f'{photo(display, "alumni-photo", 400, 400)}<span class="alumni-name">{esc(member["name"])}</span></a></li>'
+            f'                <li class="directory-person" data-reveal><a class="directory-person-link" href="members/{esc(linked_person["slug"])}.html">'
+            f'<div class="directory-person-label"><h3>{esc(member["name"])}</h3><p>{esc(graduation)}</p></div>'
+            f'<div class="directory-photo" aria-hidden="true">{image}</div></a></li>'
         )
     year = cohort['year']
     cohort_id = f'alumni-{year}-{slugify(cohort["degree"])}'
     sections.append(
-        f'            <section class="member-group" aria-labelledby="{cohort_id}-title">\n'
+        f'            <section class="directory-cohort" aria-labelledby="{cohort_id}-title">\n'
         f'              <h2 id="{cohort_id}-title">{year} {esc(cohort["degree"])} Graduates</h2>\n'
-        f'              <ul class="alumni-grid">\n' + '\n'.join(tiles) + '\n              </ul>\n            </section>'
+        f'              <ul class="directory-board directory-list">\n' + '\n'.join(tiles) + '\n              </ul>\n            </section>'
     )
 fill(ROOT / output_path('members/alumni.html'), 'alumni-groups', sections)
 

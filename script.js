@@ -408,12 +408,16 @@ function initFacultyHero() {
   function layout() {
     const W = hero.clientWidth, H = hero.clientHeight, mobile = W < 760, headerH = document.querySelector('.site-header').offsetHeight;
     const px = mobile ? .26 : .5, py = mobile ? .5 : .18, s = 1;
-    const Dw = Math.max(W, H * 4 / 3), Dh = Dw * 3 / 4, ox = (W - Dw) * px, oy = (H - Dh) * py;
+    // Desktop: the full photo height fits the hero, so the person keeps the same size and framing on any screen.
+    // Phones: cover, cropped around the person.
+    const Dh = mobile ? Math.max(H, W * 3 / 4) : H, Dw = Dh * 4 / 3;
+    const ox = (W - Dw) * (mobile ? px : (Dw > W ? .42 : .5)), oy = mobile ? (H - Dh) * py : 0;
+    hero.classList.toggle('is-fitted', !mobile && Dw < W);
     const pt = (u, v) => [ox + u * Dw, oy + v * Dh];
     const [Ox, Oy] = pt(P.cx, P.cy);
     const map = ([x, y]) => [Ox + s * (x - Ox), Oy + s * (y - Oy)];
     stages.forEach(st => { st.style.transformOrigin = `${Ox}px ${Oy}px`; st.style.transform = `scale(${s})`; });
-    hero.querySelectorAll('.fz-layer').forEach(img => { img.style.objectPosition = `${px * 100}% ${py * 100}%`; });
+    hero.querySelectorAll('.fz-layer').forEach(img => { Object.assign(img.style, { left: `${ox}px`, top: `${oy}px`, width: `${Dw}px`, height: `${Dh}px`, right: 'auto', bottom: 'auto', objectFit: 'fill' }); });
     const [hx, ht] = map(pt(P.headX, P.headTop)), [, cy] = map(pt(P.headX, P.chest)), [hr] = map(pt(P.headRight, P.headTop)), [hl] = map(pt(.3, P.headTop));
     // Wide bar behind the person; typing starts just right of the shoulder so it stays visible.
     const [pr] = map(pt(P.personRight, P.chest));
@@ -426,7 +430,10 @@ function initFacultyHero() {
     if (mobile) { chipsWrap.style.left = `${cx}px`; chipsWrap.style.width = `${bar}px`; }
     else { const l = pr + 28, r = W - 40; chipsWrap.style.left = `${(l + r) / 2}px`; chipsWrap.style.width = `${r - l}px`; }
     center.style.top = `${cy}px`;
-    chipsWrap.style.top = `${cy + (mobile ? 40 : 48)}px`;
+    const chH = chipsWrap.offsetHeight;
+    let chipsTop = cy + (mobile ? 40 : 48);
+    if (chipsTop + chH > H - 16) chipsTop = Math.max(headerH + 8, cy - 40 - chH);
+    chipsWrap.style.top = `${chipsTop}px`;
     hero.style.setProperty('--header-height', `${headerH}px`);
     hero.style.setProperty('--fz-card-max', `${mobile ? Math.round(H * .5) : Math.max(260, H - headerH - 220)}px`);
     // Bubble beside the head on the window side, kept on screen.

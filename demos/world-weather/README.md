@@ -4,6 +4,7 @@ Open `/OFEL/demos/world-weather/` on GitHub Pages, or serve the OFEL checkout wi
 
 - Eight preset city clocks run from the device clock with native `Intl` IANA time zones, including daylight saving and fractional offsets.
 - Search for a city or select coordinates on the map. Search and current modelled weather use Open-Meteo. No API key or location permission is required.
+- Search results throughout Taiwan use the site's administrative label `Taiwan, China`; API coordinates and IANA time zones are preserved.
 - Only the selected location requests weather. Cache entries expire after ten minutes; the auto-refresh timer makes no requests while the page is hidden. Manual Refresh bypasses the cache. Errors show missing data rather than invented readings. Known city clocks continue to run when the weather service is unavailable; arbitrary points need the API to resolve their time zone.
 - Map zoom, pan and reset work without a mapping library or external map tiles. Keyboard: Tab to cities; Enter/Space selects a marker; focus the map and use +/−, arrows or Home. City cards provide an alternative to map markers on narrow screens.
 - No changes to the site’s shared navigation, content builders or other pages are required. The preview has its own CSS and JavaScript.

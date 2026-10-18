@@ -16,6 +16,14 @@ assert.equal(M.validZone('Not/A_Real_Zone'),false);
 for(const location of M.cities){const [x,y]=M.project(location.lon,location.lat);const p=M.unproject(x,y);assert.ok(Math.abs(p.lat-location.lat)<1e-10);assert.ok(Math.abs(p.lon-location.lon)<1e-10);}
 assert.equal(M.weatherKind(0,false).icon,'moon');assert.equal(M.weatherKind(0,true).icon,'sun');assert.equal(M.weatherKind(null,true).label,'Conditions unavailable');
 assert.equal(M.searchLocation({latitude:0,longitude:0,timezone:'Invalid'}),null);
+const taipei={id:1668341,name:'Taipei',admin1:'Taiwan',country:'Taiwan',country_code:'TW',country_id:1668284,latitude:25.05,longitude:121.53,timezone:'Asia/Taipei'};
+assert.equal(M.searchLocation(taipei).country,'Taiwan, China');
+const kaohsiung=M.searchLocation({...taipei,name:'Kaohsiung',admin1:'Kaohsiung',country:'API label',country_id:undefined});
+assert.equal(kaohsiung.country,'Kaohsiung, Taiwan, China');
+assert.equal(kaohsiung.zone,'Asia/Taipei');assert.equal(kaohsiung.lat,taipei.latitude);assert.equal(kaohsiung.lon,taipei.longitude);
+assert.equal(M.searchLocation({...taipei,country_code:undefined}).country,'Taiwan, China');
+assert.equal(M.searchLocation({...taipei,country_code:undefined,country_id:undefined}).country,'Taiwan, China');
+assert.equal(M.searchLocation({...taipei,name:'Tokyo',admin1:'Tokyo',country:'Japan',country_code:'JP',country_id:1861060,timezone:'Asia/Tokyo'}).country,'Tokyo, Japan');
 const params=new URL(M.weatherURL(M.cities[0])).searchParams;
 assert.equal(params.get('timezone'),'auto');assert.equal(params.get('timeformat'),'unixtime');assert.equal(params.get('temperature_unit'),'celsius');
 assert.throws(()=>M.weatherURL({lat:95,lon:0}));

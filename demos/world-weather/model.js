@@ -91,7 +91,12 @@ const WorldWeather = (() => {
   }
   function searchLocation(item) {
     if(!Number.isFinite(item.latitude)||!Number.isFinite(item.longitude)||!validZone(item.timezone))return null;
-    return {id:'search-'+item.id,name:String(item.name||'Selected city'),country:[item.admin1,item.country].filter(Boolean).join(', '),lat:item.latitude,lon:item.longitude,zone:item.timezone};
+    // Apply the site's administrative label to every result in Taiwan.
+    // Keep geographic coordinates and the IANA time zone supplied by the API.
+    const inTaiwan=String(item.country_code||'').toUpperCase()==='TW'||Number(item.country_id)===1668284||item.country==='Taiwan';
+    const region=inTaiwan?[item.admin1,'Taiwan','China']:[item.admin1,item.country];
+    const country=[...new Set(region.filter(Boolean))].join(', ');
+    return {id:'search-'+item.id,name:String(item.name||'Selected city'),country,lat:item.latitude,lon:item.longitude,zone:item.timezone};
   }
   return {TTL,cities,clock,dateLabel,validZone,offsetMinutes,offsetLabel,difference,coordinates,project,unproject,weatherKind,weatherURL,parseWeather,WeatherClient,searchLocation};
 })();

@@ -1,0 +1,496 @@
+{
+  "checked_on": "2026-10-17",
+  "scope": "Chinese-language fisheries/aquaculture journal articles by the 26 user-identified members/alumni. Search results are not a claim of exhaustive coverage. Only identity-verified metadata is published. No full-text copies or abstracts are stored.",
+  "lab_rule": "Fan Zhang and at least one lab member/alumnus must both be authors. Other verified papers are included and counted without the Lab research badge.",
+  "verified": [
+    {
+      "key": "10.12131/20240273",
+      "title": "基于不同参数先验假设的CMSY方法敏感性研究",
+      "evidence": [
+        "https://www.schinafish.cn/cn/article/id/6f821254-078f-459c-b209-c7147fea138f"
+      ],
+      "identity_basis": "Publisher lists Geng Ziyi, Dong Sisong and Zhang Fan at Shanghai Ocean University; fisheries stock-assessment topic.",
+      "lab_research": true
+    },
+    {
+      "key": "10.12131/20250017",
+      "title": "东大西洋热带金枪鱼FADs围网渔业大眼金枪鱼和黄鳍金枪鱼的时空动态",
+      "evidence": [
+        "https://www.schinafish.cn/article/doi/10.12131/20250017?viewType=HTML",
+        "https://schinafish.cn/cn/article/pdf/preview/10.12131/20250017.pdf"
+      ],
+      "identity_basis": "Publisher lists Cheng Yuhang, Lin Hongyu and Zhang Fan at Shanghai Ocean University.",
+      "lab_research": true
+    },
+    {
+      "key": "10.13984/j.cnki.cn37-1141.2025.06.033",
+      "title": "基于硬组织鉴定金枪鱼年龄方法的发展演变",
+      "evidence": [
+        "https://journal32.magtechjournal.com/hyhztb/CN/volumn/volumn_22.shtml"
+      ],
+      "identity_basis": "Official journal issue confirms authors and tuna-age review; matches Lu Dongqi and Lin Qinqin research collaboration with Zhu Jiangfeng and Zhang Fan.",
+      "lab_research": true
+    },
+    {
+      "key": "10.12131/20250047",
+      "title": "东太平洋延绳钓渔业兼捕鲨鱼物种的生态风险评估",
+      "evidence": [
+        "https://schinafish.cn/cn/article/2025/4",
+        "https://www.sciengine.com/doi/pdfView/AD02760A42EA4C77BEAF55FF27C019A8"
+      ],
+      "identity_basis": "Official issue and publication PDF list Lin Qinqin as corresponding author, with Shanghai Ocean University affiliation.",
+      "lab_research": false
+    },
+    {
+      "key": "10.11964/jfc.20220313397",
+      "title": "基于LeMaRns模型的热带中西太平洋中上层生态系统动态分析",
+      "evidence": [
+        "https://ebook.xml-journal.net/scxb/2025/12/files/basic-html/page233.html",
+        "https://hyxy.shou.edu.cn/_t623/2025/0225/c7722a338029/page.htm"
+      ],
+      "identity_basis": "Publisher annual contents confirms final article number; author university bibliography confirms Lin Qinqin authorship.",
+      "lab_research": false
+    },
+    {
+      "key": "10.12024/jsou.20220303745",
+      "title": "基于LeMaRns模型评估印度洋金枪鱼渔业对大洋生态系统的影响",
+      "evidence": [
+        "https://www.shhydxxb.com/shhy/article/abstract/20220303745"
+      ],
+      "identity_basis": "Journal citation metadata and full author list confirm Lin Qinqin and Shanghai Ocean University ecosystem modelling collaboration.",
+      "lab_research": false
+    },
+    {
+      "key": "10.12024/jsou.20210303336",
+      "title": "热带东太平洋中上层食物网结构指数分析",
+      "evidence": [
+        "https://www.shhydxxb.com/shhyen/article/abstract/20210303336",
+        "https://html.rhhz.net/shhydxxb/20210303336.htm"
+      ],
+      "identity_basis": "Publisher full text and university bibliography confirm Lin Qinqin and Shanghai Ocean University affiliation.",
+      "lab_research": false
+    },
+    {
+      "key": "url:https://hyxy.shou.edu.cn/_t623/2025/0225/c7722a338029/page.htm",
+      "title": "基于环境因子的日本鲭太平洋群系的亲体—补充量模型比较分析",
+      "evidence": [
+        "https://hyxy.shou.edu.cn/_t623/2025/0225/c7722a338029/page.htm",
+        "https://lseofr.shou.edu.cn/2021/0810/c13728a292385/page.htm"
+      ],
+      "identity_basis": "Author university bibliography and university laboratory annual publication list agree on authors, title, volume, issue and pages. DOI not verified; links to author bibliography.",
+      "lab_research": false
+    },
+    {
+      "key": "url:https://www.sciengine.com/doi/pdf/91EBDE42C2FD4E4CAA299FBFAE31BB90",
+      "title": "中西太平洋金枪鱼围网渔获组成的时空变化",
+      "evidence": [
+        "https://www.sciengine.com/doi/pdf/91EBDE42C2FD4E4CAA299FBFAE31BB90"
+      ],
+      "identity_basis": "Final publication PDF confirms Lin Qinqin, full author list and final title; supersedes an older title/author spelling in the faculty bibliography. DOI not verified.",
+      "lab_research": false
+    },
+    {
+      "key": "10.12131/20220235",
+      "title": "中西太平洋暖池时空变动及其对鲣分布的影响",
+      "evidence": [
+        "https://www.schinafish.cn/article/2023/3",
+        "https://www.sciengine.com/doi/pdf/B7F95B4228214AD8ACA4F09CA7AEE611"
+      ],
+      "identity_basis": "Official issue and publication PDF confirm Lin Hongyu and Jiang Mingfeng with Shanghai Ocean University affiliation and matching tuna collaborators.",
+      "lab_research": false
+    },
+    {
+      "key": "10.11964/jfc.20220913699",
+      "title": "中西太平洋鲣围网渔业入渔指标体系构建与应用",
+      "evidence": [
+        "https://www.sciengine.com/parse/pdf/1000-0615/94453CDC05214126942132D97EB0B198.pdf"
+      ],
+      "identity_basis": "Publication PDF confirms Jiang Mingfeng and Lin Hongyu, Shanghai Ocean University affiliation; first-author email matches member record.",
+      "lab_research": false
+    },
+    {
+      "key": "10.12131/20220126",
+      "title": "未来气候情境下中国东海鲐鱼栖息地的时空分布",
+      "evidence": [
+        "https://schinafish.cn/article/doi/10.12131/20220126",
+        "https://www.sciengine.com/parse/pdf/2095-0780/0AF85CDD62AE4A3E8C52C0E162E822F0.pdf"
+      ],
+      "identity_basis": "Publisher lists Wu Xiaoci at Shanghai Ocean University; Yu Wei collaboration matches verified English fisheries papers.",
+      "lab_research": false
+    },
+    {
+      "key": "10.12264/jfsc2024-0039",
+      "title": "西北印度洋中尺度涡对鸢乌贼时空分布的影响",
+      "evidence": [
+        "https://www.sciengine.com/parse/pdf/1005-8737/FD90F097A293484E8F1B2A0B1314B126.pdf"
+      ],
+      "identity_basis": "Publication PDF confirms Wu Xiaoci at Shanghai Ocean University with the same Yu Wei research collaboration.",
+      "lab_research": false
+    },
+    {
+      "key": "10.13984/j.cnki.cn37-1141.2024.02.012",
+      "title": "秘鲁外海茎柔鱼(Dosidicus gigas)渔场的时空分布与海表温度的关系分析",
+      "evidence": [
+        "https://journal32.magtechjournal.com/hyhztb/CN/volumn/volumn_12.shtml"
+      ],
+      "identity_basis": "Official journal issue confirms full author list; Wu Xiaoci and Yu Wei match Shanghai Ocean University fisheries collaboration.",
+      "lab_research": false
+    },
+    {
+      "key": "10.12264/jfsc2025-0114",
+      "title": "基于HMSC模型的广东近海鱼类环境适应性与种间关系分析",
+      "evidence": [
+        "https://www.sciengine.com/doi/pdfView/FDF3F44C745C4F13A8743E2461AD4739"
+      ],
+      "identity_basis": "Publication PDF confirms Zhang Junyi at South China Sea Fisheries Research Institute / Shanghai Ocean University, with Chen Zuozhi and Zhang Kui matching verified English ecology papers.",
+      "lab_research": false
+    },
+    {
+      "key": "10.11964/jfc.20211213260",
+      "title": "2020年秋季南极布兰斯菲尔德海峡南极磷虾集群时空分布",
+      "evidence": [
+        "https://opaj.napstic.cn/periodicalArticle/0120220501072574"
+      ],
+      "identity_basis": "National scholarly platform journal record confirms Dong Sisong with Shanghai Ocean University polar fisheries collaborators.",
+      "lab_research": false
+    },
+    {
+      "key": "url:https://m.fx361.com/news/2022/0922/11169042.html",
+      "title": "自愿限制区对南极半岛南极磷虾渔业及渔场分布的影响",
+      "evidence": [
+        "https://www.jnr.ac.cn/CN/abstract/article/1000-3037/55517",
+        "https://m.fx361.com/news/2022/0922/11169042.html"
+      ],
+      "identity_basis": "Primary journal reference confirms bibliographic details; publication reprint confirms full authors and Shanghai Ocean University affiliation. DOI not verified; source links to the reprint.",
+      "lab_research": false
+    }
+  ],
+  "members": [
+    {
+      "name": "Qinqin Lin",
+      "name_zh": "林琴琴",
+      "queries": [
+        "\"林琴琴\" 水产 渔业 论文",
+        "\"林琴琴\" \"上海海洋大学\" 期刊"
+      ],
+      "verified_keys": [
+        "10.13984/j.cnki.cn37-1141.2025.06.033",
+        "10.12131/20250047",
+        "10.11964/jfc.20220313397",
+        "10.12024/jsou.20220303745",
+        "10.12024/jsou.20210303336",
+        "url:https://hyxy.shou.edu.cn/_t623/2025/0225/c7722a338029/page.htm",
+        "url:https://www.sciengine.com/doi/pdf/91EBDE42C2FD4E4CAA299FBFAE31BB90"
+      ],
+      "status": "verified_records_added"
+    },
+    {
+      "name": "Xin Cheng",
+      "name_zh": "程心",
+      "queries": [
+        "\"程心\" 水产 渔业 论文",
+        "\"程心\" \"上海海洋大学\" 期刊"
+      ],
+      "verified_keys": [],
+      "status": "no_identity_verified_chinese_record_in_this_pass"
+    },
+    {
+      "name": "Sisong Dong",
+      "name_zh": "董思宋",
+      "queries": [
+        "\"董思宋\" 水产 渔业 论文",
+        "\"董思宋\" \"上海海洋大学\" 期刊"
+      ],
+      "verified_keys": [
+        "10.12131/20240273",
+        "10.11964/jfc.20211213260",
+        "url:https://m.fx361.com/news/2022/0922/11169042.html"
+      ],
+      "status": "verified_records_added"
+    },
+    {
+      "name": "Dongqi Lu",
+      "name_zh": "陆冬琦",
+      "queries": [
+        "\"陆冬琦\" 水产 渔业 论文",
+        "\"陆冬琦\" \"上海海洋大学\" 期刊"
+      ],
+      "verified_keys": [
+        "10.13984/j.cnki.cn37-1141.2025.06.033"
+      ],
+      "status": "verified_records_added"
+    },
+    {
+      "name": "Hongyu Lin",
+      "name_zh": "林泓羽",
+      "queries": [
+        "\"林泓羽\" 水产 渔业 论文",
+        "\"林泓羽\" \"上海海洋大学\" 期刊"
+      ],
+      "verified_keys": [
+        "10.12131/20250017",
+        "10.12131/20220235",
+        "10.11964/jfc.20220913699"
+      ],
+      "status": "verified_records_added"
+    },
+    {
+      "name": "Mingfeng Jiang",
+      "name_zh": "蒋明峰",
+      "queries": [
+        "\"蒋明峰\" 水产 渔业 论文",
+        "\"蒋明峰\" \"上海海洋大学\" 期刊"
+      ],
+      "verified_keys": [
+        "10.12131/20220235",
+        "10.11964/jfc.20220913699"
+      ],
+      "status": "verified_records_added"
+    },
+    {
+      "name": "Xiaoci Wu",
+      "name_zh": "武孝慈",
+      "queries": [
+        "\"武孝慈\" 水产 渔业 论文",
+        "\"武孝慈\" \"上海海洋大学\" 期刊"
+      ],
+      "verified_keys": [
+        "10.12131/20220126",
+        "10.12264/jfsc2024-0039",
+        "10.13984/j.cnki.cn37-1141.2024.02.012"
+      ],
+      "status": "verified_records_added"
+    },
+    {
+      "name": "Junyi Zhang",
+      "name_zh": "张峻溢",
+      "queries": [
+        "\"张峻溢\" 水产 渔业 论文",
+        "\"张峻溢\" \"上海海洋大学\" 期刊"
+      ],
+      "verified_keys": [
+        "10.12264/jfsc2025-0114"
+      ],
+      "status": "verified_records_added"
+    },
+    {
+      "name": "Runze Wang",
+      "name_zh": "王润泽",
+      "queries": [
+        "\"王润泽\" 水产 渔业 论文",
+        "\"王润泽\" \"上海海洋大学\" 期刊"
+      ],
+      "verified_keys": [],
+      "status": "no_identity_verified_chinese_record_in_this_pass"
+    },
+    {
+      "name": "Jiayi Zhou",
+      "name_zh": "周佳怡",
+      "queries": [
+        "\"周佳怡\" 水产 渔业 论文",
+        "\"周佳怡\" \"上海海洋大学\" 期刊"
+      ],
+      "verified_keys": [],
+      "status": "no_identity_verified_chinese_record_in_this_pass"
+    },
+    {
+      "name": "Shuang Ma",
+      "name_zh": "马爽",
+      "queries": [
+        "\"马爽\" 水产 渔业 论文",
+        "\"马爽\" \"上海海洋大学\" 期刊"
+      ],
+      "verified_keys": [],
+      "status": "no_identity_verified_chinese_record_in_this_pass"
+    },
+    {
+      "name": "Feng Yao",
+      "name_zh": "姚峰",
+      "queries": [
+        "\"姚峰\" 水产 渔业 论文",
+        "\"姚峰\" \"上海海洋大学\" 期刊"
+      ],
+      "verified_keys": [],
+      "status": "no_identity_verified_chinese_record_in_this_pass"
+    },
+    {
+      "name": "Yang Yu",
+      "name_zh": "于洋",
+      "queries": [
+        "\"于洋\" 水产 渔业 论文",
+        "\"于洋\" \"上海海洋大学\" 期刊"
+      ],
+      "verified_keys": [],
+      "status": "no_identity_verified_chinese_record_in_this_pass"
+    },
+    {
+      "name": "Xu Yan",
+      "name_zh": "闫旭",
+      "queries": [
+        "\"闫旭\" 水产 渔业 论文",
+        "\"闫旭\" \"上海海洋大学\" 期刊"
+      ],
+      "verified_keys": [],
+      "status": "no_identity_verified_chinese_record_in_this_pass"
+    },
+    {
+      "name": "Runxin Tian",
+      "name_zh": "田润欣",
+      "queries": [
+        "\"田润欣\" 水产 渔业 论文",
+        "\"田润欣\" \"上海海洋大学\" 期刊"
+      ],
+      "verified_keys": [],
+      "status": "no_identity_verified_chinese_record_in_this_pass"
+    },
+    {
+      "name": "Weiguo Li",
+      "name_zh": "李卫国",
+      "queries": [
+        "\"李卫国\" 水产 渔业 论文",
+        "\"李卫国\" \"上海海洋大学\" 期刊"
+      ],
+      "verified_keys": [],
+      "status": "no_identity_verified_chinese_record_in_this_pass"
+    },
+    {
+      "name": "Xianglong Yan",
+      "name_zh": "闫祥龙",
+      "queries": [
+        "\"闫祥龙\" 水产 渔业 论文",
+        "\"闫祥龙\" \"上海海洋大学\" 期刊"
+      ],
+      "verified_keys": [],
+      "status": "no_identity_verified_chinese_record_in_this_pass"
+    },
+    {
+      "name": "Shixin Wu",
+      "name_zh": "吴诗欣",
+      "queries": [
+        "\"吴诗欣\" 水产 渔业 论文",
+        "\"吴诗欣\" \"上海海洋大学\" 期刊"
+      ],
+      "verified_keys": [],
+      "status": "no_identity_verified_chinese_record_in_this_pass"
+    },
+    {
+      "name": "Zhechuan Xu",
+      "name_zh": "许哲川",
+      "queries": [
+        "\"许哲川\" 水产 渔业 论文",
+        "\"许哲川\" \"上海海洋大学\" 期刊"
+      ],
+      "verified_keys": [],
+      "status": "no_identity_verified_chinese_record_in_this_pass"
+    },
+    {
+      "name": "Yudong Huang",
+      "name_zh": "黄宇东",
+      "queries": [
+        "\"黄宇东\" 水产 渔业 论文",
+        "\"黄宇东\" \"上海海洋大学\" 期刊"
+      ],
+      "verified_keys": [],
+      "status": "no_identity_verified_chinese_record_in_this_pass"
+    },
+    {
+      "name": "Zhuojin Jiang",
+      "name_zh": "江卓瑾",
+      "queries": [
+        "\"江卓瑾\" 水产 渔业 论文",
+        "\"江卓瑾\" \"上海海洋大学\" 期刊"
+      ],
+      "verified_keys": [],
+      "status": "no_identity_verified_chinese_record_in_this_pass"
+    },
+    {
+      "name": "Haotian Sun",
+      "name_zh": "孙昊天",
+      "queries": [
+        "\"孙昊天\" 水产 渔业 论文",
+        "\"孙昊天\" \"上海海洋大学\" 期刊"
+      ],
+      "verified_keys": [],
+      "status": "no_identity_verified_chinese_record_in_this_pass"
+    },
+    {
+      "name": "Rutong Tang",
+      "name_zh": "唐茹彤",
+      "queries": [
+        "\"唐茹彤\" 水产 渔业 论文",
+        "\"唐茹彤\" \"上海海洋大学\" 期刊"
+      ],
+      "verified_keys": [],
+      "status": "no_identity_verified_chinese_record_in_this_pass"
+    },
+    {
+      "name": "Yuhang Cheng",
+      "name_zh": "承昱航",
+      "queries": [
+        "\"承昱航\" 水产 渔业 论文",
+        "\"承昱航\" \"上海海洋大学\" 期刊"
+      ],
+      "verified_keys": [
+        "10.12131/20250017"
+      ],
+      "status": "verified_records_added"
+    },
+    {
+      "name": "Ziyi Geng",
+      "name_zh": "耿紫宜",
+      "queries": [
+        "\"耿紫宜\" 水产 渔业 论文",
+        "\"耿紫宜\" \"上海海洋大学\" 期刊"
+      ],
+      "verified_keys": [
+        "10.12131/20240273"
+      ],
+      "status": "verified_records_added"
+    },
+    {
+      "name": "Faruyi Wan",
+      "name_zh": "万发如意",
+      "queries": [
+        "\"万发如意\" 水产 渔业 论文",
+        "\"万发如意\" \"上海海洋大学\" 期刊"
+      ],
+      "verified_keys": [],
+      "status": "no_identity_verified_chinese_record_in_this_pass"
+    }
+  ],
+  "pending": [
+    {
+      "name_zh": "张峻溢",
+      "title": "南海深海中上层生态系统Ecopath模型构建与分析",
+      "doi": "10.12131/20260008",
+      "source": "https://www.schinafish.cn/article/doi/10.12131/20260008",
+      "reason": "Official page says accepted; no publication year/date verified. Not yet published in the website list."
+    },
+    {
+      "name_zh": "武孝慈",
+      "title": "南海西沙群岛海域鸢乌贼(Sthenoteuthis oualaniensis)角质颚微结构及生长特性研究",
+      "reason": "Cited as 2021, 52(5):1293–1302, but full author list and identity not yet verified from the original publication."
+    },
+    {
+      "name_zh": "周佳怡",
+      "title": "淡水渔业环境中典型微塑料与藻毒素的生物毒性效应",
+      "doi": "10.15928/j.1674-3075.202404170138",
+      "source": "https://scan.cbpt.cnki.net/portal/journal/portal/client/paper/963aafd85fb261c14922e0f83717433d",
+      "reason": "Publisher lists Huzhou University. No verified link to this OFEL member; same name alone is insufficient."
+    }
+  ],
+  "excluded_examples": [
+    {
+      "name_zh": "程心",
+      "reason": "Hefei University electronics author with the same romanized name; not the verified SHOU fisheries researcher."
+    },
+    {
+      "name_zh": "王润泽",
+      "reason": "Ocean University of China fish microbiome candidate; affiliation and career history do not establish this member identity."
+    },
+    {
+      "name_zh": "黄宇东",
+      "reason": "CAS mechanical/hydrate research candidate; no verified connection to this member or fisheries scope."
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 """Build the static publication list and BibTeX from verified local metadata."""
 
 import html
+import hashlib
 import json
 import re
 import sys
@@ -16,6 +17,9 @@ member_records = json.loads((ROOT / 'assets/member-publications.json').read_text
 _people = json.loads((ROOT / 'assets/people.json').read_text())
 LAB_MEMBERS = [m['name'] for g in _people['groups'] for m in g['members']] + \
     [m['name'] for c in _people.get('alumni', []) for m in c['members']]
+AUTHOR_ALIASES = {m['name']: m.get('name_zh', '') for g in _people['groups'] + _people.get('alumni', [])
+                  for m in g['members']}
+AUTHOR_ALIASES['Fan Zhang'] = '张帆'
 journals = json.loads((ROOT / 'assets/journals.json').read_text())['journals']
 relationship_labels = {
     'external_collaboration': 'External collaboration',
@@ -25,6 +29,8 @@ relationship_labels = {
 
 
 def validate(paper):
+    if not paper.get('source', '').startswith('https://'):
+        raise ValueError(f'A verified publication link is required: {paper["title"]}')
     topics = paper.get('topics')
     if not isinstance(topics, list) or len(topics) != 1 or topics[0] not in {'assessment', 'ecosystems', 'vessels', 'biology'}:
         raise ValueError(f'Each publication needs exactly one primary topic: {paper["doi"]}')
@@ -48,24 +54,34 @@ def has_fan_zhang(paper):
     return any(is_author(a, 'Fan', 'Zhang') for a in paper['authors'])
 
 
+def paper_key(paper):
+    return paper['doi'].lower() if paper.get('doi') else 'url:' + paper['source']
+
+
+def has_lab_first_author(paper):
+    return any(is_author(paper['authors'][0], n.split()[0], n.split()[-1]) for n in LAB_MEMBERS)
+
+
 def is_lab_paper(paper):
-    """Lab research: Fan Zhang is an author (any position) and the first author is a lab member or alumnus."""
-    first = paper['authors'][0]
-    return has_fan_zhang(paper) and any(is_author(first, n.split()[0], n.split()[-1]) for n in LAB_MEMBERS)
+    """Lab research requires both Fan Zhang and a lab member/alumnus among the authors."""
+    return has_fan_zhang(paper) and any(is_author(a, n.split()[0], n.split()[-1])
+                                      for a in paper['authors'] for n in LAB_MEMBERS)
 
 
 def page_records():
-    """Papers on the Publications page: publications.json plus members' papers that Fan Zhang co-authored."""
-    known = {p['doi'].lower() for p in records}
-    extra = [p for p in member_records if has_fan_zhang(p) and p['doi'].lower() not in known]
-    return sorted(records + extra, key=lambda p: (p['year'], p.get('date', '')), reverse=True)
+    """All verified papers count once; lab and Fan Zhang collections are separate filters."""
+    papers = records + member_records
+    keys = [paper_key(p) for p in papers]
+    if len(keys) != len(set(keys)):
+        raise ValueError('Duplicate publications: keep each DOI or source URL in one data file only')
+    return sorted(papers, key=lambda p: (p['year'], p.get('date', '')), reverse=True)
 
 
 def article_html(paper, highlight=('Fan', 'Zhang')):
     """Render one publication entry; the highlighted author is shown in bold."""
     authors = []
     for author in paper['authors']:
-        name = html.escape(f"{author['given']} {author['family']}")
+        name = html.escape(author.get('name_zh') or f"{author['given']} {author['family']}")
         if is_author(author, *highlight):
             name = f'<strong>{name}</strong>'
         authors.append(name)
@@ -79,7 +95,9 @@ def article_html(paper, highlight=('Fan', 'Zhang')):
         details = 'Published online'
     doi_url = html.escape(paper['source'], quote=True)
     plain_title = html.escape(paper['title'])
-    search_text = html.escape(paper['title'] + ' ' + ' '.join(f"{a['given']} {a['family']}" for a in paper['authors']), quote=True)
+    search_text = html.escape(paper['title'] + ' ' + ' '.join(
+        f"{a['given']} {a['family']} {a.get('name_zh', '')} "
+        f"{AUTHOR_ALIASES.get(a['given'] + ' ' + a['family'], '')}" for a in paper['authors']), quote=True)
     title = italicize(plain_title)
     journal = html.escape(paper['journal'])
     journal_url = journals.get(paper['journal'])
@@ -116,6 +134,9 @@ def plain_citation(paper):
     """A readable citation built only from the same metadata used by BibTeX."""
     authors = []
     for author in paper['authors']:
+        if paper.get('language') == 'zh-CN' and author.get('name_zh'):
+            authors.append(author['name_zh'])
+            continue
         initials = ' '.join(word[0] + '.' for word in re.findall(r'[^\W\d_]+', author['given']))
         authors.append(f"{author['family']}, {initials}")
     names = authors[0] if len(authors) == 1 else ', '.join(authors[:-1]) + ', & ' + authors[-1]
@@ -124,14 +145,17 @@ def plain_citation(paper):
         volume += f"({paper['issue']})"
     location = (paper.get('article_number') or paper.get('pages') or '').replace('-', '–')
     details = ', '.join(part for part in (paper['journal'], volume, location) if part)
-    return f"{names} ({paper['year']}). {paper['title'].rstrip('.')}. {details}. https://doi.org/{paper['doi']}"
+    link = 'https://doi.org/' + paper['doi'] if paper.get('doi') else paper['source']
+    return f"{names} ({paper['year']}). {paper['title'].rstrip('.')}. {details}. {link}"
 
 
 def citation(paper):
-    key = re.sub('[^a-zA-Z0-9]', '', paper['authors'][0]['family']).lower()
-    key += str(paper['year']) + re.sub('[^a-zA-Z0-9]', '', paper['doi'].split('/')[-1])
+    key = re.sub('[^a-zA-Z0-9]', '', paper['authors'][0]['family']).lower() or 'paper'
+    key += str(paper['year']) + (re.sub('[^a-zA-Z0-9]', '', paper['doi'].split('/')[-1])
+                               if paper.get('doi') else hashlib.sha256(paper['source'].encode()).hexdigest()[:12])
     fields = {
-        'author': ' and '.join(f"{a['family']}, {a['given']}" for a in paper['authors']),
+        'author': ' and '.join('{' + a['name_zh'] + '}' if paper.get('language') == 'zh-CN' and a.get('name_zh')
+                               else f"{a['family']}, {a['given']}" for a in paper['authors']),
         'title': '{' + italicize_bibtex(paper['title']) + '}',
         'journal': paper['journal'],
         'year': str(paper['year']),
@@ -139,6 +163,7 @@ def citation(paper):
         'number': paper['issue'],
         'pages': (paper['article_number'] or paper['pages']).replace('-', '--'),
         'doi': paper['doi'],
+        'url': paper['source'] if not paper.get('doi') else '',
     }
     # Escape the journal ampersand for BibTeX/LaTeX consumers.
     body = ',\n'.join(f'  {k} = {{{v.replace(chr(38), chr(92) + chr(38))}}}' for k, v in fields.items() if v)
@@ -164,6 +189,7 @@ def main():
     page.write_text(source)
     (ROOT / 'assets/selected-publications.bib').write_text('\n\n'.join(bib) + '\n')
     (ROOT / 'assets/lab-publications.bib').write_text('\n\n'.join(lab_bib) + ('\n' if lab_bib else ''))
+    (ROOT / 'assets/all-publications.bib').write_text('\n\n'.join(citation(p) for p in papers) + '\n')
     print(f'Built {len(papers)} publications ({len(lab_bib)} lab research) and matching BibTeX entries.')
 
 

@@ -9,6 +9,7 @@ function element() {
   return {events: {}, attrs: {}, children: [], dataset: {}, value: '', textContent: '', hidden: false,
     classList: {toggle() {}}, addEventListener(type, fn) { this.events[type] = fn; },
     setAttribute(key, value) { this.attrs[key] = value; },
+    getAttribute(key) { return this.attrs[key]; },
     append(child) { this.children.push(child); }, replaceChildren() { this.children = []; },
     focus() { this.focused = true; }, select() { this.selected = true; }, scrollIntoView() {}};
 }
@@ -20,11 +21,12 @@ const papers = [...html.matchAll(/<article class="publication"([^>]+)>/g)].map(m
   return p;
 });
 const filters = ['all','assessment','ecosystems','vessels','biology'].map(topic => ({...element(),dataset:{filter:topic}}));
-const collections = ['lab','fan-zhang'].map(value => ({...element(),dataset:{collection:value}}));
+const collections = ['lab','fan-zhang','all'].map(value => ({...element(),dataset:{collection:value}}));
 const ids = ['#publication-list','.publication-count','#publication-collection-note','.publication-empty',
   '#publication-citations','.publication-expand','#publication-toggle','#publication-search','#publication-year',
   '#publication-reset','.publication-discovery','#publications-title'];
 const nodes = Object.fromEntries(ids.map(id => [id,element()]));
+nodes['#publication-citations'].attrs.href = html.match(/id="publication-citations" href="([^"]+)"/)[1];
 const context = {
   document: {body:{dataset:{}},querySelector(s){return nodes[s];},createElement:element,
     querySelectorAll(s){return ({'.filter-button':filters,'.collection-button':collections,'.publication':papers})[s];}},
@@ -35,7 +37,9 @@ const visible = () => papers.filter(p=>!p.hidden);
 const query = value => { nodes['#publication-search'].value=value;nodes['#publication-search'].events.input(); };
 const year = value => {nodes['#publication-year'].value=value;nodes['#publication-year'].events.change();};
 const clear = () => nodes['#publication-reset'].events.click();
-assert.equal(papers.length,20);
+const sourcePapers = ['publications','member-publications'].flatMap(name => JSON.parse(fs.readFileSync(path.join(root, `assets/${name}.json`),'utf8')).publications);
+assert.equal(papers.length,sourcePapers.length, 'All verified records must be rendered, including members without Fan Zhang');
+const lab = papers.filter(p => p.dataset.lab==='true');
 assert.equal(visible().length,6);
 assert.ok(visible().every(p=>p.dataset.lab==='true'));
 query('Runze Wang');
@@ -45,16 +49,28 @@ query('ANDRE PUNT');const noAccent=visible().length;
 assert.ok(noAccent>0);query('André Punt');assert.equal(visible().length,noAccent);
 query('not-a-real-publication-987654');assert.equal(visible().length,0);assert.equal(nodes['.publication-empty'].hidden,false);
 clear();assert.equal(visible().length,6);assert.equal(nodes['#publication-reset'].disabled,true);
-year('2025');assert.equal(visible().length,5);assert.ok(visible().every(p=>p.dataset.year==='2025'));
-filters[4].events.click();assert.equal(visible().length,2);assert.ok(visible().every(p=>p.dataset.topic==='biology'));
-query('Dong');assert.equal(visible().length,2, 'search includes co-authors, not just first authors');
+year('2025');assert.equal(visible().length,lab.filter(p=>p.dataset.year==='2025').length);assert.ok(visible().every(p=>p.dataset.year==='2025'));
+filters[4].events.click();const biology2025=lab.filter(p=>p.dataset.year==='2025'&&p.dataset.topic==='biology');
+assert.equal(visible().length,biology2025.length);assert.ok(visible().every(p=>p.dataset.topic==='biology'));
+query('Dong');assert.equal(visible().length,biology2025.filter(p=>/dong/i.test(p.dataset.search)).length, 'search includes co-authors, not just first authors');
 clear();context.publications.select('fan-zhang',true);year('2022');
 assert.equal(visible().length,1);assert.match(visible()[0].dataset.search,/age[-‐] and length[-‐]structured/i);
 context.publications.select('lab',true);assert.equal(nodes['#publication-year'].value,'all');
 assert.equal(visible().length,6);assert.ok(nodes['#publication-citations'].href.endsWith('lab-publications.bib'));
-nodes['#publication-toggle'].events.click();assert.equal(visible().length,13);
+nodes['#publication-toggle'].events.click();assert.equal(visible().length,lab.length);
 query('tuna');assert.ok(nodes['.publication-expand'].hidden);assert.ok(visible().length>0);
 assert.ok(nodes['#publication-year'].children.every((o,i,a)=>i===0||o.value==='all'||Number(a[i-1].value)>=Number(o.value)||i===1));
+clear();collections[2].events.click();
+assert.ok(nodes['#publication-citations'].href.endsWith('all-publications.bib'));
+assert.equal(new URL(nodes['#publication-citations'].href,'https://fanzhang-lab-shou.github.io/OFEL/publications/').pathname,'/OFEL/assets/all-publications.bib');
+nodes['#publication-toggle'].events.click();assert.equal(visible().length,papers.length);
+assert.ok(visible().some(p=>p.dataset.lab==='false'&&p.dataset.fanZhang==='false'));
+query('林琴琴');assert.ok(visible().length>0);
+assert.ok(visible().some(p=>p.dataset.search.includes('LeMaRns')&&p.dataset.lab==='false'));
+query('唐茹彤');assert.ok(visible().some(p=>p.dataset.search.includes('Ignoring death after spawning')));
+query('基于不同参数先验假设');assert.equal(visible().length,1);assert.equal(visible()[0].dataset.lab,'true');
+query('自愿限制区');assert.equal(visible().length,1);assert.equal(visible()[0].dataset.lab,'false');
+assert.match(fs.readFileSync(path.join(root,'assets/all-publications.bib'),'utf8'), /author = \{\{林琴琴\}/);
 
 async function clipboardTest(clipboard) {
   const button=element(),text={...element(),value:'Wang, R. (2026). Example. https://doi.org/test'},manual=element(),status=element();

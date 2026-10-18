@@ -40,12 +40,12 @@ publications = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(publications)
 for paper in publications.records:
     publications.validate(paper)
-# Papers found per member that are not confirmed lab publications; shown on profiles only.
+# Verified member papers also appear in the All publications collection.
 member_records = publications.member_records
-known = {p['doi'].lower() for p in publications.records}
+known = {publications.paper_key(p) for p in publications.records}
 for paper in member_records:
     publications.validate(paper)
-    if paper['doi'].lower() in known:
+    if publications.paper_key(paper) in known:
         raise ValueError(f'{paper["doi"]} is already in publications.json; remove it from member-publications.json')
 all_records = publications.records + member_records
 

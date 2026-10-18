@@ -114,13 +114,16 @@ Fan Zhang 主页的主体信息在 [`templates/members/fan-zhang.html`](../templ
 
 编辑 [`assets/publications.json`](../assets/publications.json) 与 [`assets/member-publications.json`](../assets/member-publications.json)。同一个 DOI 只保留一条记录。
 
-- Fan Zhang 为作者，且第一作者为实验室成员或校友的论文，归入实验室论文集合。
-- Fan Zhang 论文集合按共同作者信息生成，两个集合可包含同一篇论文。
+- Fan Zhang 与至少一位实验室成员或校友共同署名的论文，归入实验室论文集合，作者顺序不限；其他成员论文不加 Lab research 标记。
+- All publications 收录并统计所有已核实的成员、校友和 Fan Zhang 论文，每篇只计一次。Fan Zhang 论文集合按共同作者信息生成，各集合可包含同一篇论文。
+- Fan Zhang 个人主页的 Selected publications 仍要求 Fan Zhang 署名，且第一作者为实验室成员、校友或 Fan Zhang 本人；外部合作者第一作者的论文不进入这个精选列表。
 - 每篇论文只设一个主要 `topics` 值，避免在多个研究主题中重复。
 - 已确认的合作关系及其依据记录在 `attribution`；论文归属以实验室确认的信息为准。
-- `member-publications.json` 中的其他成员论文显示在匹配的个人主页；Fan Zhang 共同署名的记录也进入主论文页面。
+- `member-publications.json` 中的成员论文显示在匹配的个人主页和 All publications；是否进入 Lab publications 由共同作者规则判断。
+- 中文论文使用 `language: "zh-CN"`，作者保留 `name_zh`，成员作者的 `given` / `family` 与个人资料中的英文名匹配。中文论文显示原题名和中文作者；中英文姓名都能搜索。
+- 无法核实 DOI 时保留空字符串，以已验证的 `source` 链接提供原文或作者出版目录，不推测 DOI。中文文献检索依据及待核实候选记录在 `assets/chinese-publication-audit.json`，未查到不代表没有发表。
 
-`scripts/build-publications.py` 生成论文页面和两份 BibTeX 文件。学名在 [`scripts/species.py`](../scripts/species.py) 中维护，在论文、新闻与 BibTeX 中自动使用斜体。
+`scripts/build-publications.py` 生成论文页面及 All、Lab、Fan Zhang 三份 BibTeX 文件。学名在 [`scripts/species.py`](../scripts/species.py) 中维护，在论文、新闻与 BibTeX 中自动使用斜体。
 
 论文页支持按标题或作者搜索，可与年份、主题及论文集合组合筛选；搜索忽略大小写和拉丁字母的重音符号。年份选项只列出当前集合的年份。使用任一筛选时展示全部匹配结果，不再限制为最近六篇；Clear filters 清空搜索、年份和主题，保留当前集合。
 

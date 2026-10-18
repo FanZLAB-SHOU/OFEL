@@ -140,10 +140,11 @@ function initPublications() {
   const search = document.querySelector('#publication-search');
   const yearSelect = document.querySelector('#publication-year');
   const reset = document.querySelector('#publication-reset');
+  const citationDirectory = citations.getAttribute('href').replace(/[^/]+$/, '');
   const normalize = text => text.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
   const searchText = new Map(papers.map(paper => [paper, normalize(paper.dataset.search)]));
   let collection = 'lab', topic = 'all', expanded = false, year = 'all';
-  function inCollection(paper) { return collection === 'lab' ? paper.dataset.lab === 'true' : paper.dataset.fanZhang === 'true'; }
+  function inCollection(paper) { return collection === 'all' || (collection === 'lab' ? paper.dataset.lab === 'true' : paper.dataset.fanZhang === 'true'); }
   function syncYears() {
     const years = [...new Set(papers.filter(inCollection).map(paper => paper.dataset.year))].sort((a, b) => Number(b) - Number(a));
     if (!years.includes(year)) year = 'all';
@@ -168,7 +169,8 @@ function initPublications() {
     const visible = limited ? Math.min(6, matching.length) : matching.length;
     count.textContent = visible < matching.length ? `Showing ${visible} of ${matching.length} publications` : `${visible} publication${visible === 1 ? '' : 's'}`;
     note.textContent = collection === 'lab'
-      ? 'Research from the Oceanic Fisheries Ecosystem Laboratory. Some papers also appear in Fan Zhang’s collection.'
+      ? 'Papers co-authored by a laboratory member or alumnus and Fan Zhang.'
+      : collection === 'all' ? 'All verified member, alumni and Fan Zhang publications. Each paper is counted once.'
       : 'Selected publications co-authored by Fan Zhang, including lab research and collaborations.';
     empty.hidden = matching.length > 0;
     empty.textContent = all.length === 0 && collection === 'lab' ? 'The lab publication collection is being curated.' : 'No publications match your search and filters in this collection.';
@@ -177,7 +179,7 @@ function initPublications() {
     expandButton.setAttribute('aria-expanded', String(expanded));
     expandButton.textContent = expanded ? 'Show recent publications ↑' : `Show all ${matching.length} publications ↓`;
     citations.hidden = all.length === 0;
-    citations.href = collection === 'lab' ? 'assets/lab-publications.bib' : 'assets/selected-publications.bib';
+    citations.href = citationDirectory + (collection === 'all' ? 'all-publications.bib' : collection === 'lab' ? 'lab-publications.bib' : 'selected-publications.bib');
     document.body.dataset.collection = collection;
     collections.forEach(button => {
       const active = button.dataset.collection === collection;
@@ -239,7 +241,7 @@ function initCitationCopy() {
 initCitationCopy();
 function applyHash() {
   if (page === 'index' && legacyRoutes[location.hash]) { location.replace(legacyRoutes[location.hash]); return; }
-  const hashes = { '#publications-lab': 'lab', '#publications-fan-zhang': 'fan-zhang' };
+  const hashes = { '#publications-lab': 'lab', '#publications-fan-zhang': 'fan-zhang', '#publications-all': 'all' };
   if (publications && hashes[location.hash]) {
     publications.select(hashes[location.hash], true);
     requestAnimationFrame(() => document.querySelector('#publications').scrollIntoView({ block: 'start' }));

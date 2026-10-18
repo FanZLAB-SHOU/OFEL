@@ -10,7 +10,7 @@ ROOT=Path(__file__).resolve().parents[1]
 spec=importlib.util.spec_from_file_location('publications',ROOT/'scripts/build-publications.py')
 pubs=importlib.util.module_from_spec(spec)
 spec.loader.exec_module(pubs)
-papers={p['doi'].lower():p for p in pubs.page_records()}
+papers={pubs.paper_key(p):p for p in pubs.page_records()}
 news=json.loads((ROOT/'assets/blog.json').read_text())
 directions=json.loads((ROOT/'assets/research.json').read_text())['directions']
 

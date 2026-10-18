@@ -24,7 +24,7 @@ PAGES = {
     'fan-zhang': ('Fan Zhang | OFEL', 'Fan Zhang, Professor and Doctoral Supervisor at the College of Marine Living Resource Sciences and Management, Shanghai Ocean University; Chief Scientist for China at ICCAT; principal investigator of OFEL.', 'people'),
     'members': ('Current Members | OFEL', 'Meet the faculty, postdoctoral researchers, PhD students and master’s students of OFEL.', 'people'),
     'alumni': ('Alumni | OFEL', 'The Oceanic Fisheries Ecosystem Laboratory alumni community.', 'people'),
-    'publications': ('Publications | OFEL', 'Selected lab publications and publications co-authored by Fan Zhang, with research-topic filters and citation downloads.', 'publications'),
+    'publications': ('Publications | OFEL', 'Verified publications by OFEL members and alumni, with lab and Fan Zhang collections, research-topic filters and citation downloads.', 'publications'),
     'blog': ('News | OFEL', 'News, research updates and life in the Oceanic Fisheries Ecosystem Laboratory.', 'news'),
     'contact': ('Contact & Join Us | OFEL', 'Contact the Oceanic Fisheries Ecosystem Laboratory at Shanghai Ocean University about research, visits and collaboration.', 'info'),
     'more': ('More | OFEL', 'Explore world clocks, current weather and the OFEL website’s visit statistics in one interactive view.', 'info'),
@@ -200,7 +200,7 @@ _spec = importlib.util.spec_from_file_location('publications', ROOT / 'scripts/b
 publications = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(publications)
 pubs = publications.page_records()
-papers_by_doi = {paper['doi'].lower(): paper for paper in pubs}
+papers_by_doi = {publications.paper_key(paper): paper for paper in pubs}
 selected_dois = set()
 for direction in directions:
     for doi in direction.get('publications', []):
@@ -247,7 +247,7 @@ gateways = [
      '<strong>Research visits &amp; collaboration</strong><small>f-zhang@shou.edu.cn</small></div>'),
 ]
 gateway_cards = '\n'.join(
-    f'          <a class="gateway-card{" gateway-card-journal" if href == "publications.html" and latest_cover else ""}" href="{href}" data-reveal style="--reveal-delay: {n * .1:.1f}s">'
+    f'          <a class="gateway-card{" gateway-card-journal" if href == "publications.html" and latest_cover else ""}" href="{href + "#publications-all" if href == "publications.html" else href}" data-reveal style="--reveal-delay: {n * .1:.1f}s">'
     f'<img class="gateway-bg" src="{img}" alt="" width="1536" height="1024" loading="lazy" style="object-position: {pos}">'
     f'<div class="gateway-copy"><h3>{title}</h3><p>{desc}</p></div>'
     f'<div class="gateway-visual" aria-hidden="true">{visual}</div>'
@@ -282,7 +282,7 @@ for doi in faculty_dois:
     paper = papers_by_doi[doi]
     if not publications.has_fan_zhang(paper):
         raise ValueError(f'Fan Zhang must be an author of profile selection: {doi}')
-    if not (publications.is_lab_paper(paper) or publications.is_author(paper['authors'][0], 'Fan', 'Zhang')):
+    if not (publications.has_lab_first_author(paper) or publications.is_author(paper['authors'][0], 'Fan', 'Zhang')):
         raise ValueError(f'Profile selection requires a lab first author or Fan Zhang as first author: {doi}')
     faculty_papers.append(
         f'<li><a class="faculty-paper" href="{esc(paper["source"])}" target="_blank" rel="noopener noreferrer">'

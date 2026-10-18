@@ -1,6 +1,6 @@
 {
   "retrieved_on": "2026-10-17",
-  "note": "Fisheries-related papers by lab members, found in OpenAlex by author name with a Shanghai Ocean University affiliation on that paper, then checked by hand to exclude same-name authors and non-fisheries work; citation details from Crossref. Shown on member profile pages only. These are not confirmed lab publications, so they do not appear in the Publications page collections; move a paper to publications.json with a confirmed attribution to list it there.",
+  "note": "Verified fisheries-related papers by members and alumni. English records were discovered with OpenAlex and checked against Crossref and author affiliation; Chinese records were checked against journal publication pages/PDFs and university bibliographies. All verified records appear in All publications and matching member profiles. Lab research requires both Fan Zhang and a member/alumnus among the authors. See chinese-publication-audit.json for the Chinese search evidence and unresolved candidates.",
   "publications": [
     {
       "doi": "10.1038/s41597-026-08085-3",
@@ -931,6 +931,687 @@
       "topics": [
         "ecosystems"
       ]
+    },
+    {
+      "doi": "10.12131/20240273",
+      "title": "基于不同参数先验假设的CMSY方法敏感性研究",
+      "journal": "南方水产科学",
+      "year": 2025,
+      "date": "2025-06",
+      "volume": "21",
+      "issue": "3",
+      "pages": "101-110",
+      "article_number": "",
+      "authors": [
+        {
+          "given": "Ziyi",
+          "family": "Geng",
+          "name_zh": "耿紫宜"
+        },
+        {
+          "given": "Sisong",
+          "family": "Dong",
+          "name_zh": "董思宋"
+        },
+        {
+          "given": "Fan",
+          "family": "Zhang",
+          "name_zh": "张帆"
+        }
+      ],
+      "source": "https://doi.org/10.12131/20240273",
+      "topics": [
+        "assessment"
+      ],
+      "language": "zh-CN"
+    },
+    {
+      "doi": "10.12131/20250017",
+      "title": "东大西洋热带金枪鱼FADs围网渔业大眼金枪鱼和黄鳍金枪鱼的时空动态",
+      "journal": "南方水产科学",
+      "year": 2025,
+      "date": "2025-10",
+      "volume": "21",
+      "issue": "5",
+      "pages": "31-42",
+      "article_number": "",
+      "authors": [
+        {
+          "given": "Yuhang",
+          "family": "Cheng",
+          "name_zh": "承昱航"
+        },
+        {
+          "given": "Hongyu",
+          "family": "Lin",
+          "name_zh": "林泓羽"
+        },
+        {
+          "given": "Fan",
+          "family": "Zhang",
+          "name_zh": "张帆"
+        }
+      ],
+      "source": "https://doi.org/10.12131/20250017",
+      "topics": [
+        "assessment"
+      ],
+      "language": "zh-CN"
+    },
+    {
+      "doi": "10.13984/j.cnki.cn37-1141.2025.06.033",
+      "title": "基于硬组织鉴定金枪鱼年龄方法的发展演变",
+      "journal": "海洋湖沼通报",
+      "year": 2025,
+      "date": "2025-12-10",
+      "volume": "47",
+      "issue": "6",
+      "pages": "283-290",
+      "article_number": "",
+      "authors": [
+        {
+          "given": "江峰",
+          "family": "朱",
+          "name_zh": "朱江峰"
+        },
+        {
+          "given": "Dongqi",
+          "family": "Lu",
+          "name_zh": "陆冬琦"
+        },
+        {
+          "given": "Qinqin",
+          "family": "Lin",
+          "name_zh": "林琴琴"
+        },
+        {
+          "given": "Fan",
+          "family": "Zhang",
+          "name_zh": "张帆"
+        }
+      ],
+      "source": "https://doi.org/10.13984/j.cnki.cn37-1141.2025.06.033",
+      "topics": [
+        "biology"
+      ],
+      "language": "zh-CN"
+    },
+    {
+      "doi": "10.12131/20250047",
+      "title": "东太平洋延绳钓渔业兼捕鲨鱼物种的生态风险评估",
+      "journal": "南方水产科学",
+      "year": 2025,
+      "date": "2025-08",
+      "volume": "21",
+      "issue": "4",
+      "pages": "55-63",
+      "article_number": "",
+      "authors": [
+        {
+          "given": "娜",
+          "family": "李",
+          "name_zh": "李娜"
+        },
+        {
+          "given": "Qinqin",
+          "family": "Lin",
+          "name_zh": "林琴琴"
+        },
+        {
+          "given": "江峰",
+          "family": "朱",
+          "name_zh": "朱江峰"
+        }
+      ],
+      "source": "https://doi.org/10.12131/20250047",
+      "topics": [
+        "assessment"
+      ],
+      "language": "zh-CN"
+    },
+    {
+      "doi": "10.11964/jfc.20220313397",
+      "title": "基于LeMaRns模型的热带中西太平洋中上层生态系统动态分析",
+      "journal": "水产学报",
+      "year": 2025,
+      "date": "2025-03",
+      "volume": "49",
+      "issue": "3",
+      "pages": "",
+      "article_number": "039306",
+      "authors": [
+        {
+          "given": "春月",
+          "family": "张",
+          "name_zh": "张春月"
+        },
+        {
+          "given": "Qinqin",
+          "family": "Lin",
+          "name_zh": "林琴琴"
+        },
+        {
+          "given": "作志",
+          "family": "陈",
+          "name_zh": "陈作志"
+        },
+        {
+          "given": "江峰",
+          "family": "朱",
+          "name_zh": "朱江峰"
+        },
+        {
+          "given": "秀超",
+          "family": "李",
+          "name_zh": "李秀超"
+        }
+      ],
+      "source": "https://doi.org/10.11964/jfc.20220313397",
+      "topics": [
+        "ecosystems"
+      ],
+      "language": "zh-CN"
+    },
+    {
+      "doi": "10.12024/jsou.20220303745",
+      "title": "基于LeMaRns模型评估印度洋金枪鱼渔业对大洋生态系统的影响",
+      "journal": "上海海洋大学学报",
+      "year": 2023,
+      "date": "2023-01-12",
+      "volume": "32",
+      "issue": "1",
+      "pages": "203-216",
+      "article_number": "",
+      "authors": [
+        {
+          "given": "秀超",
+          "family": "李",
+          "name_zh": "李秀超"
+        },
+        {
+          "given": "Qinqin",
+          "family": "Lin",
+          "name_zh": "林琴琴"
+        },
+        {
+          "given": "作志",
+          "family": "陈",
+          "name_zh": "陈作志"
+        },
+        {
+          "given": "江峰",
+          "family": "朱",
+          "name_zh": "朱江峰"
+        },
+        {
+          "given": "春月",
+          "family": "张",
+          "name_zh": "张春月"
+        }
+      ],
+      "source": "https://doi.org/10.12024/jsou.20220303745",
+      "topics": [
+        "ecosystems"
+      ],
+      "language": "zh-CN"
+    },
+    {
+      "doi": "10.12024/jsou.20210303336",
+      "title": "热带东太平洋中上层食物网结构指数分析",
+      "journal": "上海海洋大学学报",
+      "year": 2022,
+      "date": "2022-12-07",
+      "volume": "31",
+      "issue": "6",
+      "pages": "1533-1541",
+      "article_number": "",
+      "authors": [
+        {
+          "given": "钰莹",
+          "family": "崔",
+          "name_zh": "崔钰莹"
+        },
+        {
+          "given": "Qinqin",
+          "family": "Lin",
+          "name_zh": "林琴琴"
+        },
+        {
+          "given": "江峰",
+          "family": "朱",
+          "name_zh": "朱江峰"
+        },
+        {
+          "given": "作志",
+          "family": "陈",
+          "name_zh": "陈作志"
+        }
+      ],
+      "source": "https://doi.org/10.12024/jsou.20210303336",
+      "topics": [
+        "ecosystems"
+      ],
+      "language": "zh-CN"
+    },
+    {
+      "doi": "",
+      "title": "基于环境因子的日本鲭太平洋群系的亲体—补充量模型比较分析",
+      "journal": "海洋渔业",
+      "year": 2018,
+      "date": "",
+      "volume": "40",
+      "issue": "3",
+      "pages": "279-286",
+      "article_number": "",
+      "authors": [
+        {
+          "given": "Qinqin",
+          "family": "Lin",
+          "name_zh": "林琴琴"
+        },
+        {
+          "given": "新军",
+          "family": "陈",
+          "name_zh": "陈新军"
+        },
+        {
+          "given": "黎斌",
+          "family": "戴",
+          "name_zh": "戴黎斌"
+        }
+      ],
+      "source": "https://hyxy.shou.edu.cn/_t623/2025/0225/c7722a338029/page.htm",
+      "topics": [
+        "assessment"
+      ],
+      "language": "zh-CN"
+    },
+    {
+      "doi": "",
+      "title": "中西太平洋金枪鱼围网渔获组成的时空变化",
+      "journal": "海洋渔业",
+      "year": 2025,
+      "date": "2025-03",
+      "volume": "47",
+      "issue": "2",
+      "pages": "175-187",
+      "article_number": "",
+      "authors": [
+        {
+          "given": "珊",
+          "family": "杨",
+          "name_zh": "杨珊"
+        },
+        {
+          "given": "一茜",
+          "family": "石",
+          "name_zh": "石一茜"
+        },
+        {
+          "given": "倩",
+          "family": "冯",
+          "name_zh": "冯倩"
+        },
+        {
+          "given": "Qinqin",
+          "family": "Lin",
+          "name_zh": "林琴琴"
+        },
+        {
+          "given": "小杰",
+          "family": "戴",
+          "name_zh": "戴小杰"
+        },
+        {
+          "given": "江峰",
+          "family": "朱",
+          "name_zh": "朱江峰"
+        }
+      ],
+      "source": "https://www.sciengine.com/doi/pdf/91EBDE42C2FD4E4CAA299FBFAE31BB90",
+      "topics": [
+        "vessels"
+      ],
+      "language": "zh-CN"
+    },
+    {
+      "doi": "10.12131/20220235",
+      "title": "中西太平洋暖池时空变动及其对鲣分布的影响",
+      "journal": "南方水产科学",
+      "year": 2023,
+      "date": "2023-06",
+      "volume": "19",
+      "issue": "3",
+      "pages": "173-180",
+      "article_number": "",
+      "authors": [
+        {
+          "given": "Hongyu",
+          "family": "Lin",
+          "name_zh": "林泓羽"
+        },
+        {
+          "given": "金涛",
+          "family": "汪",
+          "name_zh": "汪金涛"
+        },
+        {
+          "given": "新军",
+          "family": "陈",
+          "name_zh": "陈新军"
+        },
+        {
+          "given": "Mingfeng",
+          "family": "Jiang",
+          "name_zh": "蒋明峰"
+        },
+        {
+          "given": "子安",
+          "family": "许",
+          "name_zh": "许子安"
+        },
+        {
+          "given": "林",
+          "family": "雷",
+          "name_zh": "雷林"
+        },
+        {
+          "given": "泽华",
+          "family": "吕",
+          "name_zh": "吕泽华"
+        }
+      ],
+      "source": "https://doi.org/10.12131/20220235",
+      "topics": [
+        "ecosystems"
+      ],
+      "language": "zh-CN"
+    },
+    {
+      "doi": "10.11964/jfc.20220913699",
+      "title": "中西太平洋鲣围网渔业入渔指标体系构建与应用",
+      "journal": "水产学报",
+      "year": 2024,
+      "date": "2024-10",
+      "volume": "48",
+      "issue": "10",
+      "pages": "",
+      "article_number": "109306",
+      "authors": [
+        {
+          "given": "Mingfeng",
+          "family": "Jiang",
+          "name_zh": "蒋明峰"
+        },
+        {
+          "given": "新军",
+          "family": "陈",
+          "name_zh": "陈新军"
+        },
+        {
+          "given": "泽华",
+          "family": "吕",
+          "name_zh": "吕泽华"
+        },
+        {
+          "given": "金涛",
+          "family": "汪",
+          "name_zh": "汪金涛"
+        },
+        {
+          "given": "林",
+          "family": "雷",
+          "name_zh": "雷林"
+        },
+        {
+          "given": "子安",
+          "family": "许",
+          "name_zh": "许子安"
+        },
+        {
+          "given": "Hongyu",
+          "family": "Lin",
+          "name_zh": "林泓羽"
+        },
+        {
+          "given": "海平",
+          "family": "贺",
+          "name_zh": "贺海平"
+        },
+        {
+          "given": "海滨",
+          "family": "贾",
+          "name_zh": "贾海滨"
+        }
+      ],
+      "source": "https://doi.org/10.11964/jfc.20220913699",
+      "topics": [
+        "vessels"
+      ],
+      "language": "zh-CN"
+    },
+    {
+      "doi": "10.12131/20220126",
+      "title": "未来气候情境下中国东海鲐鱼栖息地的时空分布",
+      "journal": "南方水产科学",
+      "year": 2023,
+      "date": "2023-02",
+      "volume": "19",
+      "issue": "1",
+      "pages": "12-21",
+      "article_number": "",
+      "authors": [
+        {
+          "given": "Xiaoci",
+          "family": "Wu",
+          "name_zh": "武孝慈"
+        },
+        {
+          "given": "志萍",
+          "family": "冯",
+          "name_zh": "冯志萍"
+        },
+        {
+          "given": "为",
+          "family": "余",
+          "name_zh": "余为"
+        }
+      ],
+      "source": "https://doi.org/10.12131/20220126",
+      "topics": [
+        "ecosystems"
+      ],
+      "language": "zh-CN"
+    },
+    {
+      "doi": "10.12264/JFSC2024-0039",
+      "title": "西北印度洋中尺度涡对鸢乌贼时空分布的影响",
+      "journal": "中国水产科学",
+      "year": 2024,
+      "date": "2024-04",
+      "volume": "31",
+      "issue": "4",
+      "pages": "454-464",
+      "article_number": "",
+      "authors": [
+        {
+          "given": "迎悦",
+          "family": "付",
+          "name_zh": "付迎悦"
+        },
+        {
+          "given": "Xiaoci",
+          "family": "Wu",
+          "name_zh": "武孝慈"
+        },
+        {
+          "given": "鹏超",
+          "family": "金",
+          "name_zh": "金鹏超"
+        },
+        {
+          "given": "为",
+          "family": "余",
+          "name_zh": "余为"
+        }
+      ],
+      "source": "https://doi.org/10.12264/JFSC2024-0039",
+      "topics": [
+        "ecosystems"
+      ],
+      "language": "zh-CN"
+    },
+    {
+      "doi": "10.13984/j.cnki.cn37-1141.2024.02.012",
+      "title": "秘鲁外海茎柔鱼(Dosidicus gigas)渔场的时空分布与海表温度的关系分析",
+      "journal": "海洋湖沼通报",
+      "year": 2024,
+      "date": "",
+      "volume": "46",
+      "issue": "2",
+      "pages": "98-108",
+      "article_number": "",
+      "authors": [
+        {
+          "given": "鑫一",
+          "family": "陆",
+          "name_zh": "陆鑫一"
+        },
+        {
+          "given": "Xiaoci",
+          "family": "Wu",
+          "name_zh": "武孝慈"
+        },
+        {
+          "given": "丽杰",
+          "family": "徐",
+          "name_zh": "徐丽杰"
+        },
+        {
+          "given": "为",
+          "family": "余",
+          "name_zh": "余为"
+        }
+      ],
+      "source": "https://doi.org/10.13984/j.cnki.cn37-1141.2024.02.012",
+      "topics": [
+        "ecosystems"
+      ],
+      "language": "zh-CN"
+    },
+    {
+      "doi": "10.12264/JFSC2025-0114",
+      "title": "基于HMSC模型的广东近海鱼类环境适应性与种间关系分析",
+      "journal": "中国水产科学",
+      "year": 2025,
+      "date": "2025-07",
+      "volume": "32",
+      "issue": "7",
+      "pages": "949-959",
+      "article_number": "",
+      "authors": [
+        {
+          "given": "Junyi",
+          "family": "Zhang",
+          "name_zh": "张峻溢"
+        },
+        {
+          "given": "研聪",
+          "family": "蔡",
+          "name_zh": "蔡研聪"
+        },
+        {
+          "given": "佳俊",
+          "family": "李",
+          "name_zh": "李佳俊"
+        },
+        {
+          "given": "友伟",
+          "family": "许",
+          "name_zh": "许友伟"
+        },
+        {
+          "given": "铭帅",
+          "family": "孙",
+          "name_zh": "孙铭帅"
+        },
+        {
+          "given": "作志",
+          "family": "陈",
+          "name_zh": "陈作志"
+        },
+        {
+          "given": "魁",
+          "family": "张",
+          "name_zh": "张魁"
+        }
+      ],
+      "source": "https://doi.org/10.12264/JFSC2025-0114",
+      "topics": [
+        "ecosystems"
+      ],
+      "language": "zh-CN"
+    },
+    {
+      "doi": "10.11964/jfc.20211213260",
+      "title": "2020年秋季南极布兰斯菲尔德海峡南极磷虾集群时空分布",
+      "journal": "水产学报",
+      "year": 2022,
+      "date": "2022-03",
+      "volume": "46",
+      "issue": "3",
+      "pages": "337-348",
+      "article_number": "",
+      "authors": [
+        {
+          "given": "Sisong",
+          "family": "Dong",
+          "name_zh": "董思宋"
+        },
+        {
+          "given": "群群",
+          "family": "孔",
+          "name_zh": "孔群群"
+        },
+        {
+          "given": "国平",
+          "family": "朱",
+          "name_zh": "朱国平"
+        }
+      ],
+      "source": "https://doi.org/10.11964/jfc.20211213260",
+      "topics": [
+        "ecosystems"
+      ],
+      "language": "zh-CN"
+    },
+    {
+      "doi": "",
+      "title": "自愿限制区对南极半岛南极磷虾渔业及渔场分布的影响",
+      "journal": "海洋渔业",
+      "year": 2022,
+      "date": "",
+      "volume": "44",
+      "issue": "4",
+      "pages": "409-420",
+      "article_number": "",
+      "authors": [
+        {
+          "given": "Sisong",
+          "family": "Dong",
+          "name_zh": "董思宋"
+        },
+        {
+          "given": "国平",
+          "family": "朱",
+          "name_zh": "朱国平"
+        }
+      ],
+      "source": "https://m.fx361.com/news/2022/0922/11169042.html",
+      "topics": [
+        "assessment"
+      ],
+      "language": "zh-CN"
     }
   ]
 }

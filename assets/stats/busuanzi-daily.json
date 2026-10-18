@@ -1,5 +1,13 @@
 {
  "source": "busuanzi",
  "timezone": "Asia/Shanghai",
- "snapshots": []
+ "snapshots": [
+  {
+   "date": "2026-10-18",
+   "site_pv": 114,
+   "site_uv": 30,
+   "reads": 1,
+   "at": "2026-10-18T06:04:05Z"
+  }
+ ]
 }

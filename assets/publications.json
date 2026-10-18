@@ -230,7 +230,8 @@
         "relationships": [
           "external_collaboration"
         ],
-        "confirmed_by": "User confirmed other first authors are not lab students in this chat, 2026-10-16; retained as co-authored collaboration, with supervision unspecified."
+        "confirmed_by": "User explicitly confirmed this paper must be classified only as External collaboration, 2026-10-17. Exclude from Lab research despite lab coauthors; retain coauthored publication records.",
+        "exclude_from_lab": true
       }
     },
     {

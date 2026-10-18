@@ -38,9 +38,11 @@ def validate(paper):
         raise ValueError(f'Each publication needs exactly one primary topic: {paper["doi"]}')
     attribution = paper.get('attribution', {})
     relationships = attribution.get('relationships', [])
+    if 'exclude_from_lab' in attribution and type(attribution['exclude_from_lab']) is not bool:
+        raise ValueError(f'Lab exclusion must be a boolean for {paper["doi"]}')
     if not isinstance(relationships, list) or any(r not in relationship_labels for r in relationships):
         raise ValueError(f'Invalid research relationship for {paper["doi"]}')
-    if relationships and not attribution.get('confirmed_by'):
+    if (relationships or attribution.get('exclude_from_lab')) and not attribution.get('confirmed_by'):
         raise ValueError(f'Attribution needs a confirmation source for {paper["doi"]}')
     if paper['journal'] not in journals:
         raise ValueError(f'Add a homepage for "{paper["journal"]}" to assets/journals.json')
@@ -66,6 +68,8 @@ def has_lab_first_author(paper):
 
 def is_lab_paper(paper):
     """Lab research requires both Fan Zhang and a lab member/alumnus among the authors."""
+    if paper.get('attribution', {}).get('exclude_from_lab'):
+        return False
     return has_fan_zhang(paper) and any(is_author(a, n.split()[0], n.split()[-1])
                                       for a in paper['authors'] for n in LAB_MEMBERS)
 

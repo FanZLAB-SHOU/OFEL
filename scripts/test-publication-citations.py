@@ -56,6 +56,19 @@ class Citations(unittest.TestCase):
         self.assertIn('唐茹彤', pubs.article_html(paper))
         self.assertNotIn('唐如彤', pubs.article_html(paper))
 
+    def test_confirmed_external_collaboration_overrides_lab_coauthors(self):
+        paper = next(p for p in pubs.records if p['doi'] == '10.1111/faf.70015')
+        self.assertTrue(pubs.has_fan_zhang(paper))
+        self.assertIn(paper, pubs.page_records())
+        self.assertFalse(pubs.is_lab_paper(paper))
+        rendered = pubs.article_html(paper)
+        self.assertIn('External collaboration', rendered)
+        self.assertNotIn('Lab research', rendered)
+        self.assertIn('data-lab="false"', rendered)
+        self.assertNotIn(paper['doi'], (pubs.ROOT / 'assets/lab-publications.bib').read_text())
+        self.assertIn(paper['doi'], (pubs.ROOT / 'assets/all-publications.bib').read_text())
+        self.assertIn(paper['doi'], (pubs.ROOT / 'assets/selected-publications.bib').read_text())
+
     def test_accepted_paper_is_not_presented_as_published_online(self):
         paper = next(p for p in pubs.member_records if p.get('status') == 'accepted')
         pubs.validate(paper)

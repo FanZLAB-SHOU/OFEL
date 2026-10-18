@@ -118,6 +118,7 @@ Fan Zhang 主页的主体信息在 [`templates/members/fan-zhang.html`](../templ
 - Fan Zhang 个人主页的 Selected publications 仍要求 Fan Zhang 署名，且第一作者为实验室成员、校友或 Fan Zhang 本人；外部合作者第一作者的论文不进入这个精选列表。
 - 每篇论文只设一个主要 `topics` 值，避免在多个研究主题中重复。
 - 已确认的合作关系及其依据记录在 `attribution`；论文归属以实验室确认的信息为准。
+- 实验室明确指定仅作为外部合作的论文，在 `attribution` 设置 `exclude_from_lab: true` 并填写 `confirmed_by`；即使存在实验室共同作者，也不进入 Lab publications 或显示 Lab research，仍保留在 All publications、Fan Zhang 集合及对应作者个人页。
 - `member-publications.json` 中的成员论文显示在匹配的个人主页和 All publications；是否进入 Lab publications 由共同作者规则判断。
 - 中文论文使用 `language: "zh-CN"`，作者保留 `name_zh`，成员作者的 `given` / `family` 与个人资料中的英文名匹配。中文论文显示原题名和中文作者；中英文姓名都能搜索。
 - 无法核实 DOI 时保留空字符串，以已验证的 `source` 链接提供原文或作者出版目录，不推测 DOI。中文文献检索依据及待核实候选记录在 `assets/chinese-publication-audit.json`，未查到不代表没有发表。

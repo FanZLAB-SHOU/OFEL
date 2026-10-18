@@ -269,7 +269,7 @@
       "evidence": [
         "http://www.aquaticjournal.com/article/doi/10.3969/j.issn.1673-9159.2026.03.018"
       ],
-      "identity_basis": "User supplied complete Chinese and English publisher citation. Independently fetched original aquaticjournal.com article metadata over its public HTTP URL: title, DOI, author order, year 2026, volume 46, issue 3, pages 175-182 match exactly. Site citation_online_date is 2026-10-08; no exact final-issue publication day inferred. Author spelling confirmed as 唐茹彤. CNKI journal advanced-search index did not return this record.",
+      "identity_basis": "User supplied complete Chinese and English publisher citation. Independently fetched original aquaticjournal.com article metadata over its public HTTP URL: title, DOI, author order, year 2026, volume 46, issue 3, pages 175-182 match exactly. Site citation_online_date is 2026-10-08; no exact final-issue publication day inferred. Author spelling confirmed as 唐茹彤. CNKI journal advanced-search index did not return this record. DOI resolution independently returned the matching Wanfang record (HTTP 200); canonical DOI used for the article link because aquaticjournal.com HTTPS has an incomplete certificate chain.",
       "lab_research": true,
       "confirmation": "Original article metadata independently retrieved and matched to the user-supplied bilingual citation."
     }

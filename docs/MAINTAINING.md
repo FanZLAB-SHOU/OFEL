@@ -42,7 +42,7 @@ python3 -m http.server 8765 --bind 127.0.0.1
 
 ### 联系与到访
 
-联系页内容在 `templates/contact.html`：校园插画与 Fan Zhang 联系方式、研究生咨询／研究访问／科研合作三个邮件入口，以及中英文地址和地图导航。邮件入口只打开访客的邮件应用，通过不同的主题区分咨询类型；不提供站内发送表单，也不表示已发布招生名额。保留 `#contact`、`#join-us` 和 `#visit` 页内锚点。校园插画复用首页图片，来源及生成记录位于 `assets/contact/shou-campus-collaboration-prompt.md`。
+联系页内容在 `templates/contact.html`：校园插画与 Fan Zhang 联系方式、研究生咨询／研究访问／科研合作三个邮件入口，以及中英文地址和地图导航。邮件入口只打开访客的邮件应用，通过不同的主题区分咨询类型；邮箱下方另有 Gmail、Outlook 网页写信入口和复制邮箱按钮。复制受限时显示可选中的邮箱文本，网页邮箱入口在禁用 JavaScript 时仍可使用。不提供站内发送表单，也不表示已发布招生名额。保留 `#contact`、`#join-us` 和 `#visit` 页内锚点。校园插画复用首页图片，来源及生成记录位于 `assets/contact/shou-campus-collaboration-prompt.md`。
 
 ### 研究方向
 

@@ -383,4 +383,30 @@ function initLabFilm() {
   }, true);
 }
 initLabFilm();
+
+function initContactEmail() {
+  const options = document.querySelector('[data-email-options]');
+  if (!options) return;
+  const button = options.querySelector('[data-copy-email]');
+  const manual = options.querySelector('.contact-email-manual');
+  const address = manual.querySelector('input');
+  const status = options.querySelector('.contact-email-status');
+  button.hidden = false;
+  button.addEventListener('click', async () => {
+    button.disabled = true;
+    status.textContent = '';
+    try {
+      if (!navigator.clipboard || !navigator.clipboard.writeText) throw new Error('Clipboard unavailable');
+      await navigator.clipboard.writeText(address.value);
+      manual.hidden = true;
+      status.textContent = 'Email address copied.';
+    } catch {
+      manual.hidden = false;
+      address.focus();
+      address.select();
+      status.textContent = 'Address selected. Use your device’s Copy command.';
+    } finally { button.disabled = false; }
+  });
+}
+initContactEmail();
 document.querySelector('#copyright-year').textContent = new Date().getFullYear();

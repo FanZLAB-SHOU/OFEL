@@ -31,8 +31,9 @@ function boot({offline=false,reduced=false}={}){
  const offline=boot({offline:true});await flush();assert.equal(offline.get('[data-visit-reels]').textContent,'—');assert.equal(offline.get('[data-visit-reels]').children.length,0);assert.match(offline.get('[data-visit-accessible]').textContent,/unavailable/);assert.equal(offline.get('[data-stats-daily-table]').children[0].children[1].textContent,'—');assert.equal(offline.requests.length,1);
  const reduced=boot({reduced:true});await flush();assert.equal(reduced.get('[data-visit-reels]').children.at(-1).children[0].style.transition,undefined);
  const messages=[],listeners={};const parent={postMessage:(data,target)=>messages.push({data,target})},body={dataset:{},getBoundingClientRect:()=>({height:1800})};
- const window={parent,addEventListener:(name,fn)=>listeners[name]=fn};const embed=vm.createContext({window,location:{origin:ui.origin,search:'?embed=more'},document:{body},URLSearchParams,ResizeObserver:class{observe(){}},requestAnimationFrame:fn=>fn()});
- vm.runInContext(fs.readFileSync('demos/world-weather/embed.js','utf8'),embed);assert.equal(body.dataset.embed,'more');assert.equal(messages[0].data.height,1800);assert.equal(messages[0].target,ui.origin);
+ const html={dataset:{}};
+ const window={parent,addEventListener:(name,fn)=>listeners[name]=fn};const embed=vm.createContext({window,location:{origin:ui.origin,search:'?embed=more'},document:{body,documentElement:html},URLSearchParams,ResizeObserver:class{observe(){}},requestAnimationFrame:fn=>fn()});
+ vm.runInContext(fs.readFileSync('demos/world-weather/embed.js','utf8'),embed);assert.equal(body.dataset.embed,'more');assert.equal(html.dataset.embed,'more','the iframe root canvas must receive the dark theme too');assert.equal(messages[0].data.height,1800);assert.equal(messages[0].target,ui.origin);
  listeners.message({origin:'https://untrusted.example',source:parent,data:{type:'ofel-world-request-height'}});assert.equal(messages.length,1);
  listeners.message({origin:ui.origin,source:parent,data:{type:'ofel-world-request-height'}});assert.equal(messages.length,2);
  console.log('Passed real counter rendering, animated final digits, charts/tables, refresh, outages, reduced motion and same-origin frame handshake.');

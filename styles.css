@@ -908,3 +908,125 @@ body[data-page="index"] .shou-link img { padding: 2px; border-radius: 50%; backg
 .profile-bio-original summary { width: fit-content; color: var(--teal); cursor: pointer; font-size: 14px; font-weight: 600; }
 .profile-bio-original summary:focus-visible { outline: 3px solid var(--gold); outline-offset: 5px; }
 .profile-bio-original[open] summary { margin-bottom: 14px; }
+
+/* Contact: campus-led introduction, enquiry paths, then practical visiting information. */
+.contact-intro { background: #071c31; color: #fff; padding: 68px 0 76px; }
+.contact-intro-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 72px; }
+.contact-intro-copy { min-width: 0; }
+.contact-intro .eyebrow { color: #a8d4f4; font-size: 12px; }
+.contact-intro h1 { font-size: clamp(48px, 5.4vw, 76px); line-height: 1.04; margin-top: 24px; }
+.contact-intro-description { max-width: 470px; margin-top: 26px; color: #c3d3e3; font-size: 17px; line-height: 1.8; }
+.contact-person { margin-top: 32px; }
+.contact-person-label { display: block; color: #a8c6dd; font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.contact-person > a { display: inline-flex; align-items: center; gap: 10px; min-height: 40px; margin-top: 4px; font-size: 20px; font-weight: 600; }
+.contact-person > a:hover { color: #a8d4f4; }
+.contact-person .icon { width: 17px; height: 17px; }
+.contact-person > p { color: #b4c8db; font-size: 13px; line-height: 1.7; }
+.contact-primary-email { display: flex; align-items: center; gap: 12px; width: fit-content; max-width: 100%; min-height: 56px; margin-top: 28px; padding: 12px 17px; background: #edf6fd; color: #102e48; border-radius: 3px; font-size: clamp(18px, 2vw, 24px); font-weight: 600; line-height: 1.4; }
+.contact-primary-email span { min-width: 0; overflow-wrap: anywhere; }
+.contact-primary-email .icon { width: 21px; height: 21px; flex-shrink: 0; }
+.contact-primary-email .icon:last-child { width: 17px; height: 17px; }
+.contact-primary-email:hover { background: #cce7fa; }
+.contact-section-links { display: flex; flex-wrap: wrap; gap: 6px 26px; margin-top: 17px; }
+.contact-section-links a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: #bcd8ed; font-size: 12px; }
+.contact-section-links a:hover { color: #fff; text-decoration: underline; text-underline-offset: 4px; }
+.contact-section-links .icon { width: 14px; height: 14px; }
+.contact-campus-art { position: relative; overflow: hidden; min-width: 0; height: 570px; border-radius: 5px; background: #123854; }
+.contact-campus-art > img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; }
+.contact-campus-art::after { content: ""; position: absolute; inset: 55% 0 0; background: linear-gradient(transparent, #041729df); pointer-events: none; }
+.contact-campus-art figcaption { position: absolute; z-index: 1; bottom: 27px; left: 28px; right: 28px; display: grid; gap: 5px; }
+.contact-campus-art figcaption span { font-size: 18px; font-weight: 600; }
+.contact-campus-art figcaption small { font-size: 11px; color: #c5d9ea; letter-spacing: .04em; }
+.contact-opportunities { padding-block: 88px 76px; }
+.contact-section-heading { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: end; margin-bottom: 42px; }
+.contact-section-heading .eyebrow, .visit-campus .eyebrow { color: var(--teal); font-size: 11px; margin-bottom: 17px; }
+.contact-section-heading h2, .visit-campus h2 { font-size: clamp(36px, 3.6vw, 49px); }
+.contact-section-heading > p { max-width: 470px; color: var(--muted); font-size: 16px; line-height: 1.8; }
+.contact-pathways { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 34px; }
+.contact-pathway { min-width: 0; display: flex; flex-direction: column; align-items: flex-start; padding: 26px 0 0; border-top: 2px solid #bdd4e5; }
+.contact-pathway-icon { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: #edf5fb; color: var(--teal); margin-bottom: 18px; }
+.contact-pathway-icon .icon { width: 23px; height: 23px; }
+.contact-pathway h3 { font-size: 20px; line-height: 1.4; letter-spacing: -.025em; }
+.contact-pathway > p { flex: 1; color: var(--muted); font-size: 15px; line-height: 1.8; margin-top: 13px; }
+.contact-email-notes { margin-top: 24px; padding-top: 17px; border-top: 1px solid #e0e9f1; width: 100%; }
+.contact-email-notes h4 { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--teal); }
+.contact-email-notes p { font-size: 13px; line-height: 1.8; color: var(--muted); margin-top: 7px; }
+.contact-pathway .text-link { min-height: 44px; margin-top: 18px; font-size: 13px; gap: 8px; color: var(--teal); }
+.contact-pathway .text-link .icon { width: 17px; height: 17px; flex-shrink: 0; }
+.contact-discover { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 32px; margin-top: 48px; padding-top: 22px; border-top: 1px solid var(--line); }
+.contact-discover p { font-size: 14px; color: var(--muted); }
+.contact-discover > div { display: flex; flex-wrap: wrap; gap: 8px 25px; }
+.contact-discover .text-link { font-size: 13px; min-height: 44px; gap: 8px; }
+.contact-discover .icon { width: 16px; height: 16px; }
+.visit-campus { background: #f0f6fb; padding-block: 78px 88px; }
+.visit-campus-grid { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 76px; align-items: start; }
+.visit-campus address { font-style: normal; color: var(--muted); font-size: 14px; line-height: 1.85; margin-top: 25px; }
+.visit-campus address strong { display: block; color: var(--ink); font-size: 15px; font-weight: 600; margin-bottom: 8px; }
+.visit-campus address [lang="zh-CN"] { display: block; font-size: 13px; margin-top: 14px; }
+.visit-note { margin-top: 27px; padding-left: 17px; border-left: 2px solid #9dbed7; max-width: 360px; }
+.visit-note h3 { font-size: 13px; font-weight: 600; }
+.visit-note p { color: var(--muted); font-size: 13px; line-height: 1.8; margin-top: 5px; }
+.visit-campus-copy > .text-link { margin-top: 20px; font-size: 13px; min-height: 44px; gap: 8px; }
+.visit-campus-copy .icon { width: 17px; height: 17px; }
+.visit-campus-map { min-width: 0; }
+.visit-campus .contact-map { margin: 0; border: 1px solid #cbdce9; background: #e4eef5; border-radius: 5px; }
+.visit-campus .contact-map-hint { display: inline-flex; align-items: center; gap: 5px; min-height: 36px; background: #fff; box-shadow: 0 2px 10px #102d481a; }
+.visit-campus .contact-map-hint .icon { width: 16px; height: 16px; }
+.visit-map-footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px 16px; align-items: center; margin-top: 12px; }
+.visit-campus .contact-map-credit { margin: 0; font-size: 10px; color: #526984; }
+.visit-map-footer > span { font-size: 10px; color: var(--muted); }
+.visit-campus .contact-map-links { gap: 9px; margin-top: 11px; }
+.visit-campus .contact-map-links a { min-height: 44px; font-size: 12px; gap: 5px; color: var(--navy); border-color: #b9cfdf; border-radius: 3px; background: #fff; padding: 8px 12px; }
+.visit-campus .contact-map-links a:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
+.visit-campus .contact-map-links .icon { width: 15px; height: 15px; }
+@media (max-width: 1100px) {
+  .contact-intro-grid, .contact-section-heading { gap: 40px; }
+  .contact-campus-art { height: 540px; }
+  .contact-pathways { gap: 24px; }
+  .contact-pathway h3 { font-size: 18px; }
+  .visit-campus-grid { gap: 40px; }
+}
+@media (max-width: 960px) {
+  .contact-intro-grid { grid-template-columns: 1fr; gap: 34px; }
+  .contact-intro-copy { max-width: 640px; }
+  .contact-intro h1 { font-size: clamp(48px, 7vw, 66px); }
+  .contact-intro-description { max-width: 540px; }
+  .contact-campus-art { height: 380px; }
+  .contact-campus-art > img { object-position: 50% 46%; }
+  .contact-pathways { grid-template-columns: 1fr; gap: 32px; }
+  .contact-pathway { display: grid; grid-template-columns: 42px minmax(0, 1fr); column-gap: 20px; }
+  .contact-pathway-icon { grid-column: 1; grid-row: 1 / 5; margin: 0; }
+  .contact-pathway > :not(.contact-pathway-icon) { grid-column: 2; }
+  .contact-pathway h3 { font-size: 21px; }
+  .contact-email-notes { margin-top: 18px; padding-top: 13px; }
+  .contact-pathway .text-link { justify-self: start; }
+  .visit-campus-grid { grid-template-columns: 1fr 1.1fr; gap: 30px; }
+}
+@media (max-width: 700px) {
+  .contact-intro { padding-block: 42px 34px; }
+  .contact-intro h1 { font-size: clamp(42px, 11.4vw, 58px); margin-top: 20px; }
+  .contact-intro-description { margin-top: 22px; font-size: 16px; }
+  .contact-person { margin-top: 25px; }
+  .contact-primary-email { margin-top: 24px; font-size: 20px; gap: 10px; padding-inline: 13px; }
+  .contact-section-links { gap: 6px 22px; }
+  .contact-campus-art { height: auto; aspect-ratio: 4 / 3; }
+  .contact-campus-art figcaption { left: 20px; right: 20px; bottom: 20px; }
+  .contact-campus-art figcaption span { font-size: 16px; }
+  .contact-campus-art figcaption small { font-size: 10px; }
+  .contact-opportunities { padding-block: 55px; }
+  .contact-section-heading { grid-template-columns: 1fr; gap: 23px; margin-bottom: 30px; }
+  .contact-section-heading h2, .visit-campus h2 { font-size: 38px; }
+  .contact-section-heading > p { font-size: 15px; }
+  .contact-pathway { grid-template-columns: 1fr; padding-top: 22px; }
+  .contact-pathway-icon { grid-row: auto; margin-bottom: 16px; }
+  .contact-pathway > :not(.contact-pathway-icon) { grid-column: 1; }
+  .contact-discover { margin-top: 32px; padding-top: 20px; }
+  .contact-discover > div { gap: 6px 20px; }
+  .visit-campus { padding-block: 52px; }
+  .visit-campus-grid { grid-template-columns: 1fr; gap: 32px; }
+  .visit-note { max-width: none; }
+  .visit-campus .contact-map-links { gap: 8px; }
+}
+@media (max-width: 360px) {
+  .contact-primary-email { font-size: 18px; }
+}

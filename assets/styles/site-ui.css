@@ -278,6 +278,8 @@ body[data-member-hero] .shou-link img { padding: 2px; border-radius: 50%; backgr
 .person-name-zh { display: block; margin-top: 8px; font-size: 14px; line-height: 1.4; font-weight: 550; letter-spacing: .06em; }
 .member-intro .person-name-zh { margin-top: 12px; color: #d5e4f3; font-size: 18px; }
 .profile-content .person-name-zh { margin-top: 10px; color: #426585; font-size: 20px; }
+.fz-hero-id .person-name-zh { margin: 12px 0 0; color: #d5e4f3; font-size: 18px; }
+.faculty-intro .person-name-zh { margin-top: 10px; color: #426585; font-size: 20px; }
 .directory-person-label .person-name-zh { color: #bbd5ea; }
 .member-intro .pi-links { margin-top: 24px; gap: 8px; }
 .member-intro .pi-links a { min-height: 44px; max-width: 100%; padding: 9px 13px; border: 1px solid #c9e1f538; border-radius: var(--ui-radius-pill); background: #b5d9ff0d; color: #e3efff; font-size: 12px; overflow-wrap: anywhere; -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }

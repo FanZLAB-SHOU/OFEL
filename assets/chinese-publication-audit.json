@@ -163,6 +163,105 @@
       ],
       "identity_basis": "Primary journal reference confirms bibliographic details; publication reprint confirms full authors and Shanghai Ocean University affiliation. DOI not verified; source links to the reprint.",
       "lab_research": false
+    },
+    {
+      "key": "10.12024/jsou.20220303783",
+      "title": "中东太平洋赤道公海海域鱿钓渔业自主休渔效果初步评价",
+      "evidence": [
+        "https://www.shhydxxb.com/shhy/article/abstract/20220303783",
+        "https://html.rhhz.net/shhydxxb/20220303783.htm"
+      ],
+      "identity_basis": "Journal full text and citation metadata confirm Jiang Mingfeng, Shanghai Ocean University affiliation, Chen Xinjun coauthor, DOI, volume, issue, pages and publication date.",
+      "lab_research": false
+    },
+    {
+      "key": "10.16441/j.cnki.hdxb.20220320",
+      "title": "中西太平洋鲣鱼空间聚类特征及其与ENSO的关系",
+      "evidence": [
+        "https://qdhy.cbpt.cnki.net/portal/journal/portal/client/paper/QDHY_67f00c04-e5f1-4358-a7f4-756700717baf",
+        "https://www.sciengine.com/doi/pdf/C7E8EB2C2A604A579C1737F8BDF671D6"
+      ],
+      "identity_basis": "Original publisher article and publication PDF agree on the full author order, Shanghai Ocean University affiliation, DOI and final issue. Jiang Mingfeng and Lin Hongyu match the confirmed tuna fisheries collaboration.",
+      "lab_research": false
+    },
+    {
+      "key": "10.13984/j.cnki.cn37-1141.2026.04.031",
+      "title": "基于Citespace的休渔效果评价研究进展",
+      "evidence": [
+        "https://journal32.magtechjournal.com/hyhztb/CN/10.13984/j.cnki.cn37-1141.2026.04.031",
+        "https://journal32.magtechjournal.com/hyhztb/CN/Y2026/V48/I4"
+      ],
+      "identity_basis": "Official issue and article page confirm the full author list, DOI, volume, issue, pages and publication date; corresponding author Chen Xinjun has Shanghai Ocean University email and the same fishing-moratorium collaboration.",
+      "lab_research": false
+    },
+    {
+      "key": "10.11693/hyhz20211200343",
+      "title": "利用BP神经网络标准化东南太平洋茎柔鱼(Dosidicus gigas)资源丰度",
+      "evidence": [
+        "https://cdn.sciengine.com/doi/pdf/A62DCBD387A74694B24AC9AE94C7029A",
+        "https://hyxy.shou.edu.cn/remote_ocean/2026/0130/c8376a350347/page.htm"
+      ],
+      "identity_basis": "Original publication PDF confirms Lin Hongyu, Shanghai Ocean University affiliation, full authors and DOI; corresponding-author university bibliography confirms final volume, issue and pages.",
+      "lab_research": false
+    },
+    {
+      "key": "url:https://shdx.cbpt.cnki.net/portal/journal/portal/client/paper/SHDX_659926f9-45f8-4b11-9238-29823613e2b7",
+      "title": "大西洋中部大眼金枪鱼的时空分布",
+      "evidence": [
+        "https://shdx.cbpt.cnki.net/portal/journal/portal/client/paper/SHDX_659926f9-45f8-4b11-9238-29823613e2b7",
+        "https://hyxy.shou.edu.cn/remote_ocean/2026/0130/c8376a350347/page.htm"
+      ],
+      "identity_basis": "Official journal author search and original article confirm full author order, Shanghai Ocean University affiliation and final citation. Publisher DOI field is empty; no DOI is invented.",
+      "lab_research": false
+    },
+    {
+      "key": "10.12024/jsou.20241104705",
+      "title": "基于sdmTMB的大西洋剑鱼延绳钓渔业CPUE标准化",
+      "evidence": [
+        "https://www.shhydxxb.com/shhy/article/abstract/20241104705"
+      ],
+      "identity_basis": "Official journal author search and article citation metadata confirm WAN Faruyi, LIN Hongyu, ZHANG Fan, final issue/pages and date. User supplied the journal clue; checked against original journal record.",
+      "lab_research": true
+    },
+    {
+      "key": "10.12024/jsou.20250304794",
+      "title": "东南太平洋长鳍金枪鱼延绳钓渔业CPUE标准化",
+      "evidence": [
+        "https://www.shhydxxb.com/shhy/article/abstract/20250304794"
+      ],
+      "identity_basis": "Official author search and article citation metadata confirm Lin Qinqin in the known Shanghai Ocean University tuna fisheries collaboration, full authors, final issue/pages and date.",
+      "lab_research": false
+    },
+    {
+      "key": "10.12024/jsou.20220103693",
+      "title": "非静态种群动力学过程影响下的渔业资源评估与管理",
+      "evidence": [
+        "https://www.shhydxxb.com/shhy/article/abstract/20220103693"
+      ],
+      "identity_basis": "Official citation metadata confirms ZHANG Fan and CHEN Xinjun, Shanghai Ocean University fisheries stock-assessment research, final issue/pages and date. No member/alumnus coauthor, so Fan Zhang and All collections only.",
+      "lab_research": false
+    },
+    {
+      "key": "url:https://www.shhydxxb.com/shhy/article/abstract/20251205008",
+      "title": "厄尔尼诺事件对南太平洋长鳍金枪鱼生长的影响",
+      "evidence": [
+        "https://www.shhydxxb.com/shhy/article/abstract/20251205008"
+      ],
+      "identity_basis": "User supplied original journal URL. Chinese and English citation metadata confirm Jiang Zhuojin, Lu Dongqi, Lin Qinqin and Zhang Fan with Shanghai Ocean University affiliation. History gives acceptance on 2026-04-16; publication date, DOI and issue fields remain empty. Recorded as accepted, with 2026 denoting acceptance year, not an inferred publication year.",
+      "lab_research": true,
+      "status": "accepted"
+    },
+    {
+      "key": "10.11964/jfc.20260415481",
+      "title": "基于碳氮稳定同位素的南太平洋长鳍金枪鱼摄食习性研究",
+      "evidence": [
+        "http://www.china-fishery.cn/cn/article/doi/10.11964/jfc.20260415481",
+        "https://www.china-fishery.com/scxuebao/article/abstract/20260415481",
+        "https://scxuebao.ijournals.cn/scxuebao/article/abstract/20260415481"
+      ],
+      "identity_basis": "User supplied exact title and DOI. Current publisher article metadata confirms DOI, authors Huang Yudong, Lin Qinqin, Lu Dongqi and Zhang Fan, citation_online_date 2026-08-10 (citation_date 2026-08-01), blank volume/issue/pages. Original journal archive independently confirms title, author order, Shanghai Ocean University affiliation and 2026-05-22 acceptance. Current publisher DOI page was accessible over its public HTTP www URL; HTTPS certificate expired, so the verified HTTPS journal archive is the website article link. No final issue inferred.",
+      "lab_research": true,
+      "status": "published_online"
     }
   ],
   "members": [
@@ -180,7 +279,10 @@
         "10.12024/jsou.20220303745",
         "10.12024/jsou.20210303336",
         "url:https://hyxy.shou.edu.cn/_t623/2025/0225/c7722a338029/page.htm",
-        "url:https://www.sciengine.com/doi/pdf/91EBDE42C2FD4E4CAA299FBFAE31BB90"
+        "url:https://www.sciengine.com/doi/pdf/91EBDE42C2FD4E4CAA299FBFAE31BB90",
+        "10.12024/jsou.20250304794",
+        "url:https://www.shhydxxb.com/shhy/article/abstract/20251205008",
+        "10.11964/jfc.20260415481"
       ],
       "status": "verified_records_added"
     },
@@ -216,7 +318,9 @@
         "\"陆冬琦\" \"上海海洋大学\" 期刊"
       ],
       "verified_keys": [
-        "10.13984/j.cnki.cn37-1141.2025.06.033"
+        "10.13984/j.cnki.cn37-1141.2025.06.033",
+        "url:https://www.shhydxxb.com/shhy/article/abstract/20251205008",
+        "10.11964/jfc.20260415481"
       ],
       "status": "verified_records_added"
     },
@@ -230,7 +334,11 @@
       "verified_keys": [
         "10.12131/20250017",
         "10.12131/20220235",
-        "10.11964/jfc.20220913699"
+        "10.11964/jfc.20220913699",
+        "10.16441/j.cnki.hdxb.20220320",
+        "10.11693/hyhz20211200343",
+        "url:https://shdx.cbpt.cnki.net/portal/journal/portal/client/paper/SHDX_659926f9-45f8-4b11-9238-29823613e2b7",
+        "10.12024/jsou.20241104705"
       ],
       "status": "verified_records_added"
     },
@@ -243,7 +351,10 @@
       ],
       "verified_keys": [
         "10.12131/20220235",
-        "10.11964/jfc.20220913699"
+        "10.11964/jfc.20220913699",
+        "10.12024/jsou.20220303783",
+        "10.16441/j.cnki.hdxb.20220320",
+        "10.13984/j.cnki.cn37-1141.2026.04.031"
       ],
       "status": "verified_records_added"
     },
@@ -390,8 +501,10 @@
         "\"黄宇东\" 水产 渔业 论文",
         "\"黄宇东\" \"上海海洋大学\" 期刊"
       ],
-      "verified_keys": [],
-      "status": "no_identity_verified_chinese_record_in_this_pass"
+      "verified_keys": [
+        "10.11964/jfc.20260415481"
+      ],
+      "status": "verified_records_added"
     },
     {
       "name": "Zhuojin Jiang",
@@ -400,8 +513,10 @@
         "\"江卓瑾\" 水产 渔业 论文",
         "\"江卓瑾\" \"上海海洋大学\" 期刊"
       ],
-      "verified_keys": [],
-      "status": "no_identity_verified_chinese_record_in_this_pass"
+      "verified_keys": [
+        "url:https://www.shhydxxb.com/shhy/article/abstract/20251205008"
+      ],
+      "status": "verified_records_added"
     },
     {
       "name": "Haotian Sun",
@@ -454,8 +569,10 @@
         "\"万发如意\" 水产 渔业 论文",
         "\"万发如意\" \"上海海洋大学\" 期刊"
       ],
-      "verified_keys": [],
-      "status": "no_identity_verified_chinese_record_in_this_pass"
+      "verified_keys": [
+        "10.12024/jsou.20241104705"
+      ],
+      "status": "verified_records_added"
     }
   ],
   "pending": [
@@ -477,6 +594,12 @@
       "doi": "10.15928/j.1674-3075.202404170138",
       "source": "https://scan.cbpt.cnki.net/portal/journal/portal/client/paper/963aafd85fb261c14922e0f83717433d",
       "reason": "Publisher lists Huzhou University. No verified link to this OFEL member; same name alone is insufficient."
+    },
+    {
+      "name_zh": "唐茹彤",
+      "journal": "广东海洋大学学报",
+      "reason": "User supplied exact title and journal. Official journal title/author search, all three online-first listing pages and public indexed searches have not returned an identity-verified record. Link or DOI requested; not inserted with guessed coauthors, date or issue.",
+      "title": "单次繁殖渔业生物资源评估研究进展"
     }
   ],
   "excluded_examples": [
@@ -491,6 +614,100 @@
     {
       "name_zh": "黄宇东",
       "reason": "CAS mechanical/hydrate research candidate; no verified connection to this member or fisheries scope."
+    }
+  ],
+  "follow_up_searches": [
+    {
+      "name_zh": "蒋明峰",
+      "checked_on": "2026-10-17",
+      "queries": [
+        "\"蒋明峰\" \"休渔\" 论文",
+        "\"蒋明峰\" \"陈新军\" 期刊",
+        "\"蒋明峰\" \"鲣\"",
+        "\"蒋明峰\" \"10.\" \"渔\""
+      ],
+      "added_keys": [
+        "10.12024/jsou.20220303783",
+        "10.16441/j.cnki.hdxb.20220320",
+        "10.13984/j.cnki.cn37-1141.2026.04.031"
+      ],
+      "note": "Follow-up to the user identifying missing Chinese papers. Verified original journal articles and issue contents, including coauthored work; no claim of exhaustive coverage."
+    },
+    {
+      "name_zh": "林泓羽",
+      "checked_on": "2026-10-17",
+      "queries": [
+        "\"林泓羽\" \"渔情\"",
+        "\"林泓羽\" \"栖息地\"",
+        "Official Shanghai Ocean University journal author search",
+        "Official Guangdong Ocean University journal advanced author search"
+      ],
+      "added_keys": [
+        "10.11693/hyhz20211200343",
+        "url:https://shdx.cbpt.cnki.net/portal/journal/portal/client/paper/SHDX_659926f9-45f8-4b11-9238-29823613e2b7",
+        "10.12024/jsou.20241104705"
+      ],
+      "note": "Verified three additional records beyond the shared ENSO paper added in the same follow-up."
+    }
+  ],
+  "journal_author_searches": [
+    {
+      "journal": "上海海洋大学学报",
+      "checked_on": "2026-10-17",
+      "method": "Public journal author-search form (user_real_name), followed by original article citation metadata.",
+      "names_checked": [
+        "林琴琴",
+        "程心",
+        "董思宋",
+        "陆冬琦",
+        "林泓羽",
+        "蒋明峰",
+        "武孝慈",
+        "张峻溢",
+        "王润泽",
+        "周佳怡",
+        "马爽",
+        "姚峰",
+        "于洋",
+        "闫旭",
+        "田润欣",
+        "李卫国",
+        "闫祥龙",
+        "吴诗欣",
+        "许哲川",
+        "黄宇东",
+        "江卓瑾",
+        "孙昊天",
+        "唐茹彤",
+        "承昱航",
+        "耿紫宜",
+        "万发如意",
+        "张帆"
+      ],
+      "note": "Search hits require identity checks. Excluded a 2007 Yu Yang paper and unrelated Chen Zhangfan / 2002 Zhang Fan records. No hit is not proof of no publication. User-supplied exact Jiang Zhuojin URL located an accepted paper absent from author-search results; see verified acceptance metadata."
+    },
+    {
+      "journal": "广东海洋大学学报",
+      "checked_on": "2026-10-17",
+      "method": "Official publisher advanced author search and all three online-first listing pages.",
+      "names_checked": [
+        "唐茹彤",
+        "林泓羽"
+      ],
+      "note": "Located Lin Hongyu original paper; Tang Rutong not yet verified from the available author index or online-first pages."
+    },
+    {
+      "journal": "水产学报",
+      "checked_on": "2026-10-17",
+      "method": "Official journal author-search form at scxuebao.ijournals.cn, a primary journal-hosted archive.",
+      "names_checked": [
+        "黄宇东",
+        "张帆",
+        "江卓瑾",
+        "唐茹彤",
+        "林泓羽"
+      ],
+      "note": "Author index did not return the newest Huang Yudong record. User-supplied exact DOI located the current publisher article and original journal archive; full authors and online-first date verified separately. See verified evidence for 10.11964/jfc.20260415481."
     }
   ]
 }

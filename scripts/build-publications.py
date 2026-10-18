@@ -29,6 +29,8 @@ relationship_labels = {
 
 
 def validate(paper):
+    if paper.get('status') == 'accepted' and not paper.get('accepted_date'):
+        raise ValueError(f'Accepted papers need a verified acceptance date: {paper["title"]}')
     if not paper.get('source', '').startswith('https://'):
         raise ValueError(f'A verified publication link is required: {paper["title"]}')
     topics = paper.get('topics')
@@ -91,7 +93,9 @@ def article_html(paper, highlight=('Fan', 'Zhang')):
     location = paper['article_number'] or paper['pages']
     if location:
         details += (', ' if details else '') + location.replace('-', '–')
-    if not details:
+    if paper.get('status') == 'accepted':
+        details = f'Accepted · {paper["accepted_date"]}'
+    elif not details:
         details = 'Published online'
     doi_url = html.escape(paper['source'], quote=True)
     plain_title = html.escape(paper['title'])
@@ -145,6 +149,8 @@ def plain_citation(paper):
         volume += f"({paper['issue']})"
     location = (paper.get('article_number') or paper.get('pages') or '').replace('-', '–')
     details = ', '.join(part for part in (paper['journal'], volume, location) if part)
+    if paper.get('status') == 'accepted':
+        details += f'. Accepted {paper["accepted_date"]}'
     link = 'https://doi.org/' + paper['doi'] if paper.get('doi') else paper['source']
     return f"{names} ({paper['year']}). {paper['title'].rstrip('.')}. {details}. {link}"
 
@@ -164,6 +170,7 @@ def citation(paper):
         'pages': (paper['article_number'] or paper['pages']).replace('-', '--'),
         'doi': paper['doi'],
         'url': paper['source'] if not paper.get('doi') else '',
+        'note': f'Accepted {paper["accepted_date"]}; publication date not yet assigned' if paper.get('status') == 'accepted' else '',
     }
     # Escape the journal ampersand for BibTeX/LaTeX consumers.
     body = ',\n'.join(f'  {k} = {{{v.replace(chr(38), chr(92) + chr(38))}}}' for k, v in fields.items() if v)

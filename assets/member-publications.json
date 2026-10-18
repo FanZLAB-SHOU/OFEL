@@ -1612,6 +1612,393 @@
         "assessment"
       ],
       "language": "zh-CN"
+    },
+    {
+      "doi": "10.12024/jsou.20220303783",
+      "title": "中东太平洋赤道公海海域鱿钓渔业自主休渔效果初步评价",
+      "journal": "上海海洋大学学报",
+      "year": 2022,
+      "date": "2022-05-31",
+      "volume": "31",
+      "issue": "3",
+      "pages": "670-676",
+      "article_number": "",
+      "authors": [
+        {
+          "given": "Mingfeng",
+          "family": "Jiang",
+          "name_zh": "蒋明峰"
+        },
+        {
+          "given": "新军",
+          "family": "陈",
+          "name_zh": "陈新军"
+        }
+      ],
+      "source": "https://doi.org/10.12024/jsou.20220303783",
+      "topics": [
+        "assessment"
+      ],
+      "language": "zh-CN"
+    },
+    {
+      "doi": "10.16441/j.cnki.hdxb.20220320",
+      "title": "中西太平洋鲣鱼空间聚类特征及其与ENSO的关系",
+      "journal": "中国海洋大学学报（自然科学版）",
+      "year": 2023,
+      "date": "2023-11",
+      "volume": "53",
+      "issue": "11",
+      "pages": "47-54",
+      "article_number": "",
+      "authors": [
+        {
+          "given": "Mingfeng",
+          "family": "Jiang",
+          "name_zh": "蒋明峰"
+        },
+        {
+          "given": "新军",
+          "family": "陈",
+          "name_zh": "陈新军"
+        },
+        {
+          "given": "子安",
+          "family": "许",
+          "name_zh": "许子安"
+        },
+        {
+          "given": "Hongyu",
+          "family": "Lin",
+          "name_zh": "林泓羽"
+        },
+        {
+          "given": "泽华",
+          "family": "吕",
+          "name_zh": "吕泽华"
+        },
+        {
+          "given": "林",
+          "family": "雷",
+          "name_zh": "雷林"
+        },
+        {
+          "given": "海平",
+          "family": "贺",
+          "name_zh": "贺海平"
+        },
+        {
+          "given": "海滨",
+          "family": "贾",
+          "name_zh": "贾海滨"
+        },
+        {
+          "given": "金涛",
+          "family": "汪",
+          "name_zh": "汪金涛"
+        }
+      ],
+      "source": "https://doi.org/10.16441/j.cnki.hdxb.20220320",
+      "topics": [
+        "ecosystems"
+      ],
+      "language": "zh-CN"
+    },
+    {
+      "doi": "10.13984/j.cnki.cn37-1141.2026.04.031",
+      "title": "基于Citespace的休渔效果评价研究进展",
+      "journal": "海洋湖沼通报",
+      "year": 2026,
+      "date": "2026-08-10",
+      "volume": "48",
+      "issue": "4",
+      "pages": "276-285",
+      "article_number": "",
+      "authors": [
+        {
+          "given": "Mingfeng",
+          "family": "Jiang",
+          "name_zh": "蒋明峰"
+        },
+        {
+          "given": "新军",
+          "family": "陈",
+          "name_zh": "陈新军"
+        },
+        {
+          "given": "星楠",
+          "family": "方",
+          "name_zh": "方星楠"
+        }
+      ],
+      "source": "https://doi.org/10.13984/j.cnki.cn37-1141.2026.04.031",
+      "topics": [
+        "assessment"
+      ],
+      "language": "zh-CN"
+    },
+    {
+      "doi": "10.11693/hyhz20211200343",
+      "title": "利用BP神经网络标准化东南太平洋茎柔鱼(Dosidicus gigas)资源丰度",
+      "journal": "海洋与湖沼",
+      "year": 2022,
+      "date": "2022-09",
+      "volume": "53",
+      "issue": "5",
+      "pages": "1279-1287",
+      "article_number": "",
+      "authors": [
+        {
+          "given": "Hongyu",
+          "family": "Lin",
+          "name_zh": "林泓羽"
+        },
+        {
+          "given": "金涛",
+          "family": "汪",
+          "name_zh": "汪金涛"
+        },
+        {
+          "given": "新军",
+          "family": "陈",
+          "name_zh": "陈新军"
+        }
+      ],
+      "source": "https://doi.org/10.11693/hyhz20211200343",
+      "topics": [
+        "assessment"
+      ],
+      "language": "zh-CN"
+    },
+    {
+      "doi": "",
+      "title": "大西洋中部大眼金枪鱼的时空分布",
+      "journal": "广东海洋大学学报",
+      "year": 2022,
+      "date": "",
+      "volume": "42",
+      "issue": "5",
+      "pages": "123-133",
+      "article_number": "",
+      "authors": [
+        {
+          "given": "Hongyu",
+          "family": "Lin",
+          "name_zh": "林泓羽"
+        },
+        {
+          "given": "金涛",
+          "family": "汪",
+          "name_zh": "汪金涛"
+        },
+        {
+          "given": "新军",
+          "family": "陈",
+          "name_zh": "陈新军"
+        },
+        {
+          "given": "林",
+          "family": "雷",
+          "name_zh": "雷林"
+        },
+        {
+          "given": "荣成",
+          "family": "邓",
+          "name_zh": "邓荣成"
+        },
+        {
+          "given": "恒寿",
+          "family": "隋",
+          "name_zh": "隋恒寿"
+        },
+        {
+          "given": "彬",
+          "family": "李",
+          "name_zh": "李彬"
+        }
+      ],
+      "source": "https://shdx.cbpt.cnki.net/portal/journal/portal/client/paper/SHDX_659926f9-45f8-4b11-9238-29823613e2b7",
+      "topics": [
+        "ecosystems"
+      ],
+      "language": "zh-CN"
+    },
+    {
+      "doi": "10.12024/jsou.20241104705",
+      "title": "基于sdmTMB的大西洋剑鱼延绳钓渔业CPUE标准化",
+      "journal": "上海海洋大学学报",
+      "year": 2025,
+      "date": "2025-03-13",
+      "volume": "34",
+      "issue": "2",
+      "pages": "422-433",
+      "article_number": "",
+      "authors": [
+        {
+          "given": "Faruyi",
+          "family": "Wan",
+          "name_zh": "万发如意"
+        },
+        {
+          "given": "Hongyu",
+          "family": "Lin",
+          "name_zh": "林泓羽"
+        },
+        {
+          "given": "Fan",
+          "family": "Zhang",
+          "name_zh": "张帆"
+        }
+      ],
+      "source": "https://doi.org/10.12024/jsou.20241104705",
+      "topics": [
+        "assessment"
+      ],
+      "language": "zh-CN"
+    },
+    {
+      "doi": "10.12024/jsou.20250304794",
+      "title": "东南太平洋长鳍金枪鱼延绳钓渔业CPUE标准化",
+      "journal": "上海海洋大学学报",
+      "year": 2026,
+      "date": "2026-01-08",
+      "volume": "35",
+      "issue": "1",
+      "pages": "242-253",
+      "article_number": "",
+      "authors": [
+        {
+          "given": "成功",
+          "family": "牛",
+          "name_zh": "牛成功"
+        },
+        {
+          "given": "Qinqin",
+          "family": "Lin",
+          "name_zh": "林琴琴"
+        },
+        {
+          "given": "诗玉",
+          "family": "杨",
+          "name_zh": "杨诗玉"
+        },
+        {
+          "given": "江峰",
+          "family": "朱",
+          "name_zh": "朱江峰"
+        }
+      ],
+      "source": "https://doi.org/10.12024/jsou.20250304794",
+      "topics": [
+        "assessment"
+      ],
+      "language": "zh-CN"
+    },
+    {
+      "doi": "10.12024/jsou.20220103693",
+      "title": "非静态种群动力学过程影响下的渔业资源评估与管理",
+      "journal": "上海海洋大学学报",
+      "year": 2022,
+      "date": "2022-05-31",
+      "volume": "31",
+      "issue": "3",
+      "pages": "612-619",
+      "article_number": "",
+      "authors": [
+        {
+          "given": "Fan",
+          "family": "Zhang",
+          "name_zh": "张帆"
+        },
+        {
+          "given": "新军",
+          "family": "陈",
+          "name_zh": "陈新军"
+        }
+      ],
+      "source": "https://doi.org/10.12024/jsou.20220103693",
+      "topics": [
+        "assessment"
+      ],
+      "language": "zh-CN"
+    },
+    {
+      "doi": "",
+      "title": "厄尔尼诺事件对南太平洋长鳍金枪鱼生长的影响",
+      "journal": "上海海洋大学学报",
+      "year": 2026,
+      "date": "",
+      "volume": "",
+      "issue": "",
+      "pages": "",
+      "article_number": "",
+      "authors": [
+        {
+          "given": "Zhuojin",
+          "family": "Jiang",
+          "name_zh": "江卓瑾"
+        },
+        {
+          "given": "Dongqi",
+          "family": "Lu",
+          "name_zh": "陆冬琦"
+        },
+        {
+          "given": "Qinqin",
+          "family": "Lin",
+          "name_zh": "林琴琴"
+        },
+        {
+          "given": "Fan",
+          "family": "Zhang",
+          "name_zh": "张帆"
+        }
+      ],
+      "source": "https://www.shhydxxb.com/shhy/article/abstract/20251205008",
+      "topics": [
+        "biology"
+      ],
+      "language": "zh-CN",
+      "status": "accepted",
+      "accepted_date": "2026-04-16"
+    },
+    {
+      "doi": "10.11964/jfc.20260415481",
+      "title": "基于碳氮稳定同位素的南太平洋长鳍金枪鱼摄食习性研究",
+      "journal": "水产学报",
+      "year": 2026,
+      "date": "2026-08-10",
+      "volume": "",
+      "issue": "",
+      "pages": "",
+      "article_number": "",
+      "authors": [
+        {
+          "given": "Yudong",
+          "family": "Huang",
+          "name_zh": "黄宇东"
+        },
+        {
+          "given": "Qinqin",
+          "family": "Lin",
+          "name_zh": "林琴琴"
+        },
+        {
+          "given": "Dongqi",
+          "family": "Lu",
+          "name_zh": "陆冬琦"
+        },
+        {
+          "given": "Fan",
+          "family": "Zhang",
+          "name_zh": "张帆"
+        }
+      ],
+      "source": "https://www.china-fishery.com/scxuebao/article/abstract/20260415481",
+      "topics": [
+        "biology"
+      ],
+      "language": "zh-CN"
     }
   ]
 }

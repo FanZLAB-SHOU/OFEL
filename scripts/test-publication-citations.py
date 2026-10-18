@@ -56,6 +56,16 @@ class Citations(unittest.TestCase):
         self.assertIn('唐茹彤', pubs.article_html(paper))
         self.assertNotIn('唐如彤', pubs.article_html(paper))
 
+    def test_accepted_paper_is_not_presented_as_published_online(self):
+        paper = next(p for p in pubs.member_records if p.get('status') == 'accepted')
+        pubs.validate(paper)
+        self.assertIn('Accepted · 2026-04-16', pubs.article_html(paper))
+        self.assertNotIn('Published online', pubs.article_html(paper))
+        self.assertIn('Accepted 2026-04-16', pubs.plain_citation(paper))
+        self.assertIn('publication date not yet assigned', pubs.citation(paper))
+        self.assertNotIn('doi =', pubs.citation(paper))
+        self.assertTrue(pubs.is_lab_paper(paper))
+
 
 if __name__ == '__main__':
     unittest.main()

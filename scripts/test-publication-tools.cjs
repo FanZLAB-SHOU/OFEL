@@ -54,7 +54,9 @@ filters[4].events.click();const biology2025=lab.filter(p=>p.dataset.year==='2025
 assert.equal(visible().length,biology2025.length);assert.ok(visible().every(p=>p.dataset.topic==='biology'));
 query('Dong');assert.equal(visible().length,biology2025.filter(p=>/dong/i.test(p.dataset.search)).length, 'search includes co-authors, not just first authors');
 clear();context.publications.select('fan-zhang',true);year('2022');
-assert.equal(visible().length,1);assert.match(visible()[0].dataset.search,/age[-‐] and length[-‐]structured/i);
+assert.equal(visible().length,papers.filter(p=>p.dataset.fanZhang==='true'&&p.dataset.year==='2022').length);
+assert.ok(visible().some(p=>/age[-‐] and length[-‐]structured/i.test(p.dataset.search)));
+assert.ok(visible().some(p=>p.dataset.search.includes('非静态种群动力学过程')));
 context.publications.select('lab',true);assert.equal(nodes['#publication-year'].value,'all');
 assert.equal(visible().length,6);assert.ok(nodes['#publication-citations'].href.endsWith('lab-publications.bib'));
 nodes['#publication-toggle'].events.click();assert.equal(visible().length,lab.length);

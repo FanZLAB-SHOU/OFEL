@@ -240,7 +240,7 @@ gateways = [
      f'<div class="mock-panel mock-paper gateway-publication-preview"><span class="mock-label">{esc(latest["journal"])} · {latest["year"]}</span>'
      f'<strong>{italicize(esc(short(latest["title"], 80)))}</strong><small>{esc(latest_authors)}</small>'
      f'<small class="gateway-publication-meta">{len(pubs)} publications · BibTeX available</small></div>'),
-    ('contact.html', 'Contact &amp; Join Us', 'Graduate study, research visits, and collaboration with Fan Zhang.', 'assets/news/2025-07-iccat/meeting.jpg', '47% 52%', 'right',
+    ('contact.html', 'Contact &amp; Join Us', 'Graduate study, research visits, and collaboration with Fan Zhang.', 'assets/contact/shou-campus-collaboration.png', '50% 50%', 'right',
      '<div class="mock-panel mock-paper" style="align-self: end"><span class="mock-label">Start a conversation</span>'
      '<strong>Research visits &amp; collaboration</strong><small>f-zhang@shou.edu.cn</small></div>'),
 ]

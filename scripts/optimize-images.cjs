@@ -16,7 +16,7 @@ async function files(folder) {
 
 async function main() {
   await fs.mkdir(output, {recursive: true});
-  const sources = (await Promise.all(['people', 'news', 'research', 'software']
+  const sources = (await Promise.all(['people', 'news', 'research', 'software', 'contact']
     .map(folder => files(path.join(root, 'assets', folder))))).flat().sort();
   const manifest = {};
   for (const source of sources) {

@@ -34,7 +34,7 @@ python3 -m http.server 8765 --bind 127.0.0.1
 
 ### 网页图片与手机导航
 
-`assets/people/`、`assets/news/`、`assets/research/` 和 `assets/software/` 中的原图保持不变。大于 100 KiB 的静态图片可通过 `node scripts/optimize-images.cjs` 生成 WebP 展示图（运行环境需安装 `sharp`；也可用 `NODE_PATH` 指定已有的包目录）。生成的 `assets/optimized/` 文件与 `manifest.json` 一起提交，再运行常规 Python 构建。GitHub Pages 构建无需安装图片工具。
+`assets/people/`、`assets/news/`、`assets/research/`、`assets/software/` 和 `assets/contact/` 中的原图保持不变。大于 100 KiB 的静态图片可通过 `node scripts/optimize-images.cjs` 生成 WebP 展示图（运行环境需安装 `sharp`；也可用 `NODE_PATH` 指定已有的包目录）。生成的 `assets/optimized/` 文件与 `manifest.json` 一起提交，再运行常规 Python 构建。GitHub Pages 构建无需安装图片工具。
 
 构建器依据图片用途输出 `srcset` 和 `sizes`，由浏览器选择尺寸；原图更新导致哈希不匹配时回退原图，避免展示旧内容。不要直接修改生成页面中的图片地址，也不要把展示图路径写回新闻或人员 JSON。首页 News 仍按源记录日期选择最新一条。人物和海报均保持原始构图，较窄的卡片继续使用现有 CSS 裁切位置。
 

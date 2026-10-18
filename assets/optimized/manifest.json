@@ -1,4 +1,55 @@
 {
+  "assets/contact/campus-map.webp": {
+    "sha256": "0e53bf1ab24c678187600202c6b42a05134e4e9a87cacd18f83b01409daf5eee",
+    "bytes": 117808,
+    "width": 960,
+    "height": 720,
+    "variants": [
+      {
+        "width": 320,
+        "src": "assets/optimized/campus-map-bacad3480454-320.webp",
+        "bytes": 14616
+      },
+      {
+        "width": 640,
+        "src": "assets/optimized/campus-map-bacad3480454-640.webp",
+        "bytes": 47042
+      },
+      {
+        "width": 960,
+        "src": "assets/optimized/campus-map-bacad3480454-960.webp",
+        "bytes": 111806
+      }
+    ]
+  },
+  "assets/contact/shou-campus-collaboration.png": {
+    "sha256": "10cd738c59028c23d7e63b3a1f9ba6cc7641dd1d7ed901f11d1ad0bd507d0927",
+    "bytes": 2050450,
+    "width": 1024,
+    "height": 1536,
+    "variants": [
+      {
+        "width": 320,
+        "src": "assets/optimized/shou-campus-collaboration-67d2d8e2eda6-320.webp",
+        "bytes": 20950
+      },
+      {
+        "width": 640,
+        "src": "assets/optimized/shou-campus-collaboration-67d2d8e2eda6-640.webp",
+        "bytes": 72096
+      },
+      {
+        "width": 960,
+        "src": "assets/optimized/shou-campus-collaboration-67d2d8e2eda6-960.webp",
+        "bytes": 131432
+      },
+      {
+        "width": 1024,
+        "src": "assets/optimized/shou-campus-collaboration-67d2d8e2eda6-1024.webp",
+        "bytes": 147458
+      }
+    ]
+  },
   "assets/news/2025-07-iccat/meeting.jpg": {
     "sha256": "f22f147ad3fb12bdb518c7e2efd05ec9247464c47e6ebe12704a06bdd0aaa740",
     "bytes": 1542202,

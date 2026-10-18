@@ -1,0 +1,8 @@
+{
+  "mode": "built-in image_gen",
+  "source": "assets/people/zhuojin-jiang.jpg",
+  "cutout": "assets/people/heroes/zhuojin-jiang-cutout-v2.webp",
+  "generated_source": "/Users/linbojun/.codex/generated_images/01a147ba-9c7b-7b33-bd0e-34345387900b/exec-bd8da623-6565-4278-ade5-584064a951cc.png",
+  "prompt": "Use case: background-extraction. Input image: the original sunset portrait is the edit target. Extract ONLY the woman in the red baseball cap with ponytail, in the identical left-facing profile and dark jacket. Preserve her real silhouette, pose, facial appearance and the original intentional soft focus/backlighting. Produce a tightly framed portrait crop around the complete existing head, hair, cap, neck and jacket, with NO extra empty margin above the cap; keep the visible jacket down to the bottom edge. Every pixel outside the actual silhouette must be fully transparent, including the areas above and behind the cap and around the ponytail and shoulders. Absolutely no rectangular patches, horizontal strips, haze, dark matte, sunset pixels or leftover background around the subject. Use a soft natural alpha edge faithful to the original soft focus, but make the interiors of cap, face and clothes fully opaque. No hard halo. Do not invent more body, change identity, sharpen the face, beautify or relight. Output a true transparent PNG.",
+  "layout": "scenic: left portrait, right workspace; existing sunset plate, CSS blur(4px) with light local shade; original lower photo unchanged"
+}

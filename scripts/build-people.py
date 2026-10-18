@@ -344,6 +344,7 @@ for n, person in enumerate(people):
     intro = ''
     if has_intro:
         hero = person['hero']
+        scenic = hero.get('layout') == 'scenic'
         if not (ROOT / hero['cutout']).is_file():
             raise ValueError(f'Missing foreground portrait for {person["name"]}')
         first_paragraph = hero.get('summary') or (person.get('bio') or '').split('\n\n')[0]
@@ -363,13 +364,17 @@ for n, person in enumerate(people):
             if not (ROOT / backdrop_source).is_file():
                 raise ValueError(f'Missing introduction background for {person["name"]}')
             backdrop_width, backdrop_height = hero.get('background_dimensions', [640, 800])
+            backdrop_sizes = 'max(100vw, 150svh)' if scenic else '640px'
+            backdrop_priority = 'high' if scenic else 'low'
             backdrop = (f'<img class="member-intro-wash" src="{esc(backdrop_source)}" alt="" aria-hidden="true" '
-                        f'width="{backdrop_width}" height="{backdrop_height}" sizes="640px" fetchpriority="low">')
+                        f'width="{backdrop_width}" height="{backdrop_height}" sizes="{backdrop_sizes}" fetchpriority="{backdrop_priority}">')
+        cutout_width, cutout_height = hero.get('cutout_dimensions', [1080, 1500])
+        intro_class = 'member-intro member-intro-scenic' if scenic else 'member-intro'
         intro = (
-            '    <section class="member-intro" aria-labelledby="profile-title" data-member-intro>'
+            f'    <section class="{intro_class}" aria-labelledby="profile-title" data-member-intro>'
             f'{backdrop}'
             '<div class="member-intro-watermark" aria-hidden="true">OFEL</div>'
-            f'<div class="member-intro-portrait">{photo(hero_person, "member-intro-photo", 1080, 1500, priority=True)}</div>'
+            f'<div class="member-intro-portrait">{photo(hero_person, "member-intro-photo", cutout_width, cutout_height, priority=True)}</div>'
             '<div class="container member-intro-layout">'
             '<div class="member-intro-copy">'
             '<p class="member-intro-greeting">Hi, I’m</p>'

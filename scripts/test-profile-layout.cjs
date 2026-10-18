@@ -51,6 +51,13 @@ for (const person of people.groups.concat(people.alumni || []).flatMap(group => 
     assert(html.includes('data-member-hero'));
     assert(html.indexOf('data-member-intro') < html.indexOf('class="profile-grid"'));
     assert(html.includes('href="#member-details"') && html.includes('id="member-details"'));
+    if (person.hero.layout === 'scenic') {
+      assert(html.includes('class="member-intro member-intro-scenic"'), 'Scenic introductions must opt out of the dark studio treatment');
+      const backdrop = html.match(/<img class="member-intro-wash"[^>]*>/)[0];
+      assert(backdrop.includes(path.basename(person.hero.background_image)) && backdrop.includes('fetchpriority="high"'), 'Keep the scenic background visible and load it with the portrait');
+      const portrait = html.match(/<img class="member-intro-photo"[^>]*>/)[0];
+      assert(portrait.includes(`width="${person.hero.cutout_dimensions[0]}"`) && portrait.includes(`height="${person.hero.cutout_dimensions[1]}"`), 'Use the real cutout aspect ratio');
+    }
   }
 }
 console.log('Passed portrait geometry, compact layout, progressive reveals, reduced motion and shared member/alumni photo introductions.');

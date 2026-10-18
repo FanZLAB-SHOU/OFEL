@@ -1,57 +1,34 @@
-/* Public GoatCounter counts are visits, not a globally ordered visitor register. */
+/* Visit statistics from Busuanzi: live running totals plus one nightly snapshot (00:00 Beijing time).
+   Each snapshot reading is itself counted by Busuanzi, so the cumulative `reads` are subtracted. */
 const MoreData = (() => {
   'use strict';
-  const TTL=600000;
-  const iso=date=>date.toISOString().slice(0,10);
-  function dates(now=Date.now()) {
-    const instant=new Date(now),today=new Date(Date.UTC(instant.getUTCFullYear(),instant.getUTCMonth(),instant.getUTCDate()));
-    const day=offset=>new Date(today.getTime()+offset*86400000);
-    return {key:iso(today),days:Array.from({length:14},(_,i)=>iso(day(i-13))),week:iso(day(-6)),end:iso(day(1))};
+  const DAY=86400000,BEIJING=8*3600000;
+  const beijingDate=ms=>new Date(ms+BEIJING).toISOString().slice(0,10);
+  const shift=(date,days)=>new Date(Date.parse(date+'T00:00:00Z')+days*DAY).toISOString().slice(0,10);
+  const isCount=value=>Number.isSafeInteger(value)&&value>=0;
+  function snapshots(store) {
+    const list=Array.isArray(store?.snapshots)?store.snapshots:[];
+    return list.filter(s=>/^\d{4}-\d{2}-\d{2}$/.test(s?.date)&&isCount(s.site_pv)&&isCount(s.site_uv)&&isCount(s.reads)).sort((a,b)=>a.date<b.date?-1:a.date>b.date?1:0);
   }
-  function parseCount(data) {
-    const value=data?.count;
-    if(typeof value!=='number'&&(typeof value!=='string'||!/^\d[\d,\s]*$/.test(value.trim())))throw Error('Invalid visit count');
-    const number=Number(typeof value==='string'?value.replace(/[,\s]/g,''):value);
-    if(!Number.isSafeInteger(number)||number<0)throw Error('Invalid visit count');
-    return number;
+  function parseLive(text) {
+    const clean=String(text??'').replace(/[,\s]/g,'');
+    return /^\d+$/.test(clean)&&Number.isSafeInteger(Number(clean))?Number(clean):null;
   }
-  function counterURL(base,path,start,end) {
-    const url=new URL(`${base}/counter/${path==='TOTAL'?'TOTAL':encodeURIComponent(path)}.json`);
-    if(start)url.searchParams.set('start',start);if(end)url.searchParams.set('end',end);return url.href;
-  }
-  async function pool(tasks,size=4) {
-    const result=new Array(tasks.length);let next=0;
-    await Promise.all(Array.from({length:Math.min(size,tasks.length)},async()=>{
-      while(next<tasks.length){const index=next++;try{result[index]=await tasks[index]();}catch{result[index]=null;}}
-    }));return result;
-  }
-  class StatsClient {
-    constructor(base,pages,fetcher,storage=null,now=()=>Date.now()) {Object.assign(this,{base,pages,fetcher,storage,now});}
-    async count(path,start,end) {
-      const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),9000);
-      try {
-        const response=await this.fetcher(counterURL(this.base,path,start,end),{signal:controller.signal});
-        if(response.status===404&&path!=='TOTAL')return 0;
-        if(!response.ok)throw Error('Counter unavailable');
-        return parseCount(await response.json());
-      }finally{clearTimeout(timer);}
-    }
-    async load({force=false,onTotal=()=>{}}={}) {
-      const calendar=dates(this.now()),key='ofel-more-stats-v2',fingerprint=JSON.stringify(this.pages.map(p=>p.path));
-      try {
-        const entry=JSON.parse(this.storage?.getItem(key)||'null'),age=this.now()-entry?.fetchedAt;
-        if(!force&&entry&&entry.day===calendar.key&&entry.fingerprint===fingerprint&&age>=0&&age<TTL&&Number.isSafeInteger(entry.total)&&entry.total>=0&&entry.days?.length===14&&entry.pages?.length===this.pages.length){onTotal(entry.total,entry.fetchedAt,true);return {...entry,cached:true};}
-      }catch{}
-      const empty={day:calendar.key,total:null,week:null,days:Array(14).fill(null),pages:Array(this.pages.length).fill(null),fetchedAt:this.now(),fingerprint};
-      let total;
-      try{total=await this.count('TOTAL');}catch{return empty;}
-      onTotal(total,this.now(),false);
-      const tasks=[()=>this.count('TOTAL',calendar.week,calendar.end),...calendar.days.map((day,i)=>()=>this.count('TOTAL',day,i===13?calendar.end:calendar.days[i+1])),...this.pages.map(page=>()=>this.count(page.path))];
-      const result=await pool(tasks),data={...empty,total,week:result[0],days:result.slice(1,15),pages:result.slice(15),fetchedAt:this.now()};
-      // Retry incomplete snapshots on the next visit instead of caching failed requests.
-      if(result.every(value=>value!==null))try{this.storage?.setItem(key,JSON.stringify(data));}catch{}
-      return data;
-    }
+  // Fourteen Beijing dates ending today; past days come from consecutive snapshots, today from the live total.
+  function series(store,live,now=Date.now()) {
+    const list=snapshots(store),byDate=new Map(list.map(s=>[s.date,s])),today=beijingDate(now);
+    const days=Array.from({length:14},(_,i)=>shift(today,i-13));
+    const real=s=>s.site_pv-s.reads,last=list.at(-1);
+    const liveReal=isCount(live)&&last&&live>=last.site_pv?live-last.reads:null;
+    const values=days.map(day=>{
+      const s=byDate.get(day);if(!s)return null;
+      if(day===today)return liveReal===null?null:Math.max(0,liveReal-real(s));
+      const next=byDate.get(shift(day,1));return next?Math.max(0,real(next)-real(s)):null;
+    });
+    // Past 7 days = today plus the six days before it; while tracking is newer than that, count from the first snapshot.
+    const start=list.find(s=>s.date>=days[7]&&s.date<=today);
+    const week=liveReal!==null&&start?Math.max(0,liveReal-real(start)):null;
+    return {today,days,values,todayVisits:values[13],week,tracking:list.length?list[0].date:null};
   }
   function frameHeight(event,origin,source) {
     const height=event.data?.height;
@@ -61,6 +38,6 @@ const MoreData = (() => {
     if(!Number.isSafeInteger(number)||number<0)return null;
     return String(number).padStart(6,'0').split('').map(Number);
   }
-  return {TTL,dates,parseCount,counterURL,pool,StatsClient,frameHeight,reelDigits};
+  return {beijingDate,shift,snapshots,parseLive,series,frameHeight,reelDigits};
 })();
 if(typeof module!=='undefined'&&module.exports)module.exports=MoreData;

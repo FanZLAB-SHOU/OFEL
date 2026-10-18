@@ -58,14 +58,13 @@ python3 -m http.server 8765 --bind 127.0.0.1
 
 ### 访问统计（Info → More）
 
-全站同时使用两个计数服务，脚本都写在 `templates/head.html`，所有正式页面都会计入：
+More 页面（`/more/`，模板 `templates/more.html`，交互代码 `assets/scripts/more.js` 与 `more-model.js`）显示的数字全部来自 **不蒜子（Busuanzi）**：国内服务，中国大陆访客也能被统计，无需注册。不蒜子脚本写在 `templates/head.html`，所有正式页面都会计入。
 
-- **不蒜子（Busuanzi）**：国内服务，中国大陆访客也能被统计，提供全站总浏览量和访客数，无需注册。
-- **[GoatCounter](https://fanzlabshou.goatcounter.com/)**：提供按日趋势、页面排行以及来源、国家、设备等后台明细（登录查看），不使用 Cookie。脚本自托管在 `assets/vendor/goatcounter-count.js`（ISC 许可，保留文件头），不再从 gc.zgo.at 加载；访问记录仍发送到 goatcounter.com，中国大陆的访问可能统计不全。
+- 顶部滚动数字、All visits、Visitors：页面加载时不蒜子填入隐藏的 `busuanzi_value_site_pv`、`busuanzi_value_site_uv`，脚本读取后显示；约 10 秒内无响应时显示短横线，不用其他来源顶替。
+- 每日柱状图、Today、Past 7 days：不蒜子只提供累计总数，所以由 GitHub Actions 工作流 `.github/workflows/visit-snapshot.yml` 每天北京时间 00:00（UTC 16:00）运行 `scripts/snapshot-busuanzi.py`，把当时的总数按北京日期追加到 `assets/stats/busuanzi-daily.json`。某天的访问量 = 次日 00:00 记录 − 当天 00:00 记录；Today = 实时总数 − 今天 00:00 记录；Past 7 days 从 6 天前（或开始记录的第一天）算起。每次读取本身会被不蒜子计为 1 次访问，文件中累计的 `reads` 会在计算时扣除。读取时使用一个不存在的路径 `/OFEL/__visit-snapshot__/` 作为来源，不会增加任何真实页面的计数。
+- 工作流用 `GITHUB_TOKEN` 提交记录，这种推送不会自动触发部署，所以它会再手动触发一次 “Deploy laboratory website”。GitHub 定时任务可能延迟数十分钟；某天没有记录时该天显示为空，不估算。也可以在 Actions 页面手动运行 “Record daily visit totals” 补当天记录（同一天只记录一次）。本地推送前先拉取，避免与机器人提交冲突。
 
-More 页面（`/more/`，模板 `templates/more.html`，交互代码 `assets/scripts/more.js` 与 `more-model.js`）：顶部滚动数字和 “All visits / Visitors” 使用不蒜子的全站数字（不蒜子填充页面中隐藏的 `busuanzi_value_site_pv`、`busuanzi_value_site_uv`）；约 8 秒内不蒜子无响应时，滚动数字改用 GoatCounter 总数。“Past 7 days / Today”、每日柱状图和页面排行来自 GoatCounter 的公开计数接口 `/counter/<路径>.json`（需在 GoatCounter 设置中保持勾选 “Allow adding visitor counts on your website”，仪表盘本身可以只对登录用户可见），页面上以 ¹ 注明可能漏计中国大陆访问。两套数字分别计数，不能相加。更新 GoatCounter 脚本时，重新下载 `https://gc.zgo.at/count.js` 覆盖自托管文件。
-
-页面排行只统计主要页面与新闻文章，列表由构建脚本的 `stats_pages` 自动生成。结果在浏览器会话中缓存 10 分钟，计数服务不可用时显示短横线。
+**GoatCounter** 的统计脚本仍自托管在 `assets/vendor/goatcounter-count.js`（ISC 许可，保留文件头），只用于登录 <https://fanzlabshou.goatcounter.com/> 查看海外访客的来源、国家、设备等明细，页面上不再显示它的数字；中国大陆的访问它可能统计不全。更新时重新下载 `https://gc.zgo.at/count.js` 覆盖。
 
 ### 研究方向
 

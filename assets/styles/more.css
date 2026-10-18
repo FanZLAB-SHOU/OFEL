@@ -18,3 +18,5 @@ body[data-page="more"] .site-header{background:#071a2bea;border-color:#213c52;co
 body[data-page="more"] .shou-link img{padding:2px;border-radius:50%;background:white}body[data-page="more"] .shou-link{border-right-color:rgba(255,255,255,.25)}body[data-page="more"] .brand-dot{color:#7cc3f5}
 /* Long worldwide totals shrink to fit their card instead of overflowing. */
 .pulse-metrics dd{font-size:clamp(26px,2.7vw,40px);overflow-wrap:anywhere}
+/* One full-width daily chart (page ranking removed). */
+.pulse-panels{grid-template-columns:1fr}

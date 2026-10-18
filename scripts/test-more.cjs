@@ -1,30 +1,33 @@
+// Busuanzi visit model: nightly snapshots (00:00 Beijing time) plus the live running total.
 const assert=require('node:assert/strict'),M=require('../assets/scripts/more-model.js');
-assert.equal(M.parseCount({count:'1,234',count_unique:'999'}),1234);
-assert.equal(M.parseCount({count:'0'}),0);assert.equal(M.parseCount({count:0}),0);
-for(const count of [null,undefined,-1,'oops 123','',1.5,Infinity])assert.throws(()=>M.parseCount({count}));
+assert.equal(M.parseLive('1,234'),1234);assert.equal(M.parseLive(' 0 '),0);
+for(const text of [null,undefined,'','—','12a','-3','1.5'])assert.equal(M.parseLive(text),null);
 assert.deepEqual(M.reelDigits(3),[0,0,0,0,0,3]);assert.deepEqual(M.reelDigits(1000000),[1,0,0,0,0,0,0]);assert.equal(M.reelDigits(null),null);
-const calendar=M.dates(Date.UTC(2026,0,1,23));assert.equal(calendar.key,'2026-01-01');assert.equal(calendar.days[0],'2025-12-19');assert.equal(calendar.end,'2026-01-02');assert.equal(calendar.week,'2025-12-26');
-const url=M.counterURL('https://example.com','/OFEL/news/','2026-01-01','2026-01-02');assert.match(url,/%2FOFEL%2Fnews%2F.json/);assert.equal(new URL(url).searchParams.get('start'),'2026-01-01');
+// 23:30 UTC on 1 January is already 2 January in Beijing.
+assert.equal(M.beijingDate(Date.UTC(2026,0,1,23,30)),'2026-01-02');assert.equal(M.shift('2026-03-01',-1),'2026-02-28');
 const source={},origin='https://fanzhang-lab-shou.github.io',event={origin,source,data:{type:'ofel-world-height',height:1234.5}};
 assert.equal(M.frameHeight(event,origin,source),1235);
 for(const other of [{...event,origin:'https://example.com'},{...event,source:{}},{...event,data:{type:'other',height:1200}},{...event,data:{type:'ofel-world-height',height:Infinity}},{...event,data:{type:'ofel-world-height',height:2}}])assert.equal(M.frameHeight(other,origin,source),null);
-(async()=>{
- let now=Date.UTC(2026,9,17,12),calls=0,summaries=0;const memory=new Map(),storage={getItem:k=>memory.get(k)||null,setItem:(k,v)=>memory.set(k,v)},pages=[{path:'/OFEL/',title:'Home'}];
- const fetcher=async url=>{calls++;return {ok:true,json:async()=>({count:url.includes('?')?'0':'123'})};};
- const client=new M.StatsClient('https://example.com',pages,fetcher,storage,()=>now);
- const data=await client.load({onTotal:value=>{summaries++;assert.equal(value,123);assert.equal(calls,1,'the headline should update before chart requests');}});
- assert.equal(data.total,123);assert.equal(data.week,0);assert.equal(data.days.length,14);assert.equal(calls,17);
- assert.equal((await client.load()).cached,true);assert.equal(calls,17);await client.load({force:true});assert.equal(calls,34);
- now+=M.TTL+1;await client.load();assert.equal(calls,51);
- now=Date.UTC(2026,9,18,0,0);await client.load();assert.equal(calls,68,'a new UTC date needs a new snapshot');
- const unavailable=new M.StatsClient('https://example.com',pages,async()=>({ok:false,status:503}),null,()=>now);
- assert.equal((await unavailable.load()).total,null,'outages must not become zero counts');
- const missing=new M.StatsClient('https://example.com',pages,async()=>({ok:false,status:404}),null,()=>now);
- assert.equal(await missing.count('/unknown/'),0);await assert.rejects(()=>missing.count('TOTAL'));
- const blocked={getItem(){throw Error('Disabled');},setItem(){throw Error('Disabled');}};
- assert.equal((await new M.StatsClient('https://example.com',[],fetcher,blocked,()=>now).load()).total,123);
- let active=0,peak=0;
- const pooled=await M.pool(Array.from({length:9},(_,i)=>async()=>{active++;peak=Math.max(peak,active);await new Promise(resolve=>setImmediate(resolve));active--;if(i===3)throw Error('Partial outage');return i;}));
- assert.equal(peak,4);assert.equal(pooled[3],null);assert.equal(pooled[8],8);
- console.log('Passed count semantics, zero/error handling, UTC date ranges, cached/forced snapshots, bounded requests, digit targets and secure frame sizing.');
-})().catch(error=>{console.error(error);process.exitCode=1;});
+// Snapshots: each reading is one Busuanzi visit itself, tracked by the cumulative `reads`.
+const snap=(date,site_pv,reads)=>({date,site_pv,site_uv:Math.floor(site_pv/3),reads});
+const store={snapshots:[snap('2026-10-20',100,1),snap('2026-10-21',131,2),snap('2026-10-23',160,3),snap('2026-10-24',175,4),{date:'bad',site_pv:1,site_uv:1,reads:1}]};
+const now=Date.UTC(2026,9,24,4); // 12:00 on 24 October in Beijing
+const s=M.series(store,190,now);
+assert.equal(s.today,'2026-10-24');assert.equal(s.days.length,14);assert.equal(s.days[13],'2026-10-24');assert.equal(s.days[0],'2026-10-11');
+const at=day=>s.values[s.days.indexOf(day)];
+assert.equal(at('2026-10-20'),30,'131-100 minus the next morning reading');
+assert.equal(at('2026-10-21'),null,'no snapshot for 22 October, so 21 October is unknown');
+assert.equal(at('2026-10-22'),null);assert.equal(at('2026-10-23'),14);
+assert.equal(s.todayVisits,15,'live 190 minus the 00:00 total 175');
+assert.equal(s.week,(190-4)-(100-1),'past 7 days counts from the first snapshot inside the window');
+assert.equal(at('2026-10-11'),null);assert.equal(s.tracking,'2026-10-20');
+// Without a live total (Busuanzi unreachable) past days still show; today and the week do not.
+const offline=M.series(store,null,now);assert.equal(offline.todayVisits,null);assert.equal(offline.week,null);assert.equal(offline.values[s.days.indexOf('2026-10-20')],30);
+// A stale live total below the last snapshot is ignored rather than producing negative visits.
+assert.equal(M.series(store,170,now).todayVisits,null);
+// Before tonight's snapshot exists, today is not guessed.
+assert.equal(M.series({snapshots:[snap('2026-10-23',160,1)]},170,now).todayVisits,null);
+// No snapshots yet.
+const empty=M.series({snapshots:[]},50,now);assert.equal(empty.tracking,null);assert.ok(empty.values.every(v=>v===null));assert.equal(empty.week,null);
+assert.equal(M.series(null,50,now).tracking,null);
+console.log('Passed Beijing dates, snapshot self-count correction, gaps, today, past 7 days, stale/offline live totals, digit targets and secure frame sizing.');

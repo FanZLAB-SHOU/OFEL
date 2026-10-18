@@ -1,0 +1,12 @@
+{
+  "mode": "built-in image_gen",
+  "source": "assets/people/zhuojin-jiang.jpg",
+  "asset": "assets/people/heroes/zhuojin-jiang-sunset-panorama.webp",
+  "dimensions": [
+    2172,
+    724
+  ],
+  "generated_source": "/Users/linbojun/.codex/generated_images/01a147ba-9c7b-7b33-bd0e-34345387900b/exec-1163f715-17f1-4180-8d55-f82846825d34.png",
+  "prompt": "Use case: precise-object-edit / photographic outpainting. Edit target: the attached original 3:2 sunset seaside portrait. Create one continuous 3:1 ultra-wide landscape photograph by extending the canvas ONLY TO THE LEFT. The complete original photograph must occupy the RIGHT HALF of the final 3:1 image, with exactly its existing composition and proportions, from the top of the sky through the bottom of the woman's jacket. Keep the entire original photo region unchanged: the woman's identity, left-facing profile, red baseball cap, ponytail, soft-focus dark face, clothes, visible shoulders and torso; keep the original sun, mountains, distant waterfront and sea. Do not extract or move the woman, do not zoom, crop, repaint, sharpen, beautify or enlarge her. The new LEFT HALF must be a natural continuation of the original peach-orange sky, distant mountain/waterfront horizon and detailed blue-grey ocean waves and sunset reflections. Match horizon height, perspective, exposure, color, fine wave detail and the original atmospheric softness so the join is invisible. Keep the extension believable and quiet with no added people, no additional sun, no major landmark, no repeated/mirrored buildings or repeated waves. This is a photographic panorama, not a blurred backdrop: preserve visible coast and water texture across the entire left area. No fade to a solid color, no blur panels, no vignettes, no text, no logo, no frames. Intended output: a wide web hero panorama, ideally 3840x1280, 3:1 aspect ratio. Crucial: only outpaint the left side; retain all of the original portrait on the right at unchanged proportions.",
+  "delivery": "Single 3:1 photographic panorama on desktop; original unedited 3:2 photograph on mobile and lower profile. No extracted subject layer, CSS blur, image-edge mask or flat gradient filler."
+}

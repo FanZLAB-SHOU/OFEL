@@ -396,6 +396,11 @@
             "summary": "My research focuses on tuna biology.",
             "research": [
               "Tuna biology"
+            ],
+            "scene_image": "assets/people/heroes/zhuojin-jiang-sunset-panorama.webp",
+            "scene_dimensions": [
+              2172,
+              724
             ]
           }
         },

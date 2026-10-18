@@ -358,6 +358,12 @@ for n, person in enumerate(people):
             scene_width, scene_height = hero['photo_dimensions']
             backdrop = photo(person, 'member-intro-scene-image', scene_width, scene_height,
                              priority=True, sizes='max(100vw, 150svh)')
+            if hero.get('scene_image'):
+                if not (ROOT / hero['scene_image']).is_file():
+                    raise ValueError(f'Missing extended scene for {person["name"]}')
+                panorama_width, panorama_height = hero['scene_dimensions']
+                backdrop = (f'<picture><source media="(min-width: 761px)" srcset="{esc(hero["scene_image"])}" '
+                            f'width="{panorama_width}" height="{panorama_height}">{backdrop}</picture>')
         elif tint:
             if not re.fullmatch(r'#[0-9a-fA-F]{6}', tint):
                 raise ValueError(f'Invalid portrait background color for {person["name"]}')

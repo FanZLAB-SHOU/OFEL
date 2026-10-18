@@ -58,6 +58,11 @@ for (const person of people.groups.concat(people.alumni || []).flatMap(group => 
       const scene = intro.match(/<img class="member-intro-scene-image"[^>]*>/)[0];
       assert(scene.includes(person.photo) && scene.includes('fetchpriority="high"'), 'Load the original photo for the introduction');
       assert(scene.includes(`${person.hero.photo_dimensions[0]}w`), 'Offer the full-resolution original on high-density displays');
+      if (person.hero.scene_image) {
+        const wide = intro.match(/<source media="\(min-width: 761px\)"[^>]*>/)[0];
+        assert(wide.includes(person.hero.scene_image), 'Use the extended continuous scene on desktop');
+        assert(wide.includes(`width="${person.hero.scene_dimensions[0]}"`) && wide.includes(`height="${person.hero.scene_dimensions[1]}"`), 'The panorama needs its own aspect ratio so the subject remains full height');
+      }
     }
   }
 }

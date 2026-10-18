@@ -338,9 +338,9 @@ for n, person in enumerate(people):
                      + (badge + text if side == 'prev' else text + badge) + '</a>')
     breadcrumb = (f'<nav class="breadcrumb" aria-label="Breadcrumb"><a href="{back_href}">{back_label}</a>'
                   f'<span aria-hidden="true">/</span><span aria-current="page">{name}</span></nav>')
-    # Only current members with supplied photos get the large introduction.
+    # Current members and alumni share the same large introduction when photo layers exist.
     # Keep the full existing profile below it, including bilingual bios and papers.
-    has_intro = bool(person.get('photo') and person.get('hero', {}).get('cutout')) and back_href == 'members/index.html'
+    has_intro = bool(person.get('photo') and person.get('hero', {}).get('cutout'))
     intro = ''
     if has_intro:
         hero = person['hero']

@@ -1,0 +1,13 @@
+{
+  "mode": "Built-in image_gen tool",
+  "source": "assets/people/zhuojin-jiang.jpg",
+  "notes": "Existing sunset photograph used for a transparent portrait extraction and a person-free background plate. Preserve the source's dark backlit silhouette and intentional soft focus. Original full photo remains unchanged in the lower profile. WebP delivery encodings preserve generated alpha.",
+  "assets": {
+    "cutout": "assets/people/heroes/zhuojin-jiang-cutout.webp",
+    "background": "assets/people/heroes/zhuojin-jiang-sunset-background.webp"
+  },
+  "prompts": {
+    "cutout": "Use case: background-extraction. Edit target: the supplied original sunset seaside portrait of Zhuojin Jiang. Create only a transparent foreground cutout of the SAME person in side profile looking left, wearing a dark red baseball cap with a low ponytail and dark outerwear. Preserve the exact existing silhouette, cap shape, ponytail, face contour, pose, dark backlit exposure, intentional soft focus and original bottom crop. Do not sharpen or invent facial features, do not beautify, do not relight, do not change the person's identity. Remove all sky, sunset, sea, skyline and every background pixel. Portrait canvas about 1024x1536, tightly fit the existing subject with a small transparent margin, align the bottom of the original torso crop to the bottom of the canvas. Preserve the soft photographic edges with real alpha, no baked checkerboard, no shadows, no text, no new body parts. Actual transparent background.",
+    "background": "Use case: precise-object-edit. Edit target: the supplied original sunset seaside photograph. Remove ONLY the large blurred foreground person, their cap, hair, silhouette and clothing in the right foreground, reconstructing the seawater and distant skyline naturally behind that area. Keep the SAME orange-pink sky, small setting sun near x56% y49%, distant mountains and waterfront buildings, sea surface and waves, camera angle, original 3:2 landscape composition and natural soft photographic character. No people or silhouette remnants anywhere. Preserve all existing non-person areas as faithfully as possible. This is a clean background plate for a website; do not add objects, boats, dramatic effects, text, overlays or fake depth of field. Landscape output at least 1536 pixels wide."
+  }
+}

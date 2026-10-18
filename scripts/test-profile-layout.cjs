@@ -39,4 +39,18 @@ assert(sections[1].visible && !sections[2].visible);
 window.matchMedia = () => ({matches: true}); ready = false;
 vm.runInNewContext(functionSource('initReveal') + '\ninitReveal();', {window, document});
 assert(!ready, 'Reduced motion must not hide sections behind an animation gate');
-console.log('Passed left-half portrait geometry, compact layout stability, progressive section reveals and reduced-motion checks.');
+const people = JSON.parse(fs.readFileSync(path.join(__dirname, '../assets/people.json'), 'utf8'));
+for (const person of people.groups.concat(people.alumni || []).flatMap(group => group.members)) {
+  if (person.profile_ref) continue;
+  const slug = person.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  const html = fs.readFileSync(path.join(__dirname, `../members/${slug}/index.html`), 'utf8');
+  const hasIntro = Boolean(person.photo && person.hero && person.hero.cutout);
+  assert.equal(html.includes('data-member-intro'), hasIntro, `${person.name} must use the same photo-introduction rule for members and alumni`);
+  assert.equal((html.match(/<h1[ >]/g) || []).length, 1, `${person.name} needs one main heading`);
+  if (hasIntro) {
+    assert(html.includes('data-member-hero'));
+    assert(html.indexOf('data-member-intro') < html.indexOf('class="profile-grid"'));
+    assert(html.includes('href="#member-details"') && html.includes('id="member-details"'));
+  }
+}
+console.log('Passed portrait geometry, compact layout, progressive reveals, reduced motion and shared member/alumni photo introductions.');

@@ -386,7 +386,19 @@
           "photo_alt": "Zhuojin Jiang by the sea at sunset",
           "profile_photo_aspect_ratio": "3 / 2",
           "photo_position": "100% 50%",
-          "directory_photo_position": "100% 50%"
+          "directory_photo_position": "100% 50%",
+          "hero": {
+            "cutout": "assets/people/heroes/zhuojin-jiang-cutout.webp",
+            "background_image": "assets/people/heroes/zhuojin-jiang-sunset-background.webp",
+            "background_dimensions": [
+              1536,
+              1024
+            ],
+            "summary": "My research focuses on tuna biology.",
+            "research": [
+              "Tuna biology"
+            ]
+          }
         },
         {
           "name": "Haotian Sun",

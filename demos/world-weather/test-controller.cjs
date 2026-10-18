@@ -45,5 +45,14 @@ const finish=(index,data,ok=true)=>requests[index].resolve({ok,json:async()=>dat
  nodes['city-query'].value='No such place';nodes['city-query'].events.input();const empty=nodes['city-search'].events.submit({preventDefault(){}});finish(7,{results:[]});await empty;await flush();assert.match(nodes['search-status'].textContent,/No cities found/);
  now+=11*60*1000;document.hidden=true;intervals.find(i=>i.ms===60000).fn();assert.equal(requests.length,8,'hidden pages should not fetch weather');
  document.hidden=false;document.events.visibilitychange();assert.equal(requests.length,9);finish(8,weather('Asia/Tokyo',23));await flush();assert.equal(nodes.temperature.textContent,'23°C');
- console.log('Passed demo boot, marker/card selection, stale-response protection, offline clock fallback, refresh, search, custom pin, map reset, empty search and visibility-aware weather refresh.');
+ for(const city of [{query:'hongkong',canonical:'Hong Kong',code:'HK',zone:'Asia/Hong_Kong',lat:22.27832,lon:114.17469},{query:'澳門',canonical:'Macao',code:'MO',zone:'Asia/Macau',lat:22.20056,lon:113.54611}]){
+  nodes['city-query'].value=city.query;const index=requests.length,search=nodes['city-search'].events.submit({preventDefault(){}});
+  assert.equal(new URL(requests[index].url).searchParams.get('name'),city.canonical);
+  finish(index,{results:[{id:index,name:city.canonical,country_code:city.code,latitude:city.lat,longitude:city.lon,timezone:city.zone}]});await search;await flush();
+  assert.equal(nodes['search-results'].children[0].children[0].children[1].textContent,city.canonical+', China');
+  nodes['search-results'].children[0].children[0].click();assert.equal(nodes['location-region'].textContent,city.canonical+', China');
+  assert.equal(Number(new URL(requests[index+1].url).searchParams.get('latitude')),city.lat);
+  finish(index+1,weather(city.zone,25));await flush();assert.equal(nodes.temperature.textContent,'25°C');assert.equal(nodes['zone-name'].textContent,city.zone);
+ }
+ console.log('Passed demo boot, marker/card selection, stale-response protection, offline clock fallback, refresh, search, custom pin, map reset, empty search, visibility-aware refresh and Hong Kong/Macao search-to-weather flows.');
 })().catch(e=>{console.error(e);process.exitCode=1;});

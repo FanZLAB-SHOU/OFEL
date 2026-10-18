@@ -16,6 +16,14 @@ assert.equal(M.validZone('Not/A_Real_Zone'),false);
 for(const location of M.cities){const [x,y]=M.project(location.lon,location.lat);const p=M.unproject(x,y);assert.ok(Math.abs(p.lat-location.lat)<1e-10);assert.ok(Math.abs(p.lon-location.lon)<1e-10);}
 assert.equal(M.weatherKind(0,false).icon,'moon');assert.equal(M.weatherKind(0,true).icon,'sun');assert.equal(M.weatherKind(null,true).label,'Conditions unavailable');
 assert.equal(M.searchLocation({latitude:0,longitude:0,timezone:'Invalid'}),null);
+for(const query of ['hongkong','Hong Kong','HONGKONG',' Hong-Kong ','香港','香港特別行政區'])assert.equal(M.searchQuery(query),'Hong Kong');
+for(const query of ['macao','Macau','澳门','澳門','澳門特別行政區'])assert.equal(M.searchQuery(query),'Macao');
+assert.equal(M.searchQuery('  Seattle  '),'Seattle');assert.equal(M.searchQuery('constructor'),'constructor');
+const hongkong={id:1819729,name:'Hong Kong',country_code:'HK',latitude:22.27832,longitude:114.17469,timezone:'Asia/Hong_Kong'};
+assert.equal(M.searchLocation(hongkong).country,'Hong Kong, China');
+const macao={...hongkong,id:1821274,name:'Macao',country_code:'MO',latitude:22.20056,longitude:113.54611,timezone:'Asia/Macau'};
+assert.equal(M.searchLocation(macao).country,'Macao, China');assert.equal(M.searchLocation(macao).zone,'Asia/Macau');
+assert.equal(M.searchLocation({...macao,country_code:'BR',country:'Brazil',admin1:'Rio Grande do Norte'}).country,'Rio Grande do Norte, Brazil');
 const taipei={id:1668341,name:'Taipei',admin1:'Taiwan',country:'Taiwan',country_code:'TW',country_id:1668284,latitude:25.05,longitude:121.53,timezone:'Asia/Taipei'};
 assert.equal(M.searchLocation(taipei).country,'Taiwan, China');
 const kaohsiung=M.searchLocation({...taipei,name:'Kaohsiung',admin1:'Kaohsiung',country:'API label',country_id:undefined});

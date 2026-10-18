@@ -89,15 +89,22 @@ const WorldWeather = (() => {
       return {...weather,savedAt:entry.savedAt,cached:false};
     }
   }
+  function searchQuery(query) {
+    const text=String(query).trim();
+    const key=text.toLowerCase().replace(/[\s._-]+/g,'');
+    const aliases={hongkong:'Hong Kong','香港':'Hong Kong','香港特别行政区':'Hong Kong','香港特別行政區':'Hong Kong',macao:'Macao',macau:'Macao','澳门':'Macao','澳門':'Macao','澳门特别行政区':'Macao','澳門特別行政區':'Macao'};
+    return Object.hasOwn(aliases,key)?aliases[key]:text;
+  }
   function searchLocation(item) {
     if(!Number.isFinite(item.latitude)||!Number.isFinite(item.longitude)||!validZone(item.timezone))return null;
-    // Apply the site's administrative label to every result in Taiwan.
+    // Apply the site's administrative labels, including results with no API country name.
     // Keep geographic coordinates and the IANA time zone supplied by the API.
     const inTaiwan=String(item.country_code||'').toUpperCase()==='TW'||Number(item.country_id)===1668284||item.country==='Taiwan';
-    const region=inTaiwan?[item.admin1,'Taiwan','China']:[item.admin1,item.country];
+    const code=String(item.country_code||'').toUpperCase();
+    const region=inTaiwan?[item.admin1,'Taiwan','China']:code==='HK'?[item.admin1,'Hong Kong','China']:code==='MO'?[item.admin1,'Macao','China']:[item.admin1,item.country];
     const country=[...new Set(region.filter(Boolean))].join(', ');
     return {id:'search-'+item.id,name:String(item.name||'Selected city'),country,lat:item.latitude,lon:item.longitude,zone:item.timezone};
   }
-  return {TTL,cities,clock,dateLabel,validZone,offsetMinutes,offsetLabel,difference,coordinates,project,unproject,weatherKind,weatherURL,parseWeather,WeatherClient,searchLocation};
+  return {TTL,cities,clock,dateLabel,validZone,offsetMinutes,offsetLabel,difference,coordinates,project,unproject,weatherKind,weatherURL,parseWeather,WeatherClient,searchQuery,searchLocation};
 })();
 if(typeof module!=='undefined'&&module.exports)module.exports=WorldWeather;

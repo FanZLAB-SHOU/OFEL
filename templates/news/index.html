@@ -1,6 +1,13 @@
     <section class="section detail-page blog-page" id="news" aria-labelledby="blog-title">
       <div class="container">
         <div class="page-heading"><p class="eyebrow">Lab news</p><h1 id="blog-title">News.</h1><p>News, research updates, and life in the lab.</p></div>
+        <div class="news-toolbar">
+          <div class="news-filters" role="group" aria-label="Filter news by category" hidden>{{news_filters}}</div>
+          <p class="news-count" role="status" aria-live="polite">{{news_count}} news items</p>
+        </div>
+        <div class="news-list" id="news-list">
 {{blog_posts}}
+        </div>
+        <p class="news-empty" hidden>No news items in this category yet.</p>
       </div>
     </section>

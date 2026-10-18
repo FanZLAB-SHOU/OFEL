@@ -88,6 +88,44 @@ document.addEventListener('click', event => {
 });
 window.matchMedia('(min-width: 701px)').addEventListener('change', () => setMenu(false));
 
+function initNewsFilters() {
+  const list = document.querySelector('#news-list');
+  if (!list) return;
+  const controls = document.querySelector('.news-filters');
+  const buttons = [...controls.querySelectorAll('[data-news-filter]')];
+  const items = [...list.querySelectorAll('[data-news-category]')];
+  const count = document.querySelector('.news-count');
+  const empty = document.querySelector('.news-empty');
+  const categories = new Set(buttons.map(button => button.dataset.newsFilter));
+  function fromUrl() { return new URL(location.href).searchParams.get('category') || 'all'; }
+  function select(value, updateUrl = false) {
+    if (!categories.has(value)) value = 'all';
+    let visible = 0;
+    items.forEach(item => {
+      item.hidden = value !== 'all' && item.dataset.newsCategory !== value;
+      if (!item.hidden) visible++;
+    });
+    buttons.forEach(button => {
+      const active = button.dataset.newsFilter === value;
+      button.setAttribute('aria-pressed', String(active));
+      button.classList.toggle('is-active', active);
+    });
+    count.textContent = `${visible} news item${visible === 1 ? '' : 's'}`;
+    empty.hidden = visible > 0;
+    if (updateUrl) {
+      const url = new URL(location.href);
+      if (value === 'all') url.searchParams.delete('category');
+      else url.searchParams.set('category', value);
+      history.replaceState(null, '', url.pathname + url.search + url.hash);
+    }
+  }
+  buttons.forEach(button => button.addEventListener('click', () => select(button.dataset.newsFilter, true)));
+  window.addEventListener('popstate', () => select(fromUrl()));
+  controls.hidden = false;
+  select(fromUrl());
+}
+initNewsFilters();
+
 function initPublications() {
   if (!document.querySelector('#publication-list')) return null;
   const filters = [...document.querySelectorAll('.filter-button')];

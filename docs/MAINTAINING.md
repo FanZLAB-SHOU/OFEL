@@ -44,6 +44,8 @@ python3 -m http.server 8765 --bind 127.0.0.1
 
 编辑 [`assets/research.json`](../assets/research.json)。`primary` 为 `true` 的三个方向是核心方向，其余两个为延伸研究。五个方向都会出现在首页研究轮播和研究页面中。
 
+每个方向的 `publications` 填写 2–3 个已收录论文的 DOI，由论文元数据自动显示标题、年份、期刊和作者归属。一个 DOI 只能选入一个研究方向，构建时会拒绝重复或未知 DOI。合作论文明确标注 Fan Zhang & collaborators。资源评估方向的 `software` 提供 ALSCL 的站内入口。代表论文和软件入口只在 Research Themes 内页展示，首页轮播保持简洁。
+
 顶部 Research 菜单分为 Research Themes 和 Collaborators。研究方向位于 `/research/themes/`，模板为 `templates/research/themes.html`；合作人员页面为 `/research/collaborators/`，待提供名单后在对应模板中补充。旧 `research.html` 链接由 GitHub Pages 的 404 回退跳转至 Themes，并保留研究方向的锚点。
 
 ### 成员与校友
@@ -85,6 +87,8 @@ Fan Zhang 主页的主体信息在 [`templates/members/fan-zhang.html`](../templ
 编辑 [`assets/blog.json`](../assets/blog.json)，图片放在 [`assets/news/`](../assets/news/)。
 
 每条新闻包含 `slug`、`date`、`title`、`summary` 和 `body`，可选 `image`、`image_alt`、`image_caption`、`image_position`、`image_aspect_ratio`、`people`、`paper` 与 `source`。使用真实发布日期；活动公告按活动日期归档。`people` 姓名与成员记录一致时，会链接到其主页。`body` 支持普通段落、`heading`、`figure`，以及 `details`（由 `label` / `value` 条目组成的活动信息表）。
+
+每条新闻还须填写一个 `category`，取值来自 `blog.json` 顶层的 `categories`。当前为研究成果（research）、学术交流（exchange）、课程活动（courses）、荣誉与任职（honors）。只有已有新闻的类别才显示筛选按钮。News 内页支持分类筛选及 `?category=research` 等直达链接，列表和文章均显示类别；分类不会进入首页，筛选前后新闻始终保持日期倒序。新增新闻时无需调整首页精选逻辑。
 
 News 列表的图片框为横向 3:2。需要单独构图时可填写 `thumbnail` 和 `thumbnail_position`，仅替换列表缩略图；文章中的 `image` 仍展示原海报，首页也继续按最新日期选择新闻。
 

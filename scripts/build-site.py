@@ -45,12 +45,28 @@ def direction_card(item):
     secondary = not item['primary']
     kind = ' research-item-secondary' if secondary else ''
     tag = f'<span class="research-tag">{esc(item["tag"])}</span>' if item.get('tag') else ''
+    papers = []
+    for doi in item.get('publications', []):
+        paper = papers_by_doi[doi.lower()]
+        origin = 'Lab research' if publications.is_lab_paper(paper) else 'Fan Zhang & collaborators'
+        papers.append(f'<li><a class="research-paper" href="{esc(paper["source"])}" target="_blank" rel="noopener noreferrer">'
+                      f'<span class="research-paper-meta">{paper["year"]} · {esc(paper["journal"])}</span>'
+                      f'<strong>{italicize(esc(paper["title"]))}</strong><span class="sr-only"> (opens in a new tab)</span></a>'
+                      f'<span class="research-paper-origin">{esc(origin)}</span></li>')
+    evidence = (f'<section class="research-evidence" aria-labelledby="{esc(item["slug"])}-papers">'
+                f'<h3 id="{esc(item["slug"])}-papers">Selected publications</h3><ol class="research-publications">'
+                + ''.join(papers) + '</ol>') if papers else ''
+    if item.get('software'):
+        tool = item['software']
+        evidence += f'<a class="research-software" href="{esc(tool["href"])}">{icon("paper")}{esc(tool["label"])}{icon("right")}</a>'
+    if papers:
+        evidence += '</section>'
     return (
         f'          <article class="research-item{kind}" id="{esc(item["slug"])}">'
         f'<div class="research-art"><img src="{esc(item["image"])}" alt="{esc(item["alt"])}" '
         'width="1536" height="1024" loading="lazy"></div>'
         f'<div class="research-copy"><span class="research-number">{esc(item["label"])}</span>'
-        f'<h2>{esc(item["title"])}</h2><p>{esc(item["description"])}</p>{tag}</div></article>'
+        f'<h2>{esc(item["title"])}</h2><p>{esc(item["description"])}</p>{tag}{evidence}</div></article>'
     )
 
 
@@ -77,6 +93,17 @@ carousel = ('          <div class="reel-marquee">\n'
             + '          </div>')
 blog = json.loads((ROOT / 'assets/blog.json').read_text())
 posts = sorted(blog['posts'], key=lambda p: p['date'], reverse=True)
+news_categories = blog['categories']
+for post in posts:
+    if post.get('category') not in news_categories:
+        raise ValueError(f'Choose one news category for {post["slug"]}')
+category_counts = {key: sum(post['category'] == key for post in posts) for key in news_categories}
+news_filters = ''.join(
+    f'<button type="button" class="news-filter{" is-active" if key == "all" else ""}" data-news-filter="{esc(key)}" '
+    f'aria-pressed="{str(key == "all").lower()}" aria-controls="news-list">{esc(label)} <span>{count}</span></button>'
+    for key, label, count in [('all', 'All news', len(posts))]
+    + [(key, label, category_counts[key]) for key, label in news_categories.items() if category_counts[key]]
+)
 
 
 def pretty_date(iso):
@@ -94,11 +121,12 @@ def post_url(post):
 
 
 blog_posts = '\n'.join(
-    f'        <article class="blog-post"><a class="blog-post-link" href="{esc(post_url(post))}">'
+    f'        <article class="blog-post" data-news-category="{esc(post["category"])}"><a class="blog-post-link" href="{esc(post_url(post))}">'
     + (f'<img src="{esc(post.get("thumbnail") or post["image"])}" alt="" width="1536" height="1024" loading="lazy" sizes="(max-width: 700px) calc(100vw - 40px), 320px" style="object-position: {esc(post.get("thumbnail_position", post.get("image_position", "55% 78%")))}">' if post.get('thumbnail') or post.get('image')
        else '<span class="blog-post-placeholder" aria-hidden="true"><img src="assets/ofel-mark.png" alt="" width="96" height="96"></span>')
     + f'<div><p class="eyebrow"><time datetime="{esc(post["date"])}">{esc(pretty_date(post["date"]))}</time></p>'
-    f'<h2>{italicize(esc(post["title"]))}</h2><p>{italicize(esc(post.get("summary", "")))}</p></div></a></article>'
+    f'<h2>{italicize(esc(post["title"]))}</h2><p>{italicize(esc(post.get("summary", "")))}</p>'
+    f'<span class="news-category">{esc(news_categories[post["category"]])}</span></div></a></article>'
     for post in posts
 ) if posts else '<div class="directory-empty"><p>Lab updates will appear here.</p><a class="text-link" href="research/themes.html">' + icon('fish') + 'Explore our research</a></div>'
 
@@ -155,6 +183,7 @@ def post_page(post):
         f'<span aria-current="page"><time datetime="{esc(post["date"])}">{esc(pretty_date(post["date"]))}</time></span></nav>\n'
         f'        <h1 id="news-title">{italicize(esc(post["title"]))}</h1>\n'
         f'        <p class="news-summary">{italicize(esc(post.get("summary", "")))}</p>\n'
+        f'        <a class="news-category news-category-link" href="news/index.html?category={esc(post["category"])}">{esc(news_categories[post["category"]])}</a>\n'
         + (f'        <p class="news-people">Lab members: {people_links}</p>\n' if people_links else '')
         + f'        {image}\n        <div class="news-body">{body}</div>\n'
         + (f'        {paper_html}\n' if paper_html else '')
@@ -168,6 +197,16 @@ _spec = importlib.util.spec_from_file_location('publications', ROOT / 'scripts/b
 publications = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(publications)
 pubs = publications.page_records()
+papers_by_doi = {paper['doi'].lower(): paper for paper in pubs}
+selected_dois = set()
+for direction in directions:
+    for doi in direction.get('publications', []):
+        key = doi.lower()
+        if key not in papers_by_doi:
+            raise ValueError(f'Unknown selected publication for {direction["slug"]}: {doi}')
+        if key in selected_dois:
+            raise ValueError(f'Select each publication under only one research direction: {doi}')
+        selected_dois.add(key)
 lab_pubs = [p for p in pubs if publications.is_lab_paper(p)]
 recent = lab_pubs or sorted(pubs, key=lambda p: (p['year'], p.get('date', '')), reverse=True)
 
@@ -233,6 +272,8 @@ def reference_card(item, professional=False):
 
 reference_materials = json.loads((ROOT / 'assets/reference-materials.json').read_text())
 tokens = {
+    '{{news_filters}}': news_filters,
+    '{{news_count}}': str(len(posts)),
     '{{professional_links}}': '\n'.join(reference_card(item, True) for item in reference_materials['professional_links']),
     '{{international_organizations}}': '\n'.join(reference_card(item) for item in reference_materials['international_organizations']),
     '{{gateway_cards}}': gateway_cards,

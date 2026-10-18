@@ -42,7 +42,8 @@
       "source": {
         "label": "Original scholarship profile (in Chinese), Graduate Student Union, College of Marine Living Resource Sciences and Management, Shanghai Ocean University",
         "url": "https://mp.weixin.qq.com/s/O1kKHYdJEjQPs7OXUEkvSg"
-      }
+      },
+      "category": "honors"
     },
     {
       "slug": "2026-09-semelparous-assessment",
@@ -98,7 +99,8 @@
         "url": "https://hyxy.shou.edu.cn/2026/0921/c7379a355597/page.htm"
       },
       "note": "The figure is reproduced from the published article with credit; the authors hold copyright (© 2026 The Authors).",
-      "image_position": "50% 45%"
+      "image_position": "50% 45%",
+      "category": "research"
     },
     {
       "slug": "2026-08-ais-data-quality",
@@ -152,7 +154,8 @@
         "label": "Original news (in Chinese), College of Marine Living Resource Sciences and Management, Shanghai Ocean University",
         "url": "https://hyxy.shou.edu.cn/2026/0819/c7379a354829/page.htm"
       },
-      "note": "Figure reproduced under the article's CC BY 4.0 licence with credit."
+      "note": "Figure reproduced under the article's CC BY 4.0 licence with credit.",
+      "category": "research"
     },
     {
       "slug": "2026-04-el-nino-jumbo-squid",
@@ -207,7 +210,8 @@
         "label": "Original news (in Chinese), College of Marine Living Resource Sciences and Management, Shanghai Ocean University",
         "url": "https://hyxy.shou.edu.cn/2026/0420/c7379a352061/page.htm"
       },
-      "note": "Figure reproduced unchanged under the article's CC BY-NC-ND 4.0 licence with credit."
+      "note": "Figure reproduced unchanged under the article's CC BY-NC-ND 4.0 licence with credit.",
+      "category": "research"
     },
     {
       "slug": "2026-04-tuna-assessment-uncertainty",
@@ -253,7 +257,8 @@
         "url": "https://hyxy.shou.edu.cn/2026/0403/c7379a351620/page.htm"
       },
       "image": "assets/news/2026-04-tuna-uncertainty/cover.webp",
-      "image_position": "45% 30%"
+      "image_position": "45% 30%",
+      "category": "research"
     },
     {
       "slug": "2025-07-iccat-wgsam-chair",
@@ -280,7 +285,8 @@
       },
       "image": "assets/news/2025-07-iccat/meeting.jpg",
       "image_position": "50% 50%",
-      "image_aspect_ratio": "4496 / 3000"
+      "image_aspect_ratio": "4496 / 3000",
+      "category": "honors"
     },
     {
       "slug": "2025-10-spc-tuna-seminar",
@@ -344,7 +350,8 @@
       "source": {
         "label": "Original seminar announcement (English and Chinese)",
         "url": "https://mp.weixin.qq.com/s/m7SY2mmB6LFyVrjMTIpDfw"
-      }
+      },
+      "category": "exchange"
     },
     {
       "slug": "2026-04-mse-course",
@@ -387,7 +394,14 @@
         }
       ],
       "thumbnail": "assets/news/2026-04-mse-course/andre-punt-thumbnail.png",
-      "thumbnail_position": "50% 50%"
+      "thumbnail_position": "50% 50%",
+      "category": "courses"
     }
-  ]
+  ],
+  "categories": {
+    "research": "Research updates",
+    "exchange": "Academic exchange",
+    "courses": "Courses & workshops",
+    "honors": "Honors & appointments"
+  }
 }

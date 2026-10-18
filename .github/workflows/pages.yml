@@ -39,6 +39,10 @@ jobs:
         run: python3 scripts/check-site.py
       - name: Check sitemap and sharing metadata
         run: python3 scripts/check-sharing.py
+      - name: Check News categories and research links
+        run: |
+          python3 scripts/check-editorial-links.py
+          node scripts/test-news-filters.cjs
       - name: Check publication search and citations
         run: |
           python3 scripts/test-publication-citations.py

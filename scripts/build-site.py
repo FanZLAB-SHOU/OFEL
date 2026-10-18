@@ -305,6 +305,10 @@ for name, (title, description, nav) in PAGES.items():
     head = render_head(title, description, BASE + clean_url(PAGE_PATHS[name]), asset_version(),
                        **({'image':'assets/people/fan-zhang.jpg','image_alt':'Fan Zhang at an outdoor venue','kind':'profile'}
                           if name=='fan-zhang' else {}))
+    if name == 'fan-zhang':
+        profile_css = 'assets/styles/faculty-ui.css'
+        version = hashlib.sha256((ROOT / profile_css).read_bytes()).hexdigest()[:10]
+        head = head.replace('</head>', f'  <link rel="stylesheet" href="{profile_css}?v={version}">\n</head>')
     content = expand((TEMPLATES / PAGE_PATHS[name]).read_text())
     for token, value in tokens.items():
         content = content.replace(token, value)

@@ -1,0 +1,175 @@
+/* Single-page UI trial. Loaded only on Fan Zhang's profile. */
+body[data-page="fan-zhang"] {
+  --ui-font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --ui-radius-sm: 14px;
+  --ui-radius-md: 20px;
+  --ui-radius-lg: 28px;
+  --ui-radius-pill: 999px;
+  --ui-border: #dce5ee;
+  --ui-surface: #fff;
+  --ui-canvas: #f6f8fb;
+  --ui-shadow: 0 8px 28px rgba(20, 48, 78, .055);
+  font-family: var(--ui-font);
+  font-weight: 450;
+  background: var(--ui-canvas);
+}
+body[data-page="fan-zhang"] :is(h1, h2, h3, h4, button, input, select, textarea) {
+  font-family: var(--ui-font);
+}
+body[data-page="fan-zhang"] :is(h1, h2, h3, h4) { font-weight: 700; }
+body[data-page="fan-zhang"] .icon { stroke-width: 1.8; }
+body[data-page="fan-zhang"] .site-header { border-bottom-color: #e3eaf2; }
+body[data-page="fan-zhang"] .brand strong { font-weight: 750; }
+body[data-page="fan-zhang"] .nav-submenu {
+  border-radius: var(--ui-radius-md);
+  box-shadow: 0 14px 42px rgba(20, 48, 78, .13);
+}
+body[data-page="fan-zhang"] :is(.nav-contact, .menu-toggle) { border-radius: var(--ui-radius-pill); }
+
+body[data-page="fan-zhang"] .faculty-hero { background: var(--ui-canvas); }
+body[data-page="fan-zhang"] .faculty-intro h1 {
+  font-size: clamp(56px, 6.4vw, 88px);
+  line-height: 1.08;
+  font-weight: 750;
+  letter-spacing: -.05em;
+}
+body[data-page="fan-zhang"] .faculty-intro h1 span { font-family: var(--ui-font); font-weight: 600; }
+body[data-page="fan-zhang"] .faculty-title { font-size: 18px; }
+body[data-page="fan-zhang"] .faculty-affiliation { font-weight: 500; }
+body[data-page="fan-zhang"] .faculty-bio { font-size: 17px; line-height: 1.85; }
+body[data-page="fan-zhang"] .faculty-actions { gap: 12px; }
+body[data-page="fan-zhang"] .faculty-actions :is(.button, .faculty-contact) {
+  min-height: 48px;
+  padding: 12px 19px;
+  border-radius: var(--ui-radius-pill);
+  font-family: var(--ui-font);
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1.5;
+}
+body[data-page="fan-zhang"] .faculty-contact {
+  border: 1px solid #cbd9e6;
+  background: var(--ui-surface);
+}
+body[data-page="fan-zhang"] .faculty-contact:hover { border-color: #8eacc6; background: #edf4fa; }
+body[data-page="fan-zhang"] .faculty-profile-links {
+  gap: 9px;
+  margin-top: 25px;
+  padding-top: 0;
+  border-top: 0;
+}
+body[data-page="fan-zhang"] .faculty-profile-links a {
+  min-height: 42px;
+  padding: 9px 12px;
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius-pill);
+  background: var(--ui-surface);
+  color: #3c566e;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+}
+body[data-page="fan-zhang"] .faculty-profile-links a:hover { background: #eaf2f9; border-color: #aac2d7; }
+body[data-page="fan-zhang"] .faculty-photo {
+  padding: 10px;
+  border: 1px solid #e1e8f0;
+  border-radius: var(--ui-radius-lg);
+  background: var(--ui-surface);
+  box-shadow: var(--ui-shadow);
+}
+body[data-page="fan-zhang"] .faculty-photo > img { border-radius: var(--ui-radius-md); }
+body[data-page="fan-zhang"] .faculty-photo figcaption { margin-top: 0; padding: 17px 12px 9px; border-left: 0; }
+body[data-page="fan-zhang"] .faculty-photo figcaption span { font-size: 13px; font-weight: 700; }
+body[data-page="fan-zhang"] .faculty-photo figcaption small { font-size: 11px; font-weight: 500; }
+
+body[data-page="fan-zhang"] .faculty-research { background: var(--ui-surface); }
+body[data-page="fan-zhang"] .faculty-research h2 { font-size: clamp(32px, 3vw, 43px); line-height: 1.18; letter-spacing: -.035em; }
+body[data-page="fan-zhang"] .faculty-research-intro > p:not(.eyebrow) { font-weight: 450; }
+body[data-page="fan-zhang"] .faculty-interests { display: flex; flex-wrap: wrap; gap: 8px; margin: 23px 0 14px; }
+body[data-page="fan-zhang"] .faculty-interests li {
+  padding: 8px 12px;
+  border: 0;
+  border-radius: var(--ui-radius-pill);
+  background: #edf3f9;
+  color: #365672;
+  font-size: 12px;
+  font-weight: 550;
+  line-height: 1.6;
+}
+body[data-page="fan-zhang"] .faculty-work-heading { border-bottom: 0; padding-bottom: 16px; }
+body[data-page="fan-zhang"] .faculty-work-heading h3 { font-size: 12px; letter-spacing: .04em; }
+body[data-page="fan-zhang"] .faculty-work-heading > a { font-weight: 600; }
+body[data-page="fan-zhang"] .faculty-paper-list { display: grid; gap: 13px; }
+body[data-page="fan-zhang"] .faculty-paper-list > li {
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius-md);
+  background: var(--ui-surface);
+  box-shadow: 0 3px 14px rgba(20, 48, 78, .025);
+}
+body[data-page="fan-zhang"] .faculty-paper {
+  padding: 22px 24px;
+  border-radius: inherit;
+  transition: background .2s;
+}
+body[data-page="fan-zhang"] .faculty-paper:hover { background: #f3f8fc; }
+body[data-page="fan-zhang"] .faculty-paper-meta { color: #52677d; font-weight: 550; }
+body[data-page="fan-zhang"] .faculty-paper h4 {
+  font-family: var(--ui-font);
+  font-size: 20px;
+  line-height: 1.45;
+  font-weight: 650;
+  letter-spacing: -.02em;
+}
+body[data-page="fan-zhang"] .faculty-paper:hover h4 { text-decoration: none; }
+body[data-page="fan-zhang"] .faculty-paper-read { margin-top: 15px; font-size: 12px; font-weight: 650; }
+
+body[data-page="fan-zhang"] .faculty-background { background: var(--ui-canvas); border-top-color: #e6edf4; }
+body[data-page="fan-zhang"] .faculty-background-grid { gap: 24px; }
+body[data-page="fan-zhang"] .faculty-background-grid > section {
+  padding: 29px 30px 13px;
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius-lg);
+  background: var(--ui-surface);
+  box-shadow: var(--ui-shadow);
+}
+body[data-page="fan-zhang"] .faculty-background h2 { font-size: 30px; line-height: 1.2; letter-spacing: -.035em; }
+body[data-page="fan-zhang"] :is(.faculty-role-list, .faculty-education-list) { margin-top: 24px; }
+body[data-page="fan-zhang"] :is(.faculty-role-list > div, .faculty-education-list li) { border-top-color: #e4ebf2; }
+body[data-page="fan-zhang"] .faculty-role-list dd strong { font-weight: 650; }
+body[data-page="fan-zhang"] .faculty-education-list h3 { font-size: 15px; font-weight: 650; }
+body[data-page="fan-zhang"] .faculty-education-list li > span { font-weight: 600; }
+body[data-page="fan-zhang"] .site-footer { background: var(--ui-surface); border-top: 1px solid #e1e9f1; }
+body[data-page="fan-zhang"] .footer-top > a:last-child {
+  padding: 9px 15px;
+  min-height: 44px;
+  border-radius: var(--ui-radius-pill);
+  background: #edf3f9;
+  font-weight: 600;
+}
+@media (max-width: 1100px) {
+  body[data-page="fan-zhang"] .faculty-background-grid > section { padding: 25px 23px 10px; }
+}
+@media (max-width: 960px) {
+  body[data-page="fan-zhang"] .faculty-photo { max-width: 680px; justify-self: start; }
+}
+@media (max-width: 700px) {
+  body[data-page="fan-zhang"] .faculty-intro h1 { font-size: clamp(48px, 12vw, 64px); letter-spacing: -.045em; }
+  body[data-page="fan-zhang"] .faculty-title { font-size: 17px; }
+  body[data-page="fan-zhang"] .faculty-bio { font-size: 16px; }
+  body[data-page="fan-zhang"] .faculty-actions { gap: 10px; }
+  body[data-page="fan-zhang"] .faculty-actions :is(.button, .faculty-contact) { font-size: 12px; padding-inline: 16px; }
+  body[data-page="fan-zhang"] .faculty-profile-links { gap: 8px; }
+  body[data-page="fan-zhang"] .faculty-profile-links a { padding-inline: 11px; }
+  body[data-page="fan-zhang"] .faculty-photo { padding: 8px; border-radius: 24px; }
+  body[data-page="fan-zhang"] .faculty-photo > img { border-radius: 17px; }
+  body[data-page="fan-zhang"] .faculty-photo figcaption { padding: 15px 10px 9px; }
+  body[data-page="fan-zhang"] .faculty-research h2 { font-size: 32px; }
+  body[data-page="fan-zhang"] .faculty-paper { padding: 20px; }
+  body[data-page="fan-zhang"] .faculty-paper h4 { font-size: 18px; }
+  body[data-page="fan-zhang"] .faculty-background-grid { gap: 20px; }
+  body[data-page="fan-zhang"] .faculty-background-grid > section { padding: 25px 20px 9px; border-radius: 24px; }
+  body[data-page="fan-zhang"] .faculty-background h2 { font-size: 28px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body[data-page="fan-zhang"] .faculty-paper { transition: none; }
+}

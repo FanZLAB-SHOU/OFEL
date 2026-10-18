@@ -42,6 +42,8 @@ python3 -m http.server 8765 --bind 127.0.0.1
 
 ### Fan Zhang 个人页
 
+当前先在 Fan Zhang 个人页试用系统字体与圆角 UI：独立样式 `assets/styles/faculty-ui.css` 仅在该页加载，选择器限定 `body[data-page="fan-zhang"]`。系统无衬线字体直接使用访客设备字体；标题使用 650–750 字重，照片及内容面板使用 20–28px 圆角，按钮和资料入口使用胶囊形状。该样式单独按内容哈希更新缓存，不改变其他页面。全站推广前先确认这一页的视觉效果。
+
 源文件为 `templates/members/fan-zhang.html`，样式使用 `faculty-` 前缀，避免影响其他成员页。保留 `#people` 和 `#principal-investigator` 原锚点。姓名仅出现一个主标题，职称加粗，联系按钮跳转联系页选择邮箱。ICCAT 的链接放在组织全称上。代表论文在 `scripts/build-site.py` 的 `faculty_dois` 中指定，标题、年份和期刊由现有论文库读取；只选择实验室成员／校友一作且 Fan Zhang 参与，或 Fan Zhang 本人一作的论文，排除外部合作者一作的论文，构建时校验这一条件。不在模板中手工复制论文信息。更换照片时保持完整人物可见，并检查桌面及手机的 `object-position`。
 
 ### 联系与到访

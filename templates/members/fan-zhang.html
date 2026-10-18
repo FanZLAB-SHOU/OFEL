@@ -1,10 +1,51 @@
+    <section class="fz-hero" aria-labelledby="fz-hero-name" data-fz-hero>
+      <div class="fz-stage fz-stage-back" data-fz-stage><div class="fz-settle">
+        <img class="fz-layer" src="assets/faculty/fan-zhang-hero.webp" alt="Fan Zhang in front of a window overlooking the water" width="1920" height="1440" fetchpriority="high">
+      </div></div>
+      <div class="fz-hero-shade" aria-hidden="true"></div>
+      <p class="fz-bubble" aria-live="polite"><span data-fz-bubble>Hi, I’m Fan Zhang.</span><i aria-hidden="true"></i></p>
+      <div class="fz-hero-center">
+        <form class="fz-search" role="search" data-fz-search>
+          <label class="sr-only" for="fz-q">Ask about Fan Zhang</label>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
+          <input id="fz-q" type="search" autocomplete="off" placeholder="Ask about research, publications, education…" data-fz-input>
+          <button type="submit" aria-label="Show answer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></button>
+        </form>
+      </div>
+      <div class="fz-stage fz-stage-front" data-fz-stage aria-hidden="true"><div class="fz-settle">
+        <img class="fz-layer" src="assets/faculty/fan-zhang-hero-cutout.webp" alt="" width="1920" height="1440" fetchpriority="high">
+      </div></div>
+      <div class="fz-chips-wrap" data-fz-chips>
+        <div class="fz-chips" role="group" aria-label="Explore Fan Zhang’s profile">
+          <button type="button" data-fz-open="research">Research</button>
+          <button type="button" data-fz-open="publications">Publications</button>
+          <button type="button" data-fz-open="education">Education</button>
+          <button type="button" data-fz-open="service">Academic service</button>
+          <button type="button" data-fz-open="contact">Contact</button>
+        </div>
+      </div>
+      <div class="fz-hero-id">
+        <p class="fz-hero-kicker">Shanghai Ocean University · OFEL</p>
+        <h1 id="fz-hero-name">Fan Zhang<span>PhD</span></h1>
+        <p>Professor &amp; Doctoral Supervisor</p>
+      </div>
+      <a class="fz-scroll" href="#principal-investigator">Scroll<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>
+      <div class="fz-card-layer" data-fz-layer hidden>
+        <article class="fz-card" role="dialog" aria-modal="true" aria-labelledby="fz-card-title" tabindex="-1" data-fz-card>
+          <header><p class="fz-card-kicker" data-fz-kicker></p><h2 id="fz-card-title" data-fz-title></h2>
+            <button type="button" class="fz-card-close" aria-label="Close" data-fz-close><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></header>
+          <div class="fz-card-body" data-fz-body></div>
+        </article>
+      </div>
+    </section>
+
     <section class="faculty-hero" id="people" aria-labelledby="pi-page-title">
       <div class="container">
         <nav class="faculty-breadcrumb" aria-label="Breadcrumb"><a href="members/index.html">People</a><span aria-hidden="true">/</span><span>Faculty</span></nav>
         <div class="faculty-hero-grid" id="principal-investigator">
-          <div class="faculty-intro">
+          <div class="faculty-intro" data-reveal>
             <p class="eyebrow">Shanghai Ocean University</p>
-            <h1 id="pi-page-title">Fan Zhang<span>PhD</span></h1>
+            <h2 id="pi-page-title" class="faculty-name">Fan Zhang<span>PhD</span></h2>
             <p class="faculty-title"><strong>Professor &amp; Doctoral Supervisor</strong></p>
             <p class="faculty-affiliation">College of Marine Living Resource Sciences and Management</p>
             <p class="faculty-bio">Fan Zhang studies fish population dynamics, fisheries stock assessment, and fisheries management. He joined Shanghai Ocean University in 2021 after completing his PhD in Integrative Biology at the University of Guelph.</p>
@@ -15,15 +56,15 @@
               <a href="https://www.researchgate.net/profile/Fan-Zhang-31" target="_blank" rel="noopener noreferrer"><img class="profile-brand-icon" src="assets/brands/researchgate.svg" alt="" width="24" height="24">ResearchGate<span class="sr-only"> (opens in a new tab)</span></a>
             </div>
           </div>
-          <figure class="faculty-photo"><img src="assets/people/fan-zhang.jpg" alt="Fan Zhang standing beside the arched galleries of an outdoor venue" width="5712" height="4284" fetchpriority="high" sizes="(max-width: 700px) max(calc(100vw - 40px), 560px), (max-width: 960px) 720px, 800px"><figcaption><span>Fan Zhang Lab</span><small>Oceanic Fisheries Ecosystem Laboratory</small></figcaption></figure>
+          <figure class="faculty-photo" data-reveal style="--reveal-delay: .12s"><img src="assets/people/fan-zhang.jpg" alt="Fan Zhang standing beside the arched galleries of an outdoor venue" width="5712" height="4284" loading="lazy" sizes="(max-width: 700px) max(calc(100vw - 40px), 560px), (max-width: 960px) 720px, 800px"><figcaption><span>Fan Zhang Lab</span><small>Oceanic Fisheries Ecosystem Laboratory</small></figcaption></figure>
         </div>
       </div>
     </section>
 
     <section class="faculty-research section" id="faculty-research" aria-labelledby="faculty-research-title">
       <div class="container faculty-research-grid">
-        <div class="faculty-research-intro"><p class="eyebrow">Research</p><h2 id="faculty-research-title">Populations,<br>assessment &amp;<br>management.</h2><p>Understanding how fish populations change, how we assess them, and how that evidence informs fisheries decisions.</p><ul class="faculty-interests"><li>Fish population dynamics</li><li>Fisheries stock assessment</li><li>Fisheries management</li></ul><a class="text-link" href="research/themes.html">Explore the lab’s research {{icon:right}}</a></div>
-        <div class="faculty-selected-work"><div class="faculty-work-heading"><h3>Selected publications</h3><a href="publications.html#publications-fan-zhang">All publications {{icon:right}}</a></div><ol class="faculty-paper-list">
+        <div class="faculty-research-intro" data-reveal><p class="eyebrow">Research</p><h2 id="faculty-research-title">Populations,<br>assessment &amp;<br>management.</h2><p>Understanding how fish populations change, how we assess them, and how that evidence informs fisheries decisions.</p><ul class="faculty-interests"><li>Fish population dynamics</li><li>Fisheries stock assessment</li><li>Fisheries management</li></ul><a class="text-link" href="research/themes.html">Explore the lab’s research {{icon:right}}</a></div>
+        <div class="faculty-selected-work" data-reveal style="--reveal-delay: .12s"><div class="faculty-work-heading"><h3>Selected publications</h3><a href="publications.html#publications-fan-zhang">All publications {{icon:right}}</a></div><ol class="faculty-paper-list">
 {{faculty_selected_papers}}
         </ol></div>
       </div>
@@ -31,12 +72,12 @@
 
     <section class="faculty-background section" aria-label="Academic service and education">
       <div class="container faculty-background-grid">
-        <section id="faculty-service" aria-labelledby="faculty-service-title"><p class="eyebrow">Professional roles</p><h2 id="faculty-service-title">Academic service.</h2><dl class="faculty-role-list">
+        <section id="faculty-service" data-reveal aria-labelledby="faculty-service-title"><p class="eyebrow">Professional roles</p><h2 id="faculty-service-title">Academic service.</h2><dl class="faculty-role-list">
           <div><dt>ICCAT</dt><dd><strong>Chief Scientist for China</strong><a href="https://www.iccat.int/en/" target="_blank" rel="noopener noreferrer">International Commission for the Conservation of Atlantic Tunas {{icon:right}}<span class="sr-only"> (opens in a new tab)</span></a></dd></div>
           <div><dt>Editor</dt><dd><strong>Associate Editor</strong><a href="https://cdnsciencepub.com/journal/cjfas" target="_blank" rel="noopener noreferrer"><em>Canadian Journal of Fisheries and Aquatic Sciences</em> {{icon:right}}<span class="sr-only"> (opens in a new tab)</span></a></dd></div>
           <div><dt>Board</dt><dd><strong>Editorial Board Member</strong><a href="https://link.springer.com/journal/42995" target="_blank" rel="noopener noreferrer"><em>Marine Life Science &amp; Technology</em> {{icon:right}}<span class="sr-only"> (opens in a new tab)</span></a></dd></div>
         </dl></section>
-        <section id="faculty-education" aria-labelledby="faculty-education-title"><p class="eyebrow">Education</p><h2 id="faculty-education-title">Academic training.</h2><ol class="faculty-education-list">
+        <section id="faculty-education" data-reveal style="--reveal-delay: .12s" aria-labelledby="faculty-education-title"><p class="eyebrow">Education</p><h2 id="faculty-education-title">Academic training.</h2><ol class="faculty-education-list">
           <li><span>2011–2015</span><div><h3>PhD, Integrative Biology</h3><p>University of Guelph, Canada</p></div></li>
           <li><span>2009–2011</span><div><h3>Master’s, Fisheries Resources</h3><p>Ocean University of China</p></div></li>
           <li><span>2005–2009</span><div><h3>Bachelor’s, Marine Biological Resources &amp; Environment</h3><p>Ocean University of China</p></div></li>

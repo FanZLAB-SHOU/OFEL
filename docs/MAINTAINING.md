@@ -48,6 +48,8 @@ python3 -m http.server 8765 --bind 127.0.0.1
 
 调整共享 UI 后运行完整构建、链接和交互检查。保持 `hidden` 筛选规则、手机导航、键盘焦点、减少动态效果设置以及原有图片比例／取景位置；不要用全局圆角规则裁切官方 logo 或改变照片为圆形。
 
+页面顶部是全屏首屏：背景照片 `assets/faculty/fan-zhang-hero.webp` 与人物抠像 `assets/faculty/fan-zhang-hero-cutout.webp`（两张同尺寸、逐像素对齐）分两层叠放，磨砂搜索框从人物身后穿过；桌面端人物在最上层，手机端搜索框和选项在人物前面。脚本 `initFacultyHero`（`script.js`）按照片的裁切位置计算搜索框、选项和对话框的位置，所以窗口大小变化时仍对准人物。对话框平时只显示 “Hi, I’m Fan Zhang.”；点击 Research、Publications、Education、Academic service、Contact 或在搜索框输入关键词回车，会弹出对应卡片并由对话框回答一句，卡片内容直接取自页面下方各部分，不另存一份。首屏期间导航栏透明、白字，滚过首屏后恢复白色导航栏。往下的原版式各部分带 `data-reveal`，与首页一样逐渐显现；页面只有首屏一个 `h1`，下方姓名为 `h2.faculty-name`。更换首屏照片时需重新抠像并调整脚本中的人物坐标（`P`）。样式在 `assets/styles/site-ui.css` 的 `.fz-` 部分。
+
 源文件为 `templates/members/fan-zhang.html`，样式使用 `faculty-` 前缀，避免影响其他成员页。保留 `#people` 和 `#principal-investigator` 原锚点。姓名仅出现一个主标题，职称加粗，联系按钮跳转联系页选择邮箱。ICCAT 的链接放在组织全称上。代表论文在 `scripts/build-site.py` 的 `faculty_dois` 中指定，标题、年份和期刊由现有论文库读取；只选择实验室成员／校友一作且 Fan Zhang 参与，或 Fan Zhang 本人一作的论文，排除外部合作者一作的论文，构建时校验这一条件。不在模板中手工复制论文信息。更换照片时保持完整人物可见，并检查桌面及手机的 `object-position`。
 
 ### 联系与到访

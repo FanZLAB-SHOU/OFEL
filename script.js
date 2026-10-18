@@ -396,5 +396,122 @@ function initContactEmail() {
   });
 }
 initContactEmail();
+// Fan Zhang profile hero: keeps the cut-out portrait, search bar and bubble aligned to the photo,
+// answers topic chips and search with cards built from the sections below, and floats the header over the hero.
+function initFacultyHero() {
+  const hero = document.querySelector('[data-fz-hero]');
+  if (!hero) return;
+  // Keep the person, bar and bubble locked together at any screen size.
+  const stages = [...hero.querySelectorAll('[data-fz-stage]')];
+  const center = hero.querySelector('.fz-hero-center'), chipsWrap = hero.querySelector('[data-fz-chips]'), bubbleBox = hero.querySelector('.fz-bubble');
+  const P = { headX: .39, headRight: .47, headTop: .223, chest: .63, personRight: .645, cx: .4, cy: .6 };
+  function layout() {
+    const W = hero.clientWidth, H = hero.clientHeight, mobile = W < 760, headerH = document.querySelector('.site-header').offsetHeight;
+    const px = mobile ? .26 : .5, py = mobile ? .5 : .18, s = 1;
+    const Dw = Math.max(W, H * 4 / 3), Dh = Dw * 3 / 4, ox = (W - Dw) * px, oy = (H - Dh) * py;
+    const pt = (u, v) => [ox + u * Dw, oy + v * Dh];
+    const [Ox, Oy] = pt(P.cx, P.cy);
+    const map = ([x, y]) => [Ox + s * (x - Ox), Oy + s * (y - Oy)];
+    stages.forEach(st => { st.style.transformOrigin = `${Ox}px ${Oy}px`; st.style.transform = `scale(${s})`; });
+    hero.querySelectorAll('.fz-layer').forEach(img => { img.style.objectPosition = `${px * 100}% ${py * 100}%`; });
+    const [hx, ht] = map(pt(P.headX, P.headTop)), [, cy] = map(pt(P.headX, P.chest)), [hr] = map(pt(P.headRight, P.headTop)), [hl] = map(pt(.3, P.headTop));
+    // Wide bar behind the person; typing starts just right of the shoulder so it stays visible.
+    const [pr] = map(pt(P.personRight, P.chest));
+    const bar = mobile ? W - 40 : Math.min(1160, W - 120), cx = W / 2;
+    center.style.width = `${bar}px`;
+    center.style.left = `${cx}px`;
+    const input = center.querySelector('input');
+    input.style.paddingLeft = mobile ? '0px' : `${Math.max(0, pr - (cx - bar / 2) - 52)}px`;
+    chipsWrap.style.paddingLeft = '0px';
+    if (mobile) { chipsWrap.style.left = `${cx}px`; chipsWrap.style.width = `${bar}px`; }
+    else { const l = pr + 28, r = W - 40; chipsWrap.style.left = `${(l + r) / 2}px`; chipsWrap.style.width = `${r - l}px`; }
+    center.style.top = `${cy}px`;
+    chipsWrap.style.top = `${cy + (mobile ? 40 : 48)}px`;
+    hero.style.setProperty('--header-height', `${headerH}px`);
+    hero.style.setProperty('--fz-card-max', `${mobile ? Math.round(H * .5) : Math.max(260, H - headerH - 220)}px`);
+    // Bubble beside the head on the window side, kept on screen.
+    const bw = bubbleBox.offsetWidth, bh = bubbleBox.offsetHeight;
+    const left = mobile ? Math.min(W - bw - 12, Math.max(12, hx - bw * .2)) : Math.max(16, hl - bw - 28);
+    const [, eyeY] = map(pt(P.headX, .36));
+    const top = mobile ? Math.max(headerH + 8, ht - bh - 14) : Math.max(headerH + 12, eyeY - bh * .9);
+    bubbleBox.classList.toggle('is-left', !mobile);
+    bubbleBox.style.left = `${left}px`; bubbleBox.style.top = `${top}px`;
+  }
+  layout(); addEventListener('resize', layout); new ResizeObserver(layout).observe(bubbleBox);
+  const header = document.querySelector('.site-header');
+  const past = () => header.classList.toggle('is-past', hero.getBoundingClientRect().bottom <= header.offsetHeight + 1);
+  addEventListener('scroll', past, { passive: true }); past();
+  // Speech bubble: a short introduction; each topic gets a one-line reply.
+  const bubble = hero.querySelector('[data-fz-bubble]');
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const INTRO = 'Hi, I’m Fan Zhang.';
+  const REPLY = { research: 'My work: population dynamics, stock assessment and fisheries management.',
+                  publications: 'Here are a few of my recent papers.',
+                  education: 'I did my PhD in Integrative Biology at the University of Guelph.',
+                  service: 'I’m China’s Chief Scientist at ICCAT and an associate editor of CJFAS.',
+                  contact: 'Thinking of joining or visiting the lab? Email me.' };
+  let typing = 0;
+  function say(text) {
+    const id = ++typing;
+    if (still) { bubble.textContent = text; layout(); return; }
+    let i = 0; bubble.textContent = '';
+    const step = () => { if (id !== typing) return; bubble.textContent = text.slice(0, ++i); layout(); if (i < text.length) setTimeout(step, 24); };
+    step();
+  }
+  setTimeout(() => say(INTRO), still ? 0 : 900);
+  // Cards are built from the sections further down, so there is one source of truth.
+  const q = s => document.querySelector(s);
+  const clone = s => { const el = q(s); return el ? el.cloneNode(true) : null; };
+  const link = (href, text) => { const a = document.createElement('a'); a.className = 'fz-card-more'; a.href = href; a.textContent = text + ' →'; return a; };
+  const para = text => { const p = document.createElement('p'); p.textContent = text; return p; };
+  const cards = {
+    research: { kicker: 'Research', title: 'Populations, assessment & management', build: () => {
+      const intro = q('.faculty-research-intro'); const out = [];
+      if (intro) { out.push(para(intro.querySelector('p:not(.eyebrow)').textContent)); out.push(clone('.faculty-interests')); }
+      out.push(link(q('.faculty-research-intro .text-link').getAttribute('href'), 'Explore the lab’s research')); return out; } },
+    publications: { kicker: 'Publications', title: 'Selected papers', build: () => {
+      const list = clone('.faculty-paper-list'); [...list.children].slice(3).forEach(li => li.remove());
+      return [list, link(q('.faculty-work-heading a').getAttribute('href'), 'All publications')]; } },
+    education: { kicker: 'Education', title: 'Academic training', build: () => [clone('.faculty-education-list')] },
+    service: { kicker: 'Professional roles', title: 'Academic service', build: () => [clone('.faculty-role-list')] },
+    contact: { kicker: 'Contact', title: 'Get in touch', build: () => {
+      const a = document.createElement('a'); a.href = 'mailto:f-zhang@shou.edu.cn'; a.textContent = 'f-zhang@shou.edu.cn';
+      const p = para('Graduate study, research visits and collaboration: '); p.append(a);
+      return [p, clone('.faculty-profile-links'), link(q('.faculty-contact').getAttribute('href'), 'Contact & visits')]; } },
+  };
+  const layer = hero.querySelector('[data-fz-layer]'), card = hero.querySelector('[data-fz-card]');
+  let opener = null;
+  function open(key, from) {
+    const c = cards[key]; if (!c) return;
+    hero.querySelector('[data-fz-kicker]').textContent = c.kicker;
+    hero.querySelector('[data-fz-title]').textContent = c.title;
+    const body = hero.querySelector('[data-fz-body]'); body.replaceChildren(...c.build().filter(Boolean));
+    body.querySelectorAll('[id]').forEach(el => el.removeAttribute('id'));
+    opener = from || document.activeElement; layer.hidden = false; say(REPLY[key]);
+    hero.querySelectorAll('[data-fz-open]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.fzOpen === key)));
+    card.style.animation = 'none'; card.offsetWidth; card.style.animation = '';
+    card.focus({ preventScroll: true });
+  }
+  function close() { if (layer.hidden) return; layer.hidden = true; say(INTRO); hero.querySelectorAll('[data-fz-open]').forEach(b => b.setAttribute('aria-pressed', 'false')); if (opener) opener.focus({ preventScroll: true }); }
+  hero.querySelectorAll('[data-fz-open]').forEach(b => b.addEventListener('click', () => open(b.dataset.fzOpen, b)));
+  hero.querySelector('[data-fz-close]').addEventListener('click', close);
+  document.addEventListener('pointerdown', e => { if (!layer.hidden && !card.contains(e.target) && !e.target.closest('[data-fz-open], [data-fz-search]')) close(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !layer.hidden) close(); });
+  // Search: match words to a topic; Enter opens it.
+  const words = { research: ['research', 'population', 'dynamic', 'stock', 'assess', 'management', 'fish', 'tuna', 'model'],
+                  publications: ['paper', 'publication', 'article', 'journal', 'doi', 'cite'],
+                  education: ['education', 'phd', 'degree', 'guelph', 'ocean university', 'study', 'master', 'bachelor', 'training'],
+                  service: ['iccat', 'editor', 'board', 'service', 'role', 'scientist', 'cjfas'],
+                  contact: ['contact', 'email', 'mail', 'visit', 'join', 'student', 'collaborat'] };
+  const input = hero.querySelector('[data-fz-input]'), chips = [...hero.querySelectorAll('[data-fz-open]')];
+  const match = v => { v = v.toLowerCase().trim(); if (!v) return null;
+    return Object.keys(words).find(k => words[k].some(w => v.includes(w) || w.startsWith(v))) || null; };
+  input.addEventListener('input', () => { const m = match(input.value); chips.forEach(c => c.classList.toggle('is-match', c.dataset.fzOpen === m)); });
+  hero.querySelector('[data-fz-search]').addEventListener('submit', e => { e.preventDefault(); open(match(input.value) || 'research', input); });
+  // Rotating placeholder prompts.
+  const prompts = ['Ask about research, publications, education…', 'Try “stock assessment”', 'Try “ICCAT”', 'Try “PhD at Guelph”'];
+  let pi = 0; if (!still) setInterval(() => { if (document.activeElement !== input && !input.value) input.placeholder = prompts[pi = (pi + 1) % prompts.length]; }, 3200);
+}
+initFacultyHero();
 
 document.querySelector('#copyright-year').textContent = new Date().getFullYear();

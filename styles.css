@@ -1045,8 +1045,8 @@ body[data-page="index"] .shou-link img { padding: 2px; border-radius: 50%; backg
 .faculty-hero-grid { display: grid; grid-template-columns: minmax(0, 1.14fr) minmax(0, .86fr); gap: 78px; align-items: center; }
 .faculty-intro { min-width: 0; }
 .faculty-intro .eyebrow { color: var(--teal); font-size: 11px; letter-spacing: .14em; }
-.faculty-intro h1 { display: flex; align-items: baseline; flex-wrap: wrap; gap: 9px 17px; margin-top: 19px; font-size: clamp(60px, 7vw, 98px); line-height: 1.06; letter-spacing: -.055em; }
-.faculty-intro h1 span { font: 400 17px/1.4 var(--ui-font, system-ui); letter-spacing: 0; color: var(--muted); }
+.faculty-intro .faculty-name { display: flex; align-items: baseline; flex-wrap: wrap; gap: 9px 17px; margin-top: 19px; font-size: clamp(60px, 7vw, 98px); line-height: 1.06; letter-spacing: -.055em; }
+.faculty-intro .faculty-name span { font: 400 17px/1.4 var(--ui-font, system-ui); letter-spacing: 0; color: var(--muted); }
 .faculty-title { margin-top: 23px; font-size: 19px; line-height: 1.5; }
 .faculty-title strong { font-weight: 700; }
 .faculty-affiliation { margin-top: 7px; max-width: 430px; font-size: 14px; line-height: 1.8; color: var(--muted); }
@@ -1108,7 +1108,7 @@ body[data-page="index"] .shou-link img { padding: 2px; border-radius: 50%; backg
 .faculty-education-list p { font-size: 13px; line-height: 1.8; color: var(--muted); margin-top: 5px; }
 @media (max-width: 1100px) {
   .faculty-hero-grid { gap: 44px; }
-  .faculty-intro h1 { font-size: 70px; }
+  .faculty-intro .faculty-name { font-size: 70px; }
   .faculty-title { font-size: 17px; }
   .faculty-bio { font-size: 16px; }
   .faculty-profile-links { column-gap: 16px; }
@@ -1117,7 +1117,7 @@ body[data-page="index"] .shou-link img { padding: 2px; border-radius: 50%; backg
 @media (max-width: 960px) {
   .faculty-hero-grid { grid-template-columns: 1fr; gap: 34px; }
   .faculty-intro { max-width: 650px; }
-  .faculty-intro h1 { font-size: 80px; }
+  .faculty-intro .faculty-name { font-size: 80px; }
   .faculty-bio { max-width: 620px; }
   .faculty-photo { max-width: none; }
   .faculty-photo > img { aspect-ratio: 4 / 3; }
@@ -1131,8 +1131,8 @@ body[data-page="index"] .shou-link img { padding: 2px; border-radius: 50%; backg
 @media (max-width: 700px) {
   .faculty-hero { padding-block: 22px 40px; }
   .faculty-breadcrumb { margin-bottom: 22px; }
-  .faculty-intro h1 { font-size: clamp(52px, 14vw, 70px); gap: 8px 12px; }
-  .faculty-intro h1 span { font-size: 14px; }
+  .faculty-intro .faculty-name { font-size: clamp(52px, 14vw, 70px); gap: 8px 12px; }
+  .faculty-intro .faculty-name span { font-size: 14px; }
   .faculty-title { margin-top: 20px; font-size: 17px; }
   .faculty-affiliation { font-size: 13px; }
   .faculty-bio { margin-top: 22px; font-size: 16px; line-height: 1.85; }

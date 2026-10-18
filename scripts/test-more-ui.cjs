@@ -3,8 +3,8 @@ const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/st
 const {pathToFileURL,fileURLToPath}=require('node:url'),path=require('node:path');
 // The embedded page must be dark before JavaScript executes, with working rebased assets.
 const embeddedFile=path.resolve('demos/world-weather/embed/index.html'),embeddedSource=fs.readFileSync(embeddedFile,'utf8');
-assert.match(embeddedSource,/<html[^>]*data-embed="more"[^>]*style="[^"]*background:#050e1a/);
-assert.match(embeddedSource,/<body[^>]*data-embed="more"[^>]*data-map-src="\.\.\/land.geojson"[^>]*style="background:#050e1a"/);
+assert.match(embeddedSource,/<html[^>]*data-embed="more"[^>]*style="[^"]*background:#081b2c/);
+assert.match(embeddedSource,/<body[^>]*data-embed="more"[^>]*data-map-src="\.\.\/land.geojson"[^>]*style="background:#081b2c"/);
 assert.match(fs.readFileSync('more/index.html','utf8'),/src="[^\"]*demos\/world-weather\/embed\/\?embed=more&amp;v=[0-9a-f]{10}"/);
 for(const [,value] of embeddedSource.matchAll(/\b(?:href|src)="([^"]*)"/g)){
  const url=new URL(value.replaceAll('&amp;','&'),pathToFileURL(embeddedFile));if(url.protocol==='file:')assert.ok(fs.existsSync(fileURLToPath(url)),value);

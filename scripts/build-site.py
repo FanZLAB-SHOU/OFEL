@@ -296,8 +296,8 @@ def build_embedded_weather():
     """Derive a dark-first frame from the standalone tool; keep one implementation."""
     folder = ROOT / 'demos/world-weather'
     markup = (folder / 'index.html').read_text()
-    markup = markup.replace('<html lang="en">', '<html lang="en" data-embed="more" style="background:#050e1a;color-scheme:dark">')
-    markup = markup.replace('<body>', '<body data-embed="more" data-map-src="../land.geojson" style="background:#050e1a">')
+    markup = markup.replace('<html lang="en">', '<html lang="en" data-embed="more" style="background:#081b2c;color-scheme:dark">')
+    markup = markup.replace('<body>', '<body data-embed="more" data-map-src="../land.geojson" style="background:#081b2c">')
     def relative_asset(match):
         attr, value = match.groups()
         if not value or value.startswith(('#', '/', 'https:', 'http:', 'data:', 'mailto:')):

@@ -56,7 +56,7 @@ python3 -m http.server 8765 --bind 127.0.0.1
 
 ### 访问统计（Info → More）
 
-顶部 Info 菜单的 More 页面（`/more/`，模板 `templates/more.html`）显示全站总浏览量与访客数，由第三方计数服务[不蒜子](https://busuanzi.ibruce.info/)提供，无需注册。计数脚本写在 `templates/head.html`，所有正式页面都会加载并计入总数；页面只放 `busuanzi_value_site_pv` 和 `busuanzi_value_site_uv` 两个位置。GitHub Pages 跨域请求只发送域名，不发送具体网址，因此不显示单页浏览量。计数从 2026-10-17 开始；本地预览时 `localhost` 的数字是所有本地测试的合计，不代表网站访问量。计数服务不可用时显示短横线，不影响其他内容。如需后台明细（来源、国家、页面排行），可另行注册 GoatCounter 等服务并在 `head.html` 中添加脚本。
+顶部 Info 菜单的 More 页面（`/more/`，模板 `templates/more.html`）显示全站总浏览量与访客数，由第三方计数服务[不蒜子](https://busuanzi.ibruce.info/)提供，无需注册。计数脚本写在 `templates/head.html`，所有正式页面都会加载并计入总数；页面只放 `busuanzi_value_site_pv` 和 `busuanzi_value_site_uv` 两个位置。GitHub Pages 跨域请求只发送域名，不发送具体网址，因此不显示单页浏览量。计数从 2026-10-17 开始；本地预览时 `localhost` 的数字是所有本地测试的合计，不代表网站访问量。计数服务不可用时显示短横线，不影响其他内容。后台明细（来源、国家、设备、页面排行）由 [GoatCounter](https://fanzlabshou.goatcounter.com/) 统计，脚本同样写在 `templates/head.html`，登录 GoatCounter 账号查看；GoatCounter 不使用 Cookie，从 2026-10-17 开始计数。
 
 ### 研究方向
 

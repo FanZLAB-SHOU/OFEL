@@ -2,16 +2,32 @@
       <div class="container">
         <div class="page-heading"><p class="eyebrow">Info / More</p><h1 id="more-title">More.</h1></div>
         <nav class="resource-tabs" aria-label="Info pages"><a href="contact.html">Contact &amp; Join Us</a><a href="more.html" aria-current="page">More</a></nav>
-        <section class="site-stats" aria-labelledby="site-stats-title">
+        <section class="site-stats" aria-labelledby="site-stats-title" data-site-stats data-goatcounter="https://fanzlabshou.goatcounter.com" data-stats-pages="{{stats_pages}}">
           <div class="site-stats-heading">
             <h2 id="site-stats-title">Website visits</h2>
-            <p>Live counts across every page of this website, recorded since 17 October 2026.</p>
+            <p>Visits across the OFEL website since 17 October 2026, updated live.</p>
           </div>
           <dl class="site-stats-grid">
-            <div class="site-stat"><dt>Total page views</dt><dd><span id="busuanzi_value_site_pv">–</span></dd></div>
-            <div class="site-stat"><dt>Unique visitors</dt><dd><span id="busuanzi_value_site_uv">–</span></dd></div>
+            <div class="site-stat"><dt>Total page views</dt><dd data-stat="total">–</dd></div>
+            <div class="site-stat"><dt>Unique visitors</dt><dd data-stat="unique">–</dd></div>
+            <div class="site-stat"><dt>Page views, last 7 days</dt><dd data-stat="week">–</dd></div>
           </dl>
-          <p class="site-stats-note">Counts come from the third-party <a href="https://busuanzi.ibruce.info/" target="_blank" rel="noopener noreferrer">Busuanzi<span class="sr-only"> (opens in a new tab)</span></a> counter and are approximate. A dash means the counter could not be reached.</p>
+          <div class="stats-panels">
+            <figure class="stats-panel">
+              <figcaption><h3>Daily page views</h3><p>Last 14 days · UTC dates</p></figcaption>
+              <div class="stats-chart" data-stats-daily role="group" aria-label="Daily page views over the last 14 days"></div>
+              <details class="stats-table"><summary>View as table</summary>
+                <table><thead><tr><th scope="col">Date (UTC)</th><th scope="col">Page views</th></tr></thead><tbody data-stats-daily-table></tbody></table>
+              </details>
+            </figure>
+            <section class="stats-panel" aria-labelledby="top-pages-title">
+              <h3 id="top-pages-title">Most viewed pages</h3>
+              <p>All time</p>
+              <ol class="stats-pages" data-stats-pages-list></ol>
+            </section>
+          </div>
+          <p class="site-stats-note" data-stats-status>Counts come from <a href="https://www.goatcounter.com/" target="_blank" rel="noopener noreferrer">GoatCounter<span class="sr-only"> (opens in a new tab)</span></a>, an open-source analytics service that uses no cookies. A dash means the counter could not be reached.</p>
+          <div class="stats-tooltip" role="tooltip" hidden><strong></strong><span></span></div>
         </section>
       </div>
     </section>

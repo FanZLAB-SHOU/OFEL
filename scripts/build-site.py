@@ -288,7 +288,11 @@ for doi in faculty_dois:
         f'<span class="faculty-paper-meta">{paper["year"]} · {esc(paper["journal"])}</span>'
         f'<h4>{italicize(esc(paper["title"]))}</h4><span class="faculty-paper-read">Read paper {icon("right")}</span>'
         '<span class="sr-only"> (opens in a new tab)</span></a></li>')
+stats_pages = ([{'path': '/OFEL/' + clean_url(PAGE_PATHS[name]), 'title': 'Home' if name == 'index' else title.split(' | ')[0]}
+                for name, (title, _, _) in PAGES.items()]
+               + [{'path': '/OFEL/' + clean_url(post_url(post)), 'title': post['title']} for post in posts])
 tokens = {
+    '{{stats_pages}}': esc(json.dumps(stats_pages, ensure_ascii=False)),
     '{{faculty_selected_papers}}': '\n'.join(faculty_papers),
     '{{news_filters}}': news_filters,
     '{{news_count}}': str(len(posts)),

@@ -1,5 +1,6 @@
 """Shared page-head metadata and a sitemap of canonical content pages."""
 import html
+import hashlib
 import json
 import mimetypes
 from pathlib import Path
@@ -43,7 +44,9 @@ def render_head(title, description, canonical, asset_version, *, image=None, ima
                      for key,value in values.items())
     head = (ROOT / 'templates/head.html').read_text()
     for token,value in {'{{title}}':title,'{{description}}':description,'{{canonical}}':canonical,
-                        '{{asset_version}}':asset_version,'{{sitemap}}':BASE+'sitemap.xml'}.items():
+                        '{{asset_version}}':asset_version,
+                        '{{ui_version}}':hashlib.sha256((ROOT/'assets/styles/site-ui.css').read_bytes()).hexdigest()[:10],
+                        '{{sitemap}}':BASE+'sitemap.xml'}.items():
         head = head.replace(token,html.escape(value,quote=True))
     return head.replace('{{share_metadata}}',tags)
 

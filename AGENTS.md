@@ -6,3 +6,4 @@
 - Fan Zhang’s profile Selected publications must include Fan Zhang as an author and have either a lab member/alumnus or Fan Zhang as first author. Exclude papers first-authored by external collaborators from this selection.
 - Archive seminar announcements by their actual event date when a separate publication date is unavailable. Preserve the year in supplied source material.
 - Public navigation uses clean, trailing-slash directory URLs (no `.html` or `index.html`). Preserve legacy redirects and their query parameters/fragments; edit source templates and JSON rather than redirect files.
+- Use the shared system font, rounded surfaces and ocean-blue background tokens in `assets/styles/site-ui.css` for site UI changes. Keep the homepage's dark ocean setting and readable contrast on both dark and light surfaces.

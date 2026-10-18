@@ -235,9 +235,21 @@ body .publications, body[data-page="blog"] .detail-page { background: var(--ui-h
 .profile-content .pi-links a { min-height: 42px; padding: 8px 12px; border: 1px solid var(--ui-border); border-radius: var(--ui-radius-pill); background: white; font-size: 13px; }
 .profile-content .pi-links a:hover { background: #eaf3fa; border-color: #aac2d7; }
 .profile-bio-original { padding: 15px 18px; border: 1px solid var(--ui-border); border-radius: var(--ui-radius-md); background: rgba(255, 255, 255, .7); }
-.profile-pager { gap: 20px; }
-.profile-pager a { min-width: 0; flex: 1; padding: 16px; border: 1px solid var(--ui-border); border-radius: var(--ui-radius-md); background: white; }
-.profile-pager .pager-badge { width: 64px; height: 56px; border-radius: 15px; font-size: 22px; }
+.profile-pager { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; border-top-color: #c8dce9; }
+.profile-pager a, .profile-pager a:hover { display: grid; grid-template-columns: 48px minmax(0, 1fr); align-items: center; gap: 18px; min-width: 0; min-height: 112px; width: 100%; margin: 0; padding: 22px; border: 1px solid #d0dfec; border-radius: 24px; background: #ffffffdb; color: var(--ink); text-decoration: none; transition: background .25s, border-color .25s, box-shadow .25s, transform .25s; }
+.profile-pager .profile-prev { grid-column: 1; text-align: left; }
+.profile-pager .profile-next, .profile-pager .profile-next:hover { grid-column: 2; grid-template-columns: minmax(0, 1fr) 48px; text-align: right; }
+.profile-pager .pager-badge { display: grid; place-items: center; width: 48px; height: 48px; border: 1px solid #d7e5ef; border-radius: 50%; color: #235e8b; background: #edf5fb; box-shadow: none; transition: background .25s, color .25s, border-color .25s; }
+.profile-pager .pager-badge .icon { width: 22px; height: 22px; stroke-width: 2; }
+.profile-pager .pager-text { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.profile-pager .profile-prev .pager-text { align-items: flex-start; }
+.profile-pager .profile-next .pager-text { align-items: flex-end; }
+.profile-pager .pager-dir { color: #59748c; font-size: 10px; font-weight: 650; letter-spacing: .12em; text-transform: uppercase; }
+.profile-pager .pager-name { color: #183a56; font-size: clamp(17px, 1.8vw, 23px); line-height: 1.2; font-weight: 700; letter-spacing: -.025em; overflow-wrap: anywhere; }
+.profile-pager a:is(:hover, :focus-visible) { background: #f6fbff; border-color: #80b5d9; box-shadow: 0 12px 28px #174a741a; transform: translateY(-3px); }
+.profile-pager a:is(:hover, :focus-visible) .pager-badge { background: #185b90; border-color: #185b90; color: white; box-shadow: none; }
+.profile-pager a:is(:hover, :focus-visible) .pager-name { color: #0d659f; text-decoration: none; }
+.profile-pager a:focus-visible { outline: 2px solid #3e91c8; outline-offset: 4px; }
 
 /* Full-screen member portraits: editorial copy left, extracted subject centre, research lower right. */
 body[data-member-hero] .site-header { position: fixed; inset: 0 0 auto; transition: background .25s; }
@@ -384,6 +396,51 @@ body:is([data-page="members"], [data-page="alumni"]) .footer-top > a:last-child 
 @media (prefers-reduced-motion: reduce) {
   .directory-person-link, .directory-person-link:hover, .directory-person-link:focus-visible, .directory-person-link:active { transform: none; transition: none; }
   .directory-person-label :is(h2, h3), .directory-photo { transition: none; }
+}
+
+.alumni-hero { overflow: hidden; color: #e8f4ff; background: radial-gradient(ellipse at 80% 45%, #1c476a80, transparent 62%), #06182b; border-bottom: 1px solid #b2d9f420; }
+.alumni-hero-layout { display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: 64px; min-height: max(660px, calc(100svh - var(--header-height))); padding-block: 64px; }
+.alumni-hero-copy .eyebrow { color: #9ebed7; font-size: 11px; letter-spacing: .16em; }
+.alumni-hero-copy h1 { margin-top: 24px; color: #edf7ff; font-size: clamp(48px, 5.7vw, 80px); font-weight: 770; line-height: 1.04; letter-spacing: -.055em; }
+.alumni-hero-copy h1 span { color: #8ec9f6; }
+.alumni-hero-copy > p:last-of-type { margin-top: 24px; color: #b0cade; font-size: 16px; line-height: 1.7; }
+.alumni-explore { display: inline-flex; align-items: center; gap: 22px; min-height: 48px; margin-top: 28px; padding: 12px 20px; border: 1px solid #bfdff838; border-radius: 999px; color: #ddf0ff; background: #b3ddff0a; font-size: 13px; font-weight: 600; }
+.alumni-explore:hover { border-color: #a1d4f4; background: #a1d4f41a; }
+.alumni-overview { display: flex; gap: 40px; margin: 44px 0 0; }
+.alumni-overview > div { display: flex; flex-direction: column-reverse; gap: 7px; }
+.alumni-overview dt { color: #9bbbd4; font-size: 11px; letter-spacing: .04em; }
+.alumni-overview dd { margin: 0; color: #e9f6ff; font-size: 34px; font-weight: 700; letter-spacing: -.045em; line-height: 1; }
+.alumni-orbit { position: relative; min-width: 0; height: 500px; }
+.alumni-globe { position: absolute; inset: 0; width: 100%; height: 100%; }
+.alumni-orbit-center { position: absolute; top: 50%; left: 50%; translate: -50% -50%; color: #cce9ff; font-size: 44px; font-weight: 750; letter-spacing: -.05em; text-align: center; text-shadow: 0 3px 20px #06182b; pointer-events: none; }
+.alumni-orbit-center span { display: block; margin-top: 8px; color: #91b6d0; font-size: 10px; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; white-space: nowrap; }
+.alumni-cohort-hop { position: absolute; display: flex; flex-direction: column; width: 43%; min-height: 118px; padding: 20px; border: 1px solid #b0d9f24a; border-radius: 22px; color: #e1f0fc; background: linear-gradient(145deg, #173a54e8, #0b243ae8); box-shadow: 0 16px 36px #020f1e40; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); transition: transform .25s, border-color .25s, box-shadow .25s; }
+.alumni-cohort-hop:nth-of-type(1) { top: 4%; right: 0; }
+.alumni-cohort-hop:nth-of-type(2) { top: 60%; left: 0; }
+.alumni-cohort-hop:nth-of-type(3) { bottom: 0; right: 3%; }
+.alumni-cohort-hop > span { color: #92b7d3; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
+.alumni-cohort-hop strong { margin-top: 9px; font-size: 24px; font-weight: 700; letter-spacing: -.03em; }
+.alumni-cohort-hop small { display: flex; justify-content: space-between; gap: 12px; margin-top: 14px; color: #aacbe3; font-size: 11px; }
+.alumni-cohort-hop:is(:hover, :focus-visible) { transform: translateY(-4px); border-color: #94d2ffb3; box-shadow: 0 20px 40px #020d1f66; }
+.alumni-cohort-hop:focus-visible, .alumni-explore:focus-visible { outline: 2px solid #a9dcff; outline-offset: 5px; }
+@media (max-width: 1000px) {
+  .alumni-hero-layout { gap: 30px; }
+  .alumni-hero-copy h1 { font-size: 52px; }
+  .alumni-orbit { height: 430px; }
+  .alumni-cohort-hop { width: 47%; padding: 16px; }
+}
+@media (max-width: 760px) {
+  .alumni-hero-layout { grid-template-columns: 1fr; min-height: 0; gap: 36px; padding-block: 48px 40px; }
+  .alumni-hero-copy h1 { font-size: clamp(42px, 8.5vw, 64px); }
+  .alumni-overview { margin-top: 32px; gap: 32px; }
+  .alumni-orbit { height: 390px; width: min(100%, 520px); margin: auto; }
+  .alumni-cohort-hop { width: 44%; min-height: 106px; padding: 15px; border-radius: 20px; }
+  .alumni-cohort-hop strong { font-size: 22px; }
+  .alumni-orbit-center { font-size: 34px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .alumni-cohort-hop { transition: none; }
+  .alumni-cohort-hop:is(:hover, :focus-visible) { transform: none; }
 }
 
 .profile-gallery { margin-top: 72px; }
@@ -666,9 +723,11 @@ body[data-page="index"] .gateway-card:focus-visible .gateway-go { background: #e
   .profile-photo .profile-img, .profile-photo .member-photo-placeholder { border-radius: 17px; }
   body .profile-content h1 { font-size: 39px; overflow-wrap: anywhere; }
   .profile-pager { gap: 12px; }
-  .profile-pager a, .profile-pager a:hover { padding: 14px; gap: 8px; border-radius: 18px; }
+  .profile-pager a, .profile-pager a:hover { grid-template-columns: minmax(0, 1fr); min-height: 100px; padding: 16px 14px; gap: 8px; border-radius: 20px; }
+  .profile-pager .profile-prev, .profile-pager .profile-next, .profile-pager .profile-next:hover { grid-template-columns: minmax(0, 1fr); }
   .profile-pager .pager-badge { display: none; }
-  .profile-pager .pager-name { overflow-wrap: anywhere; }
+  .profile-pager .pager-name { font-size: clamp(15px, 3.6vw, 20px); }
+  .profile-pager .pager-dir { font-size: 9px; letter-spacing: .08em; }
   .research-item, .research-item.research-item-secondary { padding: 16px; border-radius: 24px; }
   .research-art { border-radius: 14px; }
   .publication { padding: 20px; border-radius: 22px; }
@@ -812,4 +871,17 @@ body[data-page="fan-zhang"] main { padding-top: 0; }
 
 @media (prefers-reduced-motion: reduce) {
   .reveal-ready [data-reveal] { opacity: 1; translate: none; transition: none; }
+}
+
+/* The same tactile scroll entry is used on faculty and member introductions. */
+:is(.member-intro-more, .fz-scroll) { min-width: 144px; min-height: 64px; padding: 10px 20px; gap: 6px; border: 1px solid #b9dbfa30; border-radius: 22px; background: #a6d3ff09; color: #c4d9ed; opacity: .85; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); transition: scale .28s, background .28s, border-color .28s, color .28s, opacity .28s, box-shadow .28s; }
+:is(.member-intro-more, .fz-scroll) :is(.icon, svg) { animation: none; transition: translate .28s; }
+:is(.member-intro-more, .fz-scroll):is(:hover, :focus-visible) { scale: 1.08; opacity: 1; color: #fff; background: #84bfff26; border-color: #b5e2ffbd; box-shadow: 0 0 0 5px #8bcaff0d, 0 0 28px #6dbbff40, 0 10px 30px #03142655; }
+:is(.member-intro-more, .fz-scroll):is(:hover, :focus-visible) :is(.icon, svg) { translate: 0 3px; }
+:is(.member-intro-more, .fz-scroll):focus-visible { outline: 2px solid #b6e1ff; outline-offset: 5px; }
+@media (prefers-reduced-motion: reduce) {
+  :is(.member-intro-more, .fz-scroll), :is(.member-intro-more, .fz-scroll) :is(.icon, svg), .profile-pager a { transition: none; }
+  :is(.member-intro-more, .fz-scroll):is(:hover, :focus-visible) { scale: 1; }
+  :is(.member-intro-more, .fz-scroll):is(:hover, :focus-visible) :is(.icon, svg) { translate: none; }
+  .profile-pager a:is(:hover, :focus-visible) { transform: none; }
 }

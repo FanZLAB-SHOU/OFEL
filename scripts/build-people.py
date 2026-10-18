@@ -247,6 +247,20 @@ for cohort in alumni:
     )
 fill(ROOT / output_path('members/alumni.html'), 'alumni-groups', sections)
 
+# The alumni overview uses actual listed cohorts; no locations or career outcomes are inferred.
+years = sorted({cohort['year'] for cohort in alumni}, reverse=True)
+fill(ROOT / output_path('members/alumni.html'), 'alumni-overview', [
+    f'<dl class="alumni-overview"><div><dt>Alumni</dt><dd>{sum(len(c["members"]) for c in alumni)}</dd></div>'
+    f'<div><dt>Graduation years</dt><dd>{len(years)}</dd></div></dl>'
+])
+fill(ROOT / output_path('members/alumni.html'), 'alumni-cohort-links', [
+    f'<a class="alumni-cohort-hop" href="#alumni-{cohort["year"]}-{slugify(cohort["degree"])}-title">'
+    f'<span>Class of {cohort["year"]}</span><strong>{esc(cohort["degree"])}</strong>'
+    f'<small>{len(cohort["members"])} {"graduate" if len(cohort["members"]) == 1 else "graduates"} <span aria-hidden="true">↗</span></small></a>'
+    for cohort in alumni
+])
+
+
 # Profile pages: name, role, contact, bio, publications, then previous/next person.
 header = expand((TEMPLATES / 'header.html').read_text())
 footer = expand((TEMPLATES / 'footer.html').read_text())
@@ -308,17 +322,20 @@ for n, person in enumerate(people):
             '<button type="button" data-gallery-next aria-label="Next photo">→</button></div></dialog></section>'
         )
     pager = []
-    if n > 0:
-        prev = people[n - 1]
-        pager.append(f'<a class="profile-prev" rel="prev" href="members/{esc(prev["slug"])}.html">'
-                     f'<span class="pager-badge" aria-hidden="true">OFEL</span><span class="pager-text">'
-                     f'<span class="pager-dir">{icon("left")}Previous</span><span class="pager-name">{esc(prev["name"])}</span></span></a>')
-    if n < len(people) - 1:
-        nxt = people[n + 1]
-        pager.append(f'<a class="profile-next" rel="next" href="members/{esc(nxt["slug"])}.html"><span class="pager-text">'
-                     f'<span class="pager-dir">Next{icon("right")}</span><span class="pager-name">{esc(nxt["name"])}</span></span>'
-                     f'<span class="pager-badge" aria-hidden="true">OFEL</span></a>')
     back_href, back_label = person['back']
+    neighbours = [
+        ('prev', people[n - 1] if n > 0 else None, 'Previous', 'left'),
+        ('next', people[n + 1] if n < len(people) - 1 else None, 'Next', 'right'),
+    ]
+    for side, neighbour, direction, arrow in neighbours:
+        href = f'members/{neighbour["slug"]}.html' if neighbour else back_href
+        label = neighbour['name'] if neighbour else back_label
+        direction = direction if neighbour else 'Back to'
+        relation = f' rel="{side}"' if neighbour else ''
+        badge = f'<span class="pager-badge" aria-hidden="true">{icon(arrow)}</span>'
+        text = f'<span class="pager-text"><span class="pager-dir">{direction}</span><span class="pager-name">{esc(label)}</span></span>'
+        pager.append(f'<a class="profile-{side}"{relation} href="{esc(href)}" aria-label="{direction}: {esc(label)}">'
+                     + (badge + text if side == 'prev' else text + badge) + '</a>')
     breadcrumb = (f'<nav class="breadcrumb" aria-label="Breadcrumb"><a href="{back_href}">{back_label}</a>'
                   f'<span aria-hidden="true">/</span><span aria-current="page">{name}</span></nav>')
     # Only current members with supplied photos get the large introduction.

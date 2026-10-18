@@ -353,7 +353,8 @@ function initTeamSpace() {
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
   let visible = true, paused = false, running = false, prepared = false;
   let frame = null, lastTime = null, width = 0, height = 0;
-  const speed = window.innerWidth <= 700 ? .85 : 1;
+  // Keep the full-stage paths, at the original gentle floating pace.
+  const speed = (window.innerWidth <= 700 ? .85 : 1) * .08;
   const records = cards.map(card => {
     const record = {card, x: 0, y: 0, age: 0, phase: Math.random() * Math.PI * 2,
       vx: (18 + Math.random() * 26) * (Math.random() < .5 ? -1 : 1) * speed,

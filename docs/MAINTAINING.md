@@ -42,7 +42,7 @@ python3 -m http.server 8765 --bind 127.0.0.1
 
 ### Fan Zhang 个人页
 
-源文件为 `templates/members/fan-zhang.html`，样式使用 `faculty-` 前缀，避免影响其他成员页。保留 `#people` 和 `#principal-investigator` 原锚点。姓名仅出现一个主标题，职称加粗，联系按钮跳转联系页选择邮箱。ICCAT 的链接放在组织全称上。代表论文在 `scripts/build-site.py` 的 `faculty_dois` 中指定，标题、年份和期刊由现有论文库读取，构建时检查作者；不在模板中手工复制论文信息。更换照片时保持完整人物可见，并检查桌面及手机的 `object-position`。
+源文件为 `templates/members/fan-zhang.html`，样式使用 `faculty-` 前缀，避免影响其他成员页。保留 `#people` 和 `#principal-investigator` 原锚点。姓名仅出现一个主标题，职称加粗，联系按钮跳转联系页选择邮箱。ICCAT 的链接放在组织全称上。代表论文在 `scripts/build-site.py` 的 `faculty_dois` 中指定，标题、年份和期刊由现有论文库读取；只选择实验室成员／校友一作且 Fan Zhang 参与，或 Fan Zhang 本人一作的论文，排除外部合作者一作的论文，构建时校验这一条件。不在模板中手工复制论文信息。更换照片时保持完整人物可见，并检查桌面及手机的 `object-position`。
 
 ### 联系与到访
 

@@ -274,12 +274,14 @@ def reference_card(item, professional=False):
 reference_materials = json.loads((ROOT / 'assets/reference-materials.json').read_text())
 
 # A short, deliberately selected profile list; bibliographic details stay in the publication dataset.
-faculty_dois = ['10.1111/faf.70077', '10.1111/faf.70015', '10.1111/faf.12673']
+faculty_dois = ['10.1111/faf.70077', '10.1111/1365-2664.70572', '10.1111/faf.12673']
 faculty_papers = []
 for doi in faculty_dois:
     paper = papers_by_doi[doi]
     if not publications.has_fan_zhang(paper):
         raise ValueError(f'Fan Zhang must be an author of profile selection: {doi}')
+    if not (publications.is_lab_paper(paper) or publications.is_author(paper['authors'][0], 'Fan', 'Zhang')):
+        raise ValueError(f'Profile selection requires a lab first author or Fan Zhang as first author: {doi}')
     faculty_papers.append(
         f'<li><a class="faculty-paper" href="{esc(paper["source"])}" target="_blank" rel="noopener noreferrer">'
         f'<span class="faculty-paper-meta">{paper["year"]} · {esc(paper["journal"])}</span>'

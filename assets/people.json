@@ -31,7 +31,7 @@
             ],
             "background_color": "#9b825b"
           },
-          "profile_photo": "assets/people/heroes/qinqin-lin-cutout.webp"
+          "profile_photo": "assets/people/portraits/qinqin-lin-restored-retouched.webp"
         }
       ]
     },
@@ -275,7 +275,7 @@
             ],
             "background_color": "#718da6"
           },
-          "profile_photo": "assets/people/heroes/xianglong-yan-cutout.webp"
+          "profile_photo": "assets/people/portraits/xianglong-yan-restored-retouched.webp"
         },
         {
           "name": "Shixin Wu",
@@ -299,7 +299,7 @@
             "research": [],
             "background_color": "#6d809a"
           },
-          "profile_photo": "assets/people/heroes/zhechuan-xu-cutout.webp"
+          "profile_photo": "assets/people/portraits/zhechuan-xu-restored-retouched.webp"
         }
       ]
     }

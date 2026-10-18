@@ -79,7 +79,7 @@ python3 -m http.server 8765 --bind 127.0.0.1
 - 毕业后仍在实验室工作的成员，可在 `alumni` 条目中设置 `profile_ref` 为现有成员姓名；校友照片与链接复用该成员主页，保留其当前岗位。相同年份可分别设置 PhD、Master’s 等学位分组。
 - `photo`、`photo_alt` 和 `bio` 分别维护照片、替代文字和英文简介；简介中的空行划分段落。
 - 可选的 `bio_zh` 保存中文原文，个人主页中以可展开的中英对照区域呈现。
-- `profile_photo_aspect_ratio` 可设置个人主页照片比例，`photo_position` 调整取景位置。`profile_photo` 可为下方资料区单独指定高清修复图，默认仍使用 `photo`；目前 Qinqin Lin、Zhechuan Xu 和 Xianglong Yan 使用修复后的前景图，并保留资料照片位。
+- `profile_photo_aspect_ratio` 可设置个人主页照片比例，`photo_position` 调整取景位置。`profile_photo` 可为下方资料区单独指定高清修复图，默认仍使用 `photo`；目前 Qinqin Lin、Zhechuan Xu 和 Xianglong Yan 使用 `assets/people/portraits/` 中保留原背景的高清修复、轻度自然美颜版本；下方资料照使用完整照片，顶部仍使用独立透明抠图与柔和色彩背景。处理提示词保存在该目录的 `generation-notes.json`。
 - `email`、`github`、`website`、`researchgate` 维护联系方式。未提供的值留为 `null` 或省略，不填猜测的地址。
 - 未提供 GitHub 链接时不显示 GitHub 图标。成员列表中缺失邮箱仍显示不可点击的邮箱占位图标；个人主页只显示已提供的联系方式。
 - `website_label` 设置网站链接名称；`website_icon` 可选 `globe` 或 `researchgate`。独立的 `researchgate` 字段可与 GitHub、学校主页同时使用。

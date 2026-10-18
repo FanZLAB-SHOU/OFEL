@@ -286,8 +286,12 @@ for n, person in enumerate(people):
             backdrop = ('<div class="member-intro-wash member-intro-color" aria-hidden="true" '
                         f'style="--member-tint: {tint}"></div>')
         else:
-            backdrop = (f'<img class="member-intro-wash" src="{esc(person["photo"])}" alt="" aria-hidden="true" '
-                        'width="640" height="800" sizes="640px" fetchpriority="low">')
+            backdrop_source = hero.get('background_image') or person['photo']
+            if not (ROOT / backdrop_source).is_file():
+                raise ValueError(f'Missing introduction background for {person["name"]}')
+            backdrop_width, backdrop_height = hero.get('background_dimensions', [640, 800])
+            backdrop = (f'<img class="member-intro-wash" src="{esc(backdrop_source)}" alt="" aria-hidden="true" '
+                        f'width="{backdrop_width}" height="{backdrop_height}" sizes="640px" fetchpriority="low">')
         intro = (
             '    <section class="member-intro" aria-labelledby="profile-title" data-member-intro>'
             f'{backdrop}'

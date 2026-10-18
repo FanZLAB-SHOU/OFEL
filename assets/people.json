@@ -29,7 +29,11 @@
               "Marine ecosystems",
               "Population dynamics"
             ],
-            "background_color": "#9b825b"
+            "background_image": "assets/people/heroes/qinqin-lin-meeting-background.webp",
+            "background_dimensions": [
+              1672,
+              941
+            ]
           },
           "profile_photo": "assets/people/portraits/qinqin-lin-restored-retouched.webp"
         }

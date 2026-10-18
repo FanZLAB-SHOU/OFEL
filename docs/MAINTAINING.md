@@ -79,14 +79,14 @@ python3 -m http.server 8765 --bind 127.0.0.1
 - 毕业后仍在实验室工作的成员，可在 `alumni` 条目中设置 `profile_ref` 为现有成员姓名；校友照片与链接复用该成员主页，保留其当前岗位。相同年份可分别设置 PhD、Master’s 等学位分组。
 - `photo`、`photo_alt` 和 `bio` 分别维护照片、替代文字和英文简介；简介中的空行划分段落。
 - 可选的 `bio_zh` 保存中文原文，个人主页中以可展开的中英对照区域呈现。
-- `profile_photo_aspect_ratio` 可设置个人主页照片比例，`photo_position` 调整取景位置。`profile_photo` 可为下方资料区单独指定高清修复图，默认仍使用 `photo`；目前 Qinqin Lin、Zhechuan Xu 和 Xianglong Yan 使用 `assets/people/portraits/` 中保留原背景的高清修复、轻度自然美颜版本；下方资料照使用完整照片，顶部仍使用独立透明抠图与柔和色彩背景。处理提示词保存在该目录的 `generation-notes.json`。
+- `profile_photo_aspect_ratio` 可设置个人主页照片比例，`photo_position` 调整取景位置。`profile_photo` 可为下方资料区单独指定高清修复图，默认仍使用 `photo`；目前 Qinqin Lin、Zhechuan Xu 和 Xianglong Yan 使用 `assets/people/portraits/` 中保留原背景的高清修复、轻度自然美颜版本；下方资料照使用完整照片，顶部仍使用独立透明抠图；Qinqin Lin 使用修复会议现场的独立环境背景，另两页使用柔和色彩背景。处理提示词保存在该目录的 `generation-notes.json`。
 - `email`、`github`、`website`、`researchgate` 维护联系方式。未提供的值留为 `null` 或省略，不填猜测的地址。
 - 未提供 GitHub 链接时不显示 GitHub 图标。成员列表中缺失邮箱仍显示不可点击的邮箱占位图标；个人主页只显示已提供的联系方式。
 - `website_label` 设置网站链接名称；`website_icon` 可选 `globe` 或 `researchgate`。独立的 `researchgate` 字段可与 GitHub、学校主页同时使用。
 
 构建后自动生成 `members/<given-name>-<family-name>/index.html`，访问地址为 `/members/<given-name>-<family-name>/`，包括简介、按作者姓名匹配的论文、前后成员导航。缺失照片保留矩形照片位。
 
-现有成员中同时设置 `photo` 与 `hero.cutout` 的个人页，顶部为全屏深色介绍：模糊原照作背景、透明主体居中偏右，左上 “Hi, I’m” 和姓名，左侧简介与联系入口，右下研究方向。证件照或正面半身照可设置 `hero.background_color`（六位十六进制色值），只用扩散色彩作背景，避免背景里再次出现放大人脸；目前用于 Qinqin Lin、Zhechuan Xu 和 Xianglong Yan。`hero.summary` 保存首屏短简介，`hero.research` 保存已有资料确认的研究方向；缺少依据时显示 “To be updated”。手机端改为图片上方、文字下方的连续布局。下方仍保留完整简介、中文原文、论文及前后成员导航，照片、简介、每篇论文和成员导航通过现有 `data-reveal` 逐段渐显；系统要求减少动态效果时直接显示。样式在 `.member-intro`，生成器为 `scripts/build-people.py`，仅作用于当前成员；没有照片或尚未制作抠图的成员保持原版式。首屏姓名为唯一 `h1`，下方姓名为 `h2#member-details`。首屏导航透明，滚到详细资料后恢复浅色。原始照片保留不变，透明前景文件在 `assets/people/heroes/`，内置 image_gen 的生成方式与提示词记录在同目录 `generation-notes.json`。
+现有成员中同时设置 `photo` 与 `hero.cutout` 的个人页，顶部为全屏深色介绍：模糊原照作背景、透明主体居中偏右，左上 “Hi, I’m” 和姓名，左侧简介与联系入口，右下研究方向。证件照或正面半身照可设置 `hero.background_color`（六位十六进制色值），只用扩散色彩作背景，避免背景里再次出现放大人脸；目前用于 Zhechuan Xu 和 Xianglong Yan。Qinqin Lin 通过 `hero.background_image` 指定从修复会议照片制作的无人环境背景，`hero.background_dimensions` 记录其尺寸；背景柔化、人物抠图保持清晰，两层独立显示，避免背景中重复出现人脸。`hero.summary` 保存首屏短简介，`hero.research` 保存已有资料确认的研究方向；缺少依据时显示 “To be updated”。手机端改为图片上方、文字下方的连续布局。下方仍保留完整简介、中文原文、论文及前后成员导航，照片、简介、每篇论文和成员导航通过现有 `data-reveal` 逐段渐显；系统要求减少动态效果时直接显示。样式在 `.member-intro`，生成器为 `scripts/build-people.py`，仅作用于当前成员；没有照片或尚未制作抠图的成员保持原版式。首屏姓名为唯一 `h1`，下方姓名为 `h2#member-details`。首屏导航透明，滚到详细资料后恢复浅色。原始照片保留不变，透明前景文件在 `assets/people/heroes/`，内置 image_gen 的生成方式与提示词记录在同目录 `generation-notes.json`。
 
 Fan Zhang 主页的主体信息在 [`templates/members/fan-zhang.html`](../templates/members/fan-zhang.html) 中维护。
 

@@ -3,7 +3,9 @@
   'use strict';
   const M=WorldWeather,$=id=>document.getElementById(id),NS='http://www.w3.org/2000/svg';
   const svg=$('world-map'),markers=$('city-markers'),picked=$('picked-marker');
-  let selected={...M.cities[0]},weather=null,weatherSequence=0,weatherController=null,searchController=null,searchSequence=0;
+  let clockStorage;try {clockStorage=localStorage;}catch{}
+  let savedCities=M.restoreCities(clockStorage);
+  let selected={...(savedCities[0]||M.cities[0])},weather=null,weatherSequence=0,weatherController=null,searchController=null,searchSequence=0;
   let lastAttempt=0,view={x:0,y:0,w:1200,h:600},zoom=1;
   let storage;try {storage=sessionStorage;}catch{}
   const client=new M.WeatherClient((...args)=>fetch(...args),storage);
@@ -28,7 +30,7 @@
       set('zone-name',selected.zone);set('utc-offset',M.offsetLabel(selected.zone,now));
       set('time-difference',selected.id==='shanghai'?'Shanghai reference time':M.difference(selected.zone,now));
     } else {set('local-clock','—');set('local-date','Resolving local time…');set('zone-name','Timezone pending');set('utc-offset','—');set('time-difference','');}
-    for(const city of M.cities) {
+    for(const city of savedCities) {
       const refs=cardNodes.get(city.id);refs.time.textContent=M.clock(city.zone,now);refs.offset.textContent=M.offsetLabel(city.zone,now);refs.date.textContent=M.dateLabel(city.zone,now);
     }
   }
@@ -49,7 +51,7 @@
     try {
       const data=await client.get(location,{signal:controller.signal,force});
       if(sequence!==weatherSequence)return;
-      weather=data;selected.zone=data.zone;paintWeather(data);updateClock();
+      weather=data;selected.zone=data.zone;paintWeather(data);updateClock();syncSavedControls();
     } catch(error) {
       if(sequence!==weatherSequence)return;
       if(weather) {set('weather-status','Refresh unavailable. Showing the last weather update.');}
@@ -64,29 +66,51 @@
     set('location-name',selected.name);set('location-region',selected.country||'Map selection');set('location-coordinates',M.coordinates(selected.lat,selected.lon));
     for(const id of ['temperature','feels-like','humidity','wind','precipitation'])set(id,'—');
     set('weather-description','Loading weather…');set('weather-update','Fetching current conditions');$('day-state').hidden=true;icon('cloud');
-    cardNodes.forEach((refs,id)=>refs.button.setAttribute('aria-pressed',String(id===selected.id)));
-    pinNodes.forEach((pin,id)=>pin.classList.toggle('is-selected',id===selected.id));
-    picked.replaceChildren();
-    if(!pinNodes.has(selected.id))picked.append(makePin(selected,true));
+    set('clock-status','');syncSavedControls();
     if(focusMap) { if(zoom===1)zoom=1.7;const [x,y]=M.project(selected.lon,selected.lat);view.w=1200/zoom;view.h=600/zoom;view.x=x-view.w/2;view.y=y-view.h/2;setView(); }
     updateClock();loadWeather();
   }
   function makePin(city,custom=false) {
-    const [x,y]=M.project(city.lon,city.lat),g=node('g',{class:'city-pin'+(custom||city.id===selected.id?' is-selected':''),transform:`translate(${x} ${y})`,tabindex:'0',role:'button','aria-label':`Show time and weather for ${city.name}`});
+    const [x,y]=M.project(city.lon,city.lat),g=node('g',{class:'city-pin'+(custom||M.sameLocation(city,selected)?' is-selected':''),transform:`translate(${x} ${y})`,tabindex:'0',role:'button','aria-label':`Show time and weather for ${city.name}`});
     g.append(node('title',{},city.name),node('circle',{r:17,class:'pin-hit'}),node('circle',{r:12,class:'pin-halo'}),node('circle',{r:4.7,class:'pin-dot'}));
     const end=x>1040;g.append(node('text',{x:end?-13:13,y:-12,'text-anchor':end?'end':'start',class:'pin-label'},city.name));
     g.addEventListener('click',event=>{event.stopPropagation();select(city);});
     g.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();event.stopPropagation();select(city);}});
     return g;
   }
-  function cityCards() {
-    for(const city of M.cities) {
-      const button=document.createElement('button');button.type='button';button.className='city-clock';button.setAttribute('aria-pressed',String(city.id===selected.id));
-      const row=document.createElement('span'),name=document.createElement('strong'),offset=document.createElement('small'),time=document.createElement('time'),date=document.createElement('small');
-      name.className='city-name';name.textContent=city.name;offset.className='city-offset';time.className='city-time';date.className='city-date';row.append(name,offset);button.append(row,time,date);button.addEventListener('click',()=>select(city));$('city-clocks').append(button);
-      cardNodes.set(city.id,{button,time,offset,date});const pin=makePin(city);pinNodes.set(city.id,pin);markers.append(pin);
-    }
+  function syncSavedControls() {
+    const existing=savedCities.find(city=>M.sameLocation(city,selected));
+    cardNodes.forEach((refs,id)=>{const active=id===existing?.id;refs.button.setAttribute('aria-pressed',String(active));refs.card.classList.toggle('is-selected',active);});
+    pinNodes.forEach((pin,id)=>pin.classList.toggle('is-selected',id===existing?.id));
+    picked.replaceChildren();if(!existing)picked.append(makePin(selected,true));
+    $('add-city').disabled=!!existing||!M.validZone(selected.zone);
+    set('add-city',existing?'✓ Added to city clocks':'+ Add to city clocks');
+    $('add-city').title=!M.validZone(selected.zone)?'Wait for the local time zone before adding this location.':'';
   }
+  function persistClocks(message) {
+    const saved=M.saveCities(clockStorage,savedCities);
+    set('clock-status',message+(saved?'':' Kept for this visit only; browser storage is unavailable.'));
+  }
+  function cityCards() {
+    cardNodes.clear();pinNodes.clear();$('city-clocks').replaceChildren();markers.replaceChildren();
+    $('empty-clocks').hidden=savedCities.length>0;
+    for(const city of savedCities) {
+      const card=document.createElement('div');card.className='city-clock';
+      const button=document.createElement('button');button.type='button';button.className='city-select';button.setAttribute('aria-label',`Show time and weather for ${city.name}, ${city.country}`);
+      const row=document.createElement('span'),name=document.createElement('strong'),region=document.createElement('small'),offset=document.createElement('small'),time=document.createElement('time'),date=document.createElement('small');
+      name.className='city-name';name.textContent=city.name;region.className='city-region';region.textContent=city.country;offset.className='city-offset';time.className='city-time';date.className='city-date';row.className='city-meta';row.append(date,offset);button.append(name,region,time,row);button.addEventListener('click',()=>select(city));
+      const remove=document.createElement('button');remove.type='button';remove.className='remove-city';remove.textContent='×';remove.setAttribute('aria-label',`Remove ${city.name} from city clocks`);remove.title=`Remove ${city.name}`;
+      remove.addEventListener('click',()=>{const index=savedCities.findIndex(saved=>saved.id===city.id);savedCities=savedCities.filter(saved=>saved.id!==city.id);cityCards();persistClocks(`Removed ${city.name} from your clocks.`);(cardNodes.get(savedCities[Math.min(index,savedCities.length-1)]?.id)?.button||$('find-city')).focus();});
+      card.append(button,remove);$('city-clocks').append(card);
+      cardNodes.set(city.id,{card,button,remove,time,offset,date});const pin=makePin(city);pinNodes.set(city.id,pin);markers.append(pin);
+    }
+    syncSavedControls();updateClock();
+  }
+  $('add-city').addEventListener('click',()=>{
+    const city=M.clockLocation(selected);if(!city||savedCities.some(saved=>M.sameLocation(saved,city)))return;
+    savedCities.push(city);cityCards();persistClocks(`Added ${city.name} to your clocks.`);
+  });
+  $('find-city').addEventListener('click',()=>$('city-query').focus());
   function setView() {
     view.x=Math.max(0,Math.min(1200-view.w,view.x));view.y=Math.max(0,Math.min(600-view.h,view.y));
     svg.setAttribute('viewBox',`${view.x} ${view.y} ${view.w} ${view.h}`);$('zoom-out').disabled=zoom<=1;$('zoom-in').disabled=zoom>=5;
@@ -151,5 +175,5 @@
   $('refresh-weather').addEventListener('click',()=>loadWeather(true));
   function autoRefresh(){if(!document.hidden&&Date.now()-lastAttempt>=M.TTL)loadWeather();}
   document.addEventListener('visibilitychange',()=>{if(!document.hidden){updateClock();autoRefresh();}});
-  cityCards();setupMap();updateClock();icon('cloud');loadWeather();setInterval(updateClock,1000);setInterval(autoRefresh,60000);
+  cityCards();setupMap();select(selected);setInterval(updateClock,1000);setInterval(autoRefresh,60000);
 })();

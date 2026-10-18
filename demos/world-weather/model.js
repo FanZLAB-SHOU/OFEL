@@ -11,6 +11,33 @@ const WorldWeather = (() => {
     {id:'noumea',name:'Nouméa',country:'New Caledonia',lat:-22.2758,lon:166.458,zone:'Pacific/Noumea'},
     {id:'hobart',name:'Hobart',country:'Australia',lat:-42.8821,lon:147.3272,zone:'Australia/Hobart'}
   ];
+  const CLOCKS_KEY='ofel-world-cities-v1';
+  function sameLocation(a,b) {
+    if(a.id===b.id&&a.id!=='point')return true;
+    const lat=Math.abs(a.lat-b.lat),lon=Math.abs(a.lon-b.lon);
+    return (lat<.001&&lon<.001)||(a.id!=='point'&&b.id!=='point'&&!a.id.startsWith('point:')&&!b.id.startsWith('point:')&&a.name.toLowerCase()===b.name.toLowerCase()&&lat<.25&&lon<.25);
+  }
+  function clockLocation(item) {
+    if(!item||typeof item.id!=='string'||!item.id||typeof item.name!=='string'||!item.name.trim()||!Number.isFinite(item.lat)||!Number.isFinite(item.lon)||Math.abs(item.lat)>90||Math.abs(item.lon)>180||!validZone(item.zone))return null;
+    return {id:item.id==='point'?`point:${item.lat.toFixed(4)},${item.lon.toFixed(4)}`:item.id,name:item.name.trim(),country:typeof item.country==='string'?item.country:'',lat:item.lat,lon:item.lon,zone:item.zone};
+  }
+  function restoreCities(storage) {
+    try {
+      const raw=storage?.getItem(CLOCKS_KEY);
+      if(raw!==null&&raw!==undefined){
+        const list=JSON.parse(raw);
+        if(Array.isArray(list)){
+          const result=[];
+          for(const item of list){const city=clockLocation(item);if(city&&!result.some(saved=>sameLocation(saved,city)))result.push(city);}
+          return result;
+        }
+      }
+    }catch{}
+    return cities.map(city=>({...city}));
+  }
+  function saveCities(storage,list) {
+    try {if(!storage)return false;storage.setItem(CLOCKS_KEY,JSON.stringify(list));return true;}catch{return false;}
+  }
   const formatters = new Map();
   function formatter(zone, options) {
     const key = zone + JSON.stringify(options);
@@ -105,6 +132,6 @@ const WorldWeather = (() => {
     const country=[...new Set(region.filter(Boolean))].join(', ');
     return {id:'search-'+item.id,name:String(item.name||'Selected city'),country,lat:item.latitude,lon:item.longitude,zone:item.timezone};
   }
-  return {TTL,cities,clock,dateLabel,validZone,offsetMinutes,offsetLabel,difference,coordinates,project,unproject,weatherKind,weatherURL,parseWeather,WeatherClient,searchQuery,searchLocation};
+  return {TTL,cities,CLOCKS_KEY,sameLocation,clockLocation,restoreCities,saveCities,clock,dateLabel,validZone,offsetMinutes,offsetLabel,difference,coordinates,project,unproject,weatherKind,weatherURL,parseWeather,WeatherClient,searchQuery,searchLocation};
 })();
 if(typeof module!=='undefined'&&module.exports)module.exports=WorldWeather;

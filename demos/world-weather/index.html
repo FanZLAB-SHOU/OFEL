@@ -8,9 +8,9 @@
   <meta name="description" content="An OFEL preview of world clocks and current weather, with city search and an interactive world map.">
   <title>World Time &amp; Weather | OFEL</title>
   <link rel="icon" href="../../assets/favicon.png">
-  <link rel="stylesheet" href="weather.css?v=1">
-  <script src="model.js?v=3" defer></script>
-  <script src="app.js?v=2" defer></script>
+  <link rel="stylesheet" href="weather.css?v=2">
+  <script src="model.js?v=4" defer></script>
+  <script src="app.js?v=3" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -30,11 +30,12 @@
       </section>
       <section class="conditions-card" aria-labelledby="location-name"><div class="location-heading"><p class="eyebrow">Local time</p><span id="day-state" class="day-state" hidden></span></div><h2 id="location-name">Shanghai</h2><p id="location-region">China</p><p id="location-coordinates" class="coordinates">31.23° N · 121.47° E</p>
         <time id="local-clock" class="local-clock">—</time><p id="local-date" class="local-date">—</p><div class="zone-row"><span id="utc-offset">UTC+8</span><span id="zone-name">Asia/Shanghai</span></div><p id="time-difference" class="time-difference">Shanghai reference time</p>
+        <div class="save-clock"><button id="add-city" type="button">+ Add to city clocks</button><p id="clock-status" role="status"></p></div>
         <div class="weather-block" id="weather-block" aria-busy="true"><div class="weather-main"><span id="weather-icon" class="weather-icon" aria-hidden="true"></span><div><strong id="temperature">—</strong><p id="weather-description">Loading weather…</p></div></div><dl class="weather-metrics"><div><dt>Feels like</dt><dd id="feels-like">—</dd></div><div><dt>Humidity</dt><dd id="humidity">—</dd></div><div><dt>Wind</dt><dd id="wind">—</dd></div><div><dt>Precipitation</dt><dd id="precipitation">—</dd></div></dl></div>
         <div class="weather-footer"><p id="weather-update">Fetching current conditions</p><button id="refresh-weather" type="button" disabled>Refresh</button></div><p class="weather-status" id="weather-status" role="status"></p>
       </section>
     </div>
-    <section class="city-section" aria-labelledby="city-clocks-title"><div class="section-heading"><div><p class="eyebrow">Around the world</p><h2 id="city-clocks-title">City clocks</h2></div><p>Tap a city to see its weather.</p></div><div id="city-clocks" class="city-grid"></div></section>
+    <section class="city-section" aria-labelledby="city-clocks-title"><div class="section-heading"><div><p class="eyebrow">Your world</p><h2 id="city-clocks-title">Your city clocks</h2></div><p>Search above to add cities.<br>Tap a clock for weather; × to remove.</p></div><div id="city-clocks" class="city-grid"></div><div id="empty-clocks" class="empty-clocks" hidden><h3>No saved cities yet.</h3><p>Find a city above, then add it to your clocks.</p><button id="find-city" type="button">Find a city <span aria-hidden="true">↑</span></button></div><p class="clock-storage-note">Your list is saved in this browser. The starting cities are examples you can remove.</p></section>
     <noscript><p class="notice">Enable JavaScript to use the clocks, city search and weather map.</p></noscript>
   </main>
   <footer class="demo-footer wrap"><div><p>Weather refreshes every 10 minutes while this page is open.</p><p>Modelled conditions: <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo<span class="sr-only"> (opens in a new tab)</span></a> · City search: <a href="https://open-meteo.com/en/docs/geocoding-api" target="_blank" rel="noopener noreferrer">Open-Meteo / GeoNames<span class="sr-only"> (opens in a new tab)</span></a></p></div><a class="contact-link" href="../../contact/">Contact OFEL <span aria-hidden="true">↗</span></a></footer>

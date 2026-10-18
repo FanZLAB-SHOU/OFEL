@@ -14,12 +14,12 @@ const html=fs.readFileSync(__dirname+'/index.html','utf8');
 const nodes=Object.fromEntries([...html.matchAll(/<([\w-]+)[^>]*\bid="([^"]+)"/g)].map(m=>[m[2],new Element(m[1])]));
 const document={hidden:false,events:{},getElementById:id=>nodes[id],createElement:t=>new Element(t),createElementNS:(ns,t)=>new Element(t),addEventListener(k,f){this.events[k]=f;}};
 let now=Date.UTC(2026,9,17,12);class TestDate extends Date {constructor(v){super(v===undefined?now:v);}static now(){return now;}}
-const requests=[],intervals=[],storage=new Map();
+const requests=[],intervals=[],storage=new Map(),clockStorage=new Map();
 const fetcher=(url,options={})=>{
  if(url==='land.geojson')return Promise.resolve({ok:true,json:async()=>JSON.parse(fs.readFileSync(__dirname+'/land.geojson','utf8'))});
  return new Promise(resolve=>requests.push({url,signal:options.signal,resolve}));
 };
-const context=vm.createContext({document,fetch:fetcher,Date:TestDate,Intl,URL,URLSearchParams,AbortController,sessionStorage:{getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)},setTimeout:()=>1,clearTimeout(){},setInterval:(fn,ms)=>intervals.push({fn,ms})});
+const context=vm.createContext({document,fetch:fetcher,Date:TestDate,Intl,URL,URLSearchParams,AbortController,localStorage:{getItem:k=>clockStorage.get(k)??null,setItem:(k,v)=>clockStorage.set(k,v)},sessionStorage:{getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)},setTimeout:()=>1,clearTimeout(){},setInterval:(fn,ms)=>intervals.push({fn,ms})});
 vm.runInContext(fs.readFileSync(__dirname+'/model.js','utf8'),context);
 vm.runInContext(fs.readFileSync(__dirname+'/app.js','utf8'),context);
 const flush=async()=>{for(let i=0;i<5;i++)await new Promise(resolve=>setImmediate(resolve));};
@@ -29,11 +29,11 @@ const finish=(index,data,ok=true)=>requests[index].resolve({ok,json:async()=>dat
  assert.equal(nodes['city-clocks'].children.length,8);assert.equal(nodes['city-markers'].children.length,8);
  assert.equal(requests.length,1);finish(0,weather('Asia/Shanghai',20));await flush();
  assert.equal(nodes.temperature.textContent,'20°C');assert.equal(nodes['weather-block'].attrs['aria-busy'],'false');assert.equal(nodes.land.children.length,127);
- nodes['city-clocks'].children[1].click();nodes['city-clocks'].children[3].click();
+ nodes['city-clocks'].children[1].children[0].click();nodes['city-clocks'].children[3].children[0].click();
  assert.equal(requests[1].signal.aborted,true);
  finish(2,weather('Europe/Madrid',10));await flush();finish(1,weather('America/Los_Angeles',99));await flush();
  assert.equal(nodes['location-name'].textContent,'Madrid');assert.equal(nodes.temperature.textContent,'10°C','late responses must not overwrite the current city');
- nodes['city-clocks'].children[4].click();finish(3,{},false);await flush();
+ nodes['city-clocks'].children[4].children[0].click();finish(3,{},false);await flush();
  assert.equal(nodes['location-name'].textContent,'Lima');assert.match(nodes['local-clock'].textContent,/:/);assert.equal(nodes.temperature.textContent,'—');assert.match(nodes['weather-status'].textContent,/Could not reach/);
  nodes['refresh-weather'].click();finish(4,weather('America/Lima',15));await flush();assert.equal(nodes.temperature.textContent,'15°C');
  nodes['city-query'].value='Tokyo';const search=nodes['city-search'].events.submit({preventDefault(){}});
@@ -54,5 +54,25 @@ const finish=(index,data,ok=true)=>requests[index].resolve({ok,json:async()=>dat
   assert.equal(Number(new URL(requests[index+1].url).searchParams.get('latitude')),city.lat);
   finish(index+1,weather(city.zone,25));await flush();assert.equal(nodes.temperature.textContent,'25°C');assert.equal(nodes['zone-name'].textContent,city.zone);
  }
- console.log('Passed demo boot, marker/card selection, stale-response protection, offline clock fallback, refresh, search, custom pin, map reset, empty search, visibility-aware refresh and Hong Kong/Macao search-to-weather flows.');
+ const beforeAdd=requests.length;assert.equal(nodes['add-city'].disabled,false);nodes['add-city'].click();
+ assert.equal(nodes['city-clocks'].children.length,9);assert.equal(nodes['city-markers'].children.length,9);assert.equal(nodes['picked-marker'].children.length,0);assert.equal(nodes['add-city'].disabled,true);
+ assert.equal(requests.length,beforeAdd,'saving a clock must not request extra weather');
+ assert.match(nodes['clock-status'].textContent,/Added Macao/);nodes['add-city'].click();assert.equal(nodes['city-clocks'].children.length,9,'the same city cannot be added twice');
+ assert.equal(JSON.parse(clockStorage.get('ofel-world-cities-v1')).at(-1).name,'Macao');
+ function reboot(){
+  const restored=Object.fromEntries([...html.matchAll(/<([\w-]+)[^>]*\bid="([^"]+)"/g)].map(m=>[m[2],new Element(m[1])]));
+  const doc={...document,events:{},getElementById:id=>restored[id]};
+  const reloaded=vm.createContext({document:doc,Date:TestDate,Intl,URL,URLSearchParams,AbortController,localStorage:{getItem:k=>clockStorage.get(k)??null,setItem:(k,v)=>clockStorage.set(k,v)},setTimeout:()=>1,clearTimeout(){},setInterval(){},fetch:async url=>({ok:true,json:async()=>url==='land.geojson'?JSON.parse(fs.readFileSync(__dirname+'/land.geojson','utf8')):weather('Asia/Shanghai',20)})});
+  vm.runInContext(fs.readFileSync(__dirname+'/model.js','utf8'),reloaded);vm.runInContext(fs.readFileSync(__dirname+'/app.js','utf8'),reloaded);return restored;
+ }
+ assert.equal(reboot()['city-clocks'].children.length,9,'saved additions must survive reload');
+ nodes['city-clocks'].children[8].children[1].click();assert.equal(nodes['location-name'].textContent,'Macao');assert.equal(nodes['picked-marker'].children.length,1);assert.equal(nodes['add-city'].disabled,false);
+ assert.equal(nodes['city-clocks'].children.length,8);assert.equal(nodes['city-markers'].children.length,8);
+ while(nodes['city-clocks'].children.length)nodes['city-clocks'].children[0].children[1].click();
+ assert.equal(nodes['empty-clocks'].hidden,false);assert.equal(nodes['city-markers'].children.length,0);assert.equal(nodes['find-city'].focused,true);assert.deepEqual(JSON.parse(clockStorage.get('ofel-world-cities-v1')),[]);
+ const emptyReload=reboot();assert.equal(emptyReload['city-clocks'].children.length,0);assert.equal(emptyReload['empty-clocks'].hidden,false);
+ nodes['find-city'].click();assert.equal(nodes['city-query'].focused,true);
+ nodes['add-city'].click();assert.equal(nodes['city-clocks'].children.length,1);assert.equal(nodes['empty-clocks'].hidden,true);
+ const oneCityReload=reboot();assert.equal(oneCityReload['location-name'].textContent,'Macao');assert.equal(oneCityReload['location-region'].textContent,'Macao, China');assert.equal(oneCityReload['city-clocks'].children.length,1);
+ console.log('Passed city selection, stale-response protection, offline fallback, search aliases, weather refresh, adding/removing clocks and markers, duplicate prevention, saved reloads and intentionally empty lists.');
 })().catch(e=>{console.error(e);process.exitCode=1;});

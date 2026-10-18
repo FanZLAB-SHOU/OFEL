@@ -280,6 +280,18 @@ function initReveal() {
 }
 initReveal();
 
+// Member introductions float the shared header over the image, then restore the light header below it.
+function initMemberIntro() {
+  const hero = document.querySelector('[data-member-intro]');
+  const header = document.querySelector('.site-header');
+  if (!hero || !header) return;
+  const update = () => header.classList.toggle('is-past-member', hero.getBoundingClientRect().bottom <= header.offsetHeight);
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+}
+initMemberIntro();
+
 // Homepage header floats over the hero; give it a background once the page scrolls.
 if (document.body.dataset.page === 'index') {
   const header = document.querySelector('.site-header');
@@ -427,8 +439,9 @@ function initFacultyHero() {
     const input = center.querySelector('input');
     input.style.paddingLeft = mobile ? '0px' : `${Math.max(0, pr - (cx - bar / 2) - 52)}px`;
     chipsWrap.style.paddingLeft = '0px';
-    if (mobile) { chipsWrap.style.left = `${cx}px`; chipsWrap.style.width = `${bar}px`; }
-    else { const l = pr + 28, r = W - 40; chipsWrap.style.left = `${(l + r) / 2}px`; chipsWrap.style.width = `${r - l}px`; }
+    // Use the whole search-bar width, so laptop screens do not strand Contact on a second row.
+    chipsWrap.style.left = `${cx}px`;
+    chipsWrap.style.width = `${bar}px`;
     center.style.top = `${cy}px`;
     const chH = chipsWrap.offsetHeight;
     let chipsTop = cy + (mobile ? 40 : 48);

@@ -266,23 +266,33 @@ for n, person in enumerate(people):
                   f'<span aria-hidden="true">/</span><span aria-current="page">{name}</span></nav>')
     # Only current members with supplied photos get the large introduction.
     # Keep the full existing profile below it, including bilingual bios and papers.
-    has_intro = bool(person.get('photo')) and back_href == 'members/index.html'
+    has_intro = bool(person.get('photo') and person.get('hero', {}).get('cutout')) and back_href == 'members/index.html'
     intro = ''
     if has_intro:
-        first_paragraph = (person.get('bio') or '').split('\n\n')[0]
+        hero = person['hero']
+        if not (ROOT / hero['cutout']).is_file():
+            raise ValueError(f'Missing foreground portrait for {person["name"]}')
+        first_paragraph = hero.get('summary') or (person.get('bio') or '').split('\n\n')[0]
         summary = f'<p class="member-intro-summary">{esc(first_paragraph)}</p>' if first_paragraph else ''
+        topics = ''.join(f'<span>{esc(topic)}</span>' for topic in hero.get('research', []))
+        topics = topics or '<span class="member-intro-topic-pending">To be updated</span>'
+        hero_person = {**person, 'photo': hero['cutout']}
+        hero_links = f'<div class="pi-links">{"".join(links)}</div>' if links else ''
         intro = (
-            '    <section class="member-intro" aria-labelledby="profile-title"><div class="container">'
-            f'{breadcrumb}<div class="member-intro-card">'
+            '    <section class="member-intro" aria-labelledby="profile-title" data-member-intro>'
             f'<img class="member-intro-wash" src="{esc(person["photo"])}" alt="" aria-hidden="true" '
             'width="640" height="800" sizes="640px" fetchpriority="low">'
-            f'<div class="member-intro-portrait">{photo(person, "member-intro-photo", 720, 900, priority=True)}</div>'
-            f'<div class="member-intro-glass"><p class="member-intro-context">{esc(person["context"])}</p>'
+            '<div class="member-intro-watermark" aria-hidden="true">OFEL</div>'
+            f'<div class="member-intro-portrait">{photo(hero_person, "member-intro-photo", 1080, 1500, priority=True)}</div>'
+            '<div class="container member-intro-layout">'
             '<div class="member-intro-copy">'
-            f'<h1 id="profile-title">{name}</h1><p class="member-intro-role">{esc(person["role"])}</p>'
-            f'{summary}{links_html}'
-            f'<a class="member-intro-more" href="#member-details">Full profile{icon("down")}</a>'
-            '</div></div></div></div></section>\n'
+            '<p class="member-intro-greeting">Hi, I’m</p>'
+            f'<h1 id="profile-title"><span>{esc(given)}</span><span>{esc(family)}</span></h1>'
+            f'<p class="member-intro-role">{esc(person["role"])}</p>{summary}{hero_links}</div>'
+            '<div class="member-intro-research"><p>Research interests</p>'
+            f'<div>{topics}</div></div></div>'
+            f'<a class="member-intro-more" href="#member-details">{icon("down")}<span>Scroll to profile</span></a>'
+            '</section>\n'
         )
     details_id = 'member-details' if has_intro else 'profile-title'
     heading = (f'<h2 class="member-details-heading" id="member-details">{name}</h2>' if has_intro
@@ -308,7 +318,7 @@ for n, person in enumerate(people):
     head = render_head(title, description, BASE + clean_url('members/' + person['slug'] + '.html'), asset_version(),
                        image=person.get('photo'), image_alt=person.get('photo_alt') or (person['name'] + ' profile photo' if person.get('photo') else None), kind='profile')
     write_page(f'members/{person["slug"]}.html',
-        head + '<body id="top" data-page="profile" data-nav-section="people">\n'
+        head + f'<body id="top" data-page="profile" data-nav-section="people"{ " data-member-hero" if has_intro else ""}>\n'
         '  <a class="skip-link" href="#main">Skip to content</a>\n' + header
         + '\n  <main id="main">\n' + content + '  </main>\n\n' + footer + '</body>\n</html>\n'
     )

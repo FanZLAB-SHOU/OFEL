@@ -48,7 +48,7 @@ python3 -m http.server 8765 --bind 127.0.0.1
 
 调整共享 UI 后运行完整构建、链接和交互检查。保持 `hidden` 筛选规则、手机导航、键盘焦点、减少动态效果设置以及原有图片比例／取景位置；不要用全局圆角规则裁切官方 logo 或改变照片为圆形。
 
-页面顶部是全屏首屏：背景照片 `assets/faculty/fan-zhang-hero.webp` 与人物抠像 `assets/faculty/fan-zhang-hero-cutout.webp`（两张同尺寸、逐像素对齐）分两层叠放，磨砂搜索框从人物身后穿过；桌面端人物在最上层，手机端搜索框和选项在人物前面。脚本 `initFacultyHero`（`script.js`）按照片的裁切位置计算搜索框、选项和对话框的位置，所以窗口大小变化时仍对准人物。对话框平时只显示 “Hi, I’m Fan Zhang.”；点击 Research、Publications、Education、Academic service、Contact 或在搜索框输入关键词回车，会弹出对应卡片并由对话框回答一句，卡片内容直接取自页面下方各部分，不另存一份。首屏期间导航栏透明、白字，滚过首屏后恢复白色导航栏。往下的原版式各部分带 `data-reveal`，与首页一样逐渐显现；页面只有首屏一个 `h1`，下方姓名为 `h2.faculty-name`。更换首屏照片时需重新抠像并调整脚本中的人物坐标（`P`）。样式在 `assets/styles/site-ui.css` 的 `.fz-` 部分。
+页面顶部是全屏首屏：背景照片 `assets/faculty/fan-zhang-hero-restored-v2.webp` 与人物抠像 `assets/faculty/fan-zhang-hero-cutout-restored-v2.webp`（两张均为 1448×1086，保留同一构图坐标；原图与旧抠像仍保留）分两层叠放，磨砂搜索框从人物身后穿过；桌面端人物在最上层，手机端搜索框和选项在人物前面。脚本 `initFacultyHero`（`script.js`）按照片的裁切位置计算搜索框、选项和对话框的位置，所以窗口大小变化时仍对准人物。桌面端五个入口使用整个搜索框宽度保持单排，手机端采用 3+2 的均衡两排；两侧扩展背景仅作 3px 轻度柔化。对话框平时只显示 “Hi, I’m Fan Zhang.”；点击 Research、Publications、Education、Academic service、Contact 或在搜索框输入关键词回车，会弹出对应卡片并由对话框回答一句，卡片内容直接取自页面下方各部分，不另存一份。首屏期间导航栏透明、白字，滚过首屏后恢复白色导航栏。往下的原版式各部分带 `data-reveal`，与首页一样逐渐显现；页面只有首屏一个 `h1`，下方姓名为 `h2.faculty-name`。更换首屏照片时需重新抠像并调整脚本中的人物坐标（`P`）。样式在 `assets/styles/site-ui.css` 的 `.fz-` 部分。
 
 源文件为 `templates/members/fan-zhang.html`，样式使用 `faculty-` 前缀，避免影响其他成员页。保留 `#people` 和 `#principal-investigator` 原锚点。姓名仅出现一个主标题，职称加粗，联系按钮跳转联系页选择邮箱。ICCAT 的链接放在组织全称上。代表论文在 `scripts/build-site.py` 的 `faculty_dois` 中指定，标题、年份和期刊由现有论文库读取；只选择实验室成员／校友一作且 Fan Zhang 参与，或 Fan Zhang 本人一作的论文，排除外部合作者一作的论文，构建时校验这一条件。不在模板中手工复制论文信息。更换照片时保持完整人物可见，并检查桌面及手机的 `object-position`。
 
@@ -86,7 +86,7 @@ python3 -m http.server 8765 --bind 127.0.0.1
 
 构建后自动生成 `members/<given-name>-<family-name>/index.html`，访问地址为 `/members/<given-name>-<family-name>/`，包括简介、按作者姓名匹配的论文、前后成员导航。缺失照片保留矩形照片位。
 
-现有成员中已设置 `photo` 的个人页，在原有内容上方增加有边距的双栏介绍卡片：左侧大照片沿用 `photo_position`，右侧以同一照片的模糊色彩衬托磨砂玻璃面板，姓名、身份、英文简介首段与联系入口放在面板下方。手机端改为照片在上、介绍在下；顶部照片优先加载。下面仍保留完整简介、中文原文、论文和前后成员导航。此设计由 `scripts/build-people.py` 和共享样式中的 `.member-intro` 维护，仅用于当前成员，不改变校友及 Fan Zhang 的独立设计。首屏姓名为唯一 `h1`，下方原姓名改为 `h2#member-details`，同时作为 “Full profile” 的跳转锚点。没有照片的成员仍使用原版式。
+现有成员中同时设置 `photo` 与 `hero.cutout` 的个人页，顶部为全屏深色介绍：模糊原照作背景、透明主体居中偏右，左上 “Hi, I’m” 和姓名，左侧简介与联系入口，右下研究方向。`hero.summary` 保存首屏短简介，`hero.research` 保存已有资料确认的研究方向；缺少依据时显示 “To be updated”。手机端改为图片上方、文字下方的连续布局。下方仍保留完整简介、中文原文、论文及前后成员导航。样式在 `.member-intro`，生成器为 `scripts/build-people.py`，仅作用于当前成员；没有照片或尚未制作抠图的成员保持原版式。首屏姓名为唯一 `h1`，下方姓名为 `h2#member-details`。首屏导航透明，滚到详细资料后恢复浅色。原始照片保留不变，透明前景文件在 `assets/people/heroes/`，内置 image_gen 的生成方式与提示词记录在同目录 `generation-notes.json`。
 
 Fan Zhang 主页的主体信息在 [`templates/members/fan-zhang.html`](../templates/members/fan-zhang.html) 中维护。
 

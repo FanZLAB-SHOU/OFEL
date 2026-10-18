@@ -21,7 +21,15 @@
           "website": "https://hyxy.shou.edu.cn/2025/0225/c7722a338029/page.htm",
           "website_label": "University profile",
           "photo_source": "https://hyxy.shou.edu.cn/_upload/article/images/2a/e4/53c73ceb4a9db72ef0d3481ae23d/9eda1326-cf73-40eb-94f2-65a1a79c5714.jpg",
-          "researchgate": "https://www.researchgate.net/profile/Qinqin-Lin"
+          "researchgate": "https://www.researchgate.net/profile/Qinqin-Lin",
+          "hero": {
+            "cutout": "assets/people/heroes/qinqin-lin-cutout.webp",
+            "summary": "I study pelagic fish population dynamics, tropical Pacific food webs, and how fishing and climate change affect marine ecosystems.",
+            "research": [
+              "Marine ecosystems",
+              "Population dynamics"
+            ]
+          }
         }
       ]
     },
@@ -38,7 +46,15 @@
           "bio": "Xin Cheng is a postdoctoral researcher at the Oceanic Fisheries Ecosystem Laboratory, Shanghai Ocean University. Her research uses artificial intelligence and vessel-tracking data to study fishing-vessel behaviour and tuna fleet dynamics. She develops deep learning methods for vessel classification and examines how fishing activity varies across regions and over time. Her recent work also assesses the quality of Automatic Identification System (AIS) data to support fisheries monitoring and management.",
           "photo_alt": "Xin Cheng by the waterfront",
           "profile_photo_aspect_ratio": "1440 / 1026",
-          "photo_position": "70% 50%"
+          "photo_position": "70% 50%",
+          "hero": {
+            "cutout": "assets/people/heroes/xin-cheng-cutout.webp",
+            "summary": "I use artificial intelligence and vessel-tracking data to study fishing-vessel behaviour, tuna fleets, and the quality of AIS data.",
+            "research": [
+              "Fishing fleets",
+              "AI & vessel tracking"
+            ]
+          }
         },
         {
           "name": "Sisong Dong",
@@ -48,7 +64,15 @@
           "github": "https://github.com/dongworks97",
           "bio": "Sisong Dong is a postdoctoral researcher at the Oceanic Fisheries Ecosystem Laboratory, Shanghai Ocean University. His research focuses on stock assessment for tuna and coastal marine species, using quantitative population models to inform fisheries management.",
           "photo_alt": "Road bicycle beside a tree-lined road",
-          "profile_photo_aspect_ratio": "4 / 3"
+          "profile_photo_aspect_ratio": "4 / 3",
+          "hero": {
+            "cutout": "assets/people/heroes/sisong-dong-cutout.webp",
+            "summary": "I work on stock assessment for tuna and coastal marine species, using quantitative population models to inform fisheries management.",
+            "research": [
+              "Stock assessment",
+              "Population modelling"
+            ]
+          }
         }
       ]
     },
@@ -68,7 +92,15 @@
           "photo_alt": "Dongqi Lu beside the Sydney Opera House",
           "website": "https://www.researchgate.net/profile/Dongqi-Lu-3",
           "website_label": "ResearchGate",
-          "website_icon": "researchgate"
+          "website_icon": "researchgate",
+          "hero": {
+            "cutout": "assets/people/heroes/dongqi-lu-cutout.webp",
+            "summary": "I study how South Pacific albacore grow, combining age and growth analysis with genetic and genomic evidence to understand population structure.",
+            "research": [
+              "Fish growth",
+              "Genetics & genomics"
+            ]
+          }
         },
         {
           "name": "Hongyu Lin",
@@ -78,7 +110,15 @@
           "email": "linbojun99@gmail.com",
           "github": "https://github.com/Linbojun99",
           "researchgate": "https://www.researchgate.net/profile/Hongyu-Lin-13",
-          "bio": "Hongyu Lin is a PhD student at Shanghai Ocean University working on fisheries stock assessment and spatiotemporal modelling. His research examines tuna population dynamics under climate variability and change, with particular attention to the El Niño–Southern Oscillation (ENSO). He also works on catch-per-unit-effort (CPUE) standardisation and management strategy evaluation.\n\nHis work spans the Pacific and Atlantic oceans, including waters managed by multiple regional fisheries management organisations. He received China Scholarship Council (CSC) funding for a one-year joint doctoral research placement at the University of Washington in Seattle, USA."
+          "bio": "Hongyu Lin is a PhD student at Shanghai Ocean University working on fisheries stock assessment and spatiotemporal modelling. His research examines tuna population dynamics under climate variability and change, with particular attention to the El Niño–Southern Oscillation (ENSO). He also works on catch-per-unit-effort (CPUE) standardisation and management strategy evaluation.\n\nHis work spans the Pacific and Atlantic oceans, including waters managed by multiple regional fisheries management organisations. He received China Scholarship Council (CSC) funding for a one-year joint doctoral research placement at the University of Washington in Seattle, USA.",
+          "hero": {
+            "cutout": "assets/people/heroes/hongyu-lin-cutout.webp",
+            "summary": "I study tuna population dynamics under climate variability, with a focus on stock assessment, spatiotemporal modelling, and fisheries management.",
+            "research": [
+              "Stock assessment",
+              "Climate variability"
+            ]
+          }
         },
         {
           "name": "Mingfeng Jiang",
@@ -88,7 +128,15 @@
           "github": "https://github.com/jiang822",
           "bio": "Mingfeng Jiang is a PhD student in Fisheries Resources at Shanghai Ocean University, supervised by Professor Fan Zhang. After studying civil engineering as an undergraduate, he moved into marine fisheries science for his master’s and doctoral studies.\n\nHis research focuses on cephalopod population dynamics and stock assessment, particularly jumbo squid in the southeast Pacific. He develops models that account for death after spawning and examines how ENSO shapes squid migration and reproduction. He also evaluates seasonal fishing closures as a means of conserving oceanic squid. He received a 2026 National Scholarship.",
           "photo_alt": "Mingfeng Jiang beside a lake in winter",
-          "researchgate": "https://www.researchgate.net/profile/Mingfeng-Jiang-3/research"
+          "researchgate": "https://www.researchgate.net/profile/Mingfeng-Jiang-3/research",
+          "hero": {
+            "cutout": "assets/people/heroes/mingfeng-jiang-cutout.webp",
+            "summary": "I study jumbo squid population dynamics and stock assessment, including death after spawning, ENSO, and seasonal fishing closures.",
+            "research": [
+              "Squid dynamics",
+              "Stock assessment"
+            ]
+          }
         },
         {
           "name": "Xiaoci Wu",
@@ -121,7 +169,15 @@
           "photo_position": "50% 20%",
           "email": null,
           "github": null,
-          "bio": "Runze Wang is a master’s student at Shanghai Ocean University working on fisheries stock assessment. His research focuses on how model uncertainty is identified and specified in tuna assessments, and how modelling choices and institutional practices influence the assessment process.\n\nAs a co-first author of a study published in Fish and Fisheries, he reviewed 133 stock assessments covering seven major commercial tuna species across five regional fisheries management organisations. This work compares uncertainty specifications among organisations and provides guidance for making assessments more consistent and transparent."
+          "bio": "Runze Wang is a master’s student at Shanghai Ocean University working on fisheries stock assessment. His research focuses on how model uncertainty is identified and specified in tuna assessments, and how modelling choices and institutional practices influence the assessment process.\n\nAs a co-first author of a study published in Fish and Fisheries, he reviewed 133 stock assessments covering seven major commercial tuna species across five regional fisheries management organisations. This work compares uncertainty specifications among organisations and provides guidance for making assessments more consistent and transparent.",
+          "hero": {
+            "cutout": "assets/people/heroes/runze-wang-cutout.webp",
+            "summary": "I study uncertainty in tuna stock assessments: how it is identified, specified, and shaped by modelling choices and institutional practices.",
+            "research": [
+              "Stock assessment",
+              "Model uncertainty"
+            ]
+          }
         },
         {
           "name": "Jiayi Zhou",
@@ -140,7 +196,15 @@
           "email": "mas_1227@163.com",
           "github": null,
           "bio": "I’m a graduate student slowly being domesticated by research. Academic papers by day, fan works by night. I can track fishing vessels across the Pacific with AIS, yet often can’t locate my own research direction.\n\nI have a knack for turning a passing obsession into a three-year project. My hobbies form unsupervised clusters. My state of mind follows a random walk, my idealism converges intermittently, and deadlines keep closing in.",
-          "bio_zh": "马爽｜硕士研究生\n\n一名正在被科研缓慢驯化的研究生。白天写论文，晚上搞同人。能通过AIS追踪太平洋上的渔船，却时常定位不到自己的研究方向。擅长把三分钟热度发展成三年工程，兴趣爱好呈现无监督聚类状态。精神状态随机游走，理想主义间歇性收敛，DDL持续逼近中。"
+          "bio_zh": "马爽｜硕士研究生\n\n一名正在被科研缓慢驯化的研究生。白天写论文，晚上搞同人。能通过AIS追踪太平洋上的渔船，却时常定位不到自己的研究方向。擅长把三分钟热度发展成三年工程，兴趣爱好呈现无监督聚类状态。精神状态随机游走，理想主义间歇性收敛，DDL持续逼近中。",
+          "hero": {
+            "cutout": "assets/people/heroes/shuang-ma-cutout.webp",
+            "summary": "Academic papers by day, fan works by night. I can track fishing vessels across the Pacific with AIS, yet often can’t locate my own research direction.",
+            "research": [
+              "Fishing vessels",
+              "AIS & fleet dynamics"
+            ]
+          }
         },
         {
           "name": "Feng Yao",
@@ -182,7 +246,15 @@
           "email": "2358813349@qq.com",
           "github": null,
           "bio": "I’m a master’s student trying to make sense of fish population dynamics, fisheries stock assessment, and why SPiCT is refusing to run yet again. Most days, I bounce between papers, data, code, and prior distributions. I’m committed to getting models to converge, and equally committed to figuring out why they converged the way they did.\n\nI study fish in the sea and tinker with models on my computer. Research is a long and winding road, but as long as the code still runs, there’s still hope.",
-          "bio_zh": "李卫国｜硕士研究生\n\n一个试图搞懂鱼类种群动态、渔业资源评估，以及 SPiCT 为什么又跑不出来的研究生。日常在文献、数据、代码和先验分布之间反复横跳，致力于让模型收敛，也致力于弄明白它为什么这样收敛。\n\n研究海里的鱼，折腾电脑里的模型。科研之路道阻且长，但只要代码还能运行，生活就还有希望。"
+          "bio_zh": "李卫国｜硕士研究生\n\n一个试图搞懂鱼类种群动态、渔业资源评估，以及 SPiCT 为什么又跑不出来的研究生。日常在文献、数据、代码和先验分布之间反复横跳，致力于让模型收敛，也致力于弄明白它为什么这样收敛。\n\n研究海里的鱼，折腾电脑里的模型。科研之路道阻且长，但只要代码还能运行，生活就还有希望。",
+          "hero": {
+            "cutout": "assets/people/heroes/weiguo-li-cutout.webp",
+            "summary": "I’m trying to make sense of fish population dynamics, fisheries stock assessment, and why SPiCT is refusing to run yet again.",
+            "research": [
+              "Population dynamics",
+              "Stock assessment"
+            ]
+          }
         },
         {
           "name": "Xianglong Yan",
@@ -191,7 +263,15 @@
           "email": "18205687884@163.com",
           "github": null,
           "bio": "Xianglong Yan is a master’s student at Shanghai Ocean University, which he joined in September 2026 after completing his undergraduate studies at Dalian Ocean University. His research interests centre on fish feeding ecology and coastal ecosystems.\n\nHis undergraduate thesis used carbon and nitrogen stable isotopes to investigate the feeding ecology of black rockfish in the Zhuanghe offshore wind farm area. His training also includes Ecopath ecosystem modelling and fish growth analysis, alongside practical work on fish behaviour and artificial reef design.",
-          "photo_alt": "Xianglong Yan"
+          "photo_alt": "Xianglong Yan",
+          "hero": {
+            "cutout": "assets/people/heroes/xianglong-yan-cutout.webp",
+            "summary": "I study fish feeding ecology and coastal ecosystems, with training in stable isotopes, Ecopath modelling, and fish growth analysis.",
+            "research": [
+              "Feeding ecology",
+              "Coastal ecosystems"
+            ]
+          }
         },
         {
           "name": "Shixin Wu",
@@ -208,7 +288,12 @@
           "email": "18314934149@163.com",
           "github": null,
           "bio": "Zhechuan Xu is a master’s student in the Oceanic Fisheries Ecosystem Laboratory at Shanghai Ocean University.",
-          "photo_alt": "Zhechuan Xu"
+          "photo_alt": "Zhechuan Xu",
+          "hero": {
+            "cutout": "assets/people/heroes/zhechuan-xu-cutout.webp",
+            "summary": "I’m a master’s student in the Oceanic Fisheries Ecosystem Laboratory at Shanghai Ocean University.",
+            "research": []
+          }
         }
       ]
     }

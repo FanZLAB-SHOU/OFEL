@@ -166,5 +166,13 @@
     "height": 630,
     "type": "image/png",
     "bytes": 53274
+  },
+  "assets/people/zhuojin-jiang.jpg": {
+    "sha256": "4ef872b7c87141e6db9bad9c8a8b106ea14662342159bab5b6413d5547d25624",
+    "src": "assets/share/zhuojin-jiang-31bcbc211447.jpg",
+    "width": 1200,
+    "height": 800,
+    "type": "image/jpeg",
+    "bytes": 82143
   }
 }

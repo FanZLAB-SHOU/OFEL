@@ -873,12 +873,12 @@ body[data-page="fan-zhang"] main { padding-top: 0; }
   .reveal-ready [data-reveal] { opacity: 1; translate: none; transition: none; }
 }
 
-/* The same tactile scroll entry is used on faculty and member introductions. */
-:is(.member-intro-more, .fz-scroll) { min-width: 144px; min-height: 64px; padding: 10px 20px; gap: 6px; border: 1px solid #b9dbfa30; border-radius: 22px; background: #a6d3ff09; color: #c4d9ed; opacity: .85; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); transition: scale .28s, background .28s, border-color .28s, color .28s, opacity .28s, box-shadow .28s; }
+/* Unframed text-and-arrow scroll entries on faculty and member introductions. */
+:is(.member-intro-more, .fz-scroll) { min-width: 0; min-height: 56px; padding: 8px 12px; gap: 6px; border: 0; border-radius: 0; background: transparent; box-shadow: none; color: #c4d9ed; opacity: .85; -webkit-backdrop-filter: none; backdrop-filter: none; transition: scale .28s, color .28s, opacity .28s, text-shadow .28s; }
 :is(.member-intro-more, .fz-scroll) :is(.icon, svg) { animation: none; transition: translate .28s; }
-:is(.member-intro-more, .fz-scroll):is(:hover, :focus-visible) { scale: 1.08; opacity: 1; color: #fff; background: #84bfff26; border-color: #b5e2ffbd; box-shadow: 0 0 0 5px #8bcaff0d, 0 0 28px #6dbbff40, 0 10px 30px #03142655; }
+:is(.member-intro-more, .fz-scroll):is(:hover, :focus-visible) { scale: 1.08; opacity: 1; color: #fff; text-shadow: 0 0 16px #89caff80; }
 :is(.member-intro-more, .fz-scroll):is(:hover, :focus-visible) :is(.icon, svg) { translate: 0 3px; }
-:is(.member-intro-more, .fz-scroll):focus-visible { outline: 2px solid #b6e1ff; outline-offset: 5px; }
+.member-intro .member-intro-more:focus-visible, .fz-scroll:focus-visible { outline: none; text-decoration: underline; text-underline-offset: 5px; }
 @media (prefers-reduced-motion: reduce) {
   :is(.member-intro-more, .fz-scroll), :is(.member-intro-more, .fz-scroll) :is(.icon, svg), .profile-pager a { transition: none; }
   :is(.member-intro-more, .fz-scroll):is(:hover, :focus-visible) { scale: 1; }

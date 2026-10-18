@@ -378,10 +378,15 @@
         },
         {
           "name": "Zhuojin Jiang",
-          "photo": null,
-          "email": null,
+          "photo": "assets/people/zhuojin-jiang.jpg",
+          "email": "jiangzhuojin0721@163.com",
           "github": null,
-          "bio": null
+          "bio": "Zhuojin Jiang (江卓瑾) is a 2026 master’s graduate whose research focuses on tuna biology.",
+          "bio_zh": "江卓瑾，2026届硕士毕业生，研究方向：金枪鱼生物学。",
+          "photo_alt": "Zhuojin Jiang by the sea at sunset",
+          "profile_photo_aspect_ratio": "3 / 2",
+          "photo_position": "100% 50%",
+          "directory_photo_position": "100% 50%"
         },
         {
           "name": "Haotian Sun",

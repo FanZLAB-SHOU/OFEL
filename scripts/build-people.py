@@ -181,7 +181,7 @@ for group in groups:
         anchor = f' id="{esc(group["id"])}-title"' if n == 0 else ''
         portrait = {**member, 'photo': member.get('profile_photo') or member.get('photo'), 'photo_alt': ''}
         image = photo(portrait, 'directory-person-img', 460, 614,
-                      sizes='(max-width: 900px) 44vw, (max-width: 1200px) 22vw, 230px')
+                      sizes='(max-width: 760px) 44vw, (max-width: 1100px) 30vw, (max-width: 1400px) 23vw, 300px')
         sections.append(
             f'            <article class="directory-person" data-reveal><a class="directory-person-link" href="{href}">'
             f'<div class="directory-person-label"><h2{anchor}>{name}</h2><p>{esc(member["role"])}</p></div>'

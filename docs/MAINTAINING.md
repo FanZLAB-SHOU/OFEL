@@ -40,6 +40,10 @@ python3 -m http.server 8765 --bind 127.0.0.1
 
 手机端首页四张导航卡片支持滑动、左右按钮、四个分页圆点，以及聚焦卡片区域后的方向键和 Home/End 键。桌面端保持网格，控制按钮仅在手机横向溢出时显示；减少动态效果的系统设置会禁用平滑切换。
 
+### Fan Zhang 个人页
+
+源文件为 `templates/members/fan-zhang.html`，样式使用 `faculty-` 前缀，避免影响其他成员页。保留 `#people` 和 `#principal-investigator` 原锚点。姓名仅出现一个主标题，职称加粗，联系按钮跳转联系页选择邮箱。ICCAT 的链接放在组织全称上。代表论文在 `scripts/build-site.py` 的 `faculty_dois` 中指定，标题、年份和期刊由现有论文库读取，构建时检查作者；不在模板中手工复制论文信息。更换照片时保持完整人物可见，并检查桌面及手机的 `object-position`。
+
 ### 联系与到访
 
 联系页内容在 `templates/contact.html`：校园插画与 Fan Zhang 联系方式、研究生咨询／研究访问／科研合作三个邮件入口，以及中英文地址和地图导航。邮件入口只打开访客的邮件应用，通过不同的主题区分咨询类型；邮箱下方另有 Gmail、Outlook 网页写信入口和复制邮箱按钮。复制受限时显示可选中的邮箱文本，网页邮箱入口在禁用 JavaScript 时仍可使用。不提供站内发送表单，也不表示已发布招生名额。保留 `#contact`、`#join-us` 和 `#visit` 页内锚点。校园插画复用首页图片，来源及生成记录位于 `assets/contact/shou-campus-collaboration-prompt.md`。

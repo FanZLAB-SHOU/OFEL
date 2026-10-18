@@ -272,7 +272,21 @@ def reference_card(item, professional=False):
 
 
 reference_materials = json.loads((ROOT / 'assets/reference-materials.json').read_text())
+
+# A short, deliberately selected profile list; bibliographic details stay in the publication dataset.
+faculty_dois = ['10.1111/faf.70077', '10.1111/faf.70015', '10.1111/faf.12673']
+faculty_papers = []
+for doi in faculty_dois:
+    paper = papers_by_doi[doi]
+    if not publications.has_fan_zhang(paper):
+        raise ValueError(f'Fan Zhang must be an author of profile selection: {doi}')
+    faculty_papers.append(
+        f'<li><a class="faculty-paper" href="{esc(paper["source"])}" target="_blank" rel="noopener noreferrer">'
+        f'<span class="faculty-paper-meta">{paper["year"]} · {esc(paper["journal"])}</span>'
+        f'<h4>{italicize(esc(paper["title"]))}</h4><span class="faculty-paper-read">Read paper {icon("right")}</span>'
+        '<span class="sr-only"> (opens in a new tab)</span></a></li>')
 tokens = {
+    '{{faculty_selected_papers}}': '\n'.join(faculty_papers),
     '{{news_filters}}': news_filters,
     '{{news_count}}': str(len(posts)),
     '{{professional_links}}': '\n'.join(reference_card(item, True) for item in reference_materials['professional_links']),

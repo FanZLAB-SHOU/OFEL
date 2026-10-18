@@ -133,8 +133,14 @@ def photo(member, cls, width, height, priority=False, sizes=None):
     styles = []
     if cls == 'profile-img' and member.get('profile_photo_aspect_ratio'):
         styles.append(f'aspect-ratio: {esc(member["profile_photo_aspect_ratio"])}')
-    if member.get('photo_position'):
-        styles.append(f'object-position: {esc(member["photo_position"])}')
+    position = member.get('directory_photo_position', '50% 50%') if cls == 'directory-person-img' else member.get('photo_position')
+    if position:
+        styles.append(f'object-position: {esc(position)}')
+    if cls == 'directory-person-img' and member.get('directory_photo_scale'):
+        scale = float(member['directory_photo_scale'])
+        if not 1 <= scale <= 2:
+            raise ValueError(f'Invalid directory photo scale for {member["name"]}')
+        styles.append(f'--directory-photo-scale: {scale:g}')
     style = f' style="{"; ".join(styles)}"' if styles else ''
     loading = 'fetchpriority="high"' if priority else 'loading="lazy"'
     sizes = sizes or ('(max-width: 760px) calc(100vw - 40px), (max-width: 1280px) 46vw, 620px' if priority else None)

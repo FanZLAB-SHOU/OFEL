@@ -333,12 +333,13 @@ body:is([data-page="members"], [data-page="alumni"]) .member-directory { padding
 .directory-sort-note { grid-column: 1 / -1; margin: 8px 0 0; text-align: right; color: #93afc5; font-size: 12px; line-height: 1.6; }
 .directory-person { min-width: 0; position: relative; scroll-margin-top: 120px; }
 .directory-person:focus-within { z-index: 2; }
-.directory-person-link { display: block; position: relative; min-width: 0; aspect-ratio: 3 / 4; border-radius: 20px; background: #17334e; box-shadow: 0 12px 30px #020c1826; transform-origin: center; transition: transform .35s cubic-bezier(.2, .65, .3, 1), box-shadow .35s; }
-.directory-person-label { position: absolute; z-index: 1; inset: auto 0 0; min-height: 104px; padding: 22px 20px 18px; border-radius: 0 0 20px 20px; background: linear-gradient(180deg, #081c30c9, #081c30f5); border-top: 1px solid #d2eaff26; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+.directory-person-link { display: flex; flex-direction: column; position: relative; min-width: 0; height: 100%; border-radius: 20px; background: #17334e; box-shadow: 0 12px 30px #020c1826; transform-origin: center; transition: transform .35s cubic-bezier(.2, .65, .3, 1), box-shadow .35s; }
+.directory-person-label { order: 2; flex: 1; min-height: 104px; padding: 22px 20px 18px; border-radius: 0 0 20px 20px; background: linear-gradient(180deg, #081c30c9, #081c30f5); border-top: 1px solid #d2eaff26; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
 .directory-person-label :is(h2, h3) { margin: 0; font-size: clamp(19px, 1.9vw, 26px); line-height: 1.15; font-weight: 700; letter-spacing: -.035em; color: #edf6ff; overflow-wrap: anywhere; transition: color .25s; }
 .directory-person-label p { margin-top: 7px; color: #bbd5ea; font-size: 12px; line-height: 1.45; }
-.directory-photo { overflow: hidden; width: 100%; height: 100%; border-radius: 20px; background: #17334e; border: 1px solid #b4dcff26; transition: border-color .25s; }
-.directory-photo > .directory-person-img, .directory-photo > .member-photo-placeholder { display: block; width: 100%; height: 100%; object-fit: cover; border: 0; border-radius: 0; }
+.directory-photo { position: relative; flex: none; overflow: hidden; width: 100%; aspect-ratio: 3 / 4; border-radius: 20px 20px 0 0; background: #17334e; border: 1px solid #b4dcff26; transition: border-color .25s; }
+.directory-photo > .directory-person-img, .directory-photo > .member-photo-placeholder { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; border: 0; border-radius: 0; }
+.directory-photo > .directory-person-img { object-position: 50% 50%; transform: scale(var(--directory-photo-scale, 1)); transform-origin: 50% 100%; }
 .directory-photo > .member-photo-placeholder { display: grid; background: linear-gradient(145deg, #234968, #10283f); }
 .directory-photo .member-photo-placeholder svg { fill: #658aa7; stroke: #7399b6; }
 .directory-person-link:focus-visible { outline: 2px solid #9fd6ff; outline-offset: 5px; transform: scale(1.035); }
@@ -374,7 +375,8 @@ body:is([data-page="members"], [data-page="alumni"]) .footer-top > a:last-child 
 }
 @media (max-width: 480px) {
   .directory-board { gap: 12px; }
-  .directory-person-link, .directory-photo { border-radius: 16px; }
+  .directory-person-link { border-radius: 16px; }
+  .directory-photo { border-radius: 16px 16px 0 0; }
   .directory-person-label { min-height: 94px; padding: 15px 12px 13px; border-radius: 0 0 16px 16px; }
   .directory-person-label :is(h2, h3) { font-size: clamp(16px, 4.1vw, 20px); }
   .directory-person-label p { font-size: 11px; }

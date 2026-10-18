@@ -35,7 +35,9 @@
               941
             ]
           },
-          "profile_photo": "assets/people/portraits/qinqin-lin-restored-retouched.webp"
+          "profile_photo": "assets/people/portraits/qinqin-lin-restored-retouched.webp",
+          "directory_photo_position": "50% 50%",
+          "directory_photo_scale": 1.12
         }
       ]
     },
@@ -60,7 +62,9 @@
               "Fishing fleets",
               "AI & vessel tracking"
             ]
-          }
+          },
+          "directory_photo_position": "92% 50%",
+          "directory_photo_scale": 1.35
         },
         {
           "name": "Sisong Dong",
@@ -106,7 +110,9 @@
               "Fish growth",
               "Genetics & genomics"
             ]
-          }
+          },
+          "directory_photo_position": "86% 50%",
+          "directory_photo_scale": 1.3
         },
         {
           "name": "Hongyu Lin",
@@ -142,7 +148,9 @@
               "Squid dynamics",
               "Stock assessment"
             ]
-          }
+          },
+          "directory_photo_position": "67% 50%",
+          "directory_photo_scale": 1.15
         },
         {
           "name": "Xiaoci Wu",
@@ -183,7 +191,8 @@
               "Stock assessment",
               "Model uncertainty"
             ]
-          }
+          },
+          "directory_photo_position": "50% 0%"
         },
         {
           "name": "Jiayi Zhou",

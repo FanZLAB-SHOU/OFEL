@@ -252,26 +252,13 @@ applyHash();
 function initResearchReel() {
   const track = document.querySelector('.research-track');
   if (!track) return;
-  const section = track.closest('.home-research');
   const marquee = track.querySelector('.reel-marquee');
   const firstGroup = track.querySelector('.reel-group');
-  const pause = section.querySelector('[data-reel="pause"]');
-  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const speed = 45; // pixels per second
-  let paused = false;
-  section.querySelector('.reel-controls').hidden = motion.matches;
-  function updatePause() {
-    pause.textContent = paused ? 'Play' : 'Pause';
-    pause.setAttribute('aria-pressed', String(paused));
-    track.classList.toggle('is-paused', paused);
-  }
   // One loop moves the strip by one group (half its width), so the duration keeps the speed constant at any screen size.
   function setDuration() { marquee.style.setProperty('--reel-duration', `${firstGroup.offsetWidth / speed}s`); }
-  pause.addEventListener('click', () => { paused = !paused; updatePause(); });
-  motion.addEventListener('change', event => { section.querySelector('.reel-controls').hidden = event.matches; });
   if ('ResizeObserver' in window) new ResizeObserver(setDuration).observe(firstGroup);
   setDuration();
-  updatePause();
 }
 
 function initReveal() {

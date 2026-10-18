@@ -331,12 +331,6 @@ body { font-size: 18px; }
 .home-button:hover { background: white; }
 .reel-heading { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 19px; }
 .reel-heading h2 { font: 600 13px Arial, sans-serif; letter-spacing: .09em; text-transform: uppercase; color: #bad2e8; }
-.reel-controls { display: flex; align-items: center; gap: 9px; }
-.reel-controls[hidden] { display: none; }
-.reel-count { color: #adc6de; font-size: 11px; margin-right: 9px; font-variant-numeric: tabular-nums; }
-.reel-control, .reel-pause { background: transparent; color: white; border: 1px solid #55718d; border-radius: 2px; min-width: 38px; min-height: 36px; display: grid; place-items: center; font-size: 18px; }
-.reel-pause { font-size: 11px; padding-inline: 11px; min-width: 57px; }
-.reel-control:hover, .reel-pause:hover { background: #1d3c5d; }
 .research-track { --slide-width: clamp(320px, 48vw, 620px); position: relative; display: flex; gap: 25px; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; padding: 0 max(48px, calc((100% - var(--page-width)) / 2)) 7px; scrollbar-width: none; overscroll-behavior-inline: contain; }
 .research-track::-webkit-scrollbar { display: none; }
 .reel-card { flex: 0 0 var(--slide-width); min-width: 0; scroll-snap-align: center; background: #fff; color: var(--ink); border-radius: 3px; overflow: hidden; }
@@ -508,11 +502,11 @@ body { font-size: 18px; }
 .header-brands img { width: 48px; height: 48px; }
 @media (max-width: 900px) { .header-brands img { width: 42px; height: 42px; } }
 @media (max-width: 700px) { .header-brands img { width: 38px; height: 38px; } }
-/* Our research: a continuously scrolling strip; hover, focus or Pause stops it. */
+/* Our research: a continuously scrolling strip; hover or keyboard focus stops it. */
 .research-track { overflow: hidden; scroll-snap-type: none; padding: 0 0 7px; }
 .reel-marquee { display: flex; width: max-content; animation: reel-scroll var(--reel-duration, 80s) linear infinite; }
 .reel-group { display: flex; gap: 25px; padding-right: 25px; }
-.research-track:hover .reel-marquee, .research-track:focus-within .reel-marquee, .research-track.is-paused .reel-marquee { animation-play-state: paused; }
+.research-track:hover .reel-marquee, .research-track:focus-within .reel-marquee { animation-play-state: paused; }
 @keyframes reel-scroll { to { transform: translateX(-50%); } }
 @media (max-width: 700px) {
   .research-track { padding-inline: 0; }

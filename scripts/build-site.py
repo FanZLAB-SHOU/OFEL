@@ -26,7 +26,7 @@ PAGES = {
     'publications': ('Publications | OFEL', 'Selected lab publications and publications co-authored by Fan Zhang, with research-topic filters and citation downloads.', 'publications'),
     'blog': ('News | OFEL', 'News, research updates and life in the Oceanic Fisheries Ecosystem Laboratory.', 'news'),
     'contact': ('Contact & Join Us | OFEL', 'Contact the Oceanic Fisheries Ecosystem Laboratory at Shanghai Ocean University about research, visits and collaboration.', 'info'),
-    'more': ('More | OFEL', 'Visitor statistics and other information about the Oceanic Fisheries Ecosystem Laboratory website.', 'info'),
+    'more': ('More | OFEL', 'Explore world clocks, current weather and the OFEL website’s visit statistics in one interactive view.', 'info'),
     'reference-materials': ('Reference Materials | OFEL', 'FishBase, Global Fishing Watch, FAO, and regional fisheries management organizations: resources for fish biology, vessel tracking, and fisheries management.', 'resources'),
     'software': ('Software | OFEL', 'ALSCL: R and TMB tools for fisheries stock assessment using survey length data.', 'resources'),
 }
@@ -122,14 +122,17 @@ def post_url(post):
     return f'news/{post["slug"]}.html'
 
 
+# News list cards: full-bleed cover, frosted bottom band with the text, category as a glass chip.
+# The newest post is the wide featured card, so it gets a larger image size hint.
 blog_posts = '\n'.join(
     f'        <article class="blog-post" data-news-category="{esc(post["category"])}"><a class="blog-post-link" href="{esc(post_url(post))}">'
-    + (f'<img src="{esc(post.get("thumbnail") or post["image"])}" alt="" width="1536" height="1024" loading="lazy" sizes="(max-width: 700px) calc(100vw - 40px), 320px" style="object-position: {esc(post.get("thumbnail_position", post.get("image_position", "55% 78%")))}">' if post.get('thumbnail') or post.get('image')
+    + (f'<img src="{esc(post.get("thumbnail") or post["image"])}" alt="" width="1536" height="1024" loading="{"eager" if i == 0 else "lazy"}" '
+       f'sizes="(max-width: 760px) calc(100vw - 40px), {"1200px" if i == 0 else "600px"}" style="object-position: {esc(post.get("thumbnail_position", post.get("image_position", "55% 78%")))}">' if post.get('thumbnail') or post.get('image')
        else '<span class="blog-post-placeholder" aria-hidden="true"><img src="assets/ofel-mark.png" alt="" width="96" height="96"></span>')
+    + f'<span class="news-category">{esc(news_categories[post["category"]])}</span>'
     + f'<div><p class="eyebrow"><time datetime="{esc(post["date"])}">{esc(pretty_date(post["date"]))}</time></p>'
-    f'<h2>{italicize(esc(post["title"]))}</h2><p>{italicize(esc(post.get("summary", "")))}</p>'
-    f'<span class="news-category">{esc(news_categories[post["category"]])}</span></div></a></article>'
-    for post in posts
+    f'<h2>{italicize(esc(post["title"]))}</h2><p>{italicize(esc(post.get("summary", "")))}</p></div></a></article>'
+    for i, post in enumerate(posts)
 ) if posts else '<div class="directory-empty"><p>Lab updates will appear here.</p><a class="text-link" href="research/themes.html">' + icon('fish') + 'Explore our research</a></div>'
 
 
@@ -310,6 +313,13 @@ for name, (title, description, nav) in PAGES.items():
     head = render_head(title, description, BASE + clean_url(PAGE_PATHS[name]), asset_version(),
                        **({'image':'assets/people/fan-zhang.jpg','image_alt':'Fan Zhang at an outdoor venue','kind':'profile'}
                           if name=='fan-zhang' else {}))
+    if name == 'more':
+        extras = []
+        for asset in ('assets/styles/more.css', 'assets/scripts/more-model.js', 'assets/scripts/more.js'):
+            version = hashlib.sha256((ROOT / asset).read_bytes()).hexdigest()[:10]
+            extras.append(f'  <link rel="stylesheet" href="{asset}?v={version}">' if asset.endswith('.css')
+                          else f'  <script src="{asset}?v={version}" defer></script>')
+        head = head.replace('</head>', '\n'.join(extras) + '\n</head>')
     content = expand((TEMPLATES / PAGE_PATHS[name]).read_text())
     for token, value in tokens.items():
         content = content.replace(token, value)

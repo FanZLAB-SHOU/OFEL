@@ -47,6 +47,12 @@ jobs:
         run: |
           python3 scripts/test-publication-citations.py
           node scripts/test-publication-tools.cjs
+      - name: Check More statistics and world clocks
+        run: |
+          node scripts/test-more.cjs
+          node scripts/test-more-ui.cjs
+          node demos/world-weather/test-model.cjs
+          node demos/world-weather/test-controller.cjs
       - name: Upload website
         uses: actions/upload-pages-artifact@v3
         with:

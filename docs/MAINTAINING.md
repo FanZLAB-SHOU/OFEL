@@ -54,6 +54,10 @@ python3 -m http.server 8765 --bind 127.0.0.1
 
 联系页内容在 `templates/contact.html`：校园插画与 Fan Zhang 联系方式、研究生咨询／研究访问／科研合作三个邮件入口，以及中英文地址和地图导航。邮件入口只打开访客的邮件应用，通过不同的主题区分咨询类型；邮箱下方另有 Gmail、Outlook 网页写信入口和复制邮箱按钮。复制受限时显示可选中的邮箱文本，网页邮箱入口在禁用 JavaScript 时仍可使用。不提供站内发送表单，也不表示已发布招生名额。保留 `#contact`、`#join-us` 和 `#visit` 页内锚点。校园插画复用首页图片，来源及生成记录位于 `assets/contact/shou-campus-collaboration-prompt.md`。
 
+### 访问统计（Info → More）
+
+顶部 Info 菜单的 More 页面（`/more/`，模板 `templates/more.html`）显示全站总浏览量与访客数，由第三方计数服务[不蒜子](https://busuanzi.ibruce.info/)提供，无需注册。计数脚本写在 `templates/head.html`，所有正式页面都会加载并计入总数；页面只放 `busuanzi_value_site_pv` 和 `busuanzi_value_site_uv` 两个位置。GitHub Pages 跨域请求只发送域名，不发送具体网址，因此不显示单页浏览量。计数从 2026-10-17 开始；本地预览时 `localhost` 的数字是所有本地测试的合计，不代表网站访问量。计数服务不可用时显示短横线，不影响其他内容。如需后台明细（来源、国家、页面排行），可另行注册 GoatCounter 等服务并在 `head.html` 中添加脚本。
+
 ### 研究方向
 
 编辑 [`assets/research.json`](../assets/research.json)。`primary` 为 `true` 的三个方向是核心方向，其余两个为延伸研究。五个方向都会出现在首页研究轮播和研究页面中。

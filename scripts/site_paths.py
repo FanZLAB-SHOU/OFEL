@@ -24,6 +24,7 @@ PAGE_PATHS = {
     'publications': 'publications.html',
     'blog': 'news/index.html',
     'contact': 'contact.html',
+    'more': 'more.html',
     'reference-materials': 'resources/reference-materials.html',
     'software': 'resources/software.html',
 }

@@ -50,6 +50,7 @@ for direction in directions:
         pubs.validate(papers[key])
         if not pubs.is_lab_paper(papers[key]):external+=1
 assert len(themes.software)==1 and themes.software[0].endswith('resources/software/')
-assert themes.origins.count('Fan Zhang & collaborators')==external
+assert themes.origins.count('Fan Zhang & collaborators') + themes.origins.count('External collaboration') == external
+assert 'External collaboration' in themes.origins, 'The RFMO climate paper is explicitly external collaboration only'
 assert len(themes.origins)==len(seen)
 print(f'Checked {len(news["posts"])} categorized news items and {len(seen)} distinct representative papers across {len(directions)} themes; homepage categories remain absent.')

@@ -51,6 +51,9 @@ def direction_card(item):
     for doi in item.get('publications', []):
         paper = papers_by_doi[doi.lower()]
         origin = 'Lab research' if publications.is_lab_paper(paper) else 'Fan Zhang & collaborators'
+        attribution = paper.get('attribution', {})
+        if attribution.get('exclude_from_lab') and 'external_collaboration' in attribution.get('relationships', []):
+            origin = 'External collaboration'
         papers.append(f'<li><a class="research-paper" href="{esc(paper["source"])}" target="_blank" rel="noopener noreferrer">'
                       f'<span class="research-paper-meta">{paper["year"]} · {esc(paper["journal"])}</span>'
                       f'<strong>{italicize(esc(paper["title"]))}</strong><span class="sr-only"> (opens in a new tab)</span></a>'

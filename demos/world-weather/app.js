@@ -122,7 +122,7 @@
   function setupMap() {
     for(const lon of [-120,-60,0,60,120]){const [x]=M.project(lon,0);$('graticule').append(node('line',{x1:x,x2:x,y1:0,y2:600,class:'grid-line'}));}
     for(const lat of [-60,-30,0,30,60]){const [,y]=M.project(0,lat);$('graticule').append(node('line',{x1:0,x2:1200,y1:y,y2:y,class:'grid-line'}));}
-    fetch('land.geojson').then(r=>{if(!r.ok)throw Error('Map unavailable');return r.json();}).then(data=>{
+    fetch(document.body?.dataset?.mapSrc||'land.geojson').then(r=>{if(!r.ok)throw Error('Map unavailable');return r.json();}).then(data=>{
       for(const feature of data.features){const polygons=feature.geometry.type==='Polygon'?[feature.geometry.coordinates]:feature.geometry.coordinates;const d=polygons.map(p=>p.map(r=>r.map((c,i)=>{const [x,y]=M.project(c[0],c[1]);return `${i?'L':'M'}${x.toFixed(2)},${y.toFixed(2)}`;}).join('')+'Z').join('')).join('');$('land').append(node('path',{d,'fill-rule':'evenodd'}));}
       set('map-status','Explore places across the oceans.');
     }).catch(()=>set('map-status','Map outline unavailable. City clocks still work.'));

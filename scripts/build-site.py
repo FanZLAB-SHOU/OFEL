@@ -4,6 +4,7 @@ import hashlib
 import importlib.util
 import html
 import json
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -291,10 +292,32 @@ for doi in faculty_dois:
         f'<span class="faculty-paper-meta">{paper["year"]} · {esc(paper["journal"])}</span>'
         f'<h4>{italicize(esc(paper["title"]))}</h4><span class="faculty-paper-read">Read paper {icon("right")}</span>'
         '<span class="sr-only"> (opens in a new tab)</span></a></li>')
+def build_embedded_weather():
+    """Derive a dark-first frame from the standalone tool; keep one implementation."""
+    folder = ROOT / 'demos/world-weather'
+    markup = (folder / 'index.html').read_text()
+    markup = markup.replace('<html lang="en">', '<html lang="en" data-embed="more" style="background:#050e1a;color-scheme:dark">')
+    markup = markup.replace('<body>', '<body data-embed="more" data-map-src="../land.geojson" style="background:#050e1a">')
+    def relative_asset(match):
+        attr, value = match.groups()
+        if not value or value.startswith(('#', '/', 'https:', 'http:', 'data:', 'mailto:')):
+            return match.group(0)
+        return f'{attr}="../{value}"'
+    markup = re.sub(r'(?<![\w-])(href|src)="([^"]*)"', relative_asset, markup)
+    destination = folder / 'embed/index.html'
+    destination.parent.mkdir(exist_ok=True)
+    destination.write_text(markup)
+    digest = hashlib.sha256(markup.encode())
+    for asset in ('weather.css', 'embed.js', 'model.js', 'app.js', 'land.geojson'):
+        digest.update((folder / asset).read_bytes())
+    return digest.hexdigest()[:10]
+
+
 stats_pages = ([{'path': '/OFEL/' + clean_url(PAGE_PATHS[name]), 'title': 'Home' if name == 'index' else title.split(' | ')[0]}
                 for name, (title, _, _) in PAGES.items()]
                + [{'path': '/OFEL/' + clean_url(post_url(post)), 'title': post['title']} for post in posts])
 tokens = {
+    '{{world_weather_version}}': build_embedded_weather(),
     '{{stats_pages}}': esc(json.dumps(stats_pages, ensure_ascii=False)),
     '{{faculty_selected_papers}}': '\n'.join(faculty_papers),
     '{{news_filters}}': news_filters,

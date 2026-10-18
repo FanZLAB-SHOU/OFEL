@@ -31,8 +31,13 @@ def responsive_images(markup):
         if not info or 'srcset' in attrs or not current(source, info['sha256']):
             return tag
         variants = info['variants']
-        fallback = next((v for v in variants if v['width'] >= 960), variants[-1])
         classes = attrs.get('class', '').split()
+        if 'home-research-image' in classes:
+            # Large cover crops on retina screens use the original at full size,
+            # avoiding another lossy WebP encoding of the research artwork.
+            variants = [v for v in variants if v['width'] < info['width']] + [
+                {'width': info['width'], 'src': source}]
+        fallback = next((v for v in variants if v['width'] >= 960), variants[-1])
         sizes = attrs.get('sizes')
         if not sizes:
             if 'gateway-bg' in classes:

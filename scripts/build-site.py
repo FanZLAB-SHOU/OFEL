@@ -82,8 +82,8 @@ def reel_cards(copy):
     hidden = ' tabindex="-1"' if copy else ''
     return ''.join(
         f'<a class="reel-card" href="research/themes.html#{esc(item["slug"])}"{hidden} '
-        f'aria-label="Explore {esc(item["title"])}"><img src="{esc(item["image"])}" alt="{"" if copy else esc(item["alt"])}" '
-        f'width="1536" height="1024" sizes="(max-width: 700px) 320px, (max-width: 1292px) 48vw, 620px" {lazy}>'
+        f'aria-label="Explore {esc(item["title"])}"><img class="home-research-image" src="{esc(item["image"])}" alt="{"" if copy else esc(item["alt"])}" '
+        f'width="1536" height="1024" sizes="(max-width: 700px) max(calc(125vw - 80px), 540px), (max-width: 1292px) max(60vw, 540px), 775px" {lazy}>'
         f'<div class="reel-card-copy"><span>{esc(item["label"])}</span><h3>{esc(item["title"])}</h3></div></a>'
         for n, item in enumerate(directions)
     )

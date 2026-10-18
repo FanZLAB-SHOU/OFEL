@@ -31,6 +31,15 @@ class ResponsiveImages(unittest.TestCase):
         self.assertEqual(result.count('sizes='), 1)
         self.assertIn('sizes="320px"', result)
 
+    def test_full_size_research_art_uses_original_without_recompression(self):
+        result = responsive_images(f'<img class="home-research-image" src="{self.source}" sizes="775px">')
+        self.assertIn(f'{self.source} 1600w', result)
+        self.assertIn('example-960.webp 960w', result)
+        self.assertNotIn('example-1600.webp 1600w', result)
+        self.assertIn('sizes="775px"', result)
+        ordinary = responsive_images(f'<img src="{self.source}">')
+        self.assertIn('example-1600.webp 1600w', ordinary)
+
     def test_changed_sources_fall_back_to_original(self):
         source = f'<img src="{self.source}" alt="Updated portrait">'
         with patch('responsive_images.current', return_value=False):

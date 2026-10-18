@@ -875,5 +875,165 @@
         "bytes": 186094
       }
     ]
+  },
+  "assets/people/galleries/dongqi-lu/tuna-work.jpg": {
+    "sha256": "c6d3a8908d1b95cd53e2d72930574e1b64138d3b0fc256f0c1d8ce573cc1f441",
+    "bytes": 4046987,
+    "width": 4096,
+    "height": 3072,
+    "variants": [
+      {
+        "width": 480,
+        "src": "assets/optimized/dongqi-lu-tuna-work-432ff9f15157-480.webp",
+        "bytes": 43666
+      },
+      {
+        "width": 960,
+        "src": "assets/optimized/dongqi-lu-tuna-work-432ff9f15157-960.webp",
+        "bytes": 134690
+      },
+      {
+        "width": 1440,
+        "src": "assets/optimized/dongqi-lu-tuna-work-432ff9f15157-1440.webp",
+        "bytes": 265658
+      },
+      {
+        "width": 1920,
+        "src": "assets/optimized/dongqi-lu-tuna-work-432ff9f15157-1920.webp",
+        "bytes": 420276
+      },
+      {
+        "width": 2560,
+        "src": "assets/optimized/dongqi-lu-tuna-work-432ff9f15157-2560.webp",
+        "bytes": 649960
+      }
+    ]
+  },
+  "assets/people/galleries/dongqi-lu/research-presentation.jpg": {
+    "sha256": "0e93b15b58ace4fc4a94b1a2979ae53ea2d471e4d4c25fa07bcc2bfd03acc26e",
+    "bytes": 676235,
+    "width": 1920,
+    "height": 1080,
+    "variants": [
+      {
+        "width": 480,
+        "src": "assets/optimized/dongqi-lu-research-presentation-55c712230c6c-480.webp",
+        "bytes": 26504
+      },
+      {
+        "width": 960,
+        "src": "assets/optimized/dongqi-lu-research-presentation-55c712230c6c-960.webp",
+        "bytes": 77632
+      },
+      {
+        "width": 1440,
+        "src": "assets/optimized/dongqi-lu-research-presentation-55c712230c6c-1440.webp",
+        "bytes": 138832
+      },
+      {
+        "width": 1920,
+        "src": "assets/optimized/dongqi-lu-research-presentation-55c712230c6c-1920.webp",
+        "bytes": 218400
+      }
+    ]
+  },
+  "assets/people/galleries/dongqi-lu/desert-sunset.jpg": {
+    "sha256": "c0d7b5a4c97b40d4685c2d1884c2cee4a6579ec97dde47a6e60c590947135a2f",
+    "bytes": 5835014,
+    "width": 3840,
+    "height": 2160,
+    "variants": [
+      {
+        "width": 480,
+        "src": "assets/optimized/dongqi-lu-desert-sunset-de40eaa9b002-480.webp",
+        "bytes": 31446
+      },
+      {
+        "width": 960,
+        "src": "assets/optimized/dongqi-lu-desert-sunset-de40eaa9b002-960.webp",
+        "bytes": 110784
+      },
+      {
+        "width": 1440,
+        "src": "assets/optimized/dongqi-lu-desert-sunset-de40eaa9b002-1440.webp",
+        "bytes": 238964
+      },
+      {
+        "width": 1920,
+        "src": "assets/optimized/dongqi-lu-desert-sunset-de40eaa9b002-1920.webp",
+        "bytes": 379596
+      },
+      {
+        "width": 2560,
+        "src": "assets/optimized/dongqi-lu-desert-sunset-de40eaa9b002-2560.webp",
+        "bytes": 574352
+      }
+    ]
+  },
+  "assets/people/galleries/dongqi-lu/travel-moment.jpg": {
+    "sha256": "91413fe4d4c5342a20d768670e9fc567402137ec74a17be00b0dd3c21c5a80ad",
+    "bytes": 489038,
+    "width": 2276,
+    "height": 1280,
+    "variants": [
+      {
+        "width": 480,
+        "src": "assets/optimized/dongqi-lu-travel-moment-4c89e2a7a16e-480.webp",
+        "bytes": 45620
+      },
+      {
+        "width": 960,
+        "src": "assets/optimized/dongqi-lu-travel-moment-4c89e2a7a16e-960.webp",
+        "bytes": 172400
+      },
+      {
+        "width": 1440,
+        "src": "assets/optimized/dongqi-lu-travel-moment-4c89e2a7a16e-1440.webp",
+        "bytes": 338906
+      },
+      {
+        "width": 1920,
+        "src": "assets/optimized/dongqi-lu-travel-moment-4c89e2a7a16e-1920.webp",
+        "bytes": 512826
+      },
+      {
+        "width": 2276,
+        "src": "assets/optimized/dongqi-lu-travel-moment-4c89e2a7a16e-2276.webp",
+        "bytes": 622970
+      }
+    ]
+  },
+  "assets/people/galleries/dongqi-lu/outdoor-visit.jpg": {
+    "sha256": "236ac1f0c18fb3c76a8d73b7f525db4cc57dee17563561db74297fec2b928372",
+    "bytes": 5740867,
+    "width": 3840,
+    "height": 2160,
+    "variants": [
+      {
+        "width": 480,
+        "src": "assets/optimized/dongqi-lu-outdoor-visit-6508a74981df-480.webp",
+        "bytes": 36262
+      },
+      {
+        "width": 960,
+        "src": "assets/optimized/dongqi-lu-outdoor-visit-6508a74981df-960.webp",
+        "bytes": 133674
+      },
+      {
+        "width": 1440,
+        "src": "assets/optimized/dongqi-lu-outdoor-visit-6508a74981df-1440.webp",
+        "bytes": 266518
+      },
+      {
+        "width": 1920,
+        "src": "assets/optimized/dongqi-lu-outdoor-visit-6508a74981df-1920.webp",
+        "bytes": 420992
+      },
+      {
+        "width": 2560,
+        "src": "assets/optimized/dongqi-lu-outdoor-visit-6508a74981df-2560.webp",
+        "bytes": 606224
+      }
+    ]
   }
 }

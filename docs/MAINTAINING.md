@@ -86,7 +86,7 @@ python3 -m http.server 8765 --bind 127.0.0.1
 
 成员目录采用深海蓝底的紧凑拼贴网格，顶部导航与页脚同色；标题独立置于网格上方。照片区域统一为 3:4 比例，横竖对齐、间距一致，不设置交错偏移；姓名与身份／年级放在照片下方独立的半透明深蓝信息区，不覆盖照片，整张卡片链接个人页。优先使用 `profile_photo` 高清资料照，缺少照片时使用既有占位图。保持原组别顺序及年级从高到低的排序，组别旧锚点保留在该组第一位成员的姓名上，列表右下角以英文小字说明排序方式。桌面端为四列，中屏三列，手机两列；悬停和键盘聚焦时卡片轻微放大，减少动态效果设置下保留焦点提示并取消缩放。样式使用 `.directory-` 前缀，深色导航及页脚通过 `body[data-page="members"]` 限定，避免影响其他页面。
 
-成员页最上方另有 `.team-space` 照片首屏，标题为 “Meet Our Team.”，下面原有的完整名单仍按原顺序显示。首屏最多取已有照片的前 11 位成员，不生成缺失照片；每张照片链接已有个人主页。姓名仅在悬停或键盘聚焦时显示，链接始终有可访问名称。照片在固定分布位置附近以随机路径缓慢浮动，避免穿过中央标题；悬停／聚焦、离开可见区域、切换浏览器标签或启用减少动态效果时停止。右下角 Motion 开关可手动暂停；禁用 JavaScript 时保留静态照片和正常链接。由 `initTeamSpace` 控制，照片标记 `floating-members` 由人员构建器生成。新增照片超过首屏数量时仍全部出现在下方目录中。
+成员页最上方另有 `.team-space` 照片首屏，标题为 “Meet Our Team.”，下面原有的完整名单仍按原顺序显示。首屏最多取已有照片的前 11 位成员，不生成缺失照片；每张照片链接已有个人主页。姓名仅在悬停或键盘聚焦时显示，链接始终有可访问名称。照片以各自随机速度在整个首屏范围内上下、左右穿行，到边界折返；可穿过中央标题后方，标题保留深色渐变衬底。悬停／聚焦时只暂停当前卡片，离开可见区域、切换浏览器标签或启用减少动态效果时停止全部运动。右下角 Motion 开关可手动暂停；禁用 JavaScript 时保留静态照片和正常链接。使用轻量 `requestAnimationFrame` 更新 GPU 变换，由 `initTeamSpace` 控制，照片标记 `floating-members` 由人员构建器生成。新增照片超过首屏数量时仍全部出现在下方目录中。
 
 `directory_photo_position` 和 `directory_photo_scale` 仅控制两个目录中的照片取景与缩放，不影响个人主页；默认居中取景。横向生活照可单独校正主体位置与比例，首屏漂浮照片复用这组取景设置。图片选图尺寸同时考虑原图宽高比、裁剪比例和缩放，最大候选使用原图，避免 Xin Cheng、Dongqi Lu 等横向照片裁剪后仍误载小缩略图。照片使用固定比例容器和绝对定位图像，信息区参与正常排版，避免文字挡脸及源图宽高差异引起的偏移。
 
@@ -95,6 +95,8 @@ python3 -m http.server 8765 --bind 127.0.0.1
 构建后自动生成 `members/<given-name>-<family-name>/index.html`，访问地址为 `/members/<given-name>-<family-name>/`，包括简介、按作者姓名匹配的论文、前后成员导航。缺失照片保留矩形照片位。
 
 现有成员中同时设置 `photo` 与 `hero.cutout` 的个人页，顶部为全屏深色介绍：模糊原照作背景、透明主体居中偏右，左上 “Hi, I’m” 和姓名，左侧简介与联系入口，右下研究方向。证件照或正面半身照可设置 `hero.background_color`（六位十六进制色值），只用扩散色彩作背景，避免背景里再次出现放大人脸；目前用于 Zhechuan Xu 和 Xianglong Yan。Qinqin Lin 通过 `hero.background_image` 指定从修复会议照片制作的无人环境背景，`hero.background_dimensions` 记录其尺寸；背景柔化、人物抠图保持清晰，两层独立显示，避免背景中重复出现人脸。`hero.summary` 保存首屏短简介，`hero.research` 保存已有资料确认的研究方向；缺少依据时显示 “To be updated”。手机端改为图片上方、文字下方的连续布局。下方仍保留完整简介、中文原文、论文及前后成员导航，照片、简介、每篇论文和成员导航通过现有 `data-reveal` 逐段渐显；系统要求减少动态效果时直接显示。样式在 `.member-intro`，生成器为 `scripts/build-people.py`，仅作用于当前成员；没有照片或尚未制作抠图的成员保持原版式。首屏姓名为唯一 `h1`，下方姓名为 `h2#member-details`。首屏导航透明，滚到详细资料后恢复浅色。原始照片保留不变，透明前景文件在 `assets/people/heroes/`，内置 image_gen 的生成方式与提示词记录在同目录 `generation-notes.json`。
+
+个人照片墙为明确提供照片的成员按需添加，不自动给其他人创建。目前仅 Dongqi Lu 的 `gallery` 字段包含五张用户提供的照片，每条维护 `image`、`alt`、`caption`、`width`、`height`。原图保存在 `assets/people/galleries/dongqi-lu/`，通过 `node scripts/prepare-profile-gallery.cjs`（需 `sharp`，可设置 `NODE_PATH`）只为已配置照片墙的图片生成质量 90 的 WebP 尺寸版本，并更新展示图清单；原始 JPEG 不改动。照片墙在简介之后、论文之前，完整构图可点击放大；原生 dialog 提供前后切换、方向键、Escape 关闭和焦点返回。无 JavaScript 或不支持 dialog 时，图片链接仍直接打开原图。
 
 Fan Zhang 主页的主体信息在 [`templates/members/fan-zhang.html`](../templates/members/fan-zhang.html) 中维护。
 

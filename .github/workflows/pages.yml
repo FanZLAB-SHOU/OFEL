@@ -37,6 +37,7 @@ jobs:
           node scripts/test-gateway-cards.cjs
           node scripts/test-profile-layout.cjs
           node scripts/test-team-space.cjs
+          node scripts/test-profile-gallery.cjs
       - name: Check page links and assets
         run: python3 scripts/check-site.py
       - name: Check sitemap and sharing metadata

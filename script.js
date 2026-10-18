@@ -292,41 +292,140 @@ function initMemberIntro() {
 }
 initMemberIntro();
 
+function initProfileGallery() {
+  document.querySelectorAll('[data-profile-gallery]').forEach(gallery => {
+    const links = [...gallery.querySelectorAll('[data-gallery-open]')];
+    const dialog = gallery.querySelector('[data-gallery-viewer]');
+    if (!links.length || !dialog || typeof dialog.showModal !== 'function') return;
+    const image = dialog.querySelector('[data-gallery-full]');
+    const caption = dialog.querySelector('[data-gallery-caption]');
+    const count = dialog.querySelector('[data-gallery-count]');
+    let active = 0, trigger = null;
+    function show(index) {
+      active = (index + links.length) % links.length;
+      const link = links[active];
+      image.src = link.href;
+      image.alt = link.querySelector('img').alt;
+      caption.textContent = link.dataset.galleryCaption;
+      count.textContent = `${active + 1} / ${links.length}`;
+    }
+    links.forEach((link, index) => link.addEventListener('click', event => {
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
+      event.preventDefault(); trigger = link; show(index); dialog.showModal();
+    }));
+    dialog.querySelector('[data-gallery-close]').addEventListener('click', () => dialog.close());
+    dialog.querySelector('[data-gallery-prev]').addEventListener('click', () => show(active - 1));
+    dialog.querySelector('[data-gallery-next]').addEventListener('click', () => show(active + 1));
+    dialog.addEventListener('keydown', event => {
+      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+      event.preventDefault(); show(active + (event.key === 'ArrowLeft' ? -1 : 1));
+    });
+    dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
+    dialog.addEventListener('close', () => { if (trigger) trigger.focus({preventScroll: true}); });
+  });
+}
+initProfileGallery();
+
+function teamPhotoBounds(width, height, photoWidth, photoHeight) {
+  const angle = 3 * Math.PI / 180;
+  const halfWidth = (photoWidth * Math.cos(angle) + photoHeight * Math.sin(angle)) * .53 + 10;
+  const halfHeight = (photoHeight * Math.cos(angle) + photoWidth * Math.sin(angle)) * .53 + 10;
+  return {minX: halfWidth, maxX: Math.max(halfWidth, width - halfWidth),
+    minY: halfHeight, maxY: Math.max(halfHeight, height - halfHeight)};
+}
+
+function advanceTeamPhoto(state, bounds, seconds) {
+  state.x += state.vx * seconds;
+  state.y += state.vy * seconds;
+  if (state.x < bounds.minX) { state.x = bounds.minX + (bounds.minX - state.x); state.vx = Math.abs(state.vx); }
+  if (state.x > bounds.maxX) { state.x = bounds.maxX - (state.x - bounds.maxX); state.vx = -Math.abs(state.vx); }
+  if (state.y < bounds.minY) { state.y = bounds.minY + (bounds.minY - state.y); state.vy = Math.abs(state.vy); }
+  if (state.y > bounds.maxY) { state.y = bounds.maxY - (state.y - bounds.maxY); state.vy = -Math.abs(state.vy); }
+}
+
 function initTeamSpace() {
   const hero = document.querySelector('[data-team-space]');
   if (!hero) return;
   const cards = [...hero.querySelectorAll('.team-space-card')];
   if (!cards.length) return;
+  const stage = hero.querySelector('.team-space-stage');
   const button = hero.querySelector('[data-team-motion]');
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  let visible = true, paused = false;
-  cards.forEach(card => {
-    for (let point = 1; point <= 3; point++) {
-      card.style.setProperty(`--float-x${point}`, `${(Math.random() * 32 - 16).toFixed(1)}px`);
-      card.style.setProperty(`--float-y${point}`, `${(Math.random() * 24 - 12).toFixed(1)}px`);
-      card.style.setProperty(`--float-r${point}`, `${(Math.random() * 5 - 2.5).toFixed(2)}deg`);
-    }
-    card.style.setProperty('--float-duration', `${(18 + Math.random() * 12).toFixed(1)}s`);
-    card.style.setProperty('--float-delay', `${(-Math.random() * 30).toFixed(1)}s`);
+  let visible = true, paused = false, running = false, prepared = false;
+  let frame = null, lastTime = null, width = 0, height = 0;
+  const speed = window.innerWidth <= 700 ? .85 : 1;
+  const records = cards.map(card => {
+    const record = {card, x: 0, y: 0, age: 0, phase: Math.random() * Math.PI * 2,
+      vx: (18 + Math.random() * 26) * (Math.random() < .5 ? -1 : 1) * speed,
+      vy: (28 + Math.random() * 32) * (Math.random() < .5 ? -1 : 1) * speed};
+    card.addEventListener('pointerenter', () => { record.hovered = true; });
+    card.addEventListener('pointerleave', () => { record.hovered = false; });
+    card.addEventListener('focusin', () => { record.focused = true; });
+    card.addEventListener('focusout', () => { record.focused = false; });
+    return record;
   });
-  hero.classList.add('has-floating-motion');
+  function draw(record) {
+    const angle = Math.sin(record.age * .5 + record.phase) * 2;
+    record.card.style.transform = `translate3d(${(record.x - record.w / 2).toFixed(2)}px, ${(record.y - record.h / 2).toFixed(2)}px, 0) rotate(${angle.toFixed(2)}deg)`;
+  }
+  function measure() {
+    const rect = stage.getBoundingClientRect(), oldWidth = width, oldHeight = height;
+    width = rect.width; height = rect.height;
+    records.forEach(record => {
+      if (!prepared) {
+        const photo = record.card.getBoundingClientRect();
+        record.x = photo.left + photo.width / 2 - rect.left;
+        record.y = photo.top + photo.height / 2 - rect.top;
+      } else {
+        record.x *= width / oldWidth;
+        record.y *= height / oldHeight;
+      }
+      record.w = record.card.offsetWidth; record.h = record.card.offsetHeight;
+      record.bounds = teamPhotoBounds(width, height, record.w, record.h);
+      record.x = Math.max(record.bounds.minX, Math.min(record.bounds.maxX, record.x));
+      record.y = Math.max(record.bounds.minY, Math.min(record.bounds.maxY, record.y));
+    });
+    prepared = true;
+    hero.classList.add('has-free-motion');
+    records.forEach(draw);
+  }
+  function tick(time) {
+    frame = null;
+    if (!running) return;
+    const seconds = lastTime === null ? 0 : Math.min(.05, (time - lastTime) / 1000);
+    lastTime = time;
+    records.forEach(record => {
+      if (record.hovered || record.focused) return;
+      advanceTeamPhoto(record, record.bounds, seconds);
+      record.age += seconds;
+      draw(record);
+    });
+    frame = window.requestAnimationFrame(tick);
+  }
   function update() {
-    hero.classList.toggle('is-moving', visible && !document.hidden && !motion.matches && !paused);
+    if (motion.matches) {
+      hero.classList.remove('has-free-motion');
+      records.forEach(record => record.card.style.removeProperty('transform'));
+      prepared = false;
+    } else if (!prepared) measure();
+    running = visible && !document.hidden && !motion.matches && !paused;
+    hero.classList.toggle('is-moving', running);
     if (button) {
       button.hidden = motion.matches;
       button.setAttribute('aria-pressed', String(paused));
       button.setAttribute('aria-label', paused ? 'Resume floating photos' : 'Pause floating photos');
       button.textContent = paused ? 'Motion off' : 'Motion on';
     }
+    if (!running && frame !== null) { window.cancelAnimationFrame(frame); frame = null; }
+    lastTime = null;
+    if (running && frame === null) frame = window.requestAnimationFrame(tick);
   }
   if (button) button.addEventListener('click', () => { paused = !paused; update(); });
   motion.addEventListener('change', update);
   document.addEventListener('visibilitychange', update);
+  window.addEventListener('resize', () => { if (prepared) measure(); }, {passive: true});
   if ('IntersectionObserver' in window) {
-    new window.IntersectionObserver(entries => {
-      visible = entries[0].isIntersecting;
-      update();
-    }).observe(hero);
+    new window.IntersectionObserver(entries => { visible = entries[0].isIntersecting; update(); }).observe(hero);
   }
   update();
 }

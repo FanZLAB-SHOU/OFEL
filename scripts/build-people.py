@@ -281,6 +281,32 @@ for n, person in enumerate(people):
         original = ''.join(f'<p>{esc(par)}</p>' for par in person['bio_zh'].split('\n\n'))
         bio += ('<details class="profile-bio-original"><summary>中文原文 / Original Chinese</summary>'
                 f'<div lang="zh-CN">{original}</div></details>')
+    gallery_html = ''
+    if person.get('gallery'):
+        gallery_items = []
+        for item in person['gallery']:
+            if not item['image'].startswith('assets/people/galleries/') or not (ROOT / item['image']).is_file():
+                raise ValueError(f'Missing gallery photo for {person["name"]}')
+            gallery_items.append(
+                f'<a class="profile-gallery-item" href="{esc(item["image"])}" data-gallery-open data-gallery-caption="{esc(item["caption"])}" '
+                f'aria-label="View photo: {esc(item["caption"])}" data-reveal>'
+                f'<span class="profile-gallery-image"><img src="{esc(item["image"])}" alt="{esc(item["alt"])}" '
+                f'width="{item["width"]}" height="{item["height"]}" loading="lazy" sizes="(max-width: 760px) calc(100vw - 40px), 740px"></span>'
+                f'<span class="profile-gallery-caption">{esc(item["caption"])}<span aria-hidden="true">↗</span></span></a>'
+            )
+        gallery_html = (
+            '<section class="profile-gallery" data-profile-gallery aria-labelledby="profile-gallery-title">'
+            '<div class="profile-gallery-heading" data-reveal><p class="eyebrow teal">Photo journal</p>'
+            '<h2 id="profile-gallery-title">In the field &amp; beyond.</h2>'
+            '<p>Research, travel, and moments along the way.</p></div>'
+            f'<div class="profile-gallery-grid">{"".join(gallery_items)}</div>'
+            '<dialog class="profile-gallery-viewer" data-gallery-viewer aria-label="Photo viewer">'
+            '<button type="button" class="gallery-close" data-gallery-close aria-label="Close photo viewer">×</button>'
+            '<figure><img data-gallery-full alt=""><figcaption data-gallery-caption></figcaption></figure>'
+            '<div class="gallery-viewer-controls"><button type="button" data-gallery-prev aria-label="Previous photo">←</button>'
+            '<span data-gallery-count role="status" aria-live="polite" aria-atomic="true"></span>'
+            '<button type="button" data-gallery-next aria-label="Next photo">→</button></div></dialog></section>'
+        )
     pager = []
     if n > 0:
         prev = people[n - 1]
@@ -353,6 +379,7 @@ for n, person in enumerate(people):
         f'{heading}<p class="pi-role">{esc(person["role"])}</p>{links_html}'
         f'<div class="profile-bio">{bio}</div></div>\n'
         f'        </div>\n'
+        f'{gallery_html}'
         f'        <section class="profile-publications" aria-labelledby="profile-publications-title">'
         f'<h2 id="profile-publications-title" data-reveal>Publications</h2>\n        {paper_list}\n        </section>\n'
         f'        <nav class="profile-pager" aria-label="Browse people" data-reveal>{"".join(pager)}</nav>\n'

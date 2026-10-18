@@ -112,7 +112,44 @@
             ]
           },
           "directory_photo_position": "86% 50%",
-          "directory_photo_scale": 1.3
+          "directory_photo_scale": 1.3,
+          "gallery": [
+            {
+              "image": "assets/people/galleries/dongqi-lu/tuna-work.jpg",
+              "alt": "Dongqi Lu with tuna in a fish-handling facility",
+              "caption": "Working with tuna",
+              "width": 4096,
+              "height": 3072
+            },
+            {
+              "image": "assets/people/galleries/dongqi-lu/research-presentation.jpg",
+              "alt": "Dongqi Lu presenting research on South Pacific albacore population structure",
+              "caption": "Research presentation",
+              "width": 1920,
+              "height": 1080
+            },
+            {
+              "image": "assets/people/galleries/dongqi-lu/desert-sunset.jpg",
+              "alt": "Dongqi Lu seated on a sand dune at sunset",
+              "caption": "Desert sunset",
+              "width": 3840,
+              "height": 2160
+            },
+            {
+              "image": "assets/people/galleries/dongqi-lu/travel-moment.jpg",
+              "alt": "Dongqi Lu posing on a bench at a film-themed setting",
+              "caption": "A moment on the road",
+              "width": 2276,
+              "height": 1280
+            },
+            {
+              "image": "assets/people/galleries/dongqi-lu/outdoor-visit.jpg",
+              "alt": "Dongqi Lu standing among earthen walls during an outdoor visit",
+              "caption": "Exploring outdoors",
+              "width": 3840,
+              "height": 2160
+            }
+          ]
         },
         {
           "name": "Hongyu Lin",

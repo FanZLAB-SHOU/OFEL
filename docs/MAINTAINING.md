@@ -48,7 +48,7 @@ python3 -m http.server 8765 --bind 127.0.0.1
 
 调整共享 UI 后运行完整构建、链接和交互检查。保持 `hidden` 筛选规则、手机导航、键盘焦点、减少动态效果设置以及原有图片比例／取景位置；不要用全局圆角规则裁切官方 logo 或改变照片为圆形。
 
-页面顶部是全屏首屏：背景照片 `assets/faculty/fan-zhang-hero-restored-v2.webp` 与人物抠像 `assets/faculty/fan-zhang-hero-cutout-restored-v2.webp`（两张均为 1448×1086，保留同一构图坐标；原图与旧抠像仍保留）分两层叠放，磨砂搜索框从人物身后穿过；桌面端人物在最上层，手机端搜索框和选项在人物前面。脚本 `initFacultyHero`（`script.js`）按照片的裁切位置计算搜索框、选项和对话框的位置，所以窗口大小变化时仍对准人物。桌面端五个入口使用整个搜索框宽度保持单排，手机端采用 3+2 的均衡两排；两侧扩展背景仅作 3px 轻度柔化。对话框平时只显示 “Hi, I’m Fan Zhang.”；点击 Research、Publications、Education、Academic service、Contact 或在搜索框输入关键词回车，会弹出对应卡片并由对话框回答一句，卡片内容直接取自页面下方各部分，不另存一份。首屏期间导航栏透明、白字，滚过首屏后恢复白色导航栏。往下的原版式各部分带 `data-reveal`，与首页一样逐渐显现；页面只有首屏一个 `h1`，下方姓名为 `h2.faculty-name`。更换首屏照片时需重新抠像并调整脚本中的人物坐标（`P`）。样式在 `assets/styles/site-ui.css` 的 `.fz-` 部分。
+导师页顶部使用一张连续的无人背景 `assets/faculty/fan-zhang-library-background-v3.webp`，叠放既有修复人物 `assets/faculty/fan-zhang-hero-cutout-restored-v2.webp`；背景采用单一 `cover`，避免不同缩放照片叠放产生接缝。`facultyPortraitGeometry`（`script.js`）把桌面端人物限制在屏幕左半边；右侧 `.fz-workspace` 以正常网格排版姓名、搜索、五个入口与展开卡片，卡片内容从下方原章节读取，卡片内滚动，不覆盖人物。窄屏或竖屏把操作区放到人物下方。气泡保持在头部附近，窗口和气泡尺寸变化时重算位置。首屏导航透明，离开后恢复浅色；下方章节渐显，唯一 `h1` 在首屏。原图与旧抠图仍保留，背景处理提示词保存在 `assets/people/heroes/generation-notes.json`。调整布局后运行 `node scripts/test-profile-layout.cjs`，检查人物与右侧信息区分离、紧凑屏幕稳定性和渐显行为。
 
 源文件为 `templates/members/fan-zhang.html`，样式使用 `faculty-` 前缀，避免影响其他成员页。保留 `#people` 和 `#principal-investigator` 原锚点。姓名仅出现一个主标题，职称加粗，联系按钮跳转联系页选择邮箱。ICCAT 的链接放在组织全称上。代表论文在 `scripts/build-site.py` 的 `faculty_dois` 中指定，标题、年份和期刊由现有论文库读取；只选择实验室成员／校友一作且 Fan Zhang 参与，或 Fan Zhang 本人一作的论文，排除外部合作者一作的论文，构建时校验这一条件。不在模板中手工复制论文信息。更换照片时保持完整人物可见，并检查桌面及手机的 `object-position`。
 
@@ -79,14 +79,14 @@ python3 -m http.server 8765 --bind 127.0.0.1
 - 毕业后仍在实验室工作的成员，可在 `alumni` 条目中设置 `profile_ref` 为现有成员姓名；校友照片与链接复用该成员主页，保留其当前岗位。相同年份可分别设置 PhD、Master’s 等学位分组。
 - `photo`、`photo_alt` 和 `bio` 分别维护照片、替代文字和英文简介；简介中的空行划分段落。
 - 可选的 `bio_zh` 保存中文原文，个人主页中以可展开的中英对照区域呈现。
-- `profile_photo_aspect_ratio` 可设置个人主页照片比例，`photo_position` 调整取景位置。
+- `profile_photo_aspect_ratio` 可设置个人主页照片比例，`photo_position` 调整取景位置。`profile_photo` 可为下方资料区单独指定高清修复图，默认仍使用 `photo`；目前 Qinqin Lin、Zhechuan Xu 和 Xianglong Yan 使用修复后的前景图，并保留资料照片位。
 - `email`、`github`、`website`、`researchgate` 维护联系方式。未提供的值留为 `null` 或省略，不填猜测的地址。
 - 未提供 GitHub 链接时不显示 GitHub 图标。成员列表中缺失邮箱仍显示不可点击的邮箱占位图标；个人主页只显示已提供的联系方式。
 - `website_label` 设置网站链接名称；`website_icon` 可选 `globe` 或 `researchgate`。独立的 `researchgate` 字段可与 GitHub、学校主页同时使用。
 
 构建后自动生成 `members/<given-name>-<family-name>/index.html`，访问地址为 `/members/<given-name>-<family-name>/`，包括简介、按作者姓名匹配的论文、前后成员导航。缺失照片保留矩形照片位。
 
-现有成员中同时设置 `photo` 与 `hero.cutout` 的个人页，顶部为全屏深色介绍：模糊原照作背景、透明主体居中偏右，左上 “Hi, I’m” 和姓名，左侧简介与联系入口，右下研究方向。`hero.summary` 保存首屏短简介，`hero.research` 保存已有资料确认的研究方向；缺少依据时显示 “To be updated”。手机端改为图片上方、文字下方的连续布局。下方仍保留完整简介、中文原文、论文及前后成员导航。样式在 `.member-intro`，生成器为 `scripts/build-people.py`，仅作用于当前成员；没有照片或尚未制作抠图的成员保持原版式。首屏姓名为唯一 `h1`，下方姓名为 `h2#member-details`。首屏导航透明，滚到详细资料后恢复浅色。原始照片保留不变，透明前景文件在 `assets/people/heroes/`，内置 image_gen 的生成方式与提示词记录在同目录 `generation-notes.json`。
+现有成员中同时设置 `photo` 与 `hero.cutout` 的个人页，顶部为全屏深色介绍：模糊原照作背景、透明主体居中偏右，左上 “Hi, I’m” 和姓名，左侧简介与联系入口，右下研究方向。证件照或正面半身照可设置 `hero.background_color`（六位十六进制色值），只用扩散色彩作背景，避免背景里再次出现放大人脸；目前用于 Qinqin Lin、Zhechuan Xu 和 Xianglong Yan。`hero.summary` 保存首屏短简介，`hero.research` 保存已有资料确认的研究方向；缺少依据时显示 “To be updated”。手机端改为图片上方、文字下方的连续布局。下方仍保留完整简介、中文原文、论文及前后成员导航，照片、简介、每篇论文和成员导航通过现有 `data-reveal` 逐段渐显；系统要求减少动态效果时直接显示。样式在 `.member-intro`，生成器为 `scripts/build-people.py`，仅作用于当前成员；没有照片或尚未制作抠图的成员保持原版式。首屏姓名为唯一 `h1`，下方姓名为 `h2#member-details`。首屏导航透明，滚到详细资料后恢复浅色。原始照片保留不变，透明前景文件在 `assets/people/heroes/`，内置 image_gen 的生成方式与提示词记录在同目录 `generation-notes.json`。
 
 Fan Zhang 主页的主体信息在 [`templates/members/fan-zhang.html`](../templates/members/fan-zhang.html) 中维护。
 

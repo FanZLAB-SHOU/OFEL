@@ -28,8 +28,10 @@
             "research": [
               "Marine ecosystems",
               "Population dynamics"
-            ]
-          }
+            ],
+            "background_color": "#9b825b"
+          },
+          "profile_photo": "assets/people/heroes/qinqin-lin-cutout.webp"
         }
       ]
     },
@@ -270,8 +272,10 @@
             "research": [
               "Feeding ecology",
               "Coastal ecosystems"
-            ]
-          }
+            ],
+            "background_color": "#718da6"
+          },
+          "profile_photo": "assets/people/heroes/xianglong-yan-cutout.webp"
         },
         {
           "name": "Shixin Wu",
@@ -292,8 +296,10 @@
           "hero": {
             "cutout": "assets/people/heroes/zhechuan-xu-cutout.webp",
             "summary": "I’m a master’s student in the Oceanic Fisheries Ecosystem Laboratory at Shanghai Ocean University.",
-            "research": []
-          }
+            "research": [],
+            "background_color": "#6d809a"
+          },
+          "profile_photo": "assets/people/heroes/zhechuan-xu-cutout.webp"
         }
       ]
     }

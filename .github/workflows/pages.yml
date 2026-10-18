@@ -35,6 +35,7 @@ jobs:
         run: |
           python3 scripts/test-responsive-images.py
           node scripts/test-gateway-cards.cjs
+          node scripts/test-profile-layout.cjs
       - name: Check page links and assets
         run: python3 scripts/check-site.py
       - name: Check sitemap and sharing metadata

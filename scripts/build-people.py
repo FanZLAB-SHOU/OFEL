@@ -228,6 +228,7 @@ for n, person in enumerate(people):
     paper_list = ('<div class="publication-list profile-publication-list">\n'
                   + '\n'.join(publications.article_html(p, highlight=(given, family)) for p in papers)
                   + '\n        </div>') if papers else '<p class="profile-empty">No publications listed yet.</p>'
+    paper_list = paper_list.replace('<article ', '<article data-reveal ').replace('<p class="profile-empty">', '<p class="profile-empty" data-reveal>')
     links = []
     if person.get('email'):
         value = checked_email(person)
@@ -278,10 +279,18 @@ for n, person in enumerate(people):
         topics = topics or '<span class="member-intro-topic-pending">To be updated</span>'
         hero_person = {**person, 'photo': hero['cutout']}
         hero_links = f'<div class="pi-links">{"".join(links)}</div>' if links else ''
+        tint = hero.get('background_color')
+        if tint:
+            if not re.fullmatch(r'#[0-9a-fA-F]{6}', tint):
+                raise ValueError(f'Invalid portrait background color for {person["name"]}')
+            backdrop = ('<div class="member-intro-wash member-intro-color" aria-hidden="true" '
+                        f'style="--member-tint: {tint}"></div>')
+        else:
+            backdrop = (f'<img class="member-intro-wash" src="{esc(person["photo"])}" alt="" aria-hidden="true" '
+                        'width="640" height="800" sizes="640px" fetchpriority="low">')
         intro = (
             '    <section class="member-intro" aria-labelledby="profile-title" data-member-intro>'
-            f'<img class="member-intro-wash" src="{esc(person["photo"])}" alt="" aria-hidden="true" '
-            'width="640" height="800" sizes="640px" fetchpriority="low">'
+            f'{backdrop}'
             '<div class="member-intro-watermark" aria-hidden="true">OFEL</div>'
             f'<div class="member-intro-portrait">{photo(hero_person, "member-intro-photo", 1080, 1500, priority=True)}</div>'
             '<div class="container member-intro-layout">'
@@ -298,19 +307,21 @@ for n, person in enumerate(people):
     heading = (f'<h2 class="member-details-heading" id="member-details">{name}</h2>' if has_intro
                else f'<h1 id="profile-title">{name}</h1>')
     breadcrumb_html = '' if has_intro else f'        {breadcrumb}\n'
+    detail_person = {**person, 'photo': person.get('profile_photo') or person.get('photo')}
+    detail_photo_class = 'profile-photo profile-photo-enhanced' if person.get('profile_photo') else 'profile-photo'
     content = (
         intro + f'    <section class="people section detail-page profile-page" aria-labelledby="{details_id}">\n'
         f'      <div class="container">\n'
         f'{breadcrumb_html}'
         f'        <div class="profile-grid">\n'
-        f'          <div class="profile-photo">{photo(person, "profile-img", 600, 800)}</div>\n'
-        f'          <div class="profile-content"><p class="eyebrow teal">{esc(person["context"])}</p>'
+        f'          <div class="{detail_photo_class}" data-reveal>{photo(detail_person, "profile-img", 600, 800)}</div>\n'
+        f'          <div class="profile-content" data-reveal style="--reveal-delay: .08s"><p class="eyebrow teal">{esc(person["context"])}</p>'
         f'{heading}<p class="pi-role">{esc(person["role"])}</p>{links_html}'
         f'<div class="profile-bio">{bio}</div></div>\n'
         f'        </div>\n'
         f'        <section class="profile-publications" aria-labelledby="profile-publications-title">'
-        f'<h2 id="profile-publications-title">Publications</h2>\n        {paper_list}\n        </section>\n'
-        f'        <nav class="profile-pager" aria-label="Browse people">{"".join(pager)}</nav>\n'
+        f'<h2 id="profile-publications-title" data-reveal>Publications</h2>\n        {paper_list}\n        </section>\n'
+        f'        <nav class="profile-pager" aria-label="Browse people" data-reveal>{"".join(pager)}</nav>\n'
         f'      </div>\n    </section>\n'
     )
     title = f'{person["name"]} | OFEL'

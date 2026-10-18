@@ -408,56 +408,44 @@ function initContactEmail() {
   });
 }
 initContactEmail();
-// Fan Zhang profile hero: keeps the cut-out portrait, search bar and bubble aligned to the photo,
-// answers topic chips and search with cards built from the sections below, and floats the header over the hero.
+// The portrait occupies the left half; the right workspace lays out controls and cards in normal flow.
+function facultyPortraitGeometry(width, height, headerHeight, viewportHeight = height) {
+  const compact = width < 1000 || width / height < 1.2;
+  const imageHeight = compact ? Math.min(viewportHeight * .68, 600, width * 1.1) : Math.min(height, width * .60);
+  const imageWidth = imageHeight * 4 / 3;
+  const headX = width * (compact ? .5 : .28);
+  const left = headX - .39 * imageWidth;
+  const top = compact ? headerHeight + 120 - .223 * imageHeight : height - imageHeight;
+  return { compact, width: imageWidth, height: imageHeight, left, top, headX,
+    headTop: top + .223 * imageHeight, faceLeft: left + .29 * imageWidth,
+    personLeft: left + .11 * imageWidth, personRight: left + .65 * imageWidth,
+    bottom: top + imageHeight };
+}
 function initFacultyHero() {
   const hero = document.querySelector('[data-fz-hero]');
   if (!hero) return;
-  // Keep the person, bar and bubble locked together at any screen size.
-  const stages = [...hero.querySelectorAll('[data-fz-stage]')];
-  const center = hero.querySelector('.fz-hero-center'), chipsWrap = hero.querySelector('[data-fz-chips]'), bubbleBox = hero.querySelector('.fz-bubble');
-  const P = { headX: .39, headRight: .47, headTop: .223, chest: .63, personRight: .645, cx: .4, cy: .6 };
+  const bubbleBox = hero.querySelector('.fz-bubble');
   function layout() {
-    const W = hero.clientWidth, H = hero.clientHeight, mobile = W < 760, headerH = document.querySelector('.site-header').offsetHeight;
-    const px = mobile ? .26 : .5, py = mobile ? .5 : .18, s = 1;
-    // Desktop: the full photo height fits the hero, so the person keeps the same size and framing on any screen.
-    // Phones: cover, cropped around the person.
-    const Dh = mobile ? Math.max(H, W * 3 / 4) : H, Dw = Dh * 4 / 3;
-    const ox = (W - Dw) * (mobile ? px : (Dw > W ? .42 : .5)), oy = mobile ? (H - Dh) * py : 0;
-    hero.classList.toggle('is-fitted', !mobile && Dw < W);
-    const pt = (u, v) => [ox + u * Dw, oy + v * Dh];
-    const [Ox, Oy] = pt(P.cx, P.cy);
-    const map = ([x, y]) => [Ox + s * (x - Ox), Oy + s * (y - Oy)];
-    stages.forEach(st => { st.style.transformOrigin = `${Ox}px ${Oy}px`; st.style.transform = `scale(${s})`; });
-    hero.querySelectorAll('.fz-layer').forEach(img => { Object.assign(img.style, { left: `${ox}px`, top: `${oy}px`, width: `${Dw}px`, height: `${Dh}px`, right: 'auto', bottom: 'auto', objectFit: 'fill' }); });
-    const [hx, ht] = map(pt(P.headX, P.headTop)), [, cy] = map(pt(P.headX, P.chest)), [hr] = map(pt(P.headRight, P.headTop)), [hl] = map(pt(.3, P.headTop));
-    // Wide bar behind the person; typing starts just right of the shoulder so it stays visible.
-    const [pr] = map(pt(P.personRight, P.chest));
-    const bar = mobile ? W - 40 : Math.min(1160, W - 120), cx = W / 2;
-    center.style.width = `${bar}px`;
-    center.style.left = `${cx}px`;
-    const input = center.querySelector('input');
-    input.style.paddingLeft = mobile ? '0px' : `${Math.max(0, pr - (cx - bar / 2) - 52)}px`;
-    chipsWrap.style.paddingLeft = '0px';
-    // Use the whole search-bar width, so laptop screens do not strand Contact on a second row.
-    chipsWrap.style.left = `${cx}px`;
-    chipsWrap.style.width = `${bar}px`;
-    center.style.top = `${cy}px`;
-    const chH = chipsWrap.offsetHeight;
-    let chipsTop = cy + (mobile ? 40 : 48);
-    if (chipsTop + chH > H - 16) chipsTop = Math.max(headerH + 8, cy - 40 - chH);
-    chipsWrap.style.top = `${chipsTop}px`;
+    const W = hero.clientWidth, H = hero.clientHeight;
+    const headerH = document.querySelector('.site-header').offsetHeight;
+    const g = facultyPortraitGeometry(W, H, headerH, window.innerHeight);
+    hero.classList.toggle('is-compact', g.compact);
+    hero.querySelectorAll('.fz-stage-front .fz-layer').forEach(img => {
+      Object.assign(img.style, { left: `${g.left}px`, top: `${g.top}px`, width: `${g.width}px`, height: `${g.height}px`, right: 'auto', bottom: 'auto', objectFit: 'fill' });
+    });
     hero.style.setProperty('--header-height', `${headerH}px`);
-    hero.style.setProperty('--fz-card-max', `${mobile ? Math.round(H * .5) : Math.max(260, H - headerH - 220)}px`);
-    // Bubble beside the head on the window side, kept on screen.
-    const bw = bubbleBox.offsetWidth, bh = bubbleBox.offsetHeight;
-    const left = mobile ? Math.min(W - bw - 12, Math.max(12, hx - bw * .2)) : Math.max(16, hl - bw - 28);
-    const [, eyeY] = map(pt(P.headX, .36));
-    const top = mobile ? Math.max(headerH + 8, ht - bh - 14) : Math.max(headerH + 12, eyeY - bh * .9);
-    bubbleBox.classList.toggle('is-left', !mobile);
+    hero.style.setProperty('--fz-portrait-bottom', `${g.bottom + 24}px`);
+    hero.style.setProperty('--fz-card-max', g.compact ? '55svh' : '100%');
+    const bubbleWidth = g.compact ? Math.min(300, W - 40) : Math.max(160, Math.min(300, g.faceLeft - 40));
+    bubbleBox.style.width = `${bubbleWidth}px`;
+    const bh = bubbleBox.offsetHeight;
+    const left = g.compact ? (W - bubbleWidth) / 2 : Math.max(16, g.faceLeft - bubbleWidth - 24);
+    const top = g.compact ? Math.max(headerH + 8, g.headTop - bh - 18) : Math.max(headerH + 16, g.top + .34 * g.height - bh * .6);
+    bubbleBox.classList.toggle('is-left', !g.compact);
     bubbleBox.style.left = `${left}px`; bubbleBox.style.top = `${top}px`;
   }
-  layout(); addEventListener('resize', layout); new ResizeObserver(layout).observe(bubbleBox);
+  layout(); addEventListener('resize', layout);
+  new ResizeObserver(layout).observe(bubbleBox);
   const header = document.querySelector('.site-header');
   const past = () => header.classList.toggle('is-past', hero.getBoundingClientRect().bottom <= header.offsetHeight + 1);
   addEventListener('scroll', past, { passive: true }); past();

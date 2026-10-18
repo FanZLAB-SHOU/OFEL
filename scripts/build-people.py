@@ -127,7 +127,7 @@ def contact(member, kind):
             f'aria-label="{esc(description)}" title="{esc(value)}">{mark}</a>')
 
 
-def photo(member, cls, width, height):
+def photo(member, cls, width, height, priority=False):
     if not member.get('photo'):
         return placeholder
     styles = []
@@ -136,8 +136,10 @@ def photo(member, cls, width, height):
     if member.get('photo_position'):
         styles.append(f'object-position: {esc(member["photo_position"])}')
     style = f' style="{"; ".join(styles)}"' if styles else ''
+    loading = ('fetchpriority="high" sizes="(max-width: 760px) calc(100vw - 40px), '
+               '(max-width: 1280px) 46vw, 620px"') if priority else 'loading="lazy"'
     return (f'<img class="{cls}" src="{esc(member["photo"])}" alt="{esc(member.get("photo_alt", member["name"]))}" '
-            f'width="{width}" height="{height}" loading="lazy"{style}>')
+            f'width="{width}" height="{height}" {loading}{style}>')
 
 
 def fill(page, marker, sections):
@@ -260,15 +262,40 @@ for n, person in enumerate(people):
                      f'<span class="pager-dir">Next{icon("right")}</span><span class="pager-name">{esc(nxt["name"])}</span></span>'
                      f'<span class="pager-badge" aria-hidden="true">OFEL</span></a>')
     back_href, back_label = person['back']
+    breadcrumb = (f'<nav class="breadcrumb" aria-label="Breadcrumb"><a href="{back_href}">{back_label}</a>'
+                  f'<span aria-hidden="true">/</span><span aria-current="page">{name}</span></nav>')
+    # Only current members with supplied photos get the large introduction.
+    # Keep the full existing profile below it, including bilingual bios and papers.
+    has_intro = bool(person.get('photo')) and back_href == 'members/index.html'
+    intro = ''
+    if has_intro:
+        first_paragraph = (person.get('bio') or '').split('\n\n')[0]
+        summary = f'<p class="member-intro-summary">{esc(first_paragraph)}</p>' if first_paragraph else ''
+        intro = (
+            '    <section class="member-intro" aria-labelledby="profile-title"><div class="container">'
+            f'{breadcrumb}<div class="member-intro-card">'
+            f'<img class="member-intro-wash" src="{esc(person["photo"])}" alt="" aria-hidden="true" '
+            'width="640" height="800" sizes="640px" fetchpriority="low">'
+            f'<div class="member-intro-portrait">{photo(person, "member-intro-photo", 720, 900, priority=True)}</div>'
+            f'<div class="member-intro-glass"><p class="member-intro-context">{esc(person["context"])}</p>'
+            '<div class="member-intro-copy">'
+            f'<h1 id="profile-title">{name}</h1><p class="member-intro-role">{esc(person["role"])}</p>'
+            f'{summary}{links_html}'
+            f'<a class="member-intro-more" href="#member-details">Full profile{icon("down")}</a>'
+            '</div></div></div></div></section>\n'
+        )
+    details_id = 'member-details' if has_intro else 'profile-title'
+    heading = (f'<h2 class="member-details-heading" id="member-details">{name}</h2>' if has_intro
+               else f'<h1 id="profile-title">{name}</h1>')
+    breadcrumb_html = '' if has_intro else f'        {breadcrumb}\n'
     content = (
-        f'    <section class="people section detail-page profile-page" aria-labelledby="profile-title">\n'
+        intro + f'    <section class="people section detail-page profile-page" aria-labelledby="{details_id}">\n'
         f'      <div class="container">\n'
-        f'        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="{back_href}">{back_label}</a>'
-        f'<span aria-hidden="true">/</span><span aria-current="page">{name}</span></nav>\n'
+        f'{breadcrumb_html}'
         f'        <div class="profile-grid">\n'
         f'          <div class="profile-photo">{photo(person, "profile-img", 600, 800)}</div>\n'
         f'          <div class="profile-content"><p class="eyebrow teal">{esc(person["context"])}</p>'
-        f'<h1 id="profile-title">{name}</h1><p class="pi-role">{esc(person["role"])}</p>{links_html}'
+        f'{heading}<p class="pi-role">{esc(person["role"])}</p>{links_html}'
         f'<div class="profile-bio">{bio}</div></div>\n'
         f'        </div>\n'
         f'        <section class="profile-publications" aria-labelledby="profile-publications-title">'

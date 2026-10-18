@@ -86,6 +86,8 @@ python3 -m http.server 8765 --bind 127.0.0.1
 
 构建后自动生成 `members/<given-name>-<family-name>/index.html`，访问地址为 `/members/<given-name>-<family-name>/`，包括简介、按作者姓名匹配的论文、前后成员导航。缺失照片保留矩形照片位。
 
+现有成员中已设置 `photo` 的个人页，在原有内容上方增加有边距的双栏介绍卡片：左侧大照片沿用 `photo_position`，右侧以同一照片的模糊色彩衬托磨砂玻璃面板，姓名、身份、英文简介首段与联系入口放在面板下方。手机端改为照片在上、介绍在下；顶部照片优先加载。下面仍保留完整简介、中文原文、论文和前后成员导航。此设计由 `scripts/build-people.py` 和共享样式中的 `.member-intro` 维护，仅用于当前成员，不改变校友及 Fan Zhang 的独立设计。首屏姓名为唯一 `h1`，下方原姓名改为 `h2#member-details`，同时作为 “Full profile” 的跳转锚点。没有照片的成员仍使用原版式。
+
 Fan Zhang 主页的主体信息在 [`templates/members/fan-zhang.html`](../templates/members/fan-zhang.html) 中维护。
 
 ### 论文

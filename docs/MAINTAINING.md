@@ -58,9 +58,14 @@ python3 -m http.server 8765 --bind 127.0.0.1
 
 ### 访问统计（Info → More）
 
-全站通过 [GoatCounter](https://fanzlabshou.goatcounter.com/) 统计访问，脚本写在 `templates/head.html`，所有正式页面都会计入；不使用 Cookie，从 2026-10-17 开始计数。登录 GoatCounter 可查看来源、国家、设备等完整后台。
+全站同时使用两个计数服务，脚本都写在 `templates/head.html`，所有正式页面都会计入：
 
-顶部 Info 菜单的 More 页面（`/more/`，模板 `templates/more.html`）用站内自己的样式展示数据，交互代码为 `script.js` 中的 `initSiteStats`：总浏览量、独立访客、最近 7 天浏览量、最近 14 天每日浏览量（按 UTC 日期）和最受欢迎页面。数据来自 GoatCounter 的公开计数接口 `/counter/<路径>.json`，需在 GoatCounter 设置中保持勾选 “Allow adding visitor counts on your website”；仪表盘本身可以只对登录用户可见。页面排行只统计主要页面与新闻文章，列表由构建脚本的 `stats_pages` 自动生成。结果在浏览器会话中缓存 10 分钟，计数服务不可用时显示短横线。
+- **不蒜子（Busuanzi）**：国内服务，中国大陆访客也能被统计，提供全站总浏览量和访客数，无需注册。
+- **[GoatCounter](https://fanzlabshou.goatcounter.com/)**：提供按日趋势、页面排行以及来源、国家、设备等后台明细（登录查看），不使用 Cookie。脚本自托管在 `assets/vendor/goatcounter-count.js`（ISC 许可，保留文件头），不再从 gc.zgo.at 加载；访问记录仍发送到 goatcounter.com，中国大陆的访问可能统计不全。
+
+More 页面（`/more/`，模板 `templates/more.html`，交互代码 `assets/scripts/more.js` 与 `more-model.js`）：顶部滚动数字和 “All visits / Visitors” 使用不蒜子的全站数字（不蒜子填充页面中隐藏的 `busuanzi_value_site_pv`、`busuanzi_value_site_uv`）；约 8 秒内不蒜子无响应时，滚动数字改用 GoatCounter 总数。“Past 7 days / Today”、每日柱状图和页面排行来自 GoatCounter 的公开计数接口 `/counter/<路径>.json`（需在 GoatCounter 设置中保持勾选 “Allow adding visitor counts on your website”，仪表盘本身可以只对登录用户可见），页面上以 ¹ 注明可能漏计中国大陆访问。两套数字分别计数，不能相加。更新 GoatCounter 脚本时，重新下载 `https://gc.zgo.at/count.js` 覆盖自托管文件。
+
+页面排行只统计主要页面与新闻文章，列表由构建脚本的 `stats_pages` 自动生成。结果在浏览器会话中缓存 10 分钟，计数服务不可用时显示短横线。
 
 ### 研究方向
 

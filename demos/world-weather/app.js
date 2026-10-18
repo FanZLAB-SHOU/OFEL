@@ -160,7 +160,7 @@
     const sequence=++searchSequence;searchController?.abort();const controller=new AbortController();searchController=controller;
     const timer=setTimeout(()=>controller.abort(),10000);$('search-button').disabled=true;$('search-results').replaceChildren();$('search-results').hidden=true;set('search-status','Searching…');
     try {
-      const url=new URL('https://geocoding-api.open-meteo.com/v1/search');url.search=new URLSearchParams({name:M.searchQuery(query),count:'5',language:'en',format:'json'});
+      const url=M.searchURL(query);
       const response=await fetch(url,{signal:controller.signal});if(!response.ok)throw Error('Search unavailable');const data=await response.json();if(sequence!==searchSequence)return;
       const results=(data.results||[]).map(M.searchLocation).filter(Boolean);
       set('search-status',results.length?`${results.length} matching ${results.length===1?'place':'places'}`:'No cities found. Try another spelling.');

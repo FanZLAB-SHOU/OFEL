@@ -19,6 +19,32 @@ assert.equal(M.searchLocation({latitude:0,longitude:0,timezone:'Invalid'}),null)
 for(const query of ['hongkong','Hong Kong','HONGKONG',' Hong-Kong ','香港','香港特別行政區'])assert.equal(M.searchQuery(query),'Hong Kong');
 for(const query of ['macao','Macau','澳门','澳門','澳門特別行政區'])assert.equal(M.searchQuery(query),'Macao');
 assert.equal(M.searchQuery('  Seattle  '),'Seattle');assert.equal(M.searchQuery('constructor'),'constructor');
+for(const [canonical,queries] of [
+ ['Taipei',['Taipei','taibei','TAI BEI','tái běi','Tai-Pei','台北','臺北市','taibeishi']],
+ ['New Taipei City',['Xinbei','New Taipei','新北市']],
+ ['Taichung',['Taizhong','台中','臺中']],
+ ['Tainan',['Tai Nan','臺南市']],
+ ['Kaohsiung',['Gaoxiong','Kao-hsiung','高雄']],
+ ['Taoyuan',['桃园','桃園市']],
+ ['Keelung',['Jilong','基隆']],
+ ['Hsinchu',['Xinzhu','Hsin-chu','新竹']],
+ ['Chiayi',['Jiayi','Chia-yi','嘉義']],
+ ['Changhua',['Zhanghua','Chang-hua','彰化']],
+ ['Pingtung',['Pingdong','屏東']],
+ ['Hualien',['Hualian','花蓮']],
+ ['Taitung',['Taidong','臺東']],
+ ['Miaoli',['Miao Li','苗栗']],
+ ['Nantou',['Nan Tou','南投']],
+ ['Yilan',['Yi Lan','宜蘭']]
+])for(const query of queries){
+ assert.equal(M.searchQuery(query),canonical,query);
+ const params=new URL(M.searchURL(query)).searchParams;assert.equal(params.get('name'),canonical);assert.equal(params.get('countryCode'),'TW');
+}
+assert.equal(M.searchURL('taibei'),M.searchURL('Taipei'));
+assert.equal(new URL(M.searchURL('Hong Kong')).searchParams.get('countryCode'),'HK');
+assert.equal(new URL(M.searchURL('Macao')).searchParams.get('countryCode'),'MO');
+assert.equal(new URL(M.searchURL('Seattle')).searchParams.has('countryCode'),false);
+assert.equal(M.searchQuery('Taipei Restaurant, Seattle'),'Taipei Restaurant, Seattle','only complete known place names are rewritten');
 const hongkong={id:1819729,name:'Hong Kong',country_code:'HK',latitude:22.27832,longitude:114.17469,timezone:'Asia/Hong_Kong'};
 assert.equal(M.searchLocation(hongkong).country,'Hong Kong, China');
 const macao={...hongkong,id:1821274,name:'Macao',country_code:'MO',latitude:22.20056,longitude:113.54611,timezone:'Asia/Macau'};

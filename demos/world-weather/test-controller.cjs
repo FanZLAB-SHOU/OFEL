@@ -74,5 +74,14 @@ const finish=(index,data,ok=true)=>requests[index].resolve({ok,json:async()=>dat
  nodes['find-city'].click();assert.equal(nodes['city-query'].focused,true);
  nodes['add-city'].click();assert.equal(nodes['city-clocks'].children.length,1);assert.equal(nodes['empty-clocks'].hidden,true);
  const oneCityReload=reboot();assert.equal(oneCityReload['location-name'].textContent,'Macao');assert.equal(oneCityReload['location-region'].textContent,'Macao, China');assert.equal(oneCityReload['city-clocks'].children.length,1);
+ for(const query of ['taibei','Taipei']){
+  nodes['city-query'].value=query;const index=requests.length,search=nodes['city-search'].events.submit({preventDefault(){}});
+  const params=new URL(requests[index].url).searchParams;assert.equal(params.get('name'),'Taipei');assert.equal(params.get('countryCode'),'TW');
+  finish(index,{results:[{id:1668341,name:'Taipei',country:'Taiwan',country_code:'TW',admin1:'Taiwan',latitude:25.05306,longitude:121.52639,timezone:'Asia/Taipei'}]});await search;await flush();
+  nodes['search-results'].children[0].children[0].click();
+  if(query==='taibei')finish(index+1,weather('Asia/Taipei',26));
+  await flush();assert.equal(nodes['location-name'].textContent,'Taipei');assert.equal(nodes['location-region'].textContent,'Taiwan, China');assert.equal(nodes.temperature.textContent,'26°C');
+  nodes['add-city'].click();assert.equal(nodes['city-clocks'].children.length,2,'alternate spellings must select one saved city');
+ }
  console.log('Passed city selection, stale-response protection, offline fallback, search aliases, weather refresh, adding/removing clocks and markers, duplicate prevention, saved reloads and intentionally empty lists.');
 })().catch(e=>{console.error(e);process.exitCode=1;});

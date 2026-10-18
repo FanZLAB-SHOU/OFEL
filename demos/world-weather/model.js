@@ -116,11 +116,41 @@ const WorldWeather = (() => {
       return {...weather,savedAt:entry.savedAt,cached:false};
     }
   }
-  function searchQuery(query) {
-    const text=String(query).trim();
-    const key=text.toLowerCase().replace(/[\s._-]+/g,'');
-    const aliases={hongkong:'Hong Kong','香港':'Hong Kong','香港特别行政区':'Hong Kong','香港特別行政區':'Hong Kong',macao:'Macao',macau:'Macao','澳门':'Macao','澳門':'Macao','澳门特别行政区':'Macao','澳門特別行政區':'Macao'};
-    return Object.hasOwn(aliases,key)?aliases[key]:text;
+  function searchKey(query) {return String(query).trim().normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[\s._'’\u2010-\u2015-]+/g,'');}
+  const searchAliases=new Map();
+  function registerSearch(name,code,aliases,city=false) {
+    for(const alias of [name,...aliases]){
+      const key=searchKey(alias);searchAliases.set(key,{name,code});
+      if(city){for(const suffix of ['shi','city','市'])searchAliases.set(key+suffix,{name,code});}
+    }
+  }
+  registerSearch('Hong Kong','HK',['hongkong','香港','香港特别行政区','香港特別行政區']);
+  registerSearch('Macao','MO',['macau','澳门','澳門','澳门特别行政区','澳門特別行政區']);
+  for(const [name,aliases] of [
+    ['Taipei',['taibei','台北','臺北']],
+    ['New Taipei City',['newtaipei','xinbei','新北']],
+    ['Taichung',['taizhong','台中','臺中']],
+    ['Tainan',['台南','臺南']],
+    ['Kaohsiung',['gaoxiong','高雄']],
+    ['Taoyuan',['桃园','桃園']],
+    ['Keelung',['jilong','基隆']],
+    ['Hsinchu',['xinzhu','新竹']],
+    ['Chiayi',['jiayi','嘉义','嘉義']],
+    ['Changhua',['zhanghua','彰化']],
+    ['Pingtung',['pingdong','屏东','屏東']],
+    ['Hualien',['hualian','花莲','花蓮']],
+    ['Taitung',['taidong','台东','台東','臺東']],
+    ['Miaoli',['苗栗']],
+    ['Nantou',['南投']],
+    ['Yilan',['宜兰','宜蘭']]
+  ])registerSearch(name,'TW',aliases,true);
+  function searchTarget(query) {return searchAliases.get(searchKey(query))||{name:String(query).trim()};}
+  function searchQuery(query) {return searchTarget(query).name;}
+  function searchURL(query) {
+    const target=searchTarget(query),url=new URL('https://geocoding-api.open-meteo.com/v1/search');
+    url.search=new URLSearchParams({name:target.name,count:'5',language:'en',format:'json'});
+    if(target.code)url.searchParams.set('countryCode',target.code);
+    return url.href;
   }
   function searchLocation(item) {
     if(!Number.isFinite(item.latitude)||!Number.isFinite(item.longitude)||!validZone(item.timezone))return null;
@@ -132,6 +162,6 @@ const WorldWeather = (() => {
     const country=[...new Set(region.filter(Boolean))].join(', ');
     return {id:'search-'+item.id,name:String(item.name||'Selected city'),country,lat:item.latitude,lon:item.longitude,zone:item.timezone};
   }
-  return {TTL,cities,CLOCKS_KEY,sameLocation,clockLocation,restoreCities,saveCities,clock,dateLabel,validZone,offsetMinutes,offsetLabel,difference,coordinates,project,unproject,weatherKind,weatherURL,parseWeather,WeatherClient,searchQuery,searchLocation};
+  return {TTL,cities,CLOCKS_KEY,sameLocation,clockLocation,restoreCities,saveCities,clock,dateLabel,validZone,offsetMinutes,offsetLabel,difference,coordinates,project,unproject,weatherKind,weatherURL,parseWeather,WeatherClient,searchQuery,searchURL,searchLocation};
 })();
 if(typeof module!=='undefined'&&module.exports)module.exports=WorldWeather;
